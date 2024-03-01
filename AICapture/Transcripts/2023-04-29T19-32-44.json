@@ -1,0 +1,4 @@
+{"Time":"1682796764","Type":"Prompt","Text":"I'd like to make changes to the project json.  I'll discuss change with you, and as soon as you understand, return an array of json patches with one or more \"op\"s.  If you understand the protocol I'm describing please reply either Yes, or No.","ParentMessageId":"","ConversationId":"","IsHidden":"False"}
+{"Time":"1682796764","Type":"Response","Text":"Yes, I understand. Please describe the changes you would like to make to the project JSON.","ParentMessageId":"aa87a000-e438-4264-ba88-fe6caf9d2f54","ConversationId":"","IsHidden":"False"}
+{"Time":"1682796788","Type":"Prompt","Text":"Add a rule that pills can be marked as taken from the reminder/notification screen itself.","ParentMessageId":"","ConversationId":"","IsHidden":"False"}
+{"Time":"1682796787","Type":"Response","Text":"Yes.","ParentMessageId":"06fdfc06-f5e9-46d5-8343-34492fcbda5a","ConversationId":"","IsHidden":"False"}

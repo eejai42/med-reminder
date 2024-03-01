@@ -1,0 +1,2 @@
+{"Time":"1682796979","Type":"Prompt","Text":"Please note that pills can be marked as taken from the actual reminder/notification screen.  Please add this with a concise newspaper headline style syntax.","ParentMessageId":"","ConversationId":"","IsHidden":"False"}
+{"Time":"1682796978","Type":"Response","Text":"Yes. \n\nAdd new item to \"markAsTakenRules\" array:\n- \"Pills can be marked as taken from the notification screen.\"","ParentMessageId":"6ecbf715-cfb0-429f-adf2-2a30c7871ba6","ConversationId":"","IsHidden":"False"}

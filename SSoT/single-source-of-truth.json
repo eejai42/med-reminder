@@ -1,0 +1,91 @@
+{
+  "HEAD": {
+    "project": {
+      "name": "physical-med-reminder",
+      "description": "An intuitive and user-friendly Arduino-assisted physical pillbox solution designed to manage a twice-daily medication schedule without the need for a complex user interface. The device learns the user's medication times based on their actions immediately after being powered up.",
+      "usage": [
+        "Box 1 is used for Monday morning through Thursday morning doses.",
+        "Box 2 covers Thursday evening through Sunday evening doses.",
+        "To set the reminder times, the user plugs in the device and takes their medication as normal. The device then sets the reminder schedule based on these actions."
+      ],
+      "rules": {
+        "setup": "Each box is organized to support a twice-daily medication regimen, with each compartment corresponding to a specific day and time (morning/evening). Magnets are placed in the compartments to track medication intake.",
+        "interaction": [
+          "The Arduino system is enabled to signal when it's time to take medication through audible reminders, which escalate in urgency until the medication is taken.",
+          "The system learns the medication schedule based on user interaction after initial power-up. No further interaction is required unless there is a change in the medication schedule."
+        ],
+        "management": [
+          "The system is designed for easy setup with the user filling each compartment according to their medication schedule at the beginning of the week.",
+          "A power supply from a wall adapter ensures consistent operation, and the Arduino's internal clock maintains the time.",
+          "In the event of a power outage or a need to change the medication times, the user simply unplugs the device, plugs it back in, and takes their pills as normal to reset the schedule."
+        ],
+        "error_handling": "The device provides confirmation of learning the medication times through a series of audible signals. Error handling ensures the user is informed of successful setup or any issues detected."
+      },
+      "mechanical_design": {
+        "description": "The pillbox is designed as two separate units, each with a circular orientation divided into 7 pie slices for a week's medication. A central button enables rotation of the current slot to the next position, facilitating medication dispensing.",
+        "operation": [
+          "The first box (Box 1) starts with position 1 for Monday morning, alternating between day (white) and night (black) slots, ending on Thursday morning.",
+          "The second box (Box 2) begins with Thursday night (black) and proceeds through Friday, Saturday, and Sunday, covering both morning and evening doses, before switching back to Box 1 for the next cycle."
+        ],
+        "switching_mechanism": "A manual button in the center of each box rotates the current slot by one position to dispense the medication, ensuring accurate dispensing for each scheduled dose."
+      },
+      "hardware_configuration": {
+        "hall_effect_sensors": 3,
+        "magnets": 17,
+        "speaker": 1,
+        "configuration_details": "The system uses a combination of hall effect sensors and magnets to identify which of the 7 slots in each box is currently ready for dispensing, and to differentiate between Box 1 and Box 2. The speaker is used for audible reminders.",
+        "slot_identification": "Each slot has a unique magnet configuration that is detected by the hall effect sensors, allowing the system to track the medication schedule accurately.",
+        "audible_notifications": "The speaker emits different patterns of sounds to indicate when it's time to take medication or if the box has not been advanced as expected."
+      },
+      "implementation_plan": {
+        "box_and_slot_identification": "The system identifies slots and boxes using hall effect sensors to read magnet configurations. An additional magnet is used to differentiate between Box 1 and Box 2.",
+        "error_handling_and_confirmation": "Includes logic for audible confirmation of correct slot positioning and handling of unexpected sensor readings."
+      }
+    }
+  },
+
+  "version1": {
+    "project": {
+      "name": "physical-med-reminder",
+      "description": "An Arduino-assisted physical pillbox solution designed to manage a twice-daily medication schedule. Utilizes two round pillboxes, each with 7 compartments, to organize pills for the entire week.",
+      "usage": [
+        "Box 1 is used for Monday morning through Thursday morning doses.",
+        "Box 2 covers Thursday evening through Sunday evening doses."
+      ],
+      "rules": {
+        "setup": "Each box is organized to support a twice-daily medication regimen, with each compartment corresponding to a specific day and time (morning/evening).",
+        "interaction": [
+          "Users interact with the system through a physical interface enabled by Arduino, which can signal when it's time to take medication.",
+          "Specific details on interaction mechanisms (e.g., LED indicators, sound alarms) can be defined based on user needs and Arduino capabilities."
+        ],
+        "management": [
+          "The system is designed for easy setup at the beginning of the week, with the user filling each compartment according to their medication schedule.",
+          "Flexibility to adjust the system based on changes in medication or schedule."
+        ]
+      }
+    }
+  },
+  "version0": {
+    "retired": true,
+    "project": {
+      "name": "med-reminder",
+      "description": "Comprehensive medication reminder app for Android and iOS. Pills can be marked as taken from the reminder/notification screen.",
+      "overallRules": [
+        "Set multiple reminders per day, must be marked as taken",
+        "Unique decaying back-off system, increasing urgency, decreasing frequency. The frequency and intensity of reminders decrease as time passes."
+      ],
+      "ringingRules": [
+        "Single quiet beep for initial reminder, auto-snooze for 10 seconds",
+        "Initial reminder gentle, with increasing intensity after subsequent auto-snoozes, which can occur multiple times.",
+        "Gradually louder, but less frequent beeps following Fibonacci sequence",
+        "Reminders not marked as 'taken' auto-snoozed",
+        "After the first auto-snooze, subsequent auto-snoozes will occur at longer intervals"
+      ],
+      "markAsTakenRules": [
+        "Reminder skipped if pill intake marked early",
+        "Pills can be marked as taken from the reminder/notification screen",
+        "Accidentally marked pills can be undone"
+      ]
+    }
+  }
+}

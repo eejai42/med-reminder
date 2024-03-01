@@ -1,0 +1,15 @@
+{
+  "ShowHidden": false,
+  "ShowAllFiles": false,
+  "SaveDisabled": false,
+  "SSoTmeProjectId": "aed050d6-a0b6-4b02-84dd-fb5e668d2504",
+  "Name": "med-alarm",
+  "ProjectSettings": [
+    {
+      "ProjectSettingId": "d53008a3-e39f-4bf7-81f3-d7c4fb984e6f",
+      "Name": "project-name",
+      "Value": "med-alarm"
+    }
+  ],
+  "ProjectTranspilers": []
+}
