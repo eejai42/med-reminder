@@ -71,14 +71,53 @@ pizzaSliceWithClipping();
 cylinderWithClipping();
 }
 
-module sliceSet() {
-    translate([0, edge_length * -4, 0]) {
-    for (i = [1:7]) { // Assuming you want to start from 1 and increment by 1 up to 10        
-        translate([0, i * edge_length, 0]) 
+// Define the slice thickness if not already defined
+slice_thickness = thickness; // Example thickness, adjust as needed
+
+module finalSliceWithText(slice_text, text_line_2, y_translation, x_translation) {
+    translate([y_translation * edge_length / 2, x_translation * (edge_length / 1.5), 0]) {
+        difference() {
             finalSlice();
+            translate([0, -thickness, 1]) {// Adjust the translation as needed
+                writeText(slice_text, text_line_2);
+            }
+        }
     }
 }
+
+module writeText(text, text_line_2) {
+    // Assuming default text size and font, adjust as needed
+    translate([0, 1, -0.1]) {
+        linear_extrude(thickness * 5) {// Adjust the height to match the desired depth of the text engraving
+            color("blue") {
+                translate([edge_length / 4, 0, 0]) {
+                    text(text, size = 1, halign = "center", valign = "bottom"); // Adjust text size and alignment as needed
+                }
+                
+                translate([edge_length / 4, -1.25, 0]) {
+                    text(text_line_2, size = 1, halign = "center", valign = "bottom"); // Adjust text size and alignment as needed
+                }
+
+            }
+        }
+    }
 }
 
-
-sliceSet();
+// Example usage of finalSliceWithText
+//finalSliceWithText("Mon", "day", -4, 1);
+//finalSliceWithText("Mon", "eve", -3, 1);
+//finalSliceWithText("Tue", "day", -2, 1);
+//finalSliceWithText("Tue", "eve", -1, 1);
+//finalSliceWithText("Wed", "day", -0, 1);
+//finalSliceWithText("Wed", "eve", 1, 1);
+//finalSliceWithText("Thu", "day", 2, 1);
+//finalSliceWithText("Thu", "eve", -4, 0);
+//finalSliceWithText("Fri", "day", -3, 0);
+//finalSliceWithText("Fri", "eve", -2, 0);
+finalSliceWithText("Sat", "day", -1, 0);
+//finalSliceWithText("Sat", "eve", -0, 0);
+//finalSliceWithText("Sun", "day", 1, 0);
+//finalSliceWithText("Sun", "eve", 2, 0);
+//
+//
+//// sliceSet();
