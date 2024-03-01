@@ -206,6 +206,7 @@
  }
  },
  "movement_state_machine":{
+  "indexCalculation": "(wheel_sensed << 3) | (left_sensed << 2) | (middle_sensed << 1) | right_sensed",
   "states": [
     {
       "name": "Idle",

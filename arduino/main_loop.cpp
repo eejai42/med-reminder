@@ -7,14 +7,7 @@ void setup() {
   // Initialize serial communication at 9600 bits per second:
   Serial.begin(9600);
 
-  // Setup pin modes
-  for (int i = 0; i < sizeof(hallSensorPins) / sizeof(hallSensorPins[0]); ++i) {
-    pinMode(hallSensorPins[i], INPUT);
-  }
-
-  pinMode(speakerPin, OUTPUT);
-
-  // More setup code as needed for initial configuration
+  setupWheel(); // Initialize wheel sensor pins
 }
 
 void loop() {
@@ -23,7 +16,7 @@ void loop() {
 
   // Example: Detect and handle debounced wheel movement
   if (movementDetected()) {
-    var spotsMoved = getMovementCount();
+    int spotsMoved = getMovementCount();
     // Handle wheel movement (e.g., update state, play confirmation beep)
     emitBeepSequence(0, spotsMoved); // Example usage of emitBeepSequence
     clearMovement(); //

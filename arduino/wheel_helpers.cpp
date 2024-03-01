@@ -1,28 +1,24 @@
 #include "Arduino.h"
 #include "constants.cpp"
 
+// referenced by main_loop.cpp
+
 // Function prototypes
 void checkState();
-int getMovementCount();
 bool movementDetected();
+int getMovementCount();
 bool detectWheelMovement();
 int getIndex();
 void clearMovement();
 int wheel_index_helper(int leftSensor, int middleSensor, int rightSensor);
 int determinePolarity(int sensorValue);
 
-void setup() {
+void setupWheel() {
   pinMode(left_hall_sensor_pin, INPUT);
   pinMode(middle_hall_sensor_pin, INPUT);
   pinMode(right_hall_sensor_pin, INPUT);
   pinMode(wheel_hall_sensor_pin, INPUT);
-  Serial.begin(9600);
 }
-
-void loop() {
-  checkState();
-}
-
 
 void checkState() {
   switch (currentState) {
