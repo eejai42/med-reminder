@@ -6,21 +6,18 @@ const int left_hall_sensor_pin = 2;
 const int middle_hall_sensor_pin = 3;
 const int right_hall_sensor_pin = 4;
 const int wheel_hall_sensor_pin = 6;
+
 const unsigned long debounceDelay = 500; // Debounce delay in milliseconds
 
 // Speaker pin configuration
-const int speakerPin = 9;
+const int speakerPin = 8;
 
 // Timing configurations
 const unsigned long wheelTurnDebounceMs = 500; // Debounce time for wheel turn detection
-const unsigned long quickTurnThresholdMs = 10000; // Threshold for quick turn detection
-
-// Start and end hours for day and night
-const int morningStartHour = 6;
-const int eveningStartHour = 18;
+const unsigned long quickTurnThresholdMs = 1500; // Threshold for quick turn detection
 
 // Snooze interval minutes
-const int snoozeIntervalMinutes[] = {5, 10, 15};
+const int snoozeIntervalMinutes = 5;
 
 // Beep frequencies and durations
 const int beepShortFrequency = 1000; // Frequency for short beep

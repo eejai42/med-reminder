@@ -22,9 +22,6 @@ extern const unsigned long quickTurnThresholdMs; // Threshold for quick turn det
 extern const int morningStartHour;
 extern const int eveningStartHour;
 
-// Snooze interval minutes
-extern const int snoozeIntervalMinutes[];
-
 // Beep frequencies and durations
 extern const int beepShortFrequency; // Frequency for short beep
 extern const int beepLongFrequency; // Frequency for long beep

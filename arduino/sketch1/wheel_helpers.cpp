@@ -1,91 +1,129 @@
 #include "Arduino.h"
 #include "constants.h"
+#include "beep_helpers.h"
 #include "wheel_helpers.h"
 
-// referenced by main_loop.cpp
-
-void setupWheel() {
-  pinMode(left_hall_sensor_pin, INPUT);
-  pinMode(middle_hall_sensor_pin, INPUT);
-  pinMode(right_hall_sensor_pin, INPUT);
-  pinMode(wheel_hall_sensor_pin, INPUT);
-}
-
-// Initial state
-unsigned long debounceTimer = 0;
-
-enum State {
-    Idle,
-    Debouncing,
-    Count_Movement,
-    Waiting_For_More_Movement,
-    Movement_Detected
-};
-
-// Initial state
+// Define initial states and variables
 State currentState = Idle;
 int movement_count = 0;
-int last_index = -1; // Initialize to an impossible value for startup detection
-int lastDebounceTime = 0;
+int last_index = 0;  // Initialize to an impossible value for startup detection
+int move_index = 0;  // The index of the slice when a move was first detected
+int wheel_number = 0;
+unsigned long lastDebounceTime = 0;
 
-void transitionTo(State newState) {
-    currentState = newState;
-    switch (currentState) {
-        case Idle:
-            // Setup for Idle state
-            break;
-        case Debouncing:
-            debounceTimer = millis();
-            break;
-        case Count_Movement:
-            movement_count++;
-            // More setup if necessary
-            break;
-        case Waiting_For_More_Movement:
-            debounceTimer = millis();
-            break;
-        case Movement_Detected:
-            // Actions for movement detected
-            break;
-    }
+// Initial setup for wheel sensors
+void setupWheel() {
+  pinMode(left_hall_sensor_pin, INPUT_PULLUP);
+  pinMode(middle_hall_sensor_pin, INPUT_PULLUP);
+  pinMode(right_hall_sensor_pin, INPUT_PULLUP);
+  pinMode(wheel_hall_sensor_pin, INPUT_PULLUP);
 }
 
+int upToDown(int reading) {
+  return reading == HIGH ? 0 : 1;
+}
+
+int getIndex() {
+  // Read sensor values
+  int leftSensor = digitalRead(left_hall_sensor_pin);
+  int middleSensor = digitalRead(middle_hall_sensor_pin);
+  int rightSensor = digitalRead(right_hall_sensor_pin);
+
+  wheel_number = digitalRead(wheel_hall_sensor_pin);
+
+
+  // Convert sensor readings to binary index
+  return (upToDown(leftSensor) << 2) | (upToDown(middleSensor) << 1) | (upToDown(rightSensor));
+}
+
+
+// Function to handle state transitions
+void transitionTo(State newState) {
+  // Serial.print("Transitioning from: ");
+  // Serial.print(currentState);
+  // Serial.print(" -> ");
+  // Serial.println(newState);
+
+  currentState = newState;
+  switch (currentState) {
+    case Idle:
+      Serial.println(" -------------------------------------- IDLE ----------------------------------------");
+      movement_count = 0;
+      // Setup for Idle state
+      break;
+    case Debouncing:
+      Serial.print(" -------------------------------------- DEBOUNCEING ----------------------------------------");
+      Serial.println(movement_count);
+      last_index = getIndex();
+      lastDebounceTime = millis();
+      break;
+    case Count_Movement:
+      movement_count++;
+      Serial.print(" -------------------------------------- COUNTING MOVEMENT ----------------------------------------");
+      Serial.println(movement_count);
+      //move_index = last_index = getIndex();
+      // More setup if necessary
+      break;
+    case Waiting_For_More_Movement:
+      lastDebounceTime = millis();
+      //Serial.println(" -------------------------------------- WAITING FOR MORE MOVEMENT ----------------------------------------");
+      last_index == getIndex();
+      //debounceTimer = millis();
+      break;
+    case Movement_Detected:
+      //Serial.println(" -------------------------------------- Movement found ----------------------------------------");
+      // Actions for movement detected
+      break;
+  }
+}
+
+// Function to check and update the state based on sensor readings
 void checkState() {
-    int index = getIndex();
-    switch (currentState) {
-        case Idle:
-            if (index != last_index) {
-                transitionTo(Debouncing);
-            }
-            break;
-        case Debouncing:
-            if ((millis() - debounceTimer) > debounceDelay) {
-                if (index != last_index) {
-                    last_index = index;
-                    transitionTo(Count_Movement);
-                } else {
-                    transitionTo(Idle);
-                }
-            }
-            break;
-        case Count_Movement:
-            transitionTo(Waiting_For_More_Movement);
-            break;
-        case Waiting_For_More_Movement:
-            if ((millis() - debounceTimer) > debounceDelay) {
-                if (index != last_index) {
-                    last_index = index;
-                    transitionTo(Count_Movement);
-                } else {
-                    transitionTo(Movement_Detected);
-                }
-            }
-            break;
-        case Movement_Detected:
-            // Implement the logic to handle movement detected
-            // For example, reset movement count, perform an action, etc.
-            break;
+  // Ensure we're constantly updating the index based on the current sensor state
+  int index = getIndex();
+  bool movement = detectWheelMovement();  // Check if the wheel has moved since the last reading
+
+  if (currentState == Idle) {
+    if (movement) {
+      transitionTo(Debouncing);
     }
+  } else if (currentState == Debouncing) {
+    int elapsedTime = (millis() - lastDebounceTime);
+    int index = getIndex();
+    // Serial.print("Elapsed: ");
+    // Serial.println(elapsedTime);
+    if ((elapsedTime > wheelTurnDebounceMs)) {
+      lastDebounceTime = millis();
+      transitionTo(Count_Movement);
+    } else {
+      if (movement) {
+        lastDebounceTime = millis();
+        last_index = getIndex();
+      }
+      // Serial.print("Waiting for elapsed time to expire: ");
+      // Serial.println(elapsedTime);
+    }
+  } else if (currentState == Count_Movement) {
+    // Assuming movement count is handled here
+    transitionTo(Waiting_For_More_Movement);
+    //Serial.println(elapsedTime);
+  } else if (currentState == Waiting_For_More_Movement) {
+    if ((millis() - lastDebounceTime) > quickTurnThresholdMs) {
+      transitionTo(Movement_Detected);
+    }
+
+    if (movement) {
+      transitionTo(Debouncing);
+    }
+  } else if (currentState == Movement_Detected) {
+    // do nothing until clearMovement() is called...
+    // Serial.print("waiting for movement to be cleared() - spots: ");
+    // Serial.println(movement_count);
+  }
+}
+
+int getWheelNumber() {
+  return !(wheel_number) + 1;
 }
 
 bool movementDetected() {
@@ -97,39 +135,39 @@ int getMovementCount() {
 }
 
 bool detectWheelMovement() {
-  int leftSensor = digitalRead(left_hall_sensor_pin);
-  int middleSensor = digitalRead(middle_hall_sensor_pin);
-  int rightSensor = digitalRead(right_hall_sensor_pin);
-  int index = wheel_index_helper(leftSensor, middleSensor, rightSensor);
-  if (index != last_index) {
-    lastDebounceTime = millis();
-    last_index = index;
+  int current_index = getIndex();  // Get the current index based on sensor values
+
+  if (current_index != last_index) {  // Check if there's a change and it's not the initial setup
+    move_index = current_index;
     return true;
   }
   return false;
 }
 
-int getIndex() {
-  // Example implementation. Adapt based on your actual sensor setup and index determination logic.
-  int leftSensor = digitalRead(left_hall_sensor_pin);
-  int middleSensor = digitalRead(middle_hall_sensor_pin);
-  int rightSensor = digitalRead(right_hall_sensor_pin);
-  return wheel_index_helper(leftSensor, middleSensor, rightSensor);
-}
 
 void clearMovement() {
+  //Serial.println("CLEARING MOVEMENT COUNT!");
   movement_count = 0;
-  currentState = Idle;
+  currentState = Idle;  // Reset to Idle after clearing movement
 }
 
+void printAndClearMovement() {
+  int index = getIndex();
+  int spotsMoved = getMovementCount();
+  int wheelNumber = getWheelNumber();
+  Serial.print("SPOTS MOVED:");
+  Serial.print(spotsMoved);
+  Serial.print(" -> Current Slice: ");
+  Serial.print(index);
+  Serial.print(" -> WHEEL: ");
+  Serial.println(wheelNumber);
+  Serial.println();
+  // Handle wheel movement (e.g., update state, play confirmation beep)
+  clearMovement();
+  emitBeepSequence(250, spotsMoved);  // Example usage of emitBeepSequence
+  delay(1000);
+  emitBeepSequence(250, index);  // Example usage of emitBeepSequence
+  delay(1000);
 
-int wheel_index_helper(int leftSensor, int middleSensor, int rightSensor) {
-  // Implement based on your specific logic for determining wheel index
-  // This is a placeholder function. Update it according to your binary slice ID detection logic.
-  return (leftSensor << 2) | (middleSensor << 1) | rightSensor;
-}
-
-int determinePolarity(int sensorValue) {
-  // Example function to determine polarity. Adjust according to your needs.
-  return sensorValue > 512 ? HIGH : LOW;
+  emitBeepSequence(250, wheelNumber);  // Example usage of emitBeepSequence
 }
