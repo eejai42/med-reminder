@@ -11,13 +11,6 @@ extern const int right_hall_sensor_pin;
 extern const int wheel_hall_sensor_pin;
 extern const unsigned long debounceDelay; // Debounce delay in milliseconds
 
-// Movement state machine variables
-enum State { Idle, Debouncing, Movement_Counting, Movement_Detected };
-extern State currentState;
-extern unsigned long lastDebounceTime;
-extern int last_index;
-extern int movement_count;
-
 // Speaker pin configuration
 extern const int speakerPin;
 

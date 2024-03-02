@@ -8,12 +8,6 @@ const int right_hall_sensor_pin = 4;
 const int wheel_hall_sensor_pin = 6;
 const unsigned long debounceDelay = 500; // Debounce delay in milliseconds
 
-// Movement state machine variables
-State currentState = Idle;
-unsigned long lastDebounceTime = 0;
-int last_index = -1;
-int movement_count = 0;
-
 // Speaker pin configuration
 const int speakerPin = 9;
 

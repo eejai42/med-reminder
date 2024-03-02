@@ -11,30 +11,81 @@ void setupWheel() {
   pinMode(wheel_hall_sensor_pin, INPUT);
 }
 
+// Initial state
+unsigned long debounceTimer = 0;
+
+enum State {
+    Idle,
+    Debouncing,
+    Count_Movement,
+    Waiting_For_More_Movement,
+    Movement_Detected
+};
+
+// Initial state
+State currentState = Idle;
+int movement_count = 0;
+int last_index = -1; // Initialize to an impossible value for startup detection
+int lastDebounceTime = 0;
+
+void transitionTo(State newState) {
+    currentState = newState;
+    switch (currentState) {
+        case Idle:
+            // Setup for Idle state
+            break;
+        case Debouncing:
+            debounceTimer = millis();
+            break;
+        case Count_Movement:
+            movement_count++;
+            // More setup if necessary
+            break;
+        case Waiting_For_More_Movement:
+            debounceTimer = millis();
+            break;
+        case Movement_Detected:
+            // Actions for movement detected
+            break;
+    }
+}
+
 void checkState() {
-  switch (currentState) {
-    case Idle:
-      if (detectWheelMovement()) {
-        currentState = Debouncing;
-      }
-      break;
-    case Debouncing:
-      if (millis() - lastDebounceTime > debounceDelay) {
-        currentState = Movement_Counting;
-        movement_count++;
-      }
-      break;
-    case Movement_Counting:
-      if (!detectWheelMovement()) {
-        currentState = Movement_Detected;
-      }
-      break;
-    case Movement_Detected:
-      Serial.print("Movement detected: ");
-      Serial.println(movement_count);
-      clearMovement();
-      break;
-  }
+    int index = getIndex();
+    switch (currentState) {
+        case Idle:
+            if (index != last_index) {
+                transitionTo(Debouncing);
+            }
+            break;
+        case Debouncing:
+            if ((millis() - debounceTimer) > debounceDelay) {
+                if (index != last_index) {
+                    last_index = index;
+                    transitionTo(Count_Movement);
+                } else {
+                    transitionTo(Idle);
+                }
+            }
+            break;
+        case Count_Movement:
+            transitionTo(Waiting_For_More_Movement);
+            break;
+        case Waiting_For_More_Movement:
+            if ((millis() - debounceTimer) > debounceDelay) {
+                if (index != last_index) {
+                    last_index = index;
+                    transitionTo(Count_Movement);
+                } else {
+                    transitionTo(Movement_Detected);
+                }
+            }
+            break;
+        case Movement_Detected:
+            // Implement the logic to handle movement detected
+            // For example, reset movement count, perform an action, etc.
+            break;
+    }
 }
 
 bool movementDetected() {
@@ -44,7 +95,6 @@ bool movementDetected() {
 int getMovementCount() {
   return movement_count;
 }
-
 
 bool detectWheelMovement() {
   int leftSensor = digitalRead(left_hall_sensor_pin);
