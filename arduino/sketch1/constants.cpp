@@ -1,5 +1,6 @@
 // constants.cpp
-#include "Arduino.h"
+// #include "Arduino.h"
+#include "constants.h"
 
 const int left_hall_sensor_pin = 2;
 const int middle_hall_sensor_pin = 3;
@@ -8,7 +9,6 @@ const int wheel_hall_sensor_pin = 6;
 const unsigned long debounceDelay = 500; // Debounce delay in milliseconds
 
 // Movement state machine variables
-enum State { Idle, Debouncing, Movement_Counting, Movement_Detected };
 State currentState = Idle;
 unsigned long lastDebounceTime = 0;
 int last_index = -1;
@@ -44,13 +44,6 @@ const int initialBeepCount = 1;
 const int initialSequenceCount = 1;
 const int maxSequenceCount = 5;
 
-// Confirmation signals configuration
-// Start and stop time set signals
-struct ConfirmationSignal {
-  int beepId; // ID of the beep pattern
-  int beepCount; // Number of beeps
-  int sequenceCount; // How many times the sequence is repeated
-};
 
 // Assuming beepId 0 corresponds to a predefined beep pattern
 const ConfirmationSignal startTimeSetSignal = {0, 1, 1}; // Example configuration

@@ -1,17 +1,8 @@
 #include "Arduino.h"
-#include "constants.cpp"
+#include "constants.h"
+#include "wheel_helpers.h"
 
 // referenced by main_loop.cpp
-
-// Function prototypes
-void checkState();
-bool movementDetected();
-int getMovementCount();
-bool detectWheelMovement();
-int getIndex();
-void clearMovement();
-int wheel_index_helper(int leftSensor, int middleSensor, int rightSensor);
-int determinePolarity(int sensorValue);
 
 void setupWheel() {
   pinMode(left_hall_sensor_pin, INPUT);

@@ -27,8 +27,14 @@
  "The first box (Box 1) starts with position 1 for Monday morning, alternating between day (white) and night (black) slots, ending on Thursday morning.",
  "The second box (Box 2) begins with Thursday night (black) and proceeds through Friday, Saturday, and Sunday, covering both morning and evening doses, before switching back to Box 1 for the next cycle."
  ],
- "switching_mechanism": "A manual button in the center of each box rotates the current slot by one position to dispense the medication, ensuring accurate dispensing for each scheduled dose."
+ "switching_mechanism": "A manual button in the center of each box rotates the current slot by one position to dispense the medication, ensuring accurate dispensing for each scheduled dose.",
+ "implementation_plan": {
+  "box_and_slot_identification": "The system identifies slots and boxes using hall effect sensors to read magnet configurations. An additional magnet is used to differentiate between Box 1 and Box 2.",
+  "error_handling_and_confirmation": "Includes logic for audible confirmation of correct slot positioning and handling of unexpected sensor readings."
+  } 
  },
+
+ "technical_details": {
  "hardware_configuration": {
  "hall_effect_sensors": 3,
  "magnets": 17,
@@ -37,11 +43,6 @@
  "slot_identification": "Each slot has a unique magnet configuration that is detected by the hall effect sensors, allowing the system to track the medication schedule accurately.",
  "audible_notifications": "The speaker emits different patterns of sounds to indicate when it's time to take medication or if the box has not been advanced as expected."
  },
- "implementation_plan": {
- "box_and_slot_identification": "The system identifies slots and boxes using hall effect sensors to read magnet configurations. An additional magnet is used to differentiate between Box 1 and Box 2.",
- "error_handling_and_confirmation": "Includes logic for audible confirmation of correct slot positioning and handling of unexpected sensor readings."
- },
- "technical_parameters": {
  "wheel_configurations": [
  {
  "wheel_id": 1,
@@ -171,11 +172,11 @@
  "Eve_time": "Set by first Eve pill taken"
  },
  "arduino_settings": {
-  "left_hall_sensor_pin": 2,
-  "middle_hall_sensor_pin": 3,
-  "right_hall_sensor_pin": 4,
-  "wheel_hall_sensor_pin": 6,
-  "speaker_pin": 9,
+ "left_hall_sensor_pin": 2,
+ "middle_hall_sensor_pin": 3,
+ "right_hall_sensor_pin": 4,
+ "wheel_hall_sensor_pin": 6,
+ "speaker_pin": 9,
  "wheel_turn_debounce_ms": 500,
  "quick_turn_threshold_ms": 2000,
  "morning_start_hour": 6,
@@ -205,85 +206,99 @@
  "confirmation_beep_type": "long"
  }
  },
- "movement_state_machine":{
-  "indexCalculation": "(wheel_sensed << 3) | (left_sensed << 2) | (middle_sensed << 1) | right_sensed",
-  "states": [
-    {
-      "name": "Idle",
-      "transitions": [
-        {
-          "trigger": "Enter Idle",
-          "target": "Idle",
-          "action": "Record last_index",
-          "conditions": null
-        },
-        {
-          "trigger": "getIndex() != last_index",
-          "target": "Debouncing",
-          "action": null,
-          "conditions": null
-        }
-      ],
-      "actions": {
-        "entry": "last_index = getIndex()",
-        "exit": "Reset debounce timer"
-      }
-    },
-    {
-      "name": "Debouncing",
-      "transitions": [
-        {
-          "trigger": "getIndex() == last_index",
-          "target": "Idle",
-          "action": null,
-          "conditions": null
-        },
-        {
-          "trigger": "Debounce Timeout && getIndex() stays",
-          "target": "Movement_Counting",
-          "action": null,
-          "conditions": null
-        }
-      ],
-      "actions": null
-    },
-    {
-      "name": "Movement_Counting",
-      "transitions": [
-        {
-          "trigger": "No new movement within timeout",
-          "target": "Movement_Detected",
-          "action": null,
-          "conditions": null
-        },
-        {
-          "trigger": "New movement within timeout",
-          "target": "Movement_Counting",
-          "action": null,
-          "conditions": null
-        }
-      ],
-      "actions": {
-        "entry": "movement_count++",
-        "exit": "Check for new movement"
-      }
-    },
-    {
-      "name": "Movement_Detected",
-      "transitions": [
-        {
-          "trigger": "clearMovement()",
-          "target": "Idle",
-          "action": null,
-          "conditions": null
-        }
-      ],
-      "actions": null
-    }
-  ],
-  "initialState": "Idle"
-}
-
+ 
+ "movement_state_machine": {
+ "states": [
+ {
+ "name": "Idle",
+ "transitions": [
+ {
+ "trigger": "getIndex() != last_index",
+ "target": "Debouncing",
+ "action": null,
+ "conditions": null
+ }
+ ],
+ "actions": {
+ "entry": "last_index = getIndex(), moving_index = getIndex()",
+ "exit": "Reset debounce timer"
+ }
+ },
+ {
+ "name": "Debouncing",
+ "transitions": [
+ {
+ "trigger": "getIndex() == moving_index",
+ "target": "Idle",
+ "action": null,
+ "conditions": null
+ },
+ {
+ "trigger": "Debounce Timeout && getIndex() != moving_index",
+ "target": "Count_Movement",
+ "action": "Reset debounce timer, moving_index = getIndex()",
+ "conditions": null
+ }
+ ],
+ "actions": {
+ "entry": "Start or reset debounce timer",
+ "exit": null
+ }
+ },
+ {
+ "name": "Count_Movement",
+ "transitions": [
+ {
+ "trigger": "always",
+ "target": "Waiting_For_More_Movement",
+ "action": "Increment movement_count, Reset debounce timer",
+ "conditions": null
+ }
+ ],
+ "actions": {
+ "entry": "Increment movement_count, moving_index = getIndex()",
+ "exit": null
+ }
+ },
+ {
+ "name": "Waiting_For_More_Movement",
+ "transitions": [
+ {
+ "trigger": "getIndex() != moving_index && Debounce Timeout",
+ "target": "Count_Movement",
+ "action": "moving_index = getIndex()",
+ "conditions": null
+ },
+ {
+ "trigger": "No new movement within timeout",
+ "target": "Movement_Detected",
+ "action": null,
+ "conditions": null
+ }
+ ],
+ "actions": {
+ "entry": "Start or reset debounce timer",
+ "exit": null
+ }
+ },
+ {
+ "name": "Movement_Detected",
+ "transitions": [
+ {
+ "trigger": "clearMovement()",
+ "target": "Idle",
+ "action": null,
+ "conditions": null
+ }
+ ],
+ "actions": {
+ "entry": "Report movement detected",
+ "exit": "Clear movement_count, last_index = moving_index"
+ }
+ }
+ ],
+ "initialState": "Idle"
+ }
  }
  }
  },
