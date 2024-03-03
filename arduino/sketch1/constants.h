@@ -15,6 +15,9 @@ extern const unsigned long debounceDelay; // Debounce delay in milliseconds
 // Speaker pin configuration
 extern const int speakerPin;
 
+extern const unsigned long msPerMinute;
+extern const int minutesPerDay;
+
 // Timing configurations
 extern const unsigned long wheelTurnDebounceMs; // Debounce time for wheel turn detection
 extern const unsigned long quickTurnThresholdMs; // Threshold for quick turn detection

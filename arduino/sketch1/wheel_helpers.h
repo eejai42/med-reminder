@@ -17,6 +17,9 @@ extern State currentState;
 struct DayTime {
   int dow; // Day of the week (1 = Monday, ... 7 = Sunday)
   bool isAM; // Time of day (1 = morning, 0 = evening)
+  int system_day;
+  int system_minutes;
+  int timer2_minutes;
 };
 
 DayTime getDayAndTime();

@@ -5,6 +5,8 @@
 void setupAlarms();
 void checkAlarms();
 void triggerTimer();
+int getTimer2Minutes();
+int days_into_cycle();
 unsigned long minutes_since_day_started();
 
 

@@ -31,7 +31,7 @@ int upToDown(int reading) {
 void checkDayTime() {
 
   // Read sensor values
-  wheel_number = digitalRead(wheel_hall_sensor_pin);
+  wheel_number = !digitalRead(wheel_hall_sensor_pin);
 
   is_am = upToDown(digitalRead(am_hall_sensor_pin));
 
@@ -57,16 +57,19 @@ DayTime getDayAndTime(bool isWheel1, int sliceIndex) {
   DayTime result;
   result.isAM = is_am;
   result.dow = current_index;
+  result.system_day = days_into_cycle();
+  result.system_minutes = minutes_since_day_started();
+  result.timer2_minutes = getTimer2Minutes();
 
 
-  if (isWheel1) Serial.print("Wheel 1: ");
-  else Serial.print("Wheel 2: ");
-  Serial.print(" - slice: ");
-  Serial.print(current_index);
-  Serial.print(" - local: ");
-  Serial.print(localSlice);
-  Serial.print(" -  ");
-  Serial.println(is_am ? "AM" : "PM");
+  // if (isWheel1) Serial.print("Wheel 1: ");
+  // else Serial.print("Wheel 2: ");
+  // Serial.print(" - slice: ");
+  // Serial.print(current_index);
+  // Serial.print(" - local: ");
+  // Serial.print(localSlice);
+  // Serial.print(" -  ");
+  // Serial.println(is_am ? "AM" : "PM");
 
   return result;
 }
@@ -79,14 +82,49 @@ DayTime getDayAndTime() {
 
 
 
+void printDowTod() {
+  DayTime dt = getDayAndTime();
+  Serial.print("Day: ");
+  Serial.print(dt.dow);
+  Serial.print(" Time: ");
+  Serial.println(dt.isAM ? " ^^^ Morning..." : " ... Evening vvv");
+}
+
+void printSystemTime() {
+  DayTime dt = getDayAndTime();
+  Serial.print("System Day: ");
+  Serial.print(dt.system_day);
+  Serial.print(" Minutes: ");
+  Serial.print(dt.system_minutes);
+  Serial.print(" Timer 2: ");
+  Serial.println(dt.timer2_minutes);
+}
+
+
+void printMovement(int spotsMoved, int index, int wheelNumber) {
+  Serial.print("SPOTS MOVED:");
+  Serial.print(spotsMoved);
+  Serial.print(" -> Current Slice: ");
+  Serial.print(index);
+  Serial.print(" -> WHEEL: ");
+  Serial.println(wheelNumber);
+  printSystemTime();
+  printDowTod();
+}
+
+void printMovement() {
+  int index = getIndex();
+  int spotsMoved = getMovementCount();
+  int wheelNumber = getWheelNumber();
+  printMovement(spotsMoved, index, wheelNumber);
+}
+
 // Function to handle state transitions
 void transitionTo(State newState) {
   // Serial.print("Transitioning from: ");
   // Serial.print(currentState);
   // Serial.print(" -> ");
   // Serial.println(newState);
-
-  printDowTod();
 
   currentState = newState;
   switch (currentState) {
@@ -204,37 +242,11 @@ void clearMovement() {
   currentState = Idle;  // Reset to Idle after clearing movement
 }
 
-void printMovement(int spotsMoved, int index, int wheelNumber) {
-  Serial.print("SPOTS MOVED:");
-  Serial.print(spotsMoved);
-  Serial.print(" -> Current Slice: ");
-  Serial.print(index);
-  Serial.print(" -> WHEEL: ");
-  Serial.println(wheelNumber);
-}
-
-void printDowTod() {
-  DayTime dt = getDayAndTime();
-  Serial.print("Day: ");
-  Serial.print(dt.dow);
-  Serial.print(" Time: ");
-  Serial.println(dt.isAM ? "AM" : "PM");
-}
-
-void printMovement() {
-  int index = getIndex();
-  int spotsMoved = getMovementCount();
-  int wheelNumber = getWheelNumber();
-  printMovement(spotsMoved, index, wheelNumber);
-}
-
-
 void printAndClearMovement() {
   int index = getIndex();
   int spotsMoved = getMovementCount();
   int wheelNumber = getWheelNumber();
   printMovement(spotsMoved, index, wheelNumber);
-  printDowTod();
   // Handle wheel movement (e.g., update state, play confirmation beep)
   clearMovement();
   emitBeepSequence(80, spotsMoved);  // Example usage of emitBeepSequence

@@ -14,7 +14,8 @@ const int am_hall_sensor_pin = 12;
 
 const unsigned long debounceDelay = 500; // Debounce delay in milliseconds
 
-
+const unsigned long msPerMinute = 30000;
+const int minutesPerDay = 3;
 // Timing configurations
 const unsigned long wheelTurnDebounceMs = 150; // Debounce time for wheel turn detection
 const unsigned long quickTurnThresholdMs = 300; // Threshold for quick turn detection
