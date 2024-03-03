@@ -1,13 +1,13 @@
 // main.cpp
 #include "Arduino.h"
 #include "constants.h"
-#include "beep_helpers.h"
+#include "alarm_helpers.h"
 #include "wheel_helpers.h"
 
 void setup() {
   // Initialize serial communication at 9600 bits per second:
   Serial.begin(9600);
-  setupBeeps(); // Initialize speaker pin
+  setupAlarms(); // Initialize speaker pin
   setupWheel(); // Initialize wheel sensor pins
 }
 
@@ -20,5 +20,8 @@ void loop() {
   // Example: Detect and handle debounced wheel movement
   if (movementDetected()) {
     printAndClearMovement();
+    triggerTimer();
   } 
+
+  checkAlarms();
 }

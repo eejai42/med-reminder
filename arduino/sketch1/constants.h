@@ -5,10 +5,11 @@
 // #include "Arduino.h"
 
 // Pin configurations
-extern const int left_hall_sensor_pin;
-extern const int middle_hall_sensor_pin;
-extern const int right_hall_sensor_pin;
 extern const int wheel_hall_sensor_pin;
+
+extern const int bit1_hall_sensor_pin;
+extern const int bit2_hall_sensor_pin;
+extern const int am_hall_sensor_pin;
 extern const unsigned long debounceDelay; // Debounce delay in milliseconds
 
 // Speaker pin configuration

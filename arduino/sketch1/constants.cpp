@@ -2,19 +2,22 @@
 // #include "Arduino.h"
 #include "constants.h"
 
-const int left_hall_sensor_pin = 2;
-const int middle_hall_sensor_pin = 3;
-const int right_hall_sensor_pin = 4;
-const int wheel_hall_sensor_pin = 6;
+
+// Speaker pin configuration
+const int speakerPin = 13;
+
+const int wheel_hall_sensor_pin = 2;
+
+const int bit1_hall_sensor_pin = 10;
+const int bit2_hall_sensor_pin = 11;
+const int am_hall_sensor_pin = 12;
 
 const unsigned long debounceDelay = 500; // Debounce delay in milliseconds
 
-// Speaker pin configuration
-const int speakerPin = 8;
 
 // Timing configurations
-const unsigned long wheelTurnDebounceMs = 500; // Debounce time for wheel turn detection
-const unsigned long quickTurnThresholdMs = 1500; // Threshold for quick turn detection
+const unsigned long wheelTurnDebounceMs = 150; // Debounce time for wheel turn detection
+const unsigned long quickTurnThresholdMs = 300; // Threshold for quick turn detection
 
 // Snooze interval minutes
 const int snoozeIntervalMinutes = 5;
