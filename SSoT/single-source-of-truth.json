@@ -1,350 +1,349 @@
 {
- "HEAD": {
- "project": {
- "name": "physical-med-reminder",
- "description": "An intuitive and user-friendly Arduino-assisted physical pillbox solution designed to manage a twice-daily medication schedule without the need for a complex user interface. The device learns the user's medication times based on their actions immediately after being powered up.",
- "usage": [
- "Box 1 is used for Monday morning through Thursday morning doses.",
- "Box 2 covers Thursday evening through Sunday evening doses.",
- "To set the reminder times, the user plugs in the device and takes their medication as normal. The device then sets the reminder schedule based on these actions."
- ],
- "rules": {
- "setup": "Each box is organized to support a twice-daily medication regimen, with each compartment corresponding to a specific day and time (morning/evening). Magnets are placed in the compartments to track medication intake.",
- "interaction": [
- "The Arduino system is enabled to signal when it's time to take medication through audible reminders, which escalate in urgency until the medication is taken.",
- "The system learns the medication schedule based on user interaction after initial power-up. No further interaction is required unless there is a change in the medication schedule."
- ],
- "management": [
- "The system is designed for easy setup with the user filling each compartment according to their medication schedule at the beginning of the week.",
- "A power supply from a wall adapter ensures consistent operation, and the Arduino's internal clock maintains the time.",
- "In the event of a power outage or a need to change the medication times, the user simply unplugs the device, plugs it back in, and takes their pills as normal to reset the schedule."
- ],
- "error_handling": "The device provides confirmation of learning the medication times through a series of audible signals. Error handling ensures the user is informed of successful setup or any issues detected."
- },
- "mechanical_design": {
- "description": "The pillbox is designed as two separate units, each with a circular orientation divided into 7 pie slices for a week's medication. A central button enables rotation of the current slot to the next position, facilitating medication dispensing.",
- "operation": [
- "The first box (Box 1) starts with position 1 for Monday morning, alternating between day (white) and night (black) slots, ending on Thursday morning.",
- "The second box (Box 2) begins with Thursday night (black) and proceeds through Friday, Saturday, and Sunday, covering both morning and evening doses, before switching back to Box 1 for the next cycle."
- ],
- "switching_mechanism": "A manual button in the center of each box rotates the current slot by one position to dispense the medication, ensuring accurate dispensing for each scheduled dose.",
- "implementation_plan": {
-  "box_and_slot_identification": "The system identifies slots and boxes using hall effect sensors to read magnet configurations. An additional magnet is used to differentiate between Box 1 and Box 2.",
-  "error_handling_and_confirmation": "Includes logic for audible confirmation of correct slot positioning and handling of unexpected sensor readings."
-  } 
- },
+  "HEAD": {
+    "project": {
+      "name": "physical-med-reminder",
+      "description": "An intuitive and user-friendly Arduino-assisted physical pillbox solution designed to manage a twice-daily medication schedule without the need for a complex user interface. The device learns the user's medication times based on their actions immediately after being powered up.",
+      "usage": [
+        "Box 1 is used for Monday morning through Thursday morning doses.",
+        "Box 2 covers Thursday evening through Sunday evening doses.",
+        "To set the reminder times, the user plugs in the device and takes their medication as normal. The device then sets the reminder schedule based on these actions."
+      ],
+      "rules": {
+        "setup": "Each box is organized to support a twice-daily medication regimen, with each compartment corresponding to a specific day and time (morning/evening). Magnets are placed in the compartments to track medication intake.",
+        "interaction": [
+          "The Arduino system is enabled to signal when it's time to take medication through audible reminders, which escalate in urgency until the medication is taken.",
+          "The system learns the medication schedule based on user interaction after initial power-up. No further interaction is required unless there is a change in the medication schedule."
+        ],
+        "management": [
+          "The system is designed for easy setup with the user filling each compartment according to their medication schedule at the beginning of the week.",
+          "A power supply from a wall adapter ensures consistent operation, and the Arduino's internal clock maintains the time.",
+          "In the event of a power outage or a need to change the medication times, the user simply unplugs the device, plugs it back in, and takes their pills as normal to reset the schedule."
+        ],
+        "error_handling": "The device provides confirmation of learning the medication times through a series of audible signals. Error handling ensures the user is informed of successful setup or any issues detected."
+      },
+      "mechanical_design": {
+        "description": "The pillbox is designed as two separate units, each with a circular orientation divided into 7 pie slices for a week's medication. A central button enables rotation of the current slot to the next position, facilitating medication dispensing.",
+        "operation": [
+          "The first box (Box 1) starts with position 1 for Monday morning, alternating between day (white) and night (black) slots, ending on Thursday morning.",
+          "The second box (Box 2) begins with Thursday night (black) and proceeds through Friday, Saturday, and Sunday, covering both morning and evening doses, before switching back to Box 1 for the next cycle."
+        ],
+        "switching_mechanism": "A manual button in the center of each box rotates the current slot by one position to dispense the medication, ensuring accurate dispensing for each scheduled dose.",
+        "implementation_plan": {
+          "box_and_slot_identification": "The system identifies slots and boxes using hall effect sensors to read magnet configurations. An additional magnet is used to differentiate between Box 1 and Box 2.",
+          "error_handling_and_confirmation": "Includes logic for audible confirmation of correct slot positioning and handling of unexpected sensor readings."
+        }
+      },
 
- "technical_details": {
- "hardware_configuration": {
- "hall_effect_sensors": 3,
- "magnets": 17,
- "speaker": 1,
- "configuration_details": "The system uses a combination of hall effect sensors and magnets to identify which of the 7 slots in each box is currently ready for dispensing, and to differentiate between Box 1 and Box 2. The speaker is used for audible reminders.",
- "slot_identification": "Each slot has a unique magnet configuration that is detected by the hall effect sensors, allowing the system to track the medication schedule accurately.",
- "audible_notifications": "The speaker emits different patterns of sounds to indicate when it's time to take medication or if the box has not been advanced as expected."
- },
- "wheel_configurations": [
- {
- "wheel_id": 1,
- "slices": [
- {
- "pill_id": 1,
- "slice_id": 1,
- "day": "Mon",
- "time_of_day": "Day",
- "wheel_sensor": false,
- "binary_slice_id": [0, 0, 1]
- },
- {
- "pill_id": 2,
- "slice_id": 2,
- "day": "Mon",
- "time_of_day": "Eve",
- "wheel_sensor": false,
- "binary_slice_id": [0, 1, 0]
- },
- {
- "pill_id": 3,
- "slice_id": 3,
- "day": "Tue",
- "time_of_day": "Day",
- "wheel_sensor": false,
- "binary_slice_id": [0, 1, 1]
- },
- {
- "pill_id": 4,
- "slice_id": 4,
- "day": "Tue",
- "time_of_day": "Eve",
- "wheel_sensor": false,
- "binary_slice_id": [1, 0, 0]
- },
- {
- "pill_id": 5,
- "slice_id": 5,
- "day": "Wed",
- "time_of_day": "Day",
- "wheel_sensor": false,
- "binary_slice_id": [1, 0, 1]
- },
- {
- "pill_id": 6,
- "slice_id": 6,
- "day": "Wed",
- "time_of_day": "Eve",
- "wheel_sensor": false,
- "binary_slice_id": [1, 1, 0]
- },
- {
- "pill_id": 7,
- "slice_id": 7,
- "day": "Thu",
- "time_of_day": "Day",
- "wheel_sensor": false,
- "binary_slice_id": [1, 1, 1]
- }
- ]
- },
- {
- "wheel_id": 2,
- "slices": [
- {
- "pill_id": 8,
- "slice_id": 1,
- "day": "Thu",
- "time_of_day": "Eve",
- "wheel_sensor": true,
- "binary_slice_id": [0, 0, 1]
- },
- {
- "pill_id": 9,
- "slice_id": 2,
- "day": "Fri",
- "time_of_day": "Day",
- "wheel_sensor": true,
- "binary_slice_id": [0, 1, 0]
- },
- {
- "pill_id": 10,
- "slice_id": 3,
- "day": "Fri",
- "time_of_day": "Eve",
- "wheel_sensor": true,
- "binary_slice_id": [0, 1, 1]
- },
- {
- "pill_id": 11,
- "slice_id": 4,
- "day": "Sat",
- "time_of_day": "Day",
- "wheel_sensor": true,
- "binary_slice_id": [1, 0, 0]
-},
- {
- "pill_id": 12,
- "slice_id": 5,
- "day": "Sat",
- "time_of_day": "Eve",
- "wheel_sensor": true,
- "binary_slice_id": [1, 0, 1]
- },
- {
- "pill_id": 13,
- "slice_id": 6,
- "day": "Sun",
- "time_of_day": "Day",
- "wheel_sensor": true,
- "binary_slice_id": [1, 1, 0]
- },
- {
- "pill_id": 14,
- "slice_id": 7,
- "day": "Sun",
- "time_of_day": "Eve",
- "wheel_sensor": true,
- "binary_slice_id": [1, 1, 1]
- }
- ]
- }
- ],
- "time_settings": {
- "Day_time": "Set by first Day pill taken",
- "Eve_time": "Set by first Eve pill taken"
- },
- "arduino_settings": {
- "left_hall_sensor_pin": 2,
- "middle_hall_sensor_pin": 3,
- "right_hall_sensor_pin": 4,
- "wheel_hall_sensor_pin": 6,
- "speaker_pin": 9,
- "wheel_turn_debounce_ms": 500,
- "quick_turn_threshold_ms": 2000,
- "morning_start_hour": 6,
- "evening_start_hour": 18,
- "snooze_interval_minutes": 5,
- "beep_durations_ms": {
- "short": 100,
- "long": 500
- },
- "initial_beep_count": 1,
- "beep_sequence_settings": {
- "initial_sequence_count": 1
- },
- "rotation_detection_method": "hall_effect",
- "quick_turn_detection_count": "variable",
- "confirmation_signals": {
- "start_time_set": {
- "beep_id": 0,
- "beep_count": 1,
- "sequence_count": "turn_count"
- },
- "stop_time_set": {
- "beep_id": 0,
- "beep_count": 1,
- "sequence_count": "turn_count"
- },
- "confirmation_beep_type": "long"
- }
- },
- 
- "movement_state_machine": {
- "states": [
- {
- "name": "Idle",
- "transitions": [
- {
- "trigger": "getIndex() != last_index",
- "target": "Debouncing",
- "action": null,
- "conditions": null
- }
- ],
- "actions": {
- "entry": "last_index = getIndex(), moving_index = getIndex()",
- "exit": "Reset debounce timer"
- }
- },
- {
- "name": "Debouncing",
- "transitions": [
- {
- "trigger": "getIndex() == moving_index",
- "target": "Idle",
- "action": null,
- "conditions": null
- },
- {
- "trigger": "Debounce Timeout && getIndex() != moving_index",
- "target": "Count_Movement",
- "action": "Reset debounce timer, moving_index = getIndex()",
- "conditions": null
- }
- ],
- "actions": {
- "entry": "Start or reset debounce timer",
- "exit": null
- }
- },
- {
- "name": "Count_Movement",
- "transitions": [
- {
- "trigger": "always",
- "target": "Waiting_For_More_Movement",
- "action": "Increment movement_count, Reset debounce timer",
- "conditions": null
- }
- ],
- "actions": {
- "entry": "Increment movement_count, moving_index = getIndex()",
- "exit": null
- }
- },
- {
- "name": "Waiting_For_More_Movement",
- "transitions": [
- {
- "trigger": "getIndex() != moving_index && Debounce Timeout",
- "target": "Count_Movement",
- "action": "moving_index = getIndex()",
- "conditions": null
- },
- {
- "trigger": "No new movement within timeout",
- "target": "Movement_Detected",
- "action": null,
- "conditions": null
- }
- ],
- "actions": {
- "entry": "Start or reset debounce timer",
- "exit": null
- }
- },
- {
- "name": "Movement_Detected",
- "transitions": [
- {
- "trigger": "clearMovement()",
- "target": "Idle",
- "action": null,
- "conditions": null
- }
- ],
- "actions": {
- "entry": "Report movement detected",
- "exit": "Clear movement_count, last_index = moving_index"
- }
- }
- ],
- "initialState": "Idle"
- }
- }
- }
- },
+      "technical_details": {
+        "hardware_configuration": {
+          "hall_effect_sensors": 4,
+          "magnets": 17,
+          "speaker": 1,
+          "configuration_details": "The system uses a combination of hall effect sensors and magnets to identify which of the 7 slots in each box is currently ready for dispensing, and to differentiate between Box 1 and Box 2. The speaker is used for audible reminders.",
+          "slot_identification": "Each slot has a unique magnet configuration that is detected by the hall effect sensors, allowing the system to track the medication schedule accurately.",
+          "audible_notifications": "The speaker emits different patterns of sounds to indicate when it's time to take medication or if the box has not been advanced as expected."
+        },
+        "wheel_configurations": [
+          {
+            "wheel_id": 1,
+            "slices": [
+              {
+                "pill_id": 1,
+                "slice_id": 1,
+                "day": "Mon",
+                "time_of_day": "Day",
+                "wheel_sensor": false,
+                "binary_slice_id": [0, 0, 1]
+              },
+              {
+                "pill_id": 2,
+                "slice_id": 2,
+                "day": "Mon",
+                "time_of_day": "Eve",
+                "wheel_sensor": false,
+                "binary_slice_id": [0, 1, 0]
+              },
+              {
+                "pill_id": 3,
+                "slice_id": 3,
+                "day": "Tue",
+                "time_of_day": "Day",
+                "wheel_sensor": false,
+                "binary_slice_id": [0, 1, 1]
+              },
+              {
+                "pill_id": 4,
+                "slice_id": 4,
+                "day": "Tue",
+                "time_of_day": "Eve",
+                "wheel_sensor": false,
+                "binary_slice_id": [1, 0, 0]
+              },
+              {
+                "pill_id": 5,
+                "slice_id": 5,
+                "day": "Wed",
+                "time_of_day": "Day",
+                "wheel_sensor": false,
+                "binary_slice_id": [1, 0, 1]
+              },
+              {
+                "pill_id": 6,
+                "slice_id": 6,
+                "day": "Wed",
+                "time_of_day": "Eve",
+                "wheel_sensor": false,
+                "binary_slice_id": [1, 1, 0]
+              },
+              {
+                "pill_id": 7,
+                "slice_id": 7,
+                "day": "Thu",
+                "time_of_day": "Day",
+                "wheel_sensor": false,
+                "binary_slice_id": [1, 1, 1]
+              }
+            ]
+          },
+          {
+            "wheel_id": 2,
+            "slices": [
+              {
+                "pill_id": 8,
+                "slice_id": 1,
+                "day": "Thu",
+                "time_of_day": "Eve",
+                "wheel_sensor": true,
+                "binary_slice_id": [0, 0, 1]
+              },
+              {
+                "pill_id": 9,
+                "slice_id": 2,
+                "day": "Fri",
+                "time_of_day": "Day",
+                "wheel_sensor": true,
+                "binary_slice_id": [0, 1, 0]
+              },
+              {
+                "pill_id": 10,
+                "slice_id": 3,
+                "day": "Fri",
+                "time_of_day": "Eve",
+                "wheel_sensor": true,
+                "binary_slice_id": [0, 1, 1]
+              },
+              {
+                "pill_id": 11,
+                "slice_id": 4,
+                "day": "Sat",
+                "time_of_day": "Day",
+                "wheel_sensor": true,
+                "binary_slice_id": [1, 0, 0]
+              },
+              {
+                "pill_id": 12,
+                "slice_id": 5,
+                "day": "Sat",
+                "time_of_day": "Eve",
+                "wheel_sensor": true,
+                "binary_slice_id": [1, 0, 1]
+              },
+              {
+                "pill_id": 13,
+                "slice_id": 6,
+                "day": "Sun",
+                "time_of_day": "Day",
+                "wheel_sensor": true,
+                "binary_slice_id": [1, 1, 0]
+              },
+              {
+                "pill_id": 14,
+                "slice_id": 7,
+                "day": "Sun",
+                "time_of_day": "Eve",
+                "wheel_sensor": true,
+                "binary_slice_id": [1, 1, 1]
+              }
+            ]
+          }
+        ],
+        "time_settings": {
+          "Day_time": "Set by first Day pill taken",
+          "Eve_time": "Set by first Eve pill taken"
+        },
+        "arduino_settings": {
+          "left_hall_sensor_pin": 2,
+          "middle_hall_sensor_pin": 3,
+          "right_hall_sensor_pin": 4,
+          "wheel_hall_sensor_pin": 6,
+          "speaker_pin": 9,
+          "wheel_turn_debounce_ms": 500,
+          "quick_turn_threshold_ms": 2000,
+          "morning_start_hour": 6,
+          "evening_start_hour": 18,
+          "snooze_interval_minutes": 5,
+          "beep_durations_ms": {
+            "short": 100,
+            "long": 500
+          },
+          "initial_beep_count": 1,
+          "beep_sequence_settings": {
+            "initial_sequence_count": 1
+          },
+          "rotation_detection_method": "hall_effect",
+          "quick_turn_detection_count": "variable",
+          "confirmation_signals": {
+            "start_time_set": {
+              "beep_id": 0,
+              "beep_count": 1,
+              "sequence_count": "turn_count"
+            },
+            "stop_time_set": {
+              "beep_id": 0,
+              "beep_count": 1,
+              "sequence_count": "turn_count"
+            },
+            "confirmation_beep_type": "long"
+          }
+        },
+        "movement_state_machine": {
+          "states": [
+            {
+              "name": "Idle",
+              "transitions": [
+                {
+                  "trigger": "getIndex() != last_index",
+                  "target": "Debouncing",
+                  "action": null,
+                  "conditions": null
+                }
+              ],
+              "actions": {
+                "entry": "last_index = getIndex(), moving_index = getIndex()",
+                "exit": "Reset debounce timer"
+              }
+            },
+            {
+              "name": "Debouncing",
+              "transitions": [
+                {
+                  "trigger": "getIndex() == moving_index",
+                  "target": "Idle",
+                  "action": null,
+                  "conditions": null
+                },
+                {
+                  "trigger": "Debounce Timeout && getIndex() != moving_index",
+                  "target": "Count_Movement",
+                  "action": "Reset debounce timer, moving_index = getIndex()",
+                  "conditions": null
+                }
+              ],
+              "actions": {
+                "entry": "Start or reset debounce timer",
+                "exit": null
+              }
+            },
+            {
+              "name": "Count_Movement",
+              "transitions": [
+                {
+                  "trigger": "always",
+                  "target": "Waiting_For_More_Movement",
+                  "action": "Increment movement_count, Reset debounce timer",
+                  "conditions": null
+                }
+              ],
+              "actions": {
+                "entry": "Increment movement_count, moving_index = getIndex()",
+                "exit": null
+              }
+            },
+            {
+              "name": "Waiting_For_More_Movement",
+              "transitions": [
+                {
+                  "trigger": "getIndex() != moving_index && Debounce Timeout",
+                  "target": "Count_Movement",
+                  "action": "moving_index = getIndex()",
+                  "conditions": null
+                },
+                {
+                  "trigger": "No new movement within timeout",
+                  "target": "Movement_Detected",
+                  "action": null,
+                  "conditions": null
+                }
+              ],
+              "actions": {
+                "entry": "Start or reset debounce timer",
+                "exit": null
+              }
+            },
+            {
+              "name": "Movement_Detected",
+              "transitions": [
+                {
+                  "trigger": "clearMovement()",
+                  "target": "Idle",
+                  "action": null,
+                  "conditions": null
+                }
+              ],
+              "actions": {
+                "entry": "Report movement detected",
+                "exit": "Clear movement_count, last_index = moving_index"
+              }
+            }
+          ],
+          "initialState": "Idle"
+        }
+      }
+    }
+  },
 
- "version1": {
- "project": {
- "name": "physical-med-reminder",
- "description": "An Arduino-assisted physical pillbox solution designed to manage a twice-daily medication schedule. Utilizes two round pillboxes, each with 7 compartments, to organize pills for the entire week.",
- "usage": [
- "Box 1 is used for Monday morning through Thursday morning doses.",
- "Box 2 covers Thursday evening through Sunday evening doses."
- ],
- "rules": {
- "setup": "Each box is organized to support a twice-daily medication regimen, with each compartment corresponding to a specific day and time (morning/evening).",
- "interaction": [
- "Users interact with the system through a physical interface enabled by Arduino, which can signal when it's time to take medication.",
- "Specific details on interaction mechanisms (e.g., LED indicators, sound alarms) can be defined based on user needs and Arduino capabilities."
- ],
- "management": [
- "The system is designed for easy setup at the beginning of the week, with the user filling each compartment according to their medication schedule.",
- "Flexibility to adjust the system based on changes in medication or schedule."
- ]
- }
- }
- },
- "version0": {
- "retired": true,
- "project": {
- "name": "med-reminder",
- "description": "Comprehensive medication reminder app for Android and iOS. Pills can be marked as taken from the reminder/notification screen.",
- "overallRules": [
- "Set multiple reminders per day, must be marked as taken",
- "Unique decaying back-off system, increasing urgency, decreasing frequency. The frequency and intensity of reminders decrease as time passes."
- ],
- "ringingRules": [
- "Single quiet beep for initial reminder, auto-snooze for 10 seconds",
- "Initial reminder gentle, with increasing intensity after subsequent auto-snoozes, which can occur multiple times.",
- "Gradually louder, but less frequent beeps following Fibonacci sequence",
- "Reminders not marked as 'taken' auto-snoozed",
- "After the first auto-snooze, subsequent auto-snoozes will occur at longer intervals"
- ],
- "markAsTakenRules": [
- "Reminder skipped if pill intake marked early",
- "Pills can be marked as taken from the reminder/notification screen",
- "Accidentally marked pills can be undone"
- ]
- }
- }
+  "version1": {
+    "project": {
+      "name": "physical-med-reminder",
+      "description": "An Arduino-assisted physical pillbox solution designed to manage a twice-daily medication schedule. Utilizes two round pillboxes, each with 7 compartments, to organize pills for the entire week.",
+      "usage": [
+        "Box 1 is used for Monday morning through Thursday morning doses.",
+        "Box 2 covers Thursday evening through Sunday evening doses."
+      ],
+      "rules": {
+        "setup": "Each box is organized to support a twice-daily medication regimen, with each compartment corresponding to a specific day and time (morning/evening).",
+        "interaction": [
+          "Users interact with the system through a physical interface enabled by Arduino, which can signal when it's time to take medication.",
+          "Specific details on interaction mechanisms (e.g., LED indicators, sound alarms) can be defined based on user needs and Arduino capabilities."
+        ],
+        "management": [
+          "The system is designed for easy setup at the beginning of the week, with the user filling each compartment according to their medication schedule.",
+          "Flexibility to adjust the system based on changes in medication or schedule."
+        ]
+      }
+    }
+  },
+  "version0": {
+    "retired": true,
+    "project": {
+      "name": "med-reminder",
+      "description": "Comprehensive medication reminder app for Android and iOS. Pills can be marked as taken from the reminder/notification screen.",
+      "overallRules": [
+        "Set multiple reminders per day, must be marked as taken",
+        "Unique decaying back-off system, increasing urgency, decreasing frequency. The frequency and intensity of reminders decrease as time passes."
+      ],
+      "ringingRules": [
+        "Single quiet beep for initial reminder, auto-snooze for 10 seconds",
+        "Initial reminder gentle, with increasing intensity after subsequent auto-snoozes, which can occur multiple times.",
+        "Gradually louder, but less frequent beeps following Fibonacci sequence",
+        "Reminders not marked as 'taken' auto-snoozed",
+        "After the first auto-snooze, subsequent auto-snoozes will occur at longer intervals"
+      ],
+      "markAsTakenRules": [
+        "Reminder skipped if pill intake marked early",
+        "Pills can be marked as taken from the reminder/notification screen",
+        "Accidentally marked pills can be undone"
+      ]
+    }
+  }
 }

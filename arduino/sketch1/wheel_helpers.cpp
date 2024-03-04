@@ -74,32 +74,28 @@ DayTime getDayAndTime(bool isWheel1, int sliceIndex) {
   return result;
 }
 
-
-
 DayTime getDayAndTime() {
   return getDayAndTime(getWheelNumber() == 1, getIndex());
 }
 
-
-
 void printDowTod() {
   DayTime dt = getDayAndTime();
+  Serial.print(dt.isAM ? " ^^^ Morning...  " : " ... Evening vvv  ");
   Serial.print("Day: ");
-  Serial.print(dt.dow);
-  Serial.print(" Time: ");
-  Serial.println(dt.isAM ? " ^^^ Morning..." : " ... Evening vvv");
+  Serial.println(dt.dow);
 }
 
 void printSystemTime() {
   DayTime dt = getDayAndTime();
   Serial.print("System Day: ");
   Serial.print(dt.system_day);
-  Serial.print(" Minutes: ");
+  Serial.print(" Min: ");
   Serial.print(dt.system_minutes);
-  Serial.print(" Timer 2: ");
-  Serial.println(dt.timer2_minutes);
+  Serial.print(" T2: ");
+  Serial.print(dt.timer2_minutes);
+  Serial.print(" MS: ");
+  Serial.println(millis() / msPerMinute);
 }
-
 
 void printMovement(int spotsMoved, int index, int wheelNumber) {
   Serial.print("SPOTS MOVED:");
@@ -235,7 +231,9 @@ bool detectWheelMovement() {
   return false;
 }
 
-
+bool getIsAM() {
+  return is_am;
+}
 void clearMovement() {
   //Serial.println("CLEARING MOVEMENT COUNT!");
   movement_count = 0;

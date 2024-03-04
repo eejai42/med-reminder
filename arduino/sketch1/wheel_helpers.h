@@ -24,7 +24,8 @@ struct DayTime {
 
 DayTime getDayAndTime();
 void printDowTod();
-
+void printSystemTime();
+bool  getIsAM();
 
 
 // Function prototypes for wheel_helpers.cpp

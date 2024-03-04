@@ -4,17 +4,22 @@
 #include "alarm_helpers.h"
 
 // Timer states
-unsigned long timer = 0;  // Minute mark for the second timer
 unsigned long currentMinutes = 0;
-int initialDay = 0;
-int currentDay = (initialDay + ((millis() / msPerMinute) / minutesPerDay) % 14) + 1;
+int initialDay =0;
+unsigned long timer = -1;  // Minute mark for the second timer
 bool timerSet = false;
+bool reminding = false;
+int remindedTimes = 0;
 
 int getTimer2Minutes() {
   return timer;
 }
 
 int days_into_cycle() {
+
+  int dayNumber = floor(millis() / msPerMinute / minutesPerDay);
+  int currentDay = initialDay + (dayNumber % 14) + 1;
+
   return currentDay;
 }
 
@@ -29,12 +34,38 @@ void checkAlarms() {
   if (tempMinutes != currentMinutes) {
     currentMinutes = tempMinutes;
     if ((millis() % 1000) < 10) {
-      Serial.print(" ----- TOP OF THE MINUTE:  ----");
+      Serial.println();
+      Serial.print(" ----- TOP OF THE MINUTE: ");
       Serial.print(currentMinutes);
-      Serial.print(" -> ");
-      Serial.println(millis() % 1000);
       printDowTod();
     }
+
+    if ((currentMinutes == 0) || (currentMinutes == getTimer2Minutes())) {
+      startReminding();
+    }
+  }
+}
+
+void startReminding() {
+  Serial.println();
+  Serial.println();
+  Serial.println("          ************   ALARM - ALARM - ALARM!!!! *********** ");
+  if (getIsAM()) {
+    Serial.println("          ************          MORNING          *********** ");
+  } else {
+    Serial.println("          ************          evening          *********** ");
+  }
+  Serial.println();
+  Serial.println();
+  printSystemTime();
+  emitBeepSequence(100, 15);
+}
+
+
+void stopReminding() {
+  if (reminding) {
+    Serial.println("Pills taken!!!! Nice work!");
+    emitBeepSequence(1000, 3);
   }
 }
 
@@ -43,13 +74,33 @@ void triggerTimer() {
   if (millis() < 9000) {
     Serial.println("Timer 1 set for minute: 0");
     printDowTod();
-  } else if (!timerSet && (currentMinutes > 0)) {
-    Serial.print("Timer 2 set for minutes: ");
-    Serial.println(currentMinutes);
-    printDowTod();
-    timer = currentMinutes;
+  } else if (!timerSet) {
+    timer = max(1, currentMinutes);
     timerSet = true;
+    Serial.print("Timer 2 set for minutes: ");
+    Serial.println(timer);
+    printDowTod();
+  } else {
+    stopReminding();
   }
+}
+
+void simulateSetupTime() {
+  delay(2500);
+  Serial.println();
+  Serial.println();
+  Serial.println();
+  Serial.println();
+  Serial.print("Configuring med-alarm now");
+  for (int i = 0; i < 3; i++) {
+    delay(750);
+    Serial.print(".");
+  }
+  Serial.println();
+  Serial.println();
+  Serial.println("Done.");
+  Serial.println();
+  Serial.println();
 }
 
 unsigned long minutes_since_day_started() {

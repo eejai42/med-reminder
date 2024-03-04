@@ -7,6 +7,10 @@ void checkAlarms();
 void triggerTimer();
 int getTimer2Minutes();
 int days_into_cycle();
+void startReminding();   
+void stopReminding();
+void simulateSetupTime();   
+
 unsigned long minutes_since_day_started();
 
 
