@@ -7,7 +7,7 @@ bite_size = slice_length/5;
 cylinder_height = thickness * 5; // Height of the cylinder
 cylinder_diameter = thickness * 1.2; // Diameter of the cylinder
 
-hole_diameter = 3.28;
+hole_diameter = 3.25;
 
 function calculateSlicePoints(slice_length, crust_height) = 
     let(half_base = crust_height / 2)
@@ -129,7 +129,9 @@ module drillHoles() {
 
 
 module finalSliceWithText(slice_text, text_line_2, day_num, day) {
-    scale([1.015, 1.03, 1]) {
+    colorToSet = day ? "#0F0FaF" : "white";
+    color(colorToSet)
+    scale([1.10, 1.025, 1]) {
         x_translation = ((day_num * slice_length) + 5) - ((slice_length * 8) / 2);    
         //text_line_2 = "foo";
         slice_text = slice_text[0];

@@ -234,7 +234,7 @@ void triggerTimer() {
       stopReminding();
     }
   } else {
-    clearMovement();
+    clearMovement();    
     initialDay = getIndex();
     Serial.println();
     Serial.println("      Done setting up Med Reminder v0.1");
@@ -293,9 +293,10 @@ String getTOD(int minutes) {
 
 String minutesToAMPMString(int minutes) {
   String results = "";
-  minutes = (minutes + timer1OffsetMinutes);
+  minutes++;
+  minutes = (minutes + timer1OffsetMinutes) % minutesPerDay;
   String tod = getTOD(minutes);
-  if (tod == "pm") minutes = (minutes + timer1OffsetMinutes) % minutesPerDay;
+  if (tod == "pm") minutes = minutes % (minutesPerDay / 2);
   if (minutes < 10) results = "0";
   results = results + String(minutes) + tod;
   // Serial.println();

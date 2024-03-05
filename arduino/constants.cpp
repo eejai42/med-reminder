@@ -5,7 +5,7 @@
 
 // Speaker pin configuration
 const int ledPin = 2;
-const int speakerPin = 8;
+const int speakerPin = 9;
 
 const int wheel_hall_sensor_pin = 13;
 const int am_hall_sensor_pin = 10;
