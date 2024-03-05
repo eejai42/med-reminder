@@ -124,7 +124,6 @@ module drillHoles() {
 
     translate([slice_length - (slice_length / 5) + x0_translation, -y_offset, -thickness * depth]) // Adjust for correct 
     cylinder(h = thickness, d = hole_diameter, $fn = $fn, center = true);
-
 }
 
 
