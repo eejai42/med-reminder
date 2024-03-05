@@ -1,13 +1,13 @@
 $fn = 100; // Increase for smoother curves
 inch_to_mm_conversion_factor = 25.4;
 crust_height = 1.3 * inch_to_mm_conversion_factor; // Slice length from tip to crust in mm
-slice_length = 1.4 * inch_to_mm_conversion_factor; // Crust height in mm
+slice_length = (1.4 * inch_to_mm_conversion_factor) - 1; // Crust height in mm
 thickness = 0.10 * inch_to_mm_conversion_factor; // Thickness of the slice in mm
 bite_size = slice_length/5;
 cylinder_height = thickness * 5; // Height of the cylinder
 cylinder_diameter = thickness * 1.2; // Diameter of the cylinder
 
-hole_diameter = 3.3;
+hole_diameter = 3.28;
 
 function calculateSlicePoints(slice_length, crust_height) = 
     let(half_base = crust_height / 2)
@@ -27,12 +27,18 @@ module pizzaSliceFootprint() {
 // Clipping cube to trim the pizza slice tip
 module clippingCube() {
     trim_factor = 10;
-    slant1 = 1.636;
+    slant1 = 1.6233;
     slant2 = -5;
     
     translate([0, -crust_height, -1]) 
-    color("blue")
+    color("red")
     cube([bite_size, crust_height * 2, thickness * 2]);
+    
+    translate([1,0, 1]) {
+        color("red");
+        cylinder(h = thickness * 5, r = bite_size, center = true);
+    }
+
 
         
     translate([crust_height * slant1, -(crust_height / 2) + (crust_height / trim_factor), -1]) 
@@ -52,8 +58,6 @@ module clippingCube() {
     translate([0, (crust_height / 2) - (crust_height / trim_factor), -1]) 
     color("blue")
     cube([100, crust_height / 2, 5]);
-
-
 }
 
 // Extruding the footprint to create the slice with clipping effect
@@ -69,10 +73,10 @@ module pizzaSliceWithClipping() {
 
 // Adding the cylinder on the crust as a handle
 module cylinderOnCrust() {
-    
+    x_offset = 2.6;
     // Translate and rotate the cylinder to position it like a handle
-    translate([slice_length - (slice_length /7), 0, 3]) // Adjust for correct placement
-    rotate([0, 45, 0]) // Tilted 45 degrees to intersect the crust
+    translate([slice_length - x_offset, 0, 3]) // Adjust for correct placement
+    rotate([0, 30, 0]) // Tilted 45 degrees to intersect the crust
     cylinder(h = cylinder_height, d = cylinder_diameter, $fn = $fn, center = true);
 }
 
@@ -85,12 +89,15 @@ module cylinderOnCrustWithClipping() {
 }
 
 module cylinderClippingCube() {
-    translate([0, -crust_height, -thickness * 3]) 
+    clipping_cube_height = 2;
+    top_offset = -0.7;
+    translate([0, -crust_height, -thickness * clipping_cube_height]) // bottom cut
     color("red")
-    cube([slice_length * 2, crust_height * 2, thickness * 3]);
-    translate([0, -crust_height, thickness * 2]) 
+    cube([slice_length * 2, crust_height * 2, thickness * clipping_cube_height]);
+    
+    translate([0, -crust_height, thickness * clipping_cube_height + top_offset]) 
     color("blue")
-    cube([slice_length * 2, crust_height * 2, thickness * 5]);
+    cube([slice_length * 2, crust_height * 2, (thickness * clipping_cube_height)]); // top cut
 }
 
 // Main module to render the final slice with all components
@@ -183,19 +190,20 @@ module writetext(text, text_line_2) {
 
 // Example usage of finalSliceWithText
 
-translate([-4.2,21.8, 0]) {
-    //finalSliceWithText("Mon", "+", 1, true);
-    //finalSliceWithText("Tue", "+", 2, true);
+//translate([-4.2,21.8, 0]) 
+{
+    finalSliceWithText("Mon", "+", 1, true);
+    finalSliceWithText("Tue", "+", 2, true);
     finalSliceWithText("Wed", "+", 3, true);
-    //finalSliceWithText("Thu", "+", 4, true);
-    //finalSliceWithText("Fri", "+", 5, true);
-    //finalSliceWithText("Sat", "+", 6, true);
-    //finalSliceWithText("Sun", "+", 7, true);
-    //finalSliceWithText("Mon", "-", 1, false);
-    //finalSliceWithText("Tue", "-", 2, false);
-    //finalSliceWithText("Wed", "-", 3, false);
-    //finalSliceWithText("Thu", "-", 4, false);
-    //finalSliceWithText("Fri", "-", 5, false);
-    //finalSliceWithText("Sat", "-", 6, false);
-    //finalSliceWithText("Sun", "-", 7, false);
+    finalSliceWithText("Thu", "+", 4, true);
+    finalSliceWithText("Fri", "+", 5, true);
+    finalSliceWithText("Sat", "+", 6, true);
+    finalSliceWithText("Sun", "+", 7, true);
+    finalSliceWithText("Mon", "-", 1, false);
+    finalSliceWithText("Tue", "-", 2, false);
+    finalSliceWithText("Wed", "-", 3, false);
+    finalSliceWithText("Thu", "-", 4, false);
+    finalSliceWithText("Fri", "-", 5, false);
+    finalSliceWithText("Sat", "-", 6, false);
+    finalSliceWithText("Sun", "-", 7, false);
 }
