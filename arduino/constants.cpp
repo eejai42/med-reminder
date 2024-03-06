@@ -25,7 +25,7 @@ const unsigned long debounceDelay = 500; // Debounce delay in milliseconds
 const unsigned long wheelTurnDebounceMs = 150; // Debounce time for wheel turn detection
 const unsigned long quickTurnThresholdMs = 300; // Threshold for quick turn detection
 
-const unsigned int minutesPerDay = 8;
+const unsigned int minutesPerDay = 4;
 const unsigned long msPerMinute = 6000;
 
 extern const int initial_reminder_delay_seconds = 2;

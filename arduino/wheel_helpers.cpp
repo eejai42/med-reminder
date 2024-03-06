@@ -37,7 +37,7 @@ void checkDayTime() {
   wheel_number = !digitalRead(wheel_hall_sensor_pin);
   digitalWrite(wheel_hall_led_pin, wheel_number ? HIGH : LOW);
 
-  bool isAM = !upToDown(digitalRead(am_hall_sensor_pin));
+  bool isAM = upToDown(digitalRead(am_hall_sensor_pin));
   digitalWrite(am_hall_led_pin, isAM ? LOW : HIGH);
   setIsAM(isAM);
 
@@ -78,37 +78,37 @@ void printMovement() {
 
 // Function to handle state transitions
 void transitionTo(State newState) {
-  Serial.print("Transitioning from: ");
-  Serial.print(currentState);
-  Serial.print(" -> ");
-  Serial.println(newState);
+  // Serial.print("Transitioning from: ");
+  // Serial.print(currentState);
+  // Serial.print(" -> ");
+  // Serial.println(newState);
 
   currentState = newState;
   switch (currentState) {
     case Idle:
-      Serial.println(" -------------------------------------- IDLE ----------------------------------------");
+      //Serial.println(" -------------------------------------- IDLE ----------------------------------------");
       movement_count = 0;
       last_wheel_number = wheel_number;
       last_index = getIndex();
       // Setup for Idle state
       break;
     case Debouncing:
-       Serial.println(" -------------------------------------- DEBOUNCEING ----------------------------------------");
+       //Serial.println(" -------------------------------------- DEBOUNCEING ----------------------------------------");
       // Serial.println(movement_count);
       lastDebounceTime = millis();
       break;
     case Count_Movement:
-      Serial.println(" -------------------------------------- COUNTING MOVEMENT ----------------------------------------");
+      //Serial.println(" -------------------------------------- COUNTING MOVEMENT ----------------------------------------");
       movement_count++;
       break;
     case Waiting_For_More_Movement:
       lastDebounceTime = millis();
-      Serial.println(" -------------------------------------- WAITING FOR MORE MOVEMENT ----------------------------------------");
+      //Serial.println(" -------------------------------------- WAITING FOR MORE MOVEMENT ----------------------------------------");
       last_index == getIndex();
       //debounceTimer = millis();
       break;
     case Movement_Detected:
-      Serial.println(" -------------------------------------- Movement found ----------------------------------------");
+      //Serial.println(" -------------------------------------- Movement found ----------------------------------------");
       // Actions for movement detected
       break;
   }
@@ -151,10 +151,10 @@ void checkState() {
     //Serial.println(elapsedTime);
   } else if (currentState == Waiting_For_More_Movement) {
     if ((millis() - lastDebounceTime) > quickTurnThresholdMs) {
-      Serial.println("Moving from Waiting to MOVEMENT DETECTED!!!");
+      //Serial.println("Moving from Waiting to MOVEMENT DETECTED!!!");
       transitionTo(Movement_Detected);
     } else if (movement) {
-      Serial.println("Moving from Waiting back to debouncing!!!");
+      //Serial.println("Moving from Waiting back to debouncing!!!");
       transitionTo(Debouncing);
     }
   } else if (currentState == Movement_Detected) {
@@ -179,28 +179,28 @@ int getMovementCount() {
 bool detectWheelMovement() {
   int wheelNumber = getWheelNumber();
   if (last_wheel_number != wheelNumber) {
-    Serial.println("DETECTED WHEEL CHANGE");
+    //Serial.println("DETECTED WHEEL CHANGE");
     return true;
   }
 
   bool isAM = getIsAM();
   if (last_is_am != isAM) {
     //Serial.println("                                                                   AM CHANGE DETECTED");
-    Serial.println("AM/PM CHANGED from " + String(last_is_am) + " to current AM/PM: " + String(isAM));
+    //Serial.println("AM/PM CHANGED from " + String(last_is_am) + " to current AM/PM: " + String(isAM));
     last_is_am = isAM;
     return true;
   }
 
   int index = getIndex();     // Get the current index based on sensor values
-  if (last_index == index) {  // Check if there's a change and it's not the initial setup
-    Serial.println("Index Changed: from " + String(last_index) + " to " + String(index));
+  if (last_index != index) {  // Check if there's a change and it's not the initial setup
+    //Serial.println("Index Changed: from " + String(last_index) + " to " + String(index));
     return true;
   }
   return false;
 }
 
 void clearMovement() {
-  Serial.println("CLEARING MOVEMENT COUNT!");
+  //Serial.println("CLEARING MOVEMENT COUNT!");
   movement_count = 0;
   currentState = Idle;      // Reset to Idle after clearing movement
   last_index = getIndex();  // Initialize to an impossible value for startup detection
@@ -215,5 +215,5 @@ void printAndClearMovement() {
   printMovement(spotsMoved, index, wheelNumber);
   // Handle wheel movement (e.g., update state, play confirmation beep)
   clearMovement();
-  emitBeepSequence(400, 3);  // Example usage of emitBeepSequence
+  emitBeepSequence(750, 1);  // Example usage of emitBeepSequence
 }

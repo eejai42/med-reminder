@@ -172,131 +172,127 @@
           "Eve_time": "Set by first Eve pill taken"
         },
         "arduino_settings": {
-          "left_hall_sensor_pin": 2,
-          "middle_hall_sensor_pin": 3,
-          "right_hall_sensor_pin": 4,
-          "wheel_hall_sensor_pin": 6,
-          "speaker_pin": 9,
-          "wheel_turn_debounce_ms": 500,
-          "quick_turn_threshold_ms": 2000,
-          "morning_start_hour": 6,
-          "evening_start_hour": 18,
-          "snooze_interval_minutes": 5,
-          "beep_durations_ms": {
-            "short": 100,
-            "long": 500
-          },
-          "initial_beep_count": 1,
-          "beep_sequence_settings": {
-            "initial_sequence_count": 1
-          },
-          "rotation_detection_method": "hall_effect",
-          "quick_turn_detection_count": "variable",
-          "confirmation_signals": {
-            "start_time_set": {
-              "beep_id": 0,
-              "beep_count": 1,
-              "sequence_count": "turn_count"
+          "arduino_settings": {
+            "speaker_pin": 9,
+            "wheel_hall_sensor_pin": 13,
+            "wheel_turn_debounce_ms": 150,
+            "quick_turn_threshold_ms": 300,
+            "led_pins": {
+              "am_hall_led_pin": 7,
+              "bit1_hall_led_pin": 6,
+              "bit2_hall_led_pin": 5,
+              "wheel_hall_led_pin": 4
             },
-            "stop_time_set": {
-              "beep_id": 0,
-              "beep_count": 1,
-              "sequence_count": "turn_count"
+            "hall_sensor_pins": {
+              "am_hall_sensor_pin": 10,
+              "bit1_hall_sensor_pin": 11,
+              "bit2_hall_sensor_pin": 12
             },
-            "confirmation_beep_type": "long"
+            "debounce_delay": 500,
+            "timing_configurations": {
+              "minutes_per_day": 4,
+              "ms_per_minute": 6000
+            },
+            "reminder_settings": {
+              "initial_reminder_delay_seconds": 2,
+              "initial_times_to_beep": 5,
+              "ms_between_beeps": 85
+            }
           }
         },
         "movement_state_machine": {
-          "states": [
-            {
-              "name": "Idle",
-              "transitions": [
-                {
-                  "trigger": "getIndex() != last_index",
-                  "target": "Debouncing",
-                  "action": null,
-                  "conditions": null
+          "movement_state_machine": {
+            "states": [
+              {
+                "name": "Idle",
+                "transitions": [
+                  {
+                    "trigger": "detectWheelMovement() == true",
+                    "target": "Debouncing",
+                    "action": "None",
+                    "conditions": "None"
+                  }
+                ],
+                "actions": {
+                  "entry": "Reset movement_count, last_wheel_number = wheel_number, last_index = getIndex()",
+                  "exit": "None"
                 }
-              ],
-              "actions": {
-                "entry": "last_index = getIndex(), moving_index = getIndex()",
-                "exit": "Reset debounce timer"
-              }
-            },
-            {
-              "name": "Debouncing",
-              "transitions": [
-                {
-                  "trigger": "getIndex() == moving_index",
-                  "target": "Idle",
-                  "action": null,
-                  "conditions": null
-                },
-                {
-                  "trigger": "Debounce Timeout && getIndex() != moving_index",
-                  "target": "Count_Movement",
-                  "action": "Reset debounce timer, moving_index = getIndex()",
-                  "conditions": null
+              },
+              {
+                "name": "Debouncing",
+                "transitions": [
+                  {
+                    "trigger": "millis() - lastDebounceTime > wheelTurnDebounceMs",
+                    "target": "Count_Movement",
+                    "action": "Reset lastDebounceTime",
+                    "conditions": "None"
+                  },
+                  {
+                    "trigger": "detectWheelMovement() == true",
+                    "target": "Idle",
+                    "action": "Update lastDebounceTime, last_index = getIndex()",
+                    "conditions": "None"
+                  }
+                ],
+                "actions": {
+                  "entry": "Update lastDebounceTime",
+                  "exit": "None"
                 }
-              ],
-              "actions": {
-                "entry": "Start or reset debounce timer",
-                "exit": null
-              }
-            },
-            {
-              "name": "Count_Movement",
-              "transitions": [
-                {
-                  "trigger": "always",
-                  "target": "Waiting_For_More_Movement",
-                  "action": "Increment movement_count, Reset debounce timer",
-                  "conditions": null
+              },
+              {
+                "name": "Count_Movement",
+                "transitions": [
+                  {
+                    "trigger": "always",
+                    "target": "Waiting_For_More_Movement",
+                    "action": "Increment movement_count",
+                    "conditions": "None"
+                  }
+                ],
+                "actions": {
+                  "entry": "Increment movement_count",
+                  "exit": "None"
                 }
-              ],
-              "actions": {
-                "entry": "Increment movement_count, moving_index = getIndex()",
-                "exit": null
-              }
-            },
-            {
-              "name": "Waiting_For_More_Movement",
-              "transitions": [
-                {
-                  "trigger": "getIndex() != moving_index && Debounce Timeout",
-                  "target": "Count_Movement",
-                  "action": "moving_index = getIndex()",
-                  "conditions": null
-                },
-                {
-                  "trigger": "No new movement within timeout",
-                  "target": "Movement_Detected",
-                  "action": null,
-                  "conditions": null
+              },
+              {
+                "name": "Waiting_For_More_Movement",
+                "transitions": [
+                  {
+                    "trigger": "millis() - lastDebounceTime > quickTurnThresholdMs",
+                    "target": "Movement_Detected",
+                    "action": "None",
+                    "conditions": "None"
+                  },
+                  {
+                    "trigger": "detectWheelMovement() == true",
+                    "target": "Debouncing",
+                    "action": "None",
+                    "conditions": "None"
+                  }
+                ],
+                "actions": {
+                  "entry": "Reset lastDebounceTime",
+                  "exit": "None"
                 }
-              ],
-              "actions": {
-                "entry": "Start or reset debounce timer",
-                "exit": null
-              }
-            },
-            {
-              "name": "Movement_Detected",
-              "transitions": [
-                {
-                  "trigger": "clearMovement()",
-                  "target": "Idle",
-                  "action": null,
-                  "conditions": null
+              },
+              {
+                "name": "Movement_Detected",
+                "transitions": [
+                  {
+                    "trigger": "clearMovement() is called",
+                    "target": "Idle",
+                    "action": "None",
+                    "conditions": "None"
+                  }
+                ],
+                "actions": {
+                  "entry": "Report movement detected, optionally perform actions like emitBeepSequence",
+                  "exit": "Clear movement_count, Reset state to Idle"
                 }
-              ],
-              "actions": {
-                "entry": "Report movement detected",
-                "exit": "Clear movement_count, last_index = moving_index"
               }
-            }
-          ],
-          "initialState": "Idle"
+            ],
+            "initialState": "Idle"
+          }
         }
       }
     }
