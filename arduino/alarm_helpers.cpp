@@ -150,9 +150,9 @@ void checkAlarmBeeping() {
 
 void checkAlarms() {
     if (timer1OffsetMS == -1) {
-      timer1IsAM = getIsAM();
-      timer1OffsetMinutes = timer1IsAM ? 0 : minutesPerDay / 2;
-      timer1OffsetMS = timer1IsAM ? 0 : timer1OffsetMinutes * msPerMinute;
+      //timer1IsAM = getIsAM();
+      timer1OffsetMinutes = 0; //timer1IsAM ? 0 : minutesPerDay / 2;
+      timer1OffsetMS = 0; // timer1IsAM ? 0 : timer1OffsetMinutes * msPerMinute;
       if (timer1OffsetMS > 0) {
         Serial.println("INCLUDING OFFSETS: ADDING " + String(timer1OffsetMinutes));
       }
@@ -217,7 +217,7 @@ void triggerTimer() {
   unsigned long currentMinutes = minutes_since_day_started();
   DayTime dt = getDayAndTime();
   String finalSliceTOD = (dt.isAM && timer1IsAM) ? "Evening " : "Morning ";
-  Serial.println("_______ TRIGGER DETECTED __________");
+  //Serial.println("_______ TRIGGER DETECTED __________");
   if (mymillis() > 10000) {
     if ((timer1 == -1)) {
       timer1 = currentMinutes;
@@ -280,14 +280,14 @@ void printDowTod() {
 }
 
 String getTOD(int minutes) {
-  String tod = "";
   minutes = minutes % minutesPerDay;
   bool inFirstHalfOfDay = minutes < (minutesPerDay / 2);
-  if (inFirstHalfOfDay) {
-    tod = timer1IsAM ? "am" : "pm";
-  } else {
-    tod = timer1IsAM ? "pm" : "am";
-  }
+  String tod = inFirstHalfOfDay ? "am" : "pm";
+  // if (inFirstHalfOfDay) {
+  //   tod = timer1IsAM ? "am" : "pm";
+  // } else {
+  //   tod = timer1IsAM ? "pm" : "am";
+  // }
   return tod;
 }
 
@@ -296,7 +296,7 @@ String minutesToAMPMString(int minutes) {
   minutes++;
   minutes = (minutes + timer1OffsetMinutes) % minutesPerDay;
   String tod = getTOD(minutes);
-  if (tod == "pm") minutes = minutes % (minutesPerDay / 2);
+  if (tod == "pm") minutes = minutes% (minutesPerDay); // / 2);
   if (minutes < 10) results = "0";
   results = results + String(minutes) + tod;
   // Serial.println();
