@@ -171,32 +171,176 @@
           "Day_time": "Set by first Day pill taken",
           "Eve_time": "Set by first Eve pill taken"
         },
-        "arduino_settings": {
-          "speaker_pin": 9,
-          "wheel_hall_sensor_pin": 13,
-          "wheel_turn_debounce_ms": 150,
-          "quick_turn_threshold_ms": 300,
-          "led_pins": {
-            "am_hall_led_pin": 7,
-            "bit1_hall_led_pin": 6,
-            "bit2_hall_led_pin": 5,
-            "wheel_hall_led_pin": 4
-          },
-          "hall_sensor_pins": {
-            "am_hall_sensor_pin": 10,
-            "bit1_hall_sensor_pin": 11,
-            "bit2_hall_sensor_pin": 12
-          },
+        "timer_settings": {
           "debounce_delay": 500,
           "timing_configurations": {
-            "minutes_per_day": 4,
-            "ms_per_minute": 6000
+            "minutes_per_day": 1440,
+            "ms_per_minute": 60000
           },
           "reminder_settings": {
             "initial_reminder_delay_seconds": 2,
             "initial_times_to_beep": 5,
             "ms_between_beeps": 85
           }
+        },
+
+        "pin_configuration": {
+          "Pins": [
+            {
+              "pinName": "Pin-2-SpeakerPin",
+              "lowerVariableName": "status_beeps_speaker",
+              "constant": 2,
+              "parts": [
+                {
+                  "purpose": "StatusBeeps",
+                  "typeName": "Speaker",
+                  "color": "Orange",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-3-Bit1LedPin",
+              "lowerVariableName": "bit1_status_led",
+              "constant": 3,
+              "parts": [
+                {
+                  "purpose": "Bit1Status",
+                  "typeName": "Led",
+                  "color": "White",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-4-Bit1SensorPin",
+              "lowerVariableName": "sense_bit1_hall_effect_sensor",
+              "constant": 4,
+              "parts": [
+                {
+                  "purpose": "SenseBit1",
+                  "typeName": "HallEffectSensor",
+                  "color": "White",
+                  "count": 2
+                },
+                {
+                  "purpose": "LatchBit1",
+                  "typeName": "LatchingSwitch",
+                  "color": "White",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-5-Bit2LedPin",
+              "lowerVariableName": "bit2_status_led",
+              "constant": 5,
+              "parts": [
+                {
+                  "purpose": "Bit2Status",
+                  "typeName": "Led",
+                  "color": "Blue",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-6-Bit2SensorPin",
+              "lowerVariableName": "sense_bit2_hall_effect_sensor",
+              "constant": 6,
+              "parts": [
+                {
+                  "purpose": "SenseBit2",
+                  "typeName": "HallEffectSensor",
+                  "color": "Blue",
+                  "count": 2
+                },
+                {
+                  "purpose": "LatchBit2",
+                  "typeName": "LatchingSwitch",
+                  "color": "Blue",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-7-AmPmLedPin",
+              "lowerVariableName": "am_pm_status_led",
+              "constant": 7,
+              "parts": [
+                {
+                  "purpose": "AmPmStatus",
+                  "typeName": "Led",
+                  "color": "Yellow",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-8-AmPmSensorPin",
+              "lowerVariableName": "sense_am_pm_hall_effect_sensor",
+              "constant": 8,
+              "parts": [
+                {
+                  "purpose": "SenseAmPm",
+                  "typeName": "HallEffectSensor",
+                  "color": "Yellow",
+                  "count": 2
+                },
+                {
+                  "purpose": "LatchAmPm",
+                  "typeName": "LatchingSwitch",
+                  "color": "Yellow",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-9-WheelLedPin",
+              "lowerVariableName": "wheel_status_led",
+              "constant": 9,
+              "parts": [
+                {
+                  "purpose": "WheelStatus",
+                  "typeName": "Led",
+                  "color": "Red",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-10-WheelSensorPin",
+              "lowerVariableName": "sense_wheel_hall_effect_sensor",
+              "constant": 10,
+              "parts": [
+                {
+                  "purpose": "SenseWheel",
+                  "typeName": "HallEffectSensor",
+                  "color": "Red",
+                  "count": 2
+                },
+                {
+                  "purpose": "LatchWheel",
+                  "typeName": "LatchingSwitch",
+                  "color": "Red",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "pinName": "Pin-11-StatusLedPin",
+              "lowerVariableName": "status_status_led",
+              "constant": 11,
+              "parts": [
+                {
+                  "purpose": "StatusStatus",
+                  "typeName": "Led",
+                  "color": "Orange",
+                  "count": 1
+                }
+              ]
+            }
+          ]
         },
 
         "movement_state_machine": {
