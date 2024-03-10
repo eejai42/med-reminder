@@ -11,5 +11,50 @@
       "Value": "med-alarm"
     }
   ],
-  "ProjectTranspilers": []
+  "ProjectTranspilers": [
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "19d8142a-2f4d-46ac-9de6-77441f233192",
+        "Name": "AirtableToXml",
+        "Description": "Extracts the contents of an airtable base as a single Xml file."
+      },
+      "ProjectTranspilerId": "d9898a20-d317-4b49-b225-dcfbe64eba33",
+      "Name": "AirtableToXml",
+      "RelativePath": "/SSoT/airtable",
+      "CommandLine": "airtable/airtable-to-xml -p baseid=apph60kkVmuGzN9tS -p entities=FSMs,MachineStates,Transitions,PartTypes,Parts,PartLinks"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "8076f6a7-3c5b-4f57-b6d4-ba0c39094344",
+        "Name": "XmlToStateMachineXml",
+        "Description": "Xml To State Machine Xml"
+      },
+      "ProjectTranspilerId": "e8e3c77d-c088-4290-8040-9bd97ecaf620",
+      "Name": "XmlToStateMachineXml",
+      "RelativePath": "/SSoT/FSM",
+      "CommandLine": "xml-to-statemachine -i ..\\airtable\\Airtable.xml -p initial-state=Bootup"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "4f7bd90b-a200-408d-8fe5-a665ed378ce5",
+        "Name": "StateMachineXmlToPlantText",
+        "Description": "State Machine Xml To Plant Text "
+      },
+      "ProjectTranspilerId": "c8a77b3c-36cc-4040-882c-983b3f7a1ecf",
+      "Name": "StateMachineXmlToPlantText",
+      "RelativePath": "/docs",
+      "CommandLine": "statemachine-xml-to-planttext -i ..\\SSoT\\FSM\\state-machine.xml -o state-machine-planttext.uml"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "fddc44e8-1e48-49bb-b9db-56a10d39c6aa",
+        "Name": "PlantTextToPng",
+        "Description": "PlantText to Png"
+      },
+      "ProjectTranspilerId": "ca6490d8-d301-48b2-a716-ec634743e744",
+      "Name": "PlantTextToPng",
+      "RelativePath": "/docs",
+      "CommandLine": "planttext-to-png -i .\\state-machine-planttext.uml"
+    }
+  ]
 }

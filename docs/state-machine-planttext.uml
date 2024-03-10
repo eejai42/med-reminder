@@ -1,0 +1,61 @@
+@startuml
+                    [*] -> Bootup
+state AdvanceCurrentReminder
+state Idle
+state MovementDetected
+state WaitForCommands
+state Reboot
+state WaitForMoreMovement
+state CountMovement
+state Bootup
+state WaitFor1stReminderTime
+state RecordCurrentSlice
+state Record1stReminderTime
+state DebounceMovement
+state WaitFor2ndReminderTime
+state Record2ndReminderTime
+state SetExpectedReminder
+
+AdvanceCurrentReminder --> Idle : "CurrentReminderAdvanced"
+    
+Idle --> DebounceMovement : "WheelMoved"
+    
+Idle --> WaitForCommands : "MainInputClick"
+    
+MovementDetected --> Idle : "MovementHandled"
+    
+WaitForCommands --> SetExpectedReminder : "MainInputDoubleClick"
+    
+WaitForCommands --> AdvanceCurrentReminder : "MainInputClick"
+    
+WaitForCommands --> Reboot : "MainInputHold"
+    
+Reboot --> Bootup : "RebootStarted"
+    
+WaitForMoreMovement --> CountMovement : "WheelMoved"
+    
+WaitForMoreMovement --> MovementDetected : "WheelNotMoved"
+    
+CountMovement --> WaitForMoreMovement : "MovementCounted"
+    
+Bootup --> RecordCurrentSlice : "BootupComplete"
+    
+WaitFor1stReminderTime --> Record1stReminderTime : "WheelMoved"
+    
+RecordCurrentSlice --> WaitFor1stReminderTime : "SetupComplete"
+    
+Record1stReminderTime --> WaitFor2ndReminderTime : "ReminderSet"
+    
+DebounceMovement --> CountMovement : "DebouncePassed"
+    
+DebounceMovement --> Idle : "DebounceFailed"
+    
+WaitFor2ndReminderTime --> Record2ndReminderTime : "WheelMoved"
+    
+Record2ndReminderTime --> Idle : "ReminderSet"
+    
+SetExpectedReminder --> Idle : "ExpectedReminderSet"
+    
+SetExpectedReminder --> Idle : "ExpectedReminderSet"
+    
+@enduml                    

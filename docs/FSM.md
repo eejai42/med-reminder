@@ -2,9 +2,7 @@
 
 ### Movement State Machine (FSM)
 
-
-
-![Diagram](flowchart.png)
+![Diagram](state-machine-planttext.uml.png)
 
 ### States and Transitions
 
