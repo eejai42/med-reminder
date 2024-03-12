@@ -33,21 +33,15 @@
           }
         },
         {
-          "Name": "ReminderTimesSet",
-          "Description": "Captures the current time as a reference point for tracking.  ",
-          "FromTransitions": "",
-          "ToTransitions": ""
-        },
-        {
           "Name": "GatherReminders",
           "Description": "Awaits the time for the first medication reminder.  ",
           "FromTransitions": {
             "FromTransition": [
               {
                 "Description": "Waits for the first medication reminder after the initial setup is completed.",
-                "ActionName": "RemindersSet",
-                "ToStateName": "Idle",
-                "Name": "GatherReminders-to-Idle-after--RemindersSet"
+                "ActionName": "RemindersGather",
+                "ToStateName": "SaveReminders",
+                "Name": "GatherReminders-to-SaveReminders-after--RemindersGather"
               }
             ]
           },
@@ -58,6 +52,30 @@
                 "ActionName": "BootupComplete",
                 "FromStateName": "Bootup",
                 "Name": "Bootup-to-GatherReminders-after-15000-BootupComplete"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "SaveReminders",
+          "Description": "Captures the current time as a reference point for tracking.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "",
+                "ActionName": "RemindersSaved",
+                "ToStateName": "Idle",
+                "Name": "SaveReminders-to-Idle-after--RemindersSaved"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Waits for the first medication reminder after the initial setup is completed.",
+                "ActionName": "RemindersGather",
+                "FromStateName": "GatherReminders",
+                "Name": "GatherReminders-to-SaveReminders-after--RemindersGather"
               }
             ]
           }
@@ -84,22 +102,16 @@
           "ToTransitions": {
             "ToTransition": [
               {
-                "Description": "Re-enters idle state with the expected reminder time updated and confirmed by the user.",
-                "ActionName": "ExpectedReminderSet",
-                "FromStateName": "SetExpectedReminder",
-                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
-              },
-              {
-                "Description": "Waits for the first medication reminder after the initial setup is completed.",
-                "ActionName": "RemindersSet",
-                "FromStateName": "GatherReminders",
-                "Name": "GatherReminders-to-Idle-after--RemindersSet"
-              },
-              {
                 "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
                 "ActionName": "ExpectedReminderSet",
                 "FromStateName": "SetExpectedReminder",
                 "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
+              },
+              {
+                "Description": "",
+                "ActionName": "RemindersSaved",
+                "FromStateName": "SaveReminders",
+                "Name": "SaveReminders-to-Idle-after--RemindersSaved"
               },
               {
                 "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
@@ -301,12 +313,6 @@
           "Description": "Enables setting a new time for the next medication reminder.  ",
           "FromTransitions": {
             "FromTransition": [
-              {
-                "Description": "Re-enters idle state with the expected reminder time updated and confirmed by the user.",
-                "ActionName": "ExpectedReminderSet",
-                "ToStateName": "Idle",
-                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
-              },
               {
                 "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
                 "ActionName": "ExpectedReminderSet",

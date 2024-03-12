@@ -13,25 +13,26 @@ Initializes the system and prepares for operation.
  - **⬅ Reboot(`RebootStarted`): ⬅** Restarts the system, moving from the reboot phase back to the initial operational state..
 
  - **➡ GatherReminders(`BootupComplete`): ➡** Initializes the recording of the current time slice immediately after system startup.
-#### 2. ReminderTimesSet
-Captures the current time as a reference point for tracking.  
-
-
-
-#### 3. GatherReminders
+#### 2. GatherReminders
 Awaits the time for the first medication reminder.  
 
 
  - **⬅ Bootup(`BootupComplete`): ⬅** Initializes the recording of the current time slice immediately after system startup.
 
- - **➡ Idle(`RemindersSet`): ➡** Waits for the first medication reminder after the initial setup is completed..
+ - **➡ SaveReminders(`RemindersGather`): ➡** Waits for the first medication reminder after the initial setup is completed..
+#### 3. SaveReminders
+Captures the current time as a reference point for tracking.  
+
+
+ - **⬅ GatherReminders(`RemindersGather`): ⬅** Waits for the first medication reminder after the initial setup is completed..
+
+ - **➡ Idle(`RemindersSaved`): ➡** .
 #### 4. Idle
 The system is in a standby mode, waiting for interaction or the next event.  
 
 
- - **⬅ SetExpectedReminder(`ExpectedReminderSet`): ⬅** Re-enters idle state with the expected reminder time updated and confirmed by the user..
- - **⬅ GatherReminders(`RemindersSet`): ⬅** Waits for the first medication reminder after the initial setup is completed..
  - **⬅ SetExpectedReminder(`ExpectedReminderSet`): ⬅** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
+ - **⬅ SaveReminders(`RemindersSaved`): ⬅** .
  - **⬅ AdvanceCurrentReminder(`CurrentReminderAdvanced`): ⬅** Resumes idle state after the current medication reminder has been successfully advanced..
  - **⬅ MovementDetected(`MovementHandled`): ⬅** Completes processing of movement and awaits further user interaction..
  - **⬅ DebounceMovement(`DebounceFailed`): ⬅** Returns to idle on failing to validate the wheel movement (debouncing)..
@@ -91,7 +92,6 @@ Enables setting a new time for the next medication reminder.
 
  - **⬅ WaitForCommands(`MainInputDoubleClick`): ⬅** Allows the user to set a new medication reminder through double-clicking..
 
- - **➡ Idle(`ExpectedReminderSet`): ➡** Re-enters idle state with the expected reminder time updated and confirmed by the user..
  - **➡ Idle(`ExpectedReminderSet`): ➡** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
 #### 12. Reboot
 Reinitializes the system, effectively restarting it.  
