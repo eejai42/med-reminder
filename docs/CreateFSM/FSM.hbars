@@ -1,0 +1,34 @@
+[Full Readme](README.md)
+
+### Movement State Machine (FSM)
+
+![Diagram](state-machine-planttext.uml.png)
+
+### States and Transitions
+
+{{#each MedReminder.MachineStates.MachineState}}
+#### {{add @index 1}}. {{Name}}
+{{Description}}
+
+{{#if EntryActions}}
+- **Entry Actions**: {{EntryActions}}
+{{/if}}
+{{#if ExitActions}}
+- **Exit Actions**: {{ExitActions}}
+{{/if}}
+
+{{#each ToTransitions.ToTransition}}
+ - **⬅ {{FromStateName}}(`{{ActionName}}`): ⬅** {{Description}}.
+{{/each}}
+
+{{#each FromTransitions.FromTransition}}
+ - **➡ {{ToStateName}}(`{{ActionName}}`): ➡** {{Description}}.
+{{/each}}{{/each}}
+
+### Initial State
+- **Idle**: The machine initializes in the Idle state, awaiting the first user interaction to begin the detection and handling process.
+
+### Implementation Note
+This state machine is crucial for ensuring the pillbox operates reliably, accurately tracking user interactions to maintain an up-to-date medication schedule. It effectively filters out accidental or irrelevant movements, focusing on intentional user actions to adjust the medication reminder timings. Through this mechanism, the Physical-Med-Reminder system provides a user-friendly and intuitive interface that requires minimal direct interaction, simplifying daily medication management.
+
+

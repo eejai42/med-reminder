@@ -6,45 +6,107 @@
 
 ### States and Transitions
 
-#### 1. Idle
-- **Description**: The system's default state when no movement is detected. It waits for user interaction.
-- **Entry Actions**: Reset `movement_count`, save the current wheel number as `last_wheel_number`, and capture the current index position as `last_index` to prepare for detecting new movements.
-- **Exit Actions**: None.
-- **Transitions**:
-  - **To Debouncing**: Triggered when `detectWheelMovement()` returns `true`, indicating potential wheel movement. This transition signifies the start of movement detection.
+#### 1. Bootup
+Initializes the system and prepares for operation.  
 
-#### 2. Debouncing
-- **Description**: Filters out false positives in movement detection, ensuring that only intentional movements are considered.
-- **Entry Actions**: Update `lastDebounceTime` to the current time to start the debounce timing.
-- **Exit Actions**: None.
-- **Transitions**:
-  - **To Count_Movement**: Occurs when the elapsed time since `lastDebounceTime` exceeds `wheelTurnDebounceMs`, suggesting a legitimate movement.
-  - **Back to Idle**: If `getIndex()` matches `last_index`, indicating no change in position, the action updates `lastDebounceTime` and resets to the Idle state, filtering out noise or unintended movements.
 
-#### 3. Count_Movement
-- **Description**: Confirms and counts the wheel movement, moving towards determining if the movement aligns with expected user interaction.
-- **Entry Actions**: Increment `movement_count` to track the number of detected movements.
-- **Exit Actions**: None.
-- **Transitions**:
-  - **To Waiting_For_More_Movement**: Automatically transitions after action completion, awaiting further movements or the confirmation of movement cessation.
+ - **⬅ Reboot(`RebootStarted`): ⬅** Restarts the system, moving from the reboot phase back to the initial operational state..
 
-#### 4. Waiting_For_More_Movement
-- **Description**: A buffer state allowing for the detection of additional movements within a short timeframe, distinguishing between single and multiple adjustments.
-- **Entry Actions**: Reset `lastDebounceTime` and update `last_index` to the current index, preparing to detect further movement.
-- **Exit Actions**: None.
-- **Transitions**:
-  - **To Movement_Detected**: If the elapsed time since `lastDebounceTime` exceeds `quickTurnThresholdMs`, confirming movement detection.
-  - **Back to Debouncing**: Triggered by `detectWheelMovement()` returning `true` again, indicating ongoing wheel movement and necessitating a return to the Debouncing state to handle continuous interaction.
+ - **➡ GatherReminders(`BootupComplete`): ➡** Initializes the recording of the current time slice immediately after system startup.
+#### 2. ReminderTimesSet
+Captures the current time as a reference point for tracking.  
 
-#### 5. Movement_Detected
-- **Description**: Final confirmation of wheel movement, indicating a successful user interaction with the pillbox.
-- **Entry Actions**: Perform actions such as emitting a beep sequence to signal movement detection, and potentially updating the system's understanding of the current pill slot.
-- **Exit Actions**: Clears `movement_count` and resets the system to the Idle state, readying it for the next interaction.
-- **Transitions**:
-  - **Back to Idle**: Occurs when `clearMovement()` is called, signifying the end of the current movement detection cycle and resetting the machine to await new interactions.
+
+
+#### 3. GatherReminders
+Awaits the time for the first medication reminder.  
+
+
+ - **⬅ Bootup(`BootupComplete`): ⬅** Initializes the recording of the current time slice immediately after system startup.
+
+ - **➡ Idle(`RemindersSet`): ➡** Waits for the first medication reminder after the initial setup is completed..
+#### 4. Idle
+The system is in a standby mode, waiting for interaction or the next event.  
+
+
+ - **⬅ SetExpectedReminder(`ExpectedReminderSet`): ⬅** Re-enters idle state with the expected reminder time updated and confirmed by the user..
+ - **⬅ GatherReminders(`RemindersSet`): ⬅** Waits for the first medication reminder after the initial setup is completed..
+ - **⬅ SetExpectedReminder(`ExpectedReminderSet`): ⬅** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
+ - **⬅ AdvanceCurrentReminder(`CurrentReminderAdvanced`): ⬅** Resumes idle state after the current medication reminder has been successfully advanced..
+ - **⬅ MovementDetected(`MovementHandled`): ⬅** Completes processing of movement and awaits further user interaction..
+ - **⬅ DebounceMovement(`DebounceFailed`): ⬅** Returns to idle on failing to validate the wheel movement (debouncing)..
+
+ - **➡ DebounceMovement(`WheelMoved`): ➡** Filters out false wheel movements to prevent erroneous operations..
+ - **➡ WaitForCommands(`MainInputClick`): ➡** Enters command waiting state in response to user interaction via main input..
+#### 5. DebounceMovement
+Filters out false movements to ensure accurate detection.  
+
+
+ - **⬅ Idle(`WheelMoved`): ⬅** Filters out false wheel movements to prevent erroneous operations..
+
+ - **➡ CountMovement(`DebouncePassed`): ➡** Counts validated wheel movement towards medication adherence tracking..
+ - **➡ Idle(`DebounceFailed`): ➡** Returns to idle on failing to validate the wheel movement (debouncing)..
+#### 6. CountMovement
+Counts valid movement events for processing.  
+
+
+ - **⬅ DebounceMovement(`DebouncePassed`): ⬅** Counts validated wheel movement towards medication adherence tracking..
+ - **⬅ WaitForMoreMovement(`WheelMoved`): ⬅** Increments movement count upon further detected wheel movements..
+
+ - **➡ WaitForMoreMovement(`MovementCounted`): ➡** Monitors for additional wheel movement to confirm continuous user interaction..
+#### 7. WaitForMoreMovement
+Awaits additional movement to confirm or complete an action.  
+
+
+ - **⬅ CountMovement(`MovementCounted`): ⬅** Monitors for additional wheel movement to confirm continuous user interaction..
+
+ - **➡ CountMovement(`WheelMoved`): ➡** Increments movement count upon further detected wheel movements..
+ - **➡ MovementDetected(`WheelNotMoved`): ➡** Finalizes the movement count if no additional wheel activity is detected..
+#### 8. MovementDetected
+Detects confirmed movement, signaling a completed interaction.  
+
+
+ - **⬅ WaitForMoreMovement(`WheelNotMoved`): ⬅** Finalizes the movement count if no additional wheel activity is detected..
+
+ - **➡ Idle(`MovementHandled`): ➡** Completes processing of movement and awaits further user interaction..
+#### 9. WaitForCommands
+Enters a mode waiting for user commands through the main interface.  
+
+
+ - **⬅ Idle(`MainInputClick`): ⬅** Enters command waiting state in response to user interaction via main input..
+
+ - **➡ SetExpectedReminder(`MainInputDoubleClick`): ➡** Allows the user to set a new medication reminder through double-clicking..
+ - **➡ AdvanceCurrentReminder(`MainInputClick`): ➡** Updates the current medication reminder schedule upon user request..
+ - **➡ Reboot(`MainInputHold`): ➡** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
+#### 10. AdvanceCurrentReminder
+Advances the medication reminder to the next scheduled time.  
+
+
+ - **⬅ WaitForCommands(`MainInputClick`): ⬅** Updates the current medication reminder schedule upon user request..
+
+ - **➡ Idle(`CurrentReminderAdvanced`): ➡** Resumes idle state after the current medication reminder has been successfully advanced..
+#### 11. SetExpectedReminder
+Enables setting a new time for the next medication reminder.  
+
+
+ - **⬅ WaitForCommands(`MainInputDoubleClick`): ⬅** Allows the user to set a new medication reminder through double-clicking..
+
+ - **➡ Idle(`ExpectedReminderSet`): ➡** Re-enters idle state with the expected reminder time updated and confirmed by the user..
+ - **➡ Idle(`ExpectedReminderSet`): ➡** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
+#### 12. Reboot
+Reinitializes the system, effectively restarting it.  
+
+
+ - **⬅ WaitForCommands(`MainInputHold`): ⬅** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
+
+ - **➡ Bootup(`RebootStarted`): ➡** Restarts the system, moving from the reboot phase back to the initial operational state..
+
 
 ### Initial State
 - **Idle**: The machine initializes in the Idle state, awaiting the first user interaction to begin the detection and handling process.
 
 ### Implementation Note
 This state machine is crucial for ensuring the pillbox operates reliably, accurately tracking user interactions to maintain an up-to-date medication schedule. It effectively filters out accidental or irrelevant movements, focusing on intentional user actions to adjust the medication reminder timings. Through this mechanism, the Physical-Med-Reminder system provides a user-friendly and intuitive interface that requires minimal direct interaction, simplifying daily medication management.
+
+
+

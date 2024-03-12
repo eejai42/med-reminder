@@ -1,0 +1,847 @@
+{
+  "MedReminder": {
+    "FSMs": {
+      "FSM": {
+        "Name": "Med Reminder",
+        "InitialStateName": "Bootup"
+      }
+    },
+    "MachineStates": {
+      "MachineState": [
+        {
+          "Name": "Bootup",
+          "Description": "Initializes the system and prepares for operation.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Initializes the recording of the current time slice immediately after system startup",
+                "ActionName": "BootupComplete",
+                "ToStateName": "GatherReminders",
+                "Name": "Bootup-to-GatherReminders-after-15000-BootupComplete"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Restarts the system, moving from the reboot phase back to the initial operational state.",
+                "ActionName": "RebootStarted",
+                "FromStateName": "Reboot",
+                "Name": "Reboot-to-Bootup-after--RebootStarted"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "ReminderTimesSet",
+          "Description": "Captures the current time as a reference point for tracking.  ",
+          "FromTransitions": "",
+          "ToTransitions": ""
+        },
+        {
+          "Name": "GatherReminders",
+          "Description": "Awaits the time for the first medication reminder.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Waits for the first medication reminder after the initial setup is completed.",
+                "ActionName": "RemindersSet",
+                "ToStateName": "Idle",
+                "Name": "GatherReminders-to-Idle-after--RemindersSet"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Initializes the recording of the current time slice immediately after system startup",
+                "ActionName": "BootupComplete",
+                "FromStateName": "Bootup",
+                "Name": "Bootup-to-GatherReminders-after-15000-BootupComplete"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Idle",
+          "Description": "The system is in a standby mode, waiting for interaction or the next event.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Filters out false wheel movements to prevent erroneous operations.",
+                "ActionName": "WheelMoved",
+                "ToStateName": "DebounceMovement",
+                "Name": "Idle-to-DebounceMovement-after--WheelMoved"
+              },
+              {
+                "Description": "Enters command waiting state in response to user interaction via main input.",
+                "ActionName": "MainInputClick",
+                "ToStateName": "WaitForCommands",
+                "Name": "Idle-to-WaitForCommands-after--MainInputClick"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Re-enters idle state with the expected reminder time updated and confirmed by the user.",
+                "ActionName": "ExpectedReminderSet",
+                "FromStateName": "SetExpectedReminder",
+                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
+              },
+              {
+                "Description": "Waits for the first medication reminder after the initial setup is completed.",
+                "ActionName": "RemindersSet",
+                "FromStateName": "GatherReminders",
+                "Name": "GatherReminders-to-Idle-after--RemindersSet"
+              },
+              {
+                "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
+                "ActionName": "ExpectedReminderSet",
+                "FromStateName": "SetExpectedReminder",
+                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
+              },
+              {
+                "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
+                "ActionName": "CurrentReminderAdvanced",
+                "FromStateName": "AdvanceCurrentReminder",
+                "Name": "AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced"
+              },
+              {
+                "Description": "Completes processing of movement and awaits further user interaction.",
+                "ActionName": "MovementHandled",
+                "FromStateName": "MovementDetected",
+                "Name": "MovementDetected-to-Idle-after--MovementHandled"
+              },
+              {
+                "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
+                "ActionName": "DebounceFailed",
+                "FromStateName": "DebounceMovement",
+                "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "DebounceMovement",
+          "Description": "Filters out false movements to ensure accurate detection.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Counts validated wheel movement towards medication adherence tracking.",
+                "ActionName": "DebouncePassed",
+                "ToStateName": "CountMovement",
+                "Name": "DebounceMovement-to-CountMovement-after--DebouncePassed"
+              },
+              {
+                "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
+                "ActionName": "DebounceFailed",
+                "ToStateName": "Idle",
+                "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Filters out false wheel movements to prevent erroneous operations.",
+                "ActionName": "WheelMoved",
+                "FromStateName": "Idle",
+                "Name": "Idle-to-DebounceMovement-after--WheelMoved"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "CountMovement",
+          "Description": "Counts valid movement events for processing.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Monitors for additional wheel movement to confirm continuous user interaction.",
+                "ActionName": "MovementCounted",
+                "ToStateName": "WaitForMoreMovement",
+                "Name": "CountMovement-to-WaitForMoreMovement-after--MovementCounted"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Counts validated wheel movement towards medication adherence tracking.",
+                "ActionName": "DebouncePassed",
+                "FromStateName": "DebounceMovement",
+                "Name": "DebounceMovement-to-CountMovement-after--DebouncePassed"
+              },
+              {
+                "Description": "Increments movement count upon further detected wheel movements.",
+                "ActionName": "WheelMoved",
+                "FromStateName": "WaitForMoreMovement",
+                "Name": "WaitForMoreMovement-to-CountMovement-after--WheelMoved"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "WaitForMoreMovement",
+          "Description": "Awaits additional movement to confirm or complete an action.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Increments movement count upon further detected wheel movements.",
+                "ActionName": "WheelMoved",
+                "ToStateName": "CountMovement",
+                "Name": "WaitForMoreMovement-to-CountMovement-after--WheelMoved"
+              },
+              {
+                "Description": "Finalizes the movement count if no additional wheel activity is detected.",
+                "ActionName": "WheelNotMoved",
+                "ToStateName": "MovementDetected",
+                "Name": "WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Monitors for additional wheel movement to confirm continuous user interaction.",
+                "ActionName": "MovementCounted",
+                "FromStateName": "CountMovement",
+                "Name": "CountMovement-to-WaitForMoreMovement-after--MovementCounted"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "MovementDetected",
+          "Description": "Detects confirmed movement, signaling a completed interaction.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Completes processing of movement and awaits further user interaction.",
+                "ActionName": "MovementHandled",
+                "ToStateName": "Idle",
+                "Name": "MovementDetected-to-Idle-after--MovementHandled"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Finalizes the movement count if no additional wheel activity is detected.",
+                "ActionName": "WheelNotMoved",
+                "FromStateName": "WaitForMoreMovement",
+                "Name": "WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "WaitForCommands",
+          "Description": "Enters a mode waiting for user commands through the main interface.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Allows the user to set a new medication reminder through double-clicking.",
+                "ActionName": "MainInputDoubleClick",
+                "ToStateName": "SetExpectedReminder",
+                "Name": "WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClick"
+              },
+              {
+                "Description": "Updates the current medication reminder schedule upon user request.",
+                "ActionName": "MainInputClick",
+                "ToStateName": "AdvanceCurrentReminder",
+                "Name": "WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClick"
+              },
+              {
+                "Description": "Triggers a system reboot when the main input is held down, allowing for maintenance or updates.",
+                "ActionName": "MainInputHold",
+                "ToStateName": "Reboot",
+                "Name": "WaitForCommands-to-Reboot-after--MainInputHold"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Enters command waiting state in response to user interaction via main input.",
+                "ActionName": "MainInputClick",
+                "FromStateName": "Idle",
+                "Name": "Idle-to-WaitForCommands-after--MainInputClick"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "AdvanceCurrentReminder",
+          "Description": "Advances the medication reminder to the next scheduled time.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
+                "ActionName": "CurrentReminderAdvanced",
+                "ToStateName": "Idle",
+                "Name": "AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Updates the current medication reminder schedule upon user request.",
+                "ActionName": "MainInputClick",
+                "FromStateName": "WaitForCommands",
+                "Name": "WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClick"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "SetExpectedReminder",
+          "Description": "Enables setting a new time for the next medication reminder.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Re-enters idle state with the expected reminder time updated and confirmed by the user.",
+                "ActionName": "ExpectedReminderSet",
+                "ToStateName": "Idle",
+                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
+              },
+              {
+                "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
+                "ActionName": "ExpectedReminderSet",
+                "ToStateName": "Idle",
+                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Allows the user to set a new medication reminder through double-clicking.",
+                "ActionName": "MainInputDoubleClick",
+                "FromStateName": "WaitForCommands",
+                "Name": "WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClick"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Reboot",
+          "Description": "Reinitializes the system, effectively restarting it.  ",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Restarts the system, moving from the reboot phase back to the initial operational state.",
+                "ActionName": "RebootStarted",
+                "ToStateName": "Bootup",
+                "Name": "Reboot-to-Bootup-after--RebootStarted"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Triggers a system reboot when the main input is held down, allowing for maintenance or updates.",
+                "ActionName": "MainInputHold",
+                "FromStateName": "WaitForCommands",
+                "Name": "WaitForCommands-to-Reboot-after--MainInputHold"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "PartTypes": {
+      "PartType": [
+        {
+          "Name": "ArduinoR4",
+          "Description": "",
+          "QuantityNeeded": 1,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "ArduinoR4-01-Motherboard",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "N/A",
+                "Quantity": 1,
+                "Purpose": "Motherboard",
+                "PartType": {
+                  "Name": "ArduinoR4",
+                  "QuantityNeeded": 1
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Breadboard",
+          "Description": "",
+          "QuantityNeeded": 1,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Breadboard-01-MainBreadboard",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "N/A",
+                "Quantity": 1,
+                "Purpose": "MainBreadboard",
+                "PartType": {
+                  "Name": "Breadboard",
+                  "QuantityNeeded": 1
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "HallEffectSensor",
+          "Description": "",
+          "QuantityNeeded": 4,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "HallEffectSensor-01-SenseBit1",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "White",
+                "Quantity": 1,
+                "Purpose": "SenseBit1",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-04-Bit1SensorPin",
+                    "Description": "Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "HallEffectSensor-02-SenseBit2",
+                "Description": "",
+                "PartIndex": 2,
+                "Color": "Blue",
+                "Quantity": 1,
+                "Purpose": "SenseBit2",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-06-Bit2SensorPin",
+                    "Description": "The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "HallEffectSensor-03-SenseAmPm",
+                "Description": "",
+                "PartIndex": 3,
+                "Color": "Yellow",
+                "Quantity": 1,
+                "Purpose": "SenseAmPm",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-08-AmPmSensorPin",
+                    "Description": "The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "HallEffectSensor-04-SenseWheel",
+                "Description": "",
+                "PartIndex": 4,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "SenseWheel",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-10-WheelSensorPin",
+                    "Description": "Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
+                    "FromPartName": ""
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Name": "JumperWire",
+          "Description": "",
+          "QuantityNeeded": 10,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Red",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "White",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Yellow",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Orange",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Blue",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "LatchingSwitch",
+          "Description": "",
+          "QuantityNeeded": 4,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "LatchingSwitch-01-LatchBit1",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "White",
+                "Quantity": 1,
+                "Purpose": "LatchBit1",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-04-Bit1SensorPin",
+                    "Description": "The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "LatchingSwitch-02-LatchBit2",
+                "Description": "",
+                "PartIndex": 2,
+                "Color": "Blue",
+                "Quantity": 1,
+                "Purpose": "LatchBit2",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-06-Bit2SensorPin",
+                    "Description": "Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "LatchingSwitch-03-LatchAmPm",
+                "Description": "",
+                "PartIndex": 3,
+                "Color": "Yellow",
+                "Quantity": 1,
+                "Purpose": "LatchAmPm",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-08-AmPmSensorPin",
+                    "Description": "Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "LatchingSwitch-04-LatchWheel",
+                "Description": "",
+                "PartIndex": 4,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "LatchWheel",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-10-WheelSensorPin",
+                    "Description": "The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
+                    "FromPartName": ""
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Led",
+          "Description": "",
+          "QuantityNeeded": 5,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Led-01-Bit1Status",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "White",
+                "Quantity": 1,
+                "Purpose": "Bit1Status",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-03-Bit1LedPin",
+                    "Description": "The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "Led-02-Bit2Status",
+                "Description": "",
+                "PartIndex": 2,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "Bit2Status",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-05-Bit2LedPin",
+                    "Description": "From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "Led-03-AmPmStatus",
+                "Description": "",
+                "PartIndex": 3,
+                "Color": "Yellow",
+                "Quantity": 1,
+                "Purpose": "AmPmStatus",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-07-AmPmLedPin",
+                    "Description": "A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "Led-04-WheelStatus",
+                "Description": "",
+                "PartIndex": 4,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "WheelStatus",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-09-WheelLedPin",
+                    "Description": "Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
+                    "FromPartName": ""
+                  }
+                }
+              },
+              {
+                "Name": "Led-05-StatusStatus",
+                "Description": "",
+                "PartIndex": 5,
+                "Color": "Orange",
+                "Quantity": 1,
+                "Purpose": "StatusStatus",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-11-StatusLedPin",
+                    "Description": "Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
+                    "FromPartName": ""
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Name": "NeoDimiumMagnets",
+          "Description": "",
+          "QuantityNeeded": 26,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "NeoDimiumMagnets-0-",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Silver",
+                "Quantity": 26,
+                "Purpose": "",
+                "PartType": {
+                  "Name": "NeoDimiumMagnets",
+                  "QuantityNeeded": 26
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Round7DayPillDispenser",
+          "Description": "",
+          "QuantityNeeded": 2,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Round7DayPillDispenser-0-",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Blue",
+                "Quantity": 2,
+                "Purpose": "",
+                "PartType": {
+                  "Name": "Round7DayPillDispenser",
+                  "QuantityNeeded": 2
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Speaker",
+          "Description": "",
+          "QuantityNeeded": 1,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Speaker-01-StatusBeeps",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "Orange",
+                "Quantity": 1,
+                "Purpose": "StatusBeeps",
+                "PartType": {
+                  "Name": "Speaker",
+                  "QuantityNeeded": 1
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": {
+                    "Name": "Pin-02-SpeakerPin",
+                    "Description": "The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
+                    "FromPartName": ""
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

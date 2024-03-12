@@ -55,6 +55,39 @@
       "Name": "PlantTextToPng",
       "RelativePath": "/docs",
       "CommandLine": "planttext-to-png -i .\\state-machine-planttext.uml"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "4b713f03-1d9f-42f2-b02f-e3cdbd237bb3",
+        "Name": "XmlXsltTransform",
+        "Description": "Given an Xml and Xslt file, will process and \"split\" a resulting fileset."
+      },
+      "ProjectTranspilerId": "10b3f331-7ef9-4668-9ea1-367d6226e63f",
+      "Name": "XmlXsltTransform",
+      "RelativePath": "/SSoT/airtable/CleanAirtableXML",
+      "CommandLine": "xml-xslt-transform -i ..\\Airtable.xml -i .\\CleanAirtableXml.xslt"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "ba509977-74bf-486e-a405-1b2125bd5d15",
+        "Name": "XmlToJson",
+        "Description": "Converts XML to JSON using the NewtonSoft C# conversion tools."
+      },
+      "ProjectTranspilerId": "aa78aff2-b792-47e5-a211-a60a5953e7a3",
+      "Name": "XmlToJson",
+      "RelativePath": "/SSoT",
+      "CommandLine": "xml-to-json -i .\\MedReminder.xml -o MedReminder.json"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "7d24b632-a7a5-45a2-ba2a-99b26e47477d",
+        "Name": "JsonHbarsTransform",
+        "Description": "Json-Hbars-Transform"
+      },
+      "ProjectTranspilerId": "f542ab78-9c43-4394-bcfe-bb3fafe5fc0b",
+      "Name": "JsonHbarsTransform",
+      "RelativePath": "/docs/CreateFSM",
+      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i FSM.hbars -o ../FSM.md"
     }
   ]
 }

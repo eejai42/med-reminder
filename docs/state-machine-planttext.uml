@@ -8,12 +8,9 @@ state Reboot
 state WaitForMoreMovement
 state CountMovement
 state Bootup
-state WaitFor1stReminderTime
-state RecordCurrentSlice
-state Record1stReminderTime
+state GatherReminders
+state SaveReminders
 state DebounceMovement
-state WaitFor2ndReminderTime
-state Record2ndReminderTime
 state SetExpectedReminder
 
 AdvanceCurrentReminder --> Idle : "CurrentReminderAdvanced"
@@ -38,23 +35,15 @@ WaitForMoreMovement --> MovementDetected : "WheelNotMoved"
     
 CountMovement --> WaitForMoreMovement : "MovementCounted"
     
-Bootup --> RecordCurrentSlice : "BootupComplete"
+Bootup --> GatherReminders : "BootupComplete"
     
-WaitFor1stReminderTime --> Record1stReminderTime : "WheelMoved"
+GatherReminders --> SaveReminders : "RemindersGather"
     
-RecordCurrentSlice --> WaitFor1stReminderTime : "SetupComplete"
-    
-Record1stReminderTime --> WaitFor2ndReminderTime : "ReminderSet"
+SaveReminders --> Idle : "RemindersSaved"
     
 DebounceMovement --> CountMovement : "DebouncePassed"
     
 DebounceMovement --> Idle : "DebounceFailed"
-    
-WaitFor2ndReminderTime --> Record2ndReminderTime : "WheelMoved"
-    
-Record2ndReminderTime --> Idle : "ReminderSet"
-    
-SetExpectedReminder --> Idle : "ExpectedReminderSet"
     
 SetExpectedReminder --> Idle : "ExpectedReminderSet"
     

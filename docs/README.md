@@ -71,18 +71,25 @@ The **Technical Details** section outlines the hardware components and their fun
 - **Functionality**: Hall effect sensors are crucial for detecting the presence of magnets in the pillbox slots. These sensors allow the system to identify which slot is currently positioned for dispensing medication. By reading the unique magnet configurations assigned to each slot, the system accurately tracks the user's medication schedule. This feature is key to the system's ability to learn and adapt to the user's medication-taking habits, ensuring timely reminders without the need for manual schedule inputs.
 
 #### Magnets
+
 - **Quantity**: 25
+- 
 - **Functionality**: Magnets are embedded within the pillbox slots, each arranged in a unique configuration to correspond with a specific day and time of medication. This arrangement enables the hall effect sensors to distinguish between the different slots and, by extension, the specific times medication needs to be taken. The strategic placement of these magnets is essential for the accurate identification of slots, allowing for an automated tracking system that adjusts to the user's medication regimen.
 
 #### Speaker
+
 - **Quantity**: 1
+
 - **Functionality**: The speaker serves as the primary interface for auditory communication with the user. It is programmed to emit different patterns of sounds based on the system's status or required user actions. For instance:
+
   - **Medication Reminder**: A distinct sound pattern is played when it's time for the user to take their medication, serving as an effective reminder.
+  
   - **Slot Not Advanced Warning**: If the system detects that the medication has not been taken following a reminder (i.e., the box has not been advanced to the next slot), it emits a different sound pattern to alert the user.
 
 ### Operational Integration
 
 - **Slot Identification**: Combining the use of hall effect sensors and magnets, the system can pinpoint exactly which slot of the pillbox is ready for the user to access. This identification process is vital for maintaining an accurate medication schedule, ensuring that users are reminded only when it's time to take their medication.
+
 - **Audible Notifications**: The speaker's role in the system extends beyond mere reminders. It confirms successful interactions (e.g., when the user advances the pillbox to the next slot) and alerts to errors or missed medication times. This auditory feedback mechanism is designed to be intuitive, minimizing the learning curve for users and enhancing the system's usability.
 
 The design of the Physical-Med-Reminder leverages these components to create a seamless and efficient medication management experience. By intelligently combining hardware elements with sophisticated programming, the system offers a reliable solution to the challenge of medication adherence, tailored to meet the needs of individuals with various schedules and lifestyles.
