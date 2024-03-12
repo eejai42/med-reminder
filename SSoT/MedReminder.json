@@ -9,6 +9,21 @@
     "MachineStates": {
       "MachineState": [
         {
+          "Name": "JohnsState",
+          "Description": "",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "",
+                "ActionName": "",
+                "ToStateName": "Reboot",
+                "Name": "Reboot, JohnsState-to-Reboot-after--"
+              }
+            ]
+          },
+          "ToTransitions": ""
+        },
+        {
           "Name": "Bootup",
           "Description": "Initializes the system and prepares for operation.  ",
           "FromTransitions": {
@@ -62,7 +77,7 @@
           "FromTransitions": {
             "FromTransition": [
               {
-                "Description": "",
+                "Description": "Saves reminder times for future reference and then moves to Idle.",
                 "ActionName": "RemindersSaved",
                 "ToStateName": "Idle",
                 "Name": "SaveReminders-to-Idle-after--RemindersSaved"
@@ -108,7 +123,7 @@
                 "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
               },
               {
-                "Description": "",
+                "Description": "Saves reminder times for future reference and then moves to Idle.",
                 "ActionName": "RemindersSaved",
                 "FromStateName": "SaveReminders",
                 "Name": "SaveReminders-to-Idle-after--RemindersSaved"
@@ -342,6 +357,12 @@
                 "ActionName": "RebootStarted",
                 "ToStateName": "Bootup",
                 "Name": "Reboot-to-Bootup-after--RebootStarted"
+              },
+              {
+                "Description": "",
+                "ActionName": "",
+                "ToStateName": "Reboot",
+                "Name": "Reboot, JohnsState-to-Reboot-after--"
               }
             ]
           },
@@ -352,6 +373,12 @@
                 "ActionName": "MainInputHold",
                 "FromStateName": "WaitForCommands",
                 "Name": "WaitForCommands-to-Reboot-after--MainInputHold"
+              },
+              {
+                "Description": "",
+                "ActionName": "",
+                "FromStateName": "Reboot",
+                "Name": "Reboot, JohnsState-to-Reboot-after--"
               }
             ]
           }

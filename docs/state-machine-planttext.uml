@@ -12,6 +12,7 @@ state GatherReminders
 state SaveReminders
 state DebounceMovement
 state SetExpectedReminder
+state JohnsState
 
 AdvanceCurrentReminder --> Idle : "CurrentReminderAdvanced"
     
@@ -28,6 +29,8 @@ WaitForCommands --> AdvanceCurrentReminder : "MainInputClick"
 WaitForCommands --> Reboot : "MainInputHold"
     
 Reboot --> Bootup : "RebootStarted"
+    
+Reboot --> Reboot : ""
     
 WaitForMoreMovement --> CountMovement : "WheelMoved"
     
@@ -46,5 +49,7 @@ DebounceMovement --> CountMovement : "DebouncePassed"
 DebounceMovement --> Idle : "DebounceFailed"
     
 SetExpectedReminder --> Idle : "ExpectedReminderSet"
+    
+Reboot --> Reboot : ""
     
 @enduml                    

@@ -131,15 +131,19 @@
       <MachineStateId>recFKy8iPNAIUMqgM</MachineStateId>
       <createdTime>2024-03-09T18:13:40Z</createdTime>
       <FromTransitions>recR57pGXNufjmqja</FromTransitions>
+      <FromTransitions>recYXsprfNZxYHsYA</FromTransitions>
       <ToTransitions>recVPWQ0MtXfQevkB</ToTransitions>
+      <ToTransitions>recYXsprfNZxYHsYA</ToTransitions>
       <AutoNumber>22</AutoNumber>
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>20</SortOrder>
       <Name>Reboot</Name>
       <Description>Reinitializes the system, effectively restarting it.  </Description>
       <FromTransitionNames>Reboot-to-Bootup-after--RebootStarted</FromTransitionNames>
+      <FromTransitionNames>Reboot, JohnsState-to-Reboot-after--</FromTransitionNames>
       <ToTransitionNames>WaitForCommands-to-Reboot-after--MainInputHold</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
+      <ToTransitionNames>Reboot, JohnsState-to-Reboot-after--</ToTransitionNames>
+      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
     </MachineState>
     <MachineState>
@@ -211,17 +215,17 @@
     <MachineState>
       <MachineStateId>recnIaoQU4Qpw5BHY</MachineStateId>
       <createdTime>2024-03-07T22:15:09Z</createdTime>
+      <FromTransitions>recU7wbcYsZdYYhRv</FromTransitions>
+      <ToTransitions>recK7FbZxDNytiTG2</ToTransitions>
       <AutoNumber>2</AutoNumber>
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>3</SortOrder>
       <Name>SaveReminders</Name>
       <Description>Captures the current time as a reference point for tracking.  </Description>
+      <FromTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</FromTransitionNames>
+      <ToTransitionNames>GatherReminders-to-SaveReminders-after--RemindersGather</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
-      <FromTransitions>recU7wbcYsZdYYhRv</FromTransitions>
-      <FromTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</FromTransitionNames>
-      <ToTransitions>recK7FbZxDNytiTG2</ToTransitions>
-      <ToTransitionNames>GatherReminders-to-SaveReminders-after--RemindersGather</ToTransitionNames>
     </MachineState>
     <MachineState>
       <MachineStateId>recpmO4bsRvpEFL5i</MachineStateId>
@@ -254,6 +258,15 @@
       <ToTransitionNames>WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClick</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+    </MachineState>
+    <MachineState>
+      <MachineStateId>recxZlgdAJcFO3XCU</MachineStateId>
+      <createdTime>2024-03-12T20:19:55Z</createdTime>
+      <AutoNumber>25</AutoNumber>
+      <CountIOfIncomingTransitions>0</CountIOfIncomingTransitions>
+      <Name>JohnsState</Name>
+      <FromTransitions>recYXsprfNZxYHsYA</FromTransitions>
+      <FromTransitionNames>Reboot, JohnsState-to-Reboot-after--</FromTransitionNames>
     </MachineState>
   </MachineStates>
   <Transitions>
@@ -302,6 +315,7 @@
     <Transition>
       <TransitionId>recBomrKK1bqTybwI</TransitionId>
       <createdTime>2024-03-08T23:23:48Z</createdTime>
+      <ToState>recQbDDd67dey6Es0</ToState>
       <Description>Initializes the recording of the current time slice immediately after system startup</Description>
       <FromState>recHgqCtj0vzHWaVO</FromState>
       <ActionName>BootupComplete</ActionName>
@@ -309,10 +323,9 @@
       <TransitionAfter>15000</TransitionAfter>
       <Name>Bootup-to-GatherReminders-after-15000-BootupComplete</Name>
       <FromStateName>Bootup</FromStateName>
+      <ToStateName>GatherReminders</ToStateName>
       <FromParentOrder>1</FromParentOrder>
       <FromStateSortOrder>1</FromStateSortOrder>
-      <ToState>recQbDDd67dey6Es0</ToState>
-      <ToStateName>GatherReminders</ToStateName>
       <ToStateSortOrder>2</ToStateSortOrder>
     </Transition>
     <Transition>
@@ -332,16 +345,16 @@
     <Transition>
       <TransitionId>recK7FbZxDNytiTG2</TransitionId>
       <createdTime>2024-03-08T23:24:18Z</createdTime>
+      <ToState>recnIaoQU4Qpw5BHY</ToState>
       <Description>Waits for the first medication reminder after the initial setup is completed.</Description>
-      <Name>GatherReminders-to-SaveReminders-after--RemindersGather</Name>
       <FromState>recQbDDd67dey6Es0</FromState>
+      <ActionName>RemindersGather</ActionName>
+      <Name>GatherReminders-to-SaveReminders-after--RemindersGather</Name>
       <FromStateName>GatherReminders</FromStateName>
+      <ToStateName>SaveReminders</ToStateName>
       <FromParentOrder>2</FromParentOrder>
       <FromStateSortOrder>2</FromStateSortOrder>
-      <ToState>recnIaoQU4Qpw5BHY</ToState>
-      <ToStateName>SaveReminders</ToStateName>
       <ToStateSortOrder>3</ToStateSortOrder>
-      <ActionName>RemindersGather</ActionName>
     </Transition>
     <Transition>
       <TransitionId>recLshMf3321k4bmF</TransitionId>
@@ -388,15 +401,16 @@
     <Transition>
       <TransitionId>recU7wbcYsZdYYhRv</TransitionId>
       <createdTime>2024-03-12T17:37:47Z</createdTime>
-      <Name>SaveReminders-to-Idle-after--RemindersSaved</Name>
+      <ToState>rec7RSbV1tXC5mjGV</ToState>
+      <Description>Saves reminder times for future reference and then moves to Idle.</Description>
       <FromState>recnIaoQU4Qpw5BHY</FromState>
+      <ActionName>RemindersSaved</ActionName>
+      <Name>SaveReminders-to-Idle-after--RemindersSaved</Name>
       <FromStateName>SaveReminders</FromStateName>
+      <ToStateName>Idle</ToStateName>
       <FromParentOrder>3</FromParentOrder>
       <FromStateSortOrder>3</FromStateSortOrder>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <ToStateName>Idle</ToStateName>
       <ToStateSortOrder>10</ToStateSortOrder>
-      <ActionName>RemindersSaved</ActionName>
     </Transition>
     <Transition>
       <TransitionId>recVPWQ0MtXfQevkB</TransitionId>
@@ -425,6 +439,20 @@
       <FromParentOrder>10</FromParentOrder>
       <FromStateSortOrder>10</FromStateSortOrder>
       <ToStateSortOrder>17</ToStateSortOrder>
+    </Transition>
+    <Transition>
+      <TransitionId>recYXsprfNZxYHsYA</TransitionId>
+      <createdTime>2024-03-12T20:20:05Z</createdTime>
+      <Name>Reboot, JohnsState-to-Reboot-after--</Name>
+      <FromState>recFKy8iPNAIUMqgM</FromState>
+      <FromState>recxZlgdAJcFO3XCU</FromState>
+      <FromStateName>Reboot</FromStateName>
+      <FromStateName>JohnsState</FromStateName>
+      <FromParentOrder>20</FromParentOrder>
+      <FromStateSortOrder>20</FromStateSortOrder>
+      <ToState>recFKy8iPNAIUMqgM</ToState>
+      <ToStateName>Reboot</ToStateName>
+      <ToStateSortOrder>20</ToStateSortOrder>
     </Transition>
     <Transition>
       <TransitionId>recbNE8LYGEwTPt3Y</TransitionId>
@@ -1205,320 +1233,320 @@
     <PartLink>
       <PartLinkId>rec2dLPcXlB5mpcr0</PartLinkId>
       <createdTime>2024-03-08T20:05:54Z</createdTime>
-      <Name>Pin-06-Bit2SensorPin</Name>
       <ToPart>rechOQKGvB2SZjWlE</ToPart>
       <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
+      <Name>Pin-06-Bit2SensorPin</Name>
       <FromPartPartIndex>2</FromPartPartIndex>
       <FromPartColor>Blue</FromPartColor>
-      <ToPartPurposes>LatchBit2</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>6</ToPartPartIndex>
       <ToPartColor>Blue</ToPartColor>
       <FromPartPurpose>Bit2SensorPin</FromPartPurpose>
       <ToPartName>Pin-06-Bit2SensorPin</ToPartName>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>latchBit2_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <ToPartPartIndex>6</ToPartPartIndex>
       <Constant>6</Constant>
+      <ToPartPurposes>LatchBit2</ToPartPurposes>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <VariableNameCamelCase>latchBit2_LatchingSwitch</VariableNameCamelCase>
       <LowerVairableName>latch_bit2_latching_switch</LowerVairableName>
-      <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>rec85jzX4EnaR4xlH</PartLinkId>
       <createdTime>2024-03-08T20:05:44Z</createdTime>
-      <Name>Pin-04-Bit1SensorPin</Name>
       <ToPart>recr8rl3vZZaRNx4y</ToPart>
       <FromPart>rece0c5L2994wH1yY</FromPart>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
+      <Name>Pin-04-Bit1SensorPin</Name>
       <FromPartPartIndex>1</FromPartPartIndex>
       <FromPartColor>White</FromPartColor>
-      <ToPartPurposes>LatchBit1</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>4</ToPartPartIndex>
       <ToPartColor>White</ToPartColor>
       <FromPartPurpose>Bit1SensorPin</FromPartPurpose>
       <ToPartName>Pin-04-Bit1SensorPin</ToPartName>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>latchBit1_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <ToPartPartIndex>4</ToPartPartIndex>
       <Constant>4</Constant>
+      <ToPartPurposes>LatchBit1</ToPartPurposes>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <VariableNameCamelCase>latchBit1_LatchingSwitch</VariableNameCamelCase>
       <LowerVairableName>latch_bit1_latching_switch</LowerVairableName>
-      <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recHQ0RCmt741AGkn</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-06-Bit2SensorPin</Name>
       <ToPart>recsB65Pg7HSUVpUV</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
+      <Name>Pin-06-Bit2SensorPin</Name>
       <FromPartPartIndex>2</FromPartPartIndex>
       <FromPartColor>Blue</FromPartColor>
-      <ToPartPurposes>SenseBit2</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>6</ToPartPartIndex>
       <ToPartColor>Blue</ToPartColor>
       <FromPartPurpose>Bit2SensorPin</FromPartPurpose>
       <ToPartName>Pin-06-Bit2SensorPin</ToPartName>
-      <InputOutputType>INPUT</InputOutputType>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>senseBit2_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <ToPartPartIndex>6</ToPartPartIndex>
       <Constant>6</Constant>
+      <ToPartPurposes>SenseBit2</ToPartPurposes>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <VariableNameCamelCase>senseBit2_HallEffectSensor</VariableNameCamelCase>
       <LowerVairableName>sense_bit2_hall_effect_sensor</LowerVairableName>
-      <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recJrcbM89fzFkhxh</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-09-WheelLedPin</Name>
       <ToPart>recL0Dsj02FEJ17xs</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
       <FromPart>recYl5uead9cJDGrf</FromPart>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
+      <Name>Pin-09-WheelLedPin</Name>
       <FromPartPartIndex>4</FromPartPartIndex>
       <FromPartColor>Red</FromPartColor>
-      <ToPartPurposes>WheelStatus</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>9</ToPartPartIndex>
       <ToPartColor>Red</ToPartColor>
       <FromPartPurpose>WheelLedPin</FromPartPurpose>
       <ToPartName>Pin-09-WheelLedPin</ToPartName>
-      <InputOutputType>OUTPUT</InputOutputType>
       <ToPartCount>1</ToPartCount>
-      <VariableNameCamelCase>wheelStatus_Led</VariableNameCamelCase>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <ToPartPartIndex>9</ToPartPartIndex>
       <Constant>9</Constant>
+      <ToPartPurposes>WheelStatus</ToPartPurposes>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <VariableNameCamelCase>wheelStatus_Led</VariableNameCamelCase>
       <LowerVairableName>wheel_status_led</LowerVairableName>
-      <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recNmLk1tV6epyIzM</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-05-Bit2LedPin</Name>
       <ToPart>recMeTo9CNzTBXuSs</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
       <FromPart>recG8aZqdhYRke7SX</FromPart>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
+      <Name>Pin-05-Bit2LedPin</Name>
       <FromPartPartIndex>2</FromPartPartIndex>
       <FromPartColor>Red</FromPartColor>
-      <ToPartPurposes>Bit2Status</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>5</ToPartPartIndex>
       <ToPartColor>Blue</ToPartColor>
       <FromPartPurpose>Bit2LedPin</FromPartPurpose>
       <ToPartName>Pin-05-Bit2LedPin</ToPartName>
-      <InputOutputType>OUTPUT</InputOutputType>
       <ToPartCount>1</ToPartCount>
-      <VariableNameCamelCase>bit2Status_Led</VariableNameCamelCase>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <ToPartPartIndex>5</ToPartPartIndex>
       <Constant>5</Constant>
+      <ToPartPurposes>Bit2Status</ToPartPurposes>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <VariableNameCamelCase>bit2Status_Led</VariableNameCamelCase>
       <LowerVairableName>bit2_status_led</LowerVairableName>
-      <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recUm9oFBRBzaKNcp</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-04-Bit1SensorPin</Name>
       <ToPart>recFvu8CmnIIml99g</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <FromPart>rece0c5L2994wH1yY</FromPart>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
+      <Name>Pin-04-Bit1SensorPin</Name>
       <FromPartPartIndex>1</FromPartPartIndex>
       <FromPartColor>White</FromPartColor>
-      <ToPartPurposes>SenseBit1</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>4</ToPartPartIndex>
       <ToPartColor>White</ToPartColor>
       <FromPartPurpose>Bit1SensorPin</FromPartPurpose>
       <ToPartName>Pin-04-Bit1SensorPin</ToPartName>
-      <InputOutputType>INPUT</InputOutputType>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>senseBit1_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <ToPartPartIndex>4</ToPartPartIndex>
       <Constant>4</Constant>
+      <ToPartPurposes>SenseBit1</ToPartPurposes>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <VariableNameCamelCase>senseBit1_HallEffectSensor</VariableNameCamelCase>
       <LowerVairableName>sense_bit1_hall_effect_sensor</LowerVairableName>
-      <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recUzAMBYEgLQPVOc</PartLinkId>
       <createdTime>2024-03-08T19:42:19Z</createdTime>
-      <Name>Pin-02-SpeakerPin</Name>
       <ToPart>recP8DhibnbMfvL2e</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
       <FromPart>recizLSeMD6bAPCFi</FromPart>
-      <ToPartPartType>recx7kz8CP1e4FIRL</ToPartPartType>
+      <Description>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</Description>
+      <Name>Pin-02-SpeakerPin</Name>
       <FromPartPartIndex>1</FromPartPartIndex>
       <FromPartColor>Orange</FromPartColor>
-      <ToPartPurposes>StatusBeeps</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>2</ToPartPartIndex>
       <ToPartColor>Orange</ToPartColor>
       <FromPartPurpose>SpeakerPin</FromPartPurpose>
       <ToPartName>Pin-02-SpeakerPin</ToPartName>
-      <InputOutputType>OUTPUT</InputOutputType>
       <ToPartCount>1</ToPartCount>
-      <VariableNameCamelCase>statusBeeps_Speaker</VariableNameCamelCase>
-      <ToPartPartTypeName>Speaker</ToPartPartTypeName>
+      <ToPartPartIndex>2</ToPartPartIndex>
       <Constant>2</Constant>
+      <ToPartPurposes>StatusBeeps</ToPartPurposes>
+      <ToPartPartType>recx7kz8CP1e4FIRL</ToPartPartType>
+      <ToPartPartTypeName>Speaker</ToPartPartTypeName>
+      <VariableNameCamelCase>statusBeeps_Speaker</VariableNameCamelCase>
       <LowerVairableName>status_beeps_speaker</LowerVairableName>
-      <Description>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recWQCA4hwpJKy7Sq</PartLinkId>
       <createdTime>2024-03-08T20:05:55Z</createdTime>
-      <Name>Pin-08-AmPmSensorPin</Name>
       <ToPart>recE8e1QT6vCqoYnC</ToPart>
       <FromPart>recPTrLTl5VqCpZLU</FromPart>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <Description>Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</Description>
+      <Name>Pin-08-AmPmSensorPin</Name>
       <FromPartPartIndex>3</FromPartPartIndex>
       <FromPartColor>Yellow</FromPartColor>
-      <ToPartPurposes>LatchAmPm</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>8</ToPartPartIndex>
       <ToPartColor>Yellow</ToPartColor>
       <FromPartPurpose>AmPmSensorPin</FromPartPurpose>
       <ToPartName>Pin-08-AmPmSensorPin</ToPartName>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>latchAmPm_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <ToPartPartIndex>8</ToPartPartIndex>
       <Constant>8</Constant>
+      <ToPartPurposes>LatchAmPm</ToPartPurposes>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <VariableNameCamelCase>latchAmPm_LatchingSwitch</VariableNameCamelCase>
       <LowerVairableName>latch_am_pm_latching_switch</LowerVairableName>
-      <Description>Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recWb4vxXgcm65Sv7</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-11-StatusLedPin</Name>
       <ToPart>recTPEebvYy1GG3mj</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
       <FromPart>recRVVqxFTthRg7LB</FromPart>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
+      <Name>Pin-11-StatusLedPin</Name>
       <FromPartPartIndex>5</FromPartPartIndex>
       <FromPartColor>Orange</FromPartColor>
-      <ToPartPurposes>StatusStatus</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>11</ToPartPartIndex>
       <ToPartColor>Orange</ToPartColor>
       <FromPartPurpose>StatusLedPin</FromPartPurpose>
       <ToPartName>Pin-11-StatusLedPin</ToPartName>
-      <InputOutputType>OUTPUT</InputOutputType>
       <ToPartCount>1</ToPartCount>
-      <VariableNameCamelCase>statusStatus_Led</VariableNameCamelCase>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <ToPartPartIndex>11</ToPartPartIndex>
       <Constant>11</Constant>
+      <ToPartPurposes>StatusStatus</ToPartPurposes>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <VariableNameCamelCase>statusStatus_Led</VariableNameCamelCase>
       <LowerVairableName>status_status_led</LowerVairableName>
-      <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recbGiPgVmuXDdbvA</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-07-AmPmLedPin</Name>
       <ToPart>reckxGZX9rTlH5iaM</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
       <FromPart>recqwFeNgXlRZrIH8</FromPart>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
+      <Name>Pin-07-AmPmLedPin</Name>
       <FromPartPartIndex>3</FromPartPartIndex>
       <FromPartColor>Yellow</FromPartColor>
-      <ToPartPurposes>AmPmStatus</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>7</ToPartPartIndex>
       <ToPartColor>Yellow</ToPartColor>
       <FromPartPurpose>AmPmLedPin</FromPartPurpose>
       <ToPartName>Pin-07-AmPmLedPin</ToPartName>
-      <InputOutputType>OUTPUT</InputOutputType>
       <ToPartCount>1</ToPartCount>
-      <VariableNameCamelCase>amPmStatus_Led</VariableNameCamelCase>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <ToPartPartIndex>7</ToPartPartIndex>
       <Constant>7</Constant>
+      <ToPartPurposes>AmPmStatus</ToPartPurposes>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <VariableNameCamelCase>amPmStatus_Led</VariableNameCamelCase>
       <LowerVairableName>am_pm_status_led</LowerVairableName>
-      <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>reccuXwXh9BDjQpnQ</PartLinkId>
       <createdTime>2024-03-08T20:05:55Z</createdTime>
-      <Name>Pin-10-WheelSensorPin</Name>
       <ToPart>recf1NFxHRxf0YVm1</ToPart>
       <FromPart>recImtkPIwt1UPXIq</FromPart>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
+      <Name>Pin-10-WheelSensorPin</Name>
       <FromPartPartIndex>4</FromPartPartIndex>
       <FromPartColor>Red</FromPartColor>
-      <ToPartPurposes>LatchWheel</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>10</ToPartPartIndex>
       <ToPartColor>Red</ToPartColor>
       <FromPartPurpose>WheelSensorPin</FromPartPurpose>
       <ToPartName>Pin-10-WheelSensorPin</ToPartName>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>latchWheel_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <ToPartPartIndex>10</ToPartPartIndex>
       <Constant>10</Constant>
+      <ToPartPurposes>LatchWheel</ToPartPurposes>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <VariableNameCamelCase>latchWheel_LatchingSwitch</VariableNameCamelCase>
       <LowerVairableName>latch_wheel_latching_switch</LowerVairableName>
-      <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>reclbaQ29uzr9NICQ</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-08-AmPmSensorPin</Name>
       <ToPart>recrYWW4Z5NpJCpEr</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <FromPart>recPTrLTl5VqCpZLU</FromPart>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
+      <Name>Pin-08-AmPmSensorPin</Name>
       <FromPartPartIndex>3</FromPartPartIndex>
       <FromPartColor>Yellow</FromPartColor>
-      <ToPartPurposes>SenseAmPm</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>8</ToPartPartIndex>
       <ToPartColor>Yellow</ToPartColor>
       <FromPartPurpose>AmPmSensorPin</FromPartPurpose>
       <ToPartName>Pin-08-AmPmSensorPin</ToPartName>
-      <InputOutputType>INPUT</InputOutputType>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>senseAmPm_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <ToPartPartIndex>8</ToPartPartIndex>
       <Constant>8</Constant>
+      <ToPartPurposes>SenseAmPm</ToPartPurposes>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <VariableNameCamelCase>senseAmPm_HallEffectSensor</VariableNameCamelCase>
       <LowerVairableName>sense_am_pm_hall_effect_sensor</LowerVairableName>
-      <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>reco9mF15Qa0N4ZU8</PartLinkId>
       <createdTime>2024-03-08T19:13:07Z</createdTime>
-      <Name>Pin-03-Bit1LedPin</Name>
       <ToPart>recfhWMkMa7TZ28wR</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
       <FromPart>recMybfPDGzVKFlsi</FromPart>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <Description>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</Description>
+      <Name>Pin-03-Bit1LedPin</Name>
       <FromPartPartIndex>1</FromPartPartIndex>
       <FromPartColor>White</FromPartColor>
-      <ToPartPurposes>Bit1Status</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>3</ToPartPartIndex>
       <ToPartColor>White</ToPartColor>
       <FromPartPurpose>Bit1LedPin</FromPartPurpose>
       <ToPartName>Pin-03-Bit1LedPin</ToPartName>
-      <InputOutputType>OUTPUT</InputOutputType>
       <ToPartCount>1</ToPartCount>
-      <VariableNameCamelCase>bit1Status_Led</VariableNameCamelCase>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <ToPartPartIndex>3</ToPartPartIndex>
       <Constant>3</Constant>
+      <ToPartPurposes>Bit1Status</ToPartPurposes>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <VariableNameCamelCase>bit1Status_Led</VariableNameCamelCase>
       <LowerVairableName>bit1_status_led</LowerVairableName>
-      <Description>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</Description>
     </PartLink>
     <PartLink>
       <PartLinkId>recpPKO7mujptxgs9</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <Name>Pin-10-WheelSensorPin</Name>
       <ToPart>recrw1QfQGdqo6PVd</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <FromPart>recImtkPIwt1UPXIq</FromPart>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <Description>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</Description>
+      <Name>Pin-10-WheelSensorPin</Name>
       <FromPartPartIndex>4</FromPartPartIndex>
       <FromPartColor>Red</FromPartColor>
-      <ToPartPurposes>SenseWheel</ToPartPurposes>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartPartIndex>10</ToPartPartIndex>
       <ToPartColor>Red</ToPartColor>
       <FromPartPurpose>WheelSensorPin</FromPartPurpose>
       <ToPartName>Pin-10-WheelSensorPin</ToPartName>
-      <InputOutputType>INPUT</InputOutputType>
       <ToPartCount>2</ToPartCount>
-      <VariableNameCamelCase>senseWheel_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <ToPartPartIndex>10</ToPartPartIndex>
       <Constant>10</Constant>
+      <ToPartPurposes>SenseWheel</ToPartPurposes>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <VariableNameCamelCase>senseWheel_HallEffectSensor</VariableNameCamelCase>
       <LowerVairableName>sense_wheel_hall_effect_sensor</LowerVairableName>
-      <Description>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</Description>
     </PartLink>
   </PartLinks>
 </Airtable>
