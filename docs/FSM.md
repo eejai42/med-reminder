@@ -12,19 +12,19 @@ Initializes the system and prepares for operation.
 
  - **⬅ Reboot(`RebootStarted`): ⬅** Restarts the system, moving from the reboot phase back to the initial operational state..
 
- - **➡ GatherReminders(`BootupComplete`): ➡** Initializes the recording of the current time slice immediately after system startup.
+ - **➡ GatherReminders(`BootupCompleted`): ➡** Initializes the recording of the current time slice immediately after system startup.
 #### 2. GatherReminders
 Awaits the time for the first medication reminder.  
 
 
- - **⬅ Bootup(`BootupComplete`): ⬅** Initializes the recording of the current time slice immediately after system startup.
+ - **⬅ Bootup(`BootupCompleted`): ⬅** Initializes the recording of the current time slice immediately after system startup.
 
- - **➡ SaveReminders(`RemindersGather`): ➡** Waits for the first medication reminder after the initial setup is completed..
+ - **➡ SaveReminders(`RemindersGathered`): ➡** Waits for the first medication reminder after the initial setup is completed..
 #### 3. SaveReminders
 Captures the current time as a reference point for tracking.  
 
 
- - **⬅ GatherReminders(`RemindersGather`): ⬅** Waits for the first medication reminder after the initial setup is completed..
+ - **⬅ GatherReminders(`RemindersGathered`): ⬅** Waits for the first medication reminder after the initial setup is completed..
 
  - **➡ Idle(`RemindersSaved`): ➡** Saves reminder times for future reference and then moves to Idle..
 #### 4. Idle
@@ -38,7 +38,7 @@ The system is in a standby mode, waiting for interaction or the next event.
  - **⬅ DebounceMovement(`DebounceFailed`): ⬅** Returns to idle on failing to validate the wheel movement (debouncing)..
 
  - **➡ DebounceMovement(`WheelMoved`): ➡** Filters out false wheel movements to prevent erroneous operations..
- - **➡ WaitForCommands(`MainInputClick`): ➡** Enters command waiting state in response to user interaction via main input..
+ - **➡ WaitForCommands(`MainInputClicked`): ➡** Enters command waiting state in response to user interaction via main input..
 #### 5. DebounceMovement
 Filters out false movements to ensure accurate detection.  
 
@@ -74,30 +74,30 @@ Detects confirmed movement, signaling a completed interaction.
 Enters a mode waiting for user commands through the main interface.  
 
 
- - **⬅ Idle(`MainInputClick`): ⬅** Enters command waiting state in response to user interaction via main input..
+ - **⬅ Idle(`MainInputClicked`): ⬅** Enters command waiting state in response to user interaction via main input..
 
- - **➡ SetExpectedReminder(`MainInputDoubleClick`): ➡** Allows the user to set a new medication reminder through double-clicking..
- - **➡ AdvanceCurrentReminder(`MainInputClick`): ➡** Updates the current medication reminder schedule upon user request..
- - **➡ Reboot(`MainInputHold`): ➡** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
+ - **➡ SetExpectedReminder(`MainInputDoubleClicked`): ➡** Allows the user to set a new medication reminder through double-clicking..
+ - **➡ AdvanceCurrentReminder(`MainInputClicked`): ➡** Updates the current medication reminder schedule upon user request..
+ - **➡ Reboot(`MainInputHeld`): ➡** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
 #### 10. AdvanceCurrentReminder
 Advances the medication reminder to the next scheduled time.  
 
 
- - **⬅ WaitForCommands(`MainInputClick`): ⬅** Updates the current medication reminder schedule upon user request..
+ - **⬅ WaitForCommands(`MainInputClicked`): ⬅** Updates the current medication reminder schedule upon user request..
 
  - **➡ Idle(`CurrentReminderAdvanced`): ➡** Resumes idle state after the current medication reminder has been successfully advanced..
 #### 11. SetExpectedReminder
 Enables setting a new time for the next medication reminder.  
 
 
- - **⬅ WaitForCommands(`MainInputDoubleClick`): ⬅** Allows the user to set a new medication reminder through double-clicking..
+ - **⬅ WaitForCommands(`MainInputDoubleClicked`): ⬅** Allows the user to set a new medication reminder through double-clicking..
 
  - **➡ Idle(`ExpectedReminderSet`): ➡** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
 #### 12. Reboot
 Reinitializes the system, effectively restarting it.  
 
 
- - **⬅ WaitForCommands(`MainInputHold`): ⬅** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
+ - **⬅ WaitForCommands(`MainInputHeld`): ⬅** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
 
  - **➡ Bootup(`RebootStarted`): ➡** Restarts the system, moving from the reboot phase back to the initial operational state..
 

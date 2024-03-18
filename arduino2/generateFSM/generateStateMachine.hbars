@@ -36,7 +36,7 @@ public:
     void onCheck() override {
         // Handle transitions
         {{#each FromTransitions.FromTransition}}
-        if (this->{{ActionName}}()) {
+        if (this->has{{ActionName}}()) {
             machine->changeState(std::make_unique<{{ToStateName}}>(machine));
             return;
         }
@@ -44,7 +44,7 @@ public:
     }
 
     {{#each FromTransitions.FromTransition}}
-    virtual bool {{ActionName}}() {
+    virtual bool has{{ActionName}}() {
         // Transition logic for {{ActionName}}
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -62,12 +62,12 @@ class {{Name}} : public Base{{Name}} {
 public:
     {{Name}}({{@../key}}StateMachine* machine) : Base{{Name}}(machine) {}
 
-    {{#if hasCustomMethod}}
-    bool {{customMethodName}}() override {
-        // Custom method implementation
-        return {{customMethodReturnValue}};
+    {{#each FromTransitions.FromTransition}}
+    bool has{{ActionName}}() override {
+        // Transition logic for {{ActionName}}
+        return false; // Placeholder for actual condition that will be provided in derived class
     }
-    {{/if}}
+    {{/each}}
 };
 {{/each}}
 {{/each}}

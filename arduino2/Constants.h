@@ -1,11 +1,10 @@
+#pragma once
 /* Project Constant HEADERS
  ************  NOTE! This file is derived using Handlebars 
  ************  Source model json in /SSoT/ folder
  ************  ssotme json-hbars-transform -i /SSoT/source-data.json -i constants.hbars -o ../constants.cpp
  ************  ssotme json-hbars-transform -i /SSoT/source-data.json -i constantHeaders.hbars -o ../constants.h
 */
-#ifdef CONSTANTS_H
-#define CONSTANTS_H
 
 
 
@@ -39,6 +38,3 @@ extern const unsigned int ms_per_minute; // How many millisconds should a "minut
 extern const unsigned int minutes_per_day; // How many "minutes" should be in a day
 extern const unsigned int ms_between_beeps; // Milliseconds that should be silent between beeps
 
-
-
-#endif

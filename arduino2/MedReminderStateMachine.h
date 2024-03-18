@@ -42,14 +42,14 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->BootupComplete()) {
+        if (this->hasBootupCompleted()) {
             machine->changeState(std::make_unique<GatherReminders>(machine));
             return;
         }
     }
 
-    virtual bool BootupComplete() {
-        // Transition logic for BootupComplete
+    virtual bool hasBootupCompleted() {
+        // Transition logic for BootupCompleted
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -68,14 +68,14 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->RemindersGather()) {
+        if (this->hasRemindersGathered()) {
             machine->changeState(std::make_unique<SaveReminders>(machine));
             return;
         }
     }
 
-    virtual bool RemindersGather() {
-        // Transition logic for RemindersGather
+    virtual bool hasRemindersGathered() {
+        // Transition logic for RemindersGathered
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -94,13 +94,13 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->RemindersSaved()) {
+        if (this->hasRemindersSaved()) {
             machine->changeState(std::make_unique<Idle>(machine));
             return;
         }
     }
 
-    virtual bool RemindersSaved() {
+    virtual bool hasRemindersSaved() {
         // Transition logic for RemindersSaved
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -120,22 +120,22 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->WheelMoved()) {
+        if (this->hasWheelMoved()) {
             machine->changeState(std::make_unique<DebounceMovement>(machine));
             return;
         }
-        if (this->MainInputClick()) {
+        if (this->hasMainInputClicked()) {
             machine->changeState(std::make_unique<WaitForCommands>(machine));
             return;
         }
     }
 
-    virtual bool WheelMoved() {
+    virtual bool hasWheelMoved() {
         // Transition logic for WheelMoved
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    virtual bool MainInputClick() {
-        // Transition logic for MainInputClick
+    virtual bool hasMainInputClicked() {
+        // Transition logic for MainInputClicked
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -154,21 +154,21 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->DebouncePassed()) {
+        if (this->hasDebouncePassed()) {
             machine->changeState(std::make_unique<CountMovement>(machine));
             return;
         }
-        if (this->DebounceFailed()) {
+        if (this->hasDebounceFailed()) {
             machine->changeState(std::make_unique<Idle>(machine));
             return;
         }
     }
 
-    virtual bool DebouncePassed() {
+    virtual bool hasDebouncePassed() {
         // Transition logic for DebouncePassed
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    virtual bool DebounceFailed() {
+    virtual bool hasDebounceFailed() {
         // Transition logic for DebounceFailed
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -188,13 +188,13 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->MovementCounted()) {
+        if (this->hasMovementCounted()) {
             machine->changeState(std::make_unique<WaitForMoreMovement>(machine));
             return;
         }
     }
 
-    virtual bool MovementCounted() {
+    virtual bool hasMovementCounted() {
         // Transition logic for MovementCounted
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -214,21 +214,21 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->WheelMoved()) {
+        if (this->hasWheelMoved()) {
             machine->changeState(std::make_unique<CountMovement>(machine));
             return;
         }
-        if (this->WheelNotMoved()) {
+        if (this->hasWheelNotMoved()) {
             machine->changeState(std::make_unique<MovementDetected>(machine));
             return;
         }
     }
 
-    virtual bool WheelMoved() {
+    virtual bool hasWheelMoved() {
         // Transition logic for WheelMoved
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    virtual bool WheelNotMoved() {
+    virtual bool hasWheelNotMoved() {
         // Transition logic for WheelNotMoved
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -248,13 +248,13 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->MovementHandled()) {
+        if (this->hasMovementHandled()) {
             machine->changeState(std::make_unique<Idle>(machine));
             return;
         }
     }
 
-    virtual bool MovementHandled() {
+    virtual bool hasMovementHandled() {
         // Transition logic for MovementHandled
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -274,30 +274,30 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->MainInputDoubleClick()) {
+        if (this->hasMainInputDoubleClicked()) {
             machine->changeState(std::make_unique<SetExpectedReminder>(machine));
             return;
         }
-        if (this->MainInputClick()) {
+        if (this->hasMainInputClicked()) {
             machine->changeState(std::make_unique<AdvanceCurrentReminder>(machine));
             return;
         }
-        if (this->MainInputHold()) {
+        if (this->hasMainInputHeld()) {
             machine->changeState(std::make_unique<Reboot>(machine));
             return;
         }
     }
 
-    virtual bool MainInputDoubleClick() {
-        // Transition logic for MainInputDoubleClick
+    virtual bool hasMainInputDoubleClicked() {
+        // Transition logic for MainInputDoubleClicked
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    virtual bool MainInputClick() {
-        // Transition logic for MainInputClick
+    virtual bool hasMainInputClicked() {
+        // Transition logic for MainInputClicked
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    virtual bool MainInputHold() {
-        // Transition logic for MainInputHold
+    virtual bool hasMainInputHeld() {
+        // Transition logic for MainInputHeld
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -316,13 +316,13 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->CurrentReminderAdvanced()) {
+        if (this->hasCurrentReminderAdvanced()) {
             machine->changeState(std::make_unique<Idle>(machine));
             return;
         }
     }
 
-    virtual bool CurrentReminderAdvanced() {
+    virtual bool hasCurrentReminderAdvanced() {
         // Transition logic for CurrentReminderAdvanced
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -342,13 +342,13 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->ExpectedReminderSet()) {
+        if (this->hasExpectedReminderSet()) {
             machine->changeState(std::make_unique<Idle>(machine));
             return;
         }
     }
 
-    virtual bool ExpectedReminderSet() {
+    virtual bool hasExpectedReminderSet() {
         // Transition logic for ExpectedReminderSet
         return false; // Placeholder for actual condition that will be provided in derived class
     }
@@ -368,13 +368,13 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->RebootStarted()) {
+        if (this->hasRebootStarted()) {
             machine->changeState(std::make_unique<Bootup>(machine));
             return;
         }
     }
 
-    virtual bool RebootStarted() {
+    virtual bool hasRebootStarted() {
         // Transition logic for RebootStarted
         return false; // Placeholder for actual condition that will be provided in derived class
     }

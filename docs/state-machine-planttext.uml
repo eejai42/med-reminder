@@ -17,15 +17,15 @@ AdvanceCurrentReminder --> Idle : "CurrentReminderAdvanced"
     
 Idle --> DebounceMovement : "WheelMoved"
     
-Idle --> WaitForCommands : "MainInputClick"
+Idle --> WaitForCommands : "MainInputClicked"
     
 MovementDetected --> Idle : "MovementHandled"
     
-WaitForCommands --> SetExpectedReminder : "MainInputDoubleClick"
+WaitForCommands --> SetExpectedReminder : "MainInputDoubleClicked"
     
-WaitForCommands --> AdvanceCurrentReminder : "MainInputClick"
+WaitForCommands --> AdvanceCurrentReminder : "MainInputClicked"
     
-WaitForCommands --> Reboot : "MainInputHold"
+WaitForCommands --> Reboot : "MainInputHeld"
     
 Reboot --> Bootup : "RebootStarted"
     
@@ -35,9 +35,9 @@ WaitForMoreMovement --> MovementDetected : "WheelNotMoved"
     
 CountMovement --> WaitForMoreMovement : "MovementCounted"
     
-Bootup --> GatherReminders : "BootupComplete"
+Bootup --> GatherReminders : "BootupCompleted"
     
-GatherReminders --> SaveReminders : "RemindersGather"
+GatherReminders --> SaveReminders : "GatheringRemindersCompleted"
     
 SaveReminders --> Idle : "RemindersSaved"
     
