@@ -131,19 +131,15 @@
       <MachineStateId>recFKy8iPNAIUMqgM</MachineStateId>
       <createdTime>2024-03-09T18:13:40Z</createdTime>
       <FromTransitions>recR57pGXNufjmqja</FromTransitions>
-      <FromTransitions>recYXsprfNZxYHsYA</FromTransitions>
       <ToTransitions>recVPWQ0MtXfQevkB</ToTransitions>
-      <ToTransitions>recYXsprfNZxYHsYA</ToTransitions>
       <AutoNumber>22</AutoNumber>
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>20</SortOrder>
       <Name>Reboot</Name>
       <Description>Reinitializes the system, effectively restarting it.  </Description>
       <FromTransitionNames>Reboot-to-Bootup-after--RebootStarted</FromTransitionNames>
-      <FromTransitionNames>Reboot, JohnsState-to-Reboot-after--</FromTransitionNames>
       <ToTransitionNames>WaitForCommands-to-Reboot-after--MainInputHold</ToTransitionNames>
-      <ToTransitionNames>Reboot, JohnsState-to-Reboot-after--</ToTransitionNames>
-      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
+      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
     </MachineState>
     <MachineState>
@@ -258,15 +254,6 @@
       <ToTransitionNames>WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClick</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recxZlgdAJcFO3XCU</MachineStateId>
-      <createdTime>2024-03-12T20:19:55Z</createdTime>
-      <AutoNumber>25</AutoNumber>
-      <CountIOfIncomingTransitions>0</CountIOfIncomingTransitions>
-      <Name>JohnsState</Name>
-      <FromTransitions>recYXsprfNZxYHsYA</FromTransitions>
-      <FromTransitionNames>Reboot, JohnsState-to-Reboot-after--</FromTransitionNames>
     </MachineState>
   </MachineStates>
   <Transitions>
@@ -439,20 +426,6 @@
       <FromParentOrder>10</FromParentOrder>
       <FromStateSortOrder>10</FromStateSortOrder>
       <ToStateSortOrder>17</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recYXsprfNZxYHsYA</TransitionId>
-      <createdTime>2024-03-12T20:20:05Z</createdTime>
-      <Name>Reboot, JohnsState-to-Reboot-after--</Name>
-      <FromState>recFKy8iPNAIUMqgM</FromState>
-      <FromState>recxZlgdAJcFO3XCU</FromState>
-      <FromStateName>Reboot</FromStateName>
-      <FromStateName>JohnsState</FromStateName>
-      <FromParentOrder>20</FromParentOrder>
-      <FromStateSortOrder>20</FromStateSortOrder>
-      <ToState>recFKy8iPNAIUMqgM</ToState>
-      <ToStateName>Reboot</ToStateName>
-      <ToStateSortOrder>20</ToStateSortOrder>
     </Transition>
     <Transition>
       <TransitionId>recbNE8LYGEwTPt3Y</TransitionId>

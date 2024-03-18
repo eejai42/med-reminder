@@ -9,21 +9,6 @@
     "MachineStates": {
       "MachineState": [
         {
-          "Name": "JohnsState",
-          "Description": "",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "",
-                "ActionName": "",
-                "ToStateName": "Reboot",
-                "Name": "Reboot, JohnsState-to-Reboot-after--"
-              }
-            ]
-          },
-          "ToTransitions": ""
-        },
-        {
           "Name": "Bootup",
           "Description": "Initializes the system and prepares for operation.  ",
           "FromTransitions": {
@@ -357,12 +342,6 @@
                 "ActionName": "RebootStarted",
                 "ToStateName": "Bootup",
                 "Name": "Reboot-to-Bootup-after--RebootStarted"
-              },
-              {
-                "Description": "",
-                "ActionName": "",
-                "ToStateName": "Reboot",
-                "Name": "Reboot, JohnsState-to-Reboot-after--"
               }
             ]
           },
@@ -373,12 +352,6 @@
                 "ActionName": "MainInputHold",
                 "FromStateName": "WaitForCommands",
                 "Name": "WaitForCommands-to-Reboot-after--MainInputHold"
-              },
-              {
-                "Description": "",
-                "ActionName": "",
-                "FromStateName": "Reboot",
-                "Name": "Reboot, JohnsState-to-Reboot-after--"
               }
             ]
           }
