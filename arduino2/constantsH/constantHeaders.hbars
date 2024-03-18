@@ -1,0 +1,15 @@
+#pragma once
+/* Project Constant HEADERS
+ ************  NOTE! This file is derived using Handlebars 
+ ************  Source model json in /SSoT/ folder
+ ************  ssotme json-hbars-transform -i /SSoT/source-data.json -i constants.hbars -o ../constants.cpp
+ ************  ssotme json-hbars-transform -i /SSoT/source-data.json -i constantHeaders.hbars -o ../constants.h
+*/
+
+{{#with MedReminder.Constants}}
+{{#each Constant}}
+{{#eq CategoryLabel}}{{else}}
+
+// *** {{CategoryLabel}} **{{/eq}}
+{{ArduinoConstantHeader}} // {{Description}}{{/each}}
+{{/with}}

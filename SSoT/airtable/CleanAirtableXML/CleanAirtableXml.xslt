@@ -15,6 +15,19 @@ xmlns:json="http://james.newtonking.com/projects/json">
                     <RelativePath>../../MedReminder.xml</RelativePath>
                     <FileContents>
                         <MedReminder>
+                            <Constants>
+                                <xsl:for-each select="/*/Constants/Constant">
+                                    <xsl:sort select="Category" data-type="text" />
+                                    <xsl:sort select="SortOrder" data-type="number"/>
+                                    <xsl:apply-templates select="." />
+                                </xsl:for-each>
+                            </Constants>
+                            <PartTypes>
+                                <xsl:for-each select="/*/PartTypes/PartType[QuantityNeeded>0]">
+                                    <xsl:sort select="Name" />
+                                    <xsl:apply-templates select="." />
+                                </xsl:for-each>
+                            </PartTypes>
                             <FSMs>
                                 <xsl:apply-templates select="/*/FSMs/FSM" />
                             </FSMs>
@@ -24,12 +37,6 @@ xmlns:json="http://james.newtonking.com/projects/json">
                                     <xsl:apply-templates select="." />
                                 </xsl:for-each>
                             </MachineStates>
-                            <PartTypes>
-                                <xsl:for-each select="/*/PartTypes/PartType[QuantityNeeded>0]">
-                                    <xsl:sort select="Name" />
-                                    <xsl:apply-templates select="." />
-                                </xsl:for-each>
-                            </PartTypes>
                             <!-- <Parts>
                                 <xsl:for-each select="/*/Parts/Part[Quantity > 0]">
                                     <xsl:sort select="Name" />
@@ -113,6 +120,21 @@ xmlns:json="http://james.newtonking.com/projects/json">
         </PartType>
     </xsl:template>
 
+    <xsl:template match="Constant">
+        <Constant json:Array="true">
+            <Name><xsl:value-of select="Name"/></Name>
+            <Description><xsl:value-of select="Description"/></Description>
+            <xsl:for-each select="*[not(self::Name) and not(self::Description) and 
+                                    not(self::SortOrder) and not(self::ConstantId) and
+                                    not(self::createdTime)]">
+                <xsl:element name="{name()}">
+                    <xsl:value-of select="."/>
+                </xsl:element>  
+            </xsl:for-each>
+            
+        </Constant>
+    </xsl:template>
+
     <xsl:template match="Part">
         <Part json:Array="true">
             <Name><xsl:value-of select="Name"/></Name>
@@ -143,23 +165,34 @@ xmlns:json="http://james.newtonking.com/projects/json">
 
     <!-- Template for each PartLink when coming from this Part -->
     <xsl:template match="PartLink" mode="from">
-        <PartLink>
+        <PartLink json:Array="true">
             <Name><xsl:value-of select="Name"/></Name>
             <Description><xsl:value-of select="Description"/></Description>
             <!-- Include FromPart details -->
             <ToPartName><xsl:value-of select="ToPartName"/></ToPartName>
             <!-- Additional FromPartLink details -->
+            <ToPartColor><xsl:value-of select="ToPartColor"/></ToPartColor>
+            <ToPartCount><xsl:value-of select="ToPartCount"/></ToPartCount>
+            <ToPartPurposes><xsl:value-of select="ToPartPurposes"/></ToPartPurposes>
+            <ToPartPartTypeName><xsl:value-of select="ToPartPartTypeName"/></ToPartPartTypeName>
+            <LowerVariableName><xsl:value-of select="LowerVairableName"/></LowerVariableName>
         </PartLink>
     </xsl:template>
 
     <!-- Template for each PartLink when going to this Part -->
     <xsl:template match="PartLink" mode="to">
-        <PartLink>
+        <PartLink  json:Array="true">
             <Name><xsl:value-of select="Name"/></Name>
             <Description><xsl:value-of select="Description"/></Description>
+            <PinNumber><xsl:value-of select="PinNumber"/></PinNumber>
             <!-- Include ToPart details -->
             <FromPartName><xsl:value-of select="FromPartName"/></FromPartName>
             <!-- Additional ToPartLink details -->
+            <FromPartColor><xsl:value-of select="FromPartColor"/></FromPartColor>
+            <FromPartCount><xsl:value-of select="FromPartCount"/></FromPartCount>
+            <FromPartPurposes><xsl:value-of select="FromPartPurposes"/></FromPartPurposes>
+            <FromPartPartTypeName><xsl:value-of select="FromPartPartTypeName"/></FromPartPartTypeName>
+            <LowerVariableName><xsl:value-of select="LowerVairableName"/></LowerVariableName>
         </PartLink>
     </xsl:template>
 

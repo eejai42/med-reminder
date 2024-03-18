@@ -1,0 +1,73 @@
+{{#each @root}}[[FileSetFile/RelativePath[../{{@key}}StateMachine.h]]]
+#pragma once
+#include "BaseState.h"
+#include "BaseStateMachine.h"
+#include <memory>
+#include <iostream>
+{{#each MachineStates.MachineState}}
+#include "{{Name}}.h"
+{{/each}}
+
+// ***************************************************************
+// Generated State Machine Classes for {{@key}} project
+// ***************************************************************
+
+class {{@key}}StateMachine : public BaseStateMachine<BaseState<{{@key}}StateMachine>> {
+public:
+    {{@key}}StateMachine() : BaseStateMachine() {
+        // Initialize the machine with the Bootup state
+        changeState(std::make_unique<{{FSMs.FSM.InitialStateName}}>(this));
+    }
+};
+
+{{#each MachineStates.MachineState}}
+class Base{{Name}} : public BaseState<MedReminderStateMachine> {
+public:
+    Base{{Name}}({{@../key}}StateMachine* machine) : BaseState(machine) {}
+
+    void onEnter() override {
+        std::cout << "{{Description}}" << std::endl;
+    }
+
+    void onExit() override {
+        // Custom exit logic for {{Name}}
+    }
+
+    void onCheck() override {
+        // Handle transitions
+        {{#each FromTransitions.FromTransition}}
+        if (this->{{ActionName}}()) {
+            machine->changeState(std::make_unique<{{ToStateName}}>(machine));
+            return;
+        }
+        {{/each}}
+    }
+
+    {{#each FromTransitions.FromTransition}}
+    virtual bool {{ActionName}}() {
+        // Transition logic for {{ActionName}}
+        return false; // Placeholder for actual condition that will be provided in derived class
+    }
+    {{/each}}
+};
+
+{{/each}}
+
+{{#each MachineStates.MachineState}}
+[[FileSetFile/RelativePath[../{{Name}}.h]]]
+#pragma once
+#include "{{@../key}}StateMachine.h"
+
+class {{Name}} : public Base{{Name}} {
+public:
+    {{Name}}({{@../key}}StateMachine* machine) : Base{{Name}}(machine) {}
+
+    {{#if hasCustomMethod}}
+    bool {{customMethodName}}() override {
+        // Custom method implementation
+        return {{customMethodReturnValue}};
+    }
+    {{/if}}
+};
+{{/each}}
+{{/each}}

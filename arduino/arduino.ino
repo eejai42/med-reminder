@@ -12,7 +12,6 @@ void setup() {
   simulateSetupTime(); // setup time.
 }
 
-
 void loop() {
   //Main loop code to check wheel movement, play beeps, and handle time reminders
 

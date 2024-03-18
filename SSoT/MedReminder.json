@@ -1,5 +1,968 @@
 {
   "MedReminder": {
+    "Constants": {
+      "Constant": [
+        {
+          "Name": "debounceDelay",
+          "Description": "Debounce delay in milliseconds",
+          "CustomDescription": "Debounce delay in milliseconds",
+          "CustomConstantValue": 500,
+          "Type": "unsigned long",
+          "Category": "Debouncing",
+          "VariableNameCamelCase": "debounceDelay",
+          "LowerVariableName": "debounce_delay",
+          "ArduinoConstantCore": "const unsigned long debounce_delay",
+          "ArduinoConstantHeader": "extern const unsigned long debounce_delay;",
+          "ConstantValue": 500,
+          "ArduinoConstant": "const unsigned long debounce_delay = 500; // Debounce delay in milliseconds",
+          "CategoryLabel": "Debouncing constants"
+        },
+        {
+          "Name": "wheelTurnDebounceMs",
+          "Description": "Debounce time for wheel turn detection",
+          "CustomDescription": "Debounce time for wheel turn detection",
+          "CustomConstantValue": 150,
+          "Type": "unsigned long",
+          "Category": "Debouncing",
+          "VariableNameCamelCase": "wheelTurnDebounceMs",
+          "LowerVariableName": "wheel_turn_debounce_ms",
+          "ArduinoConstantCore": "const unsigned long wheel_turn_debounce_ms",
+          "ArduinoConstantHeader": "extern const unsigned long wheel_turn_debounce_ms;",
+          "ConstantValue": 150, 
+          "ArduinoConstant": "const unsigned long wheel_turn_debounce_ms = 150; // Debounce time for wheel turn detection"
+        },
+        {
+          "Name": "quickTurnThresholdMs",
+          "Description": "Threshold for quick turn detection",
+          "CustomDescription": "Threshold for quick turn detection",
+          "CustomConstantValue": 300,
+          "Type": "unsigned long",
+          "Category": "Debouncing",
+          "VariableNameCamelCase": "quickTurnThresholdMs",
+          "LowerVariableName": "quick_turn_threshold_ms",
+          "ArduinoConstantCore": "const unsigned long quick_turn_threshold_ms",
+          "ArduinoConstantHeader": "extern const unsigned long quick_turn_threshold_ms;",
+          "ConstantValue": 300,
+          "ArduinoConstant": "const unsigned long quick_turn_threshold_ms = 300; // Threshold for quick turn detection"
+        },
+        {
+          "Name": "statusBeeps_Speaker",
+          "Description": "The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
+          "ConstantForPartLink": "recUzAMBYEgLQPVOc",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "statusBeeps_Speaker",
+          "VariableNameCamelCase": "statusBeeps_Speaker",
+          "LowerVariableName": "status_beeps_speaker",
+          "ArduinoConstantCore": "const unsigned int status_beeps_speaker",
+          "ArduinoConstantHeader": "extern const unsigned int status_beeps_speaker;",
+          "ConstantForPartLinkDescription": "The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
+          "ConstantForPartLinkPinNumber": 2,
+          "ConstantValue": 2,
+          "ArduinoConstant": "const unsigned int status_beeps_speaker = 2; // The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
+          "CategoryLabel": "Parts constants",
+          "ConstantForPartLinkLowerVairableName": "status_beeps_speaker"
+        },
+        {
+          "Name": "bit1Status_Led",
+          "Description": "The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
+          "ConstantForPartLink": "reco9mF15Qa0N4ZU8",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "bit1Status_Led",
+          "VariableNameCamelCase": "bit1Status_Led",
+          "LowerVariableName": "bit1_status_led",
+          "ArduinoConstantCore": "const unsigned int bit1_status_led",
+          "ArduinoConstantHeader": "extern const unsigned int bit1_status_led;",
+          "ConstantForPartLinkDescription": "The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
+          "ConstantForPartLinkPinNumber": 3,
+          "ConstantValue": 3,
+          "ArduinoConstant": "const unsigned int bit1_status_led = 3; // The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
+          "ConstantForPartLinkLowerVairableName": "bit1_status_led"
+        },
+        {
+          "Name": "senseBit1_HallEffectSensor",
+          "Description": "Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
+          "ConstantForPartLink": "recUm9oFBRBzaKNcp",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "senseBit1_HallEffectSensor",
+          "VariableNameCamelCase": "senseBit1_HallEffectSensor",
+          "LowerVariableName": "sense_bit1_hall_effect_sensor",
+          "ArduinoConstantCore": "const unsigned int sense_bit1_hall_effect_sensor",
+          "ArduinoConstantHeader": "extern const unsigned int sense_bit1_hall_effect_sensor;",
+          "ConstantForPartLinkDescription": "Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
+          "ConstantForPartLinkPinNumber": 4,
+          "ConstantValue": 4,
+          "ArduinoConstant": "const unsigned int sense_bit1_hall_effect_sensor = 4; // Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
+          "ConstantForPartLinkLowerVairableName": "sense_bit1_hall_effect_sensor"
+        },
+        {
+          "Name": "senseBit1_HallEffectSensor",
+          "Description": "The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
+          "ConstantForPartLink": "rec85jzX4EnaR4xlH",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "latchBit1_LatchingSwitch",
+          "VariableNameCamelCase": "latchBit1_LatchingSwitch",
+          "LowerVariableName": "latch_bit1_latching_switch",
+          "ArduinoConstantCore": "const unsigned int latch_bit1_latching_switch",
+          "ArduinoConstantHeader": "extern const unsigned int latch_bit1_latching_switch;",
+          "ConstantForPartLinkDescription": "The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
+          "ConstantForPartLinkPinNumber": 4,
+          "ConstantValue": 4,
+          "ArduinoConstant": "const unsigned int latch_bit1_latching_switch = 4; // The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
+          "ConstantForPartLinkLowerVairableName": "latch_bit1_latching_switch"
+        },
+        {
+          "Name": "bit2Status_Led",
+          "Description": "From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
+          "ConstantForPartLink": "recNmLk1tV6epyIzM",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "bit2Status_Led",
+          "VariableNameCamelCase": "bit2Status_Led",
+          "LowerVariableName": "bit2_status_led",
+          "ArduinoConstantCore": "const unsigned int bit2_status_led",
+          "ArduinoConstantHeader": "extern const unsigned int bit2_status_led;",
+          "ConstantForPartLinkDescription": "From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
+          "ConstantForPartLinkPinNumber": 5,
+          "ConstantValue": 5,
+          "ArduinoConstant": "const unsigned int bit2_status_led = 5; // From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
+          "ConstantForPartLinkLowerVairableName": "bit2_status_led"
+        },
+        {
+          "Name": "senseBit2_HallEffectSensor",
+          "Description": "The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
+          "ConstantForPartLink": "recHQ0RCmt741AGkn",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "senseBit2_HallEffectSensor",
+          "VariableNameCamelCase": "senseBit2_HallEffectSensor",
+          "LowerVariableName": "sense_bit2_hall_effect_sensor",
+          "ArduinoConstantCore": "const unsigned int sense_bit2_hall_effect_sensor",
+          "ArduinoConstantHeader": "extern const unsigned int sense_bit2_hall_effect_sensor;",
+          "ConstantForPartLinkDescription": "The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
+          "ConstantForPartLinkPinNumber": 6,
+          "ConstantValue": 6,
+          "ArduinoConstant": "const unsigned int sense_bit2_hall_effect_sensor = 6; // The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
+          "ConstantForPartLinkLowerVairableName": "sense_bit2_hall_effect_sensor"
+        },
+        {
+          "Name": "senseBit2_HallEffectSensor",
+          "Description": "Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
+          "ConstantForPartLink": "rec2dLPcXlB5mpcr0",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "latchBit2_LatchingSwitch",
+          "VariableNameCamelCase": "latchBit2_LatchingSwitch",
+          "LowerVariableName": "latch_bit2_latching_switch",
+          "ArduinoConstantCore": "const unsigned int latch_bit2_latching_switch",
+          "ArduinoConstantHeader": "extern const unsigned int latch_bit2_latching_switch;",
+          "ConstantForPartLinkDescription": "Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
+          "ConstantForPartLinkPinNumber": 6,
+          "ConstantValue": 6,
+          "ArduinoConstant": "const unsigned int latch_bit2_latching_switch = 6; // Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
+          "ConstantForPartLinkLowerVairableName": "latch_bit2_latching_switch"
+        },
+        {
+          "Name": "amPmStatus_Led",
+          "Description": "A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
+          "ConstantForPartLink": "recbGiPgVmuXDdbvA",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "amPmStatus_Led",
+          "VariableNameCamelCase": "amPmStatus_Led",
+          "LowerVariableName": "am_pm_status_led",
+          "ArduinoConstantCore": "const unsigned int am_pm_status_led",
+          "ArduinoConstantHeader": "extern const unsigned int am_pm_status_led;",
+          "ConstantForPartLinkDescription": "A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
+          "ConstantForPartLinkPinNumber": 7,
+          "ConstantValue": 7,
+          "ArduinoConstant": "const unsigned int am_pm_status_led = 7; // A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
+          "ConstantForPartLinkLowerVairableName": "am_pm_status_led"
+        },
+        {
+          "Name": "senseAmPm_HallEffectSensor",
+          "Description": "The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
+          "ConstantForPartLink": "reclbaQ29uzr9NICQ",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "senseAmPm_HallEffectSensor",
+          "VariableNameCamelCase": "senseAmPm_HallEffectSensor",
+          "LowerVariableName": "sense_am_pm_hall_effect_sensor",
+          "ArduinoConstantCore": "const unsigned int sense_am_pm_hall_effect_sensor",
+          "ArduinoConstantHeader": "extern const unsigned int sense_am_pm_hall_effect_sensor;",
+          "ConstantForPartLinkDescription": "The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
+          "ConstantForPartLinkPinNumber": 8,
+          "ConstantValue": 8,
+          "ArduinoConstant": "const unsigned int sense_am_pm_hall_effect_sensor = 8; // The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
+          "ConstantForPartLinkLowerVairableName": "sense_am_pm_hall_effect_sensor"
+        },
+        {
+          "Name": "senseAmPm_HallEffectSensor",
+          "Description": "Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
+          "ConstantForPartLink": "recWQCA4hwpJKy7Sq",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "latchAmPm_LatchingSwitch",
+          "VariableNameCamelCase": "latchAmPm_LatchingSwitch",
+          "LowerVariableName": "latch_am_pm_latching_switch",
+          "ArduinoConstantCore": "const unsigned int latch_am_pm_latching_switch",
+          "ArduinoConstantHeader": "extern const unsigned int latch_am_pm_latching_switch;",
+          "ConstantForPartLinkDescription": "Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
+          "ConstantForPartLinkPinNumber": 8,
+          "ConstantValue": 8,
+          "ArduinoConstant": "const unsigned int latch_am_pm_latching_switch = 8; // Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
+          "ConstantForPartLinkLowerVairableName": "latch_am_pm_latching_switch"
+        },
+        {
+          "Name": "wheelStatus_Led",
+          "Description": "Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
+          "ConstantForPartLink": "recJrcbM89fzFkhxh",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "wheelStatus_Led",
+          "VariableNameCamelCase": "wheelStatus_Led",
+          "LowerVariableName": "wheel_status_led",
+          "ArduinoConstantCore": "const unsigned int wheel_status_led",
+          "ArduinoConstantHeader": "extern const unsigned int wheel_status_led;",
+          "ConstantForPartLinkDescription": "Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
+          "ConstantForPartLinkPinNumber": 9,
+          "ConstantValue": 9,
+          "ArduinoConstant": "const unsigned int wheel_status_led = 9; // Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
+          "ConstantForPartLinkLowerVairableName": "wheel_status_led"
+        },
+        {
+          "Name": "senseWheel_HallEffectSensor",
+          "Description": "Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
+          "ConstantForPartLink": "recpPKO7mujptxgs9",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "senseWheel_HallEffectSensor",
+          "VariableNameCamelCase": "senseWheel_HallEffectSensor",
+          "LowerVariableName": "sense_wheel_hall_effect_sensor",
+          "ArduinoConstantCore": "const unsigned int sense_wheel_hall_effect_sensor",
+          "ArduinoConstantHeader": "extern const unsigned int sense_wheel_hall_effect_sensor;",
+          "ConstantForPartLinkDescription": "Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
+          "ConstantForPartLinkPinNumber": 10,
+          "ConstantValue": 10,
+          "ArduinoConstant": "const unsigned int sense_wheel_hall_effect_sensor = 10; // Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
+          "ConstantForPartLinkLowerVairableName": "sense_wheel_hall_effect_sensor"
+        },
+        {
+          "Name": "senseWheel_HallEffectSensor",
+          "Description": "The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
+          "ConstantForPartLink": "reccuXwXh9BDjQpnQ",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "latchWheel_LatchingSwitch",
+          "VariableNameCamelCase": "latchWheel_LatchingSwitch",
+          "LowerVariableName": "latch_wheel_latching_switch",
+          "ArduinoConstantCore": "const unsigned int latch_wheel_latching_switch",
+          "ArduinoConstantHeader": "extern const unsigned int latch_wheel_latching_switch;",
+          "ConstantForPartLinkDescription": "The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
+          "ConstantForPartLinkPinNumber": 10,
+          "ConstantValue": 10,
+          "ArduinoConstant": "const unsigned int latch_wheel_latching_switch = 10; // The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
+          "ConstantForPartLinkLowerVairableName": "latch_wheel_latching_switch"
+        },
+        {
+          "Name": "statusStatus_Led",
+          "Description": "Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
+          "ConstantForPartLink": "recWb4vxXgcm65Sv7",
+          "Type": "unsigned int",
+          "Category": "Parts",
+          "ConstantForPartLinkVariableNameCamelCase": "statusStatus_Led",
+          "VariableNameCamelCase": "statusStatus_Led",
+          "LowerVariableName": "status_status_led",
+          "ArduinoConstantCore": "const unsigned int status_status_led",
+          "ArduinoConstantHeader": "extern const unsigned int status_status_led;",
+          "ConstantForPartLinkDescription": "Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
+          "ConstantForPartLinkPinNumber": 11,
+          "ConstantValue": 11,
+          "ArduinoConstant": "const unsigned int status_status_led = 11; // Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
+          "ConstantForPartLinkLowerVairableName": "status_status_led"
+        },
+        {
+          "Name": "initialTimesToBeep",
+          "Description": "The number of times that the sound should occur",
+          "CustomDescription": "The number of times that the sound should occur",
+          "CustomConstantValue": 5,
+          "Type": "unsigned int",
+          "Category": "Reminders",
+          "VariableNameCamelCase": "initialTimesToBeep",
+          "LowerVariableName": "initial_times_to_beep",
+          "ArduinoConstantCore": "const unsigned int initial_times_to_beep",
+          "ArduinoConstantHeader": "extern const unsigned int initial_times_to_beep;",
+          "ConstantValue": 5,
+          "ArduinoConstant": "const unsigned int initial_times_to_beep = 5; // The number of times that the sound should occur",
+          "CategoryLabel": "Reminders constants"
+        },
+        {
+          "Name": "initialReminderDelaySeconds",
+          "Description": "How many seconds should be between the first reminder, and the second",
+          "CustomDescription": "How many seconds should be between the first reminder, and the second",
+          "CustomConstantValue": 2,
+          "Type": "unsigned int",
+          "Category": "Reminders",
+          "VariableNameCamelCase": "initialReminderDelaySeconds",
+          "LowerVariableName": "initial_reminder_delay_seconds",
+          "ArduinoConstantCore": "const unsigned int initial_reminder_delay_seconds",
+          "ArduinoConstantHeader": "extern const unsigned int initial_reminder_delay_seconds;",
+          "ConstantValue": 2,
+          "ArduinoConstant": "const unsigned int initial_reminder_delay_seconds = 2; // How many seconds should be between the first reminder, and the second"
+        },
+        {
+          "Name": "msPerMinute",
+          "Description": "How many millisconds should a \"minute\" be",
+          "CustomDescription": "How many millisconds should a \"minute\" be",
+          "CustomConstantValue": 60000,
+          "DebugConstantValue": 8000,
+          "Type": "unsigned int",
+          "Category": "SpeedOfTime",
+          "VariableNameCamelCase": "msPerMinute",
+          "LowerVariableName": "ms_per_minute",
+          "ArduinoConstantCore": "const unsigned int ms_per_minute",
+          "ArduinoConstantHeader": "extern const unsigned int ms_per_minute;",
+          "ConstantValue": 60000,
+          "ArduinoConstant": "#ifdef DEBUG  //How many millisconds should a \"minute\" be\nconst unsigned int ms_per_minute = 8000;\n#else\nconst unsigned int ms_per_minute = 60000;\n#endif\n",
+          "CategoryLabel": "SpeedOfTime constants"
+        },
+        {
+          "Name": "minutesPerDay",
+          "Description": "How many \"minutes\" should be in a day",
+          "CustomDescription": "How many \"minutes\" should be in a day",
+          "CustomConstantValue": 1440,
+          "DebugConstantValue": 4,
+          "Type": "unsigned int",
+          "Category": "SpeedOfTime",
+          "VariableNameCamelCase": "minutesPerDay",
+          "LowerVariableName": "minutes_per_day",
+          "ArduinoConstantCore": "const unsigned int minutes_per_day",
+          "ArduinoConstantHeader": "extern const unsigned int minutes_per_day;",
+          "ConstantValue": 1440,
+          "ArduinoConstant": "#ifdef DEBUG  //How many \"minutes\" should be in a day\nconst unsigned int minutes_per_day = 4;\n#else\nconst unsigned int minutes_per_day = 1440;\n#endif\n"
+        },
+        {
+          "Name": "msBetweenBeeps",
+          "Description": "Milliseconds that should be silent between beeps",
+          "CustomDescription": "Milliseconds that should be silent between beeps",
+          "CustomConstantValue": 85,
+          "Type": "unsigned int",
+          "Category": "SpeedOfTime",
+          "VariableNameCamelCase": "msBetweenBeeps",
+          "LowerVariableName": "ms_between_beeps",
+          "ArduinoConstantCore": "const unsigned int ms_between_beeps",
+          "ArduinoConstantHeader": "extern const unsigned int ms_between_beeps;",
+          "ConstantValue": 85,
+          "ArduinoConstant": "const unsigned int ms_between_beeps = 85; // Milliseconds that should be silent between beeps"
+        }
+      ]
+    },
+    "PartTypes": {
+      "PartType": [
+        {
+          "Name": "ArduinoR4",
+          "Description": "",
+          "QuantityNeeded": 1,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "ArduinoR4-01-Motherboard",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "N/A",
+                "Quantity": 1,
+                "Purpose": "Motherboard",
+                "PartType": {
+                  "Name": "ArduinoR4",
+                  "QuantityNeeded": 1
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Breadboard",
+          "Description": "",
+          "QuantityNeeded": 1,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Breadboard-01-MainBreadboard",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "N/A",
+                "Quantity": 1,
+                "Purpose": "MainBreadboard",
+                "PartType": {
+                  "Name": "Breadboard",
+                  "QuantityNeeded": 1
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "HallEffectSensor",
+          "Description": "",
+          "QuantityNeeded": 4,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "HallEffectSensor-01-SenseBit1",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "White",
+                "Quantity": 1,
+                "Purpose": "SenseBit1",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-04-Bit1SensorPin-HallEffectSensor",
+                      "Description": "Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
+                      "PinNumber": 4,
+                      "FromPartName": "",
+                      "FromPartColor": "White",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "sense_bit1_hall_effect_sensor"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "HallEffectSensor-02-SenseBit2",
+                "Description": "",
+                "PartIndex": 2,
+                "Color": "Blue",
+                "Quantity": 1,
+                "Purpose": "SenseBit2",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-06-Bit2SensorPin-HallEffectSensor",
+                      "Description": "The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
+                      "PinNumber": 6,
+                      "FromPartName": "",
+                      "FromPartColor": "Blue",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "sense_bit2_hall_effect_sensor"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "HallEffectSensor-03-SenseAmPm",
+                "Description": "",
+                "PartIndex": 3,
+                "Color": "Yellow",
+                "Quantity": 1,
+                "Purpose": "SenseAmPm",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-08-AmPmSensorPin-HallEffectSensor",
+                      "Description": "The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
+                      "PinNumber": 8,
+                      "FromPartName": "",
+                      "FromPartColor": "Yellow",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "sense_am_pm_hall_effect_sensor"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "HallEffectSensor-04-SenseWheel",
+                "Description": "",
+                "PartIndex": 4,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "SenseWheel",
+                "PartType": {
+                  "Name": "HallEffectSensor",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-10-WheelSensorPin-HallEffectSensor",
+                      "Description": "Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
+                      "PinNumber": 10,
+                      "FromPartName": "",
+                      "FromPartColor": "Red",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "sense_wheel_hall_effect_sensor"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Name": "JumperWire",
+          "Description": "",
+          "QuantityNeeded": 10,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Red",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "White",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Yellow",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Orange",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Blue",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "LatchingSwitch",
+          "Description": "",
+          "QuantityNeeded": 4,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "LatchingSwitch-01-LatchBit1",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "White",
+                "Quantity": 1,
+                "Purpose": "LatchBit1",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-04-Bit1SensorPin-LatchingSwitch",
+                      "Description": "The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
+                      "PinNumber": 4,
+                      "FromPartName": "",
+                      "FromPartColor": "White",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "latch_bit1_latching_switch"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "LatchingSwitch-02-LatchBit2",
+                "Description": "",
+                "PartIndex": 2,
+                "Color": "Blue",
+                "Quantity": 1,
+                "Purpose": "LatchBit2",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-06-Bit2SensorPin-LatchingSwitch",
+                      "Description": "Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
+                      "PinNumber": 6,
+                      "FromPartName": "",
+                      "FromPartColor": "Blue",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "latch_bit2_latching_switch"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "LatchingSwitch-03-LatchAmPm",
+                "Description": "",
+                "PartIndex": 3,
+                "Color": "Yellow",
+                "Quantity": 1,
+                "Purpose": "LatchAmPm",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-08-AmPmSensorPin-LatchingSwitch",
+                      "Description": "Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
+                      "PinNumber": 8,
+                      "FromPartName": "",
+                      "FromPartColor": "Yellow",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "latch_am_pm_latching_switch"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "LatchingSwitch-04-LatchWheel",
+                "Description": "",
+                "PartIndex": 4,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "LatchWheel",
+                "PartType": {
+                  "Name": "LatchingSwitch",
+                  "QuantityNeeded": 4
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-10-WheelSensorPin-LatchingSwitch",
+                      "Description": "The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
+                      "PinNumber": 10,
+                      "FromPartName": "",
+                      "FromPartColor": "Red",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "latch_wheel_latching_switch"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Led",
+          "Description": "",
+          "QuantityNeeded": 5,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Led-01-Bit1Status",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "White",
+                "Quantity": 1,
+                "Purpose": "Bit1Status",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-03-Bit1LedPin-Led",
+                      "Description": "The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
+                      "PinNumber": 3,
+                      "FromPartName": "",
+                      "FromPartColor": "White",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "bit1_status_led"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "Led-02-Bit2Status",
+                "Description": "",
+                "PartIndex": 2,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "Bit2Status",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-05-Bit2LedPin-Led",
+                      "Description": "From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
+                      "PinNumber": 5,
+                      "FromPartName": "",
+                      "FromPartColor": "Red",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "bit2_status_led"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "Led-03-AmPmStatus",
+                "Description": "",
+                "PartIndex": 3,
+                "Color": "Yellow",
+                "Quantity": 1,
+                "Purpose": "AmPmStatus",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-07-AmPmLedPin-Led",
+                      "Description": "A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
+                      "PinNumber": 7,
+                      "FromPartName": "",
+                      "FromPartColor": "Yellow",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "am_pm_status_led"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "Led-04-WheelStatus",
+                "Description": "",
+                "PartIndex": 4,
+                "Color": "Red",
+                "Quantity": 1,
+                "Purpose": "WheelStatus",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-09-WheelLedPin-Led",
+                      "Description": "Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
+                      "PinNumber": 9,
+                      "FromPartName": "",
+                      "FromPartColor": "Red",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "wheel_status_led"
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "Led-05-StatusStatus",
+                "Description": "",
+                "PartIndex": 5,
+                "Color": "Orange",
+                "Quantity": 1,
+                "Purpose": "StatusStatus",
+                "PartType": {
+                  "Name": "Led",
+                  "QuantityNeeded": 5
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-11-StatusLedPin-Led",
+                      "Description": "Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
+                      "PinNumber": 11,
+                      "FromPartName": "",
+                      "FromPartColor": "Orange",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "status_status_led"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Name": "NeoDimiumMagnets",
+          "Description": "",
+          "QuantityNeeded": 26,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "NeoDimiumMagnets-0-",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Silver",
+                "Quantity": 26,
+                "Purpose": "",
+                "PartType": {
+                  "Name": "NeoDimiumMagnets",
+                  "QuantityNeeded": 26
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Round7DayPillDispenser",
+          "Description": "",
+          "QuantityNeeded": 2,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Round7DayPillDispenser-0-",
+                "Description": "",
+                "PartIndex": "",
+                "Color": "Blue",
+                "Quantity": 2,
+                "Purpose": "",
+                "PartType": {
+                  "Name": "Round7DayPillDispenser",
+                  "QuantityNeeded": 2
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Speaker",
+          "Description": "",
+          "QuantityNeeded": 1,
+          "Parts": {
+            "Part": [
+              {
+                "Name": "Speaker-01-StatusBeeps",
+                "Description": "",
+                "PartIndex": 1,
+                "Color": "Orange",
+                "Quantity": 1,
+                "Purpose": "StatusBeeps",
+                "PartType": {
+                  "Name": "Speaker",
+                  "QuantityNeeded": 1
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": {
+                  "PartLink": [
+                    {
+                      "Name": "Pin-02-SpeakerPin-Speaker",
+                      "Description": "The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
+                      "PinNumber": 2,
+                      "FromPartName": "",
+                      "FromPartColor": "Orange",
+                      "FromPartCount": "",
+                      "FromPartPurposes": "",
+                      "FromPartPartTypeName": "",
+                      "LowerVariableName": "status_beeps_speaker"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
     "FSMs": {
       "FSM": {
         "Name": "Med Reminder",
@@ -352,497 +1315,6 @@
                 "ActionName": "MainInputHold",
                 "FromStateName": "WaitForCommands",
                 "Name": "WaitForCommands-to-Reboot-after--MainInputHold"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "PartTypes": {
-      "PartType": [
-        {
-          "Name": "ArduinoR4",
-          "Description": "",
-          "QuantityNeeded": 1,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "ArduinoR4-01-Motherboard",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "N/A",
-                "Quantity": 1,
-                "Purpose": "Motherboard",
-                "PartType": {
-                  "Name": "ArduinoR4",
-                  "QuantityNeeded": 1
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
-        },
-        {
-          "Name": "Breadboard",
-          "Description": "",
-          "QuantityNeeded": 1,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "Breadboard-01-MainBreadboard",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "N/A",
-                "Quantity": 1,
-                "Purpose": "MainBreadboard",
-                "PartType": {
-                  "Name": "Breadboard",
-                  "QuantityNeeded": 1
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
-        },
-        {
-          "Name": "HallEffectSensor",
-          "Description": "",
-          "QuantityNeeded": 4,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "HallEffectSensor-01-SenseBit1",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "White",
-                "Quantity": 1,
-                "Purpose": "SenseBit1",
-                "PartType": {
-                  "Name": "HallEffectSensor",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-04-Bit1SensorPin",
-                    "Description": "Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "HallEffectSensor-02-SenseBit2",
-                "Description": "",
-                "PartIndex": 2,
-                "Color": "Blue",
-                "Quantity": 1,
-                "Purpose": "SenseBit2",
-                "PartType": {
-                  "Name": "HallEffectSensor",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-06-Bit2SensorPin",
-                    "Description": "The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "HallEffectSensor-03-SenseAmPm",
-                "Description": "",
-                "PartIndex": 3,
-                "Color": "Yellow",
-                "Quantity": 1,
-                "Purpose": "SenseAmPm",
-                "PartType": {
-                  "Name": "HallEffectSensor",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-08-AmPmSensorPin",
-                    "Description": "The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "HallEffectSensor-04-SenseWheel",
-                "Description": "",
-                "PartIndex": 4,
-                "Color": "Red",
-                "Quantity": 1,
-                "Purpose": "SenseWheel",
-                "PartType": {
-                  "Name": "HallEffectSensor",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-10-WheelSensorPin",
-                    "Description": "Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
-                    "FromPartName": ""
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "Name": "JumperWire",
-          "Description": "",
-          "QuantityNeeded": 10,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "JumperWire-0-ConnectParts",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Red",
-                "Quantity": 2,
-                "Purpose": "ConnectParts",
-                "PartType": {
-                  "Name": "JumperWire",
-                  "QuantityNeeded": 10
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              },
-              {
-                "Name": "JumperWire-0-ConnectParts",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "White",
-                "Quantity": 2,
-                "Purpose": "ConnectParts",
-                "PartType": {
-                  "Name": "JumperWire",
-                  "QuantityNeeded": 10
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              },
-              {
-                "Name": "JumperWire-0-ConnectParts",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Yellow",
-                "Quantity": 2,
-                "Purpose": "ConnectParts",
-                "PartType": {
-                  "Name": "JumperWire",
-                  "QuantityNeeded": 10
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              },
-              {
-                "Name": "JumperWire-0-ConnectParts",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Orange",
-                "Quantity": 2,
-                "Purpose": "ConnectParts",
-                "PartType": {
-                  "Name": "JumperWire",
-                  "QuantityNeeded": 10
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              },
-              {
-                "Name": "JumperWire-0-ConnectParts",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Blue",
-                "Quantity": 2,
-                "Purpose": "ConnectParts",
-                "PartType": {
-                  "Name": "JumperWire",
-                  "QuantityNeeded": 10
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
-        },
-        {
-          "Name": "LatchingSwitch",
-          "Description": "",
-          "QuantityNeeded": 4,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "LatchingSwitch-01-LatchBit1",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "White",
-                "Quantity": 1,
-                "Purpose": "LatchBit1",
-                "PartType": {
-                  "Name": "LatchingSwitch",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-04-Bit1SensorPin",
-                    "Description": "The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "LatchingSwitch-02-LatchBit2",
-                "Description": "",
-                "PartIndex": 2,
-                "Color": "Blue",
-                "Quantity": 1,
-                "Purpose": "LatchBit2",
-                "PartType": {
-                  "Name": "LatchingSwitch",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-06-Bit2SensorPin",
-                    "Description": "Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "LatchingSwitch-03-LatchAmPm",
-                "Description": "",
-                "PartIndex": 3,
-                "Color": "Yellow",
-                "Quantity": 1,
-                "Purpose": "LatchAmPm",
-                "PartType": {
-                  "Name": "LatchingSwitch",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-08-AmPmSensorPin",
-                    "Description": "Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "LatchingSwitch-04-LatchWheel",
-                "Description": "",
-                "PartIndex": 4,
-                "Color": "Red",
-                "Quantity": 1,
-                "Purpose": "LatchWheel",
-                "PartType": {
-                  "Name": "LatchingSwitch",
-                  "QuantityNeeded": 4
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-10-WheelSensorPin",
-                    "Description": "The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
-                    "FromPartName": ""
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "Name": "Led",
-          "Description": "",
-          "QuantityNeeded": 5,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "Led-01-Bit1Status",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "White",
-                "Quantity": 1,
-                "Purpose": "Bit1Status",
-                "PartType": {
-                  "Name": "Led",
-                  "QuantityNeeded": 5
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-03-Bit1LedPin",
-                    "Description": "The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "Led-02-Bit2Status",
-                "Description": "",
-                "PartIndex": 2,
-                "Color": "Red",
-                "Quantity": 1,
-                "Purpose": "Bit2Status",
-                "PartType": {
-                  "Name": "Led",
-                  "QuantityNeeded": 5
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-05-Bit2LedPin",
-                    "Description": "From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "Led-03-AmPmStatus",
-                "Description": "",
-                "PartIndex": 3,
-                "Color": "Yellow",
-                "Quantity": 1,
-                "Purpose": "AmPmStatus",
-                "PartType": {
-                  "Name": "Led",
-                  "QuantityNeeded": 5
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-07-AmPmLedPin",
-                    "Description": "A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "Led-04-WheelStatus",
-                "Description": "",
-                "PartIndex": 4,
-                "Color": "Red",
-                "Quantity": 1,
-                "Purpose": "WheelStatus",
-                "PartType": {
-                  "Name": "Led",
-                  "QuantityNeeded": 5
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-09-WheelLedPin",
-                    "Description": "Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
-                    "FromPartName": ""
-                  }
-                }
-              },
-              {
-                "Name": "Led-05-StatusStatus",
-                "Description": "",
-                "PartIndex": 5,
-                "Color": "Orange",
-                "Quantity": 1,
-                "Purpose": "StatusStatus",
-                "PartType": {
-                  "Name": "Led",
-                  "QuantityNeeded": 5
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-11-StatusLedPin",
-                    "Description": "Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
-                    "FromPartName": ""
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "Name": "NeoDimiumMagnets",
-          "Description": "",
-          "QuantityNeeded": 26,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "NeoDimiumMagnets-0-",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Silver",
-                "Quantity": 26,
-                "Purpose": "",
-                "PartType": {
-                  "Name": "NeoDimiumMagnets",
-                  "QuantityNeeded": 26
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
-        },
-        {
-          "Name": "Round7DayPillDispenser",
-          "Description": "",
-          "QuantityNeeded": 2,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "Round7DayPillDispenser-0-",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Blue",
-                "Quantity": 2,
-                "Purpose": "",
-                "PartType": {
-                  "Name": "Round7DayPillDispenser",
-                  "QuantityNeeded": 2
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
-        },
-        {
-          "Name": "Speaker",
-          "Description": "",
-          "QuantityNeeded": 1,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "Speaker-01-StatusBeeps",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "Orange",
-                "Quantity": 1,
-                "Purpose": "StatusBeeps",
-                "PartType": {
-                  "Name": "Speaker",
-                  "QuantityNeeded": 1
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": {
-                    "Name": "Pin-02-SpeakerPin",
-                    "Description": "The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
-                    "FromPartName": ""
-                  }
-                }
               }
             ]
           }

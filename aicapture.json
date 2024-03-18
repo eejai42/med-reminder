@@ -21,7 +21,7 @@
       "ProjectTranspilerId": "d9898a20-d317-4b49-b225-dcfbe64eba33",
       "Name": "AirtableToXml",
       "RelativePath": "/SSoT/airtable",
-      "CommandLine": "airtable/airtable-to-xml -p baseid=apph60kkVmuGzN9tS -p entities=FSMs,MachineStates,Transitions,PartTypes,Parts,PartLinks"
+      "CommandLine": "airtable/airtable-to-xml -p baseid=apph60kkVmuGzN9tS -p entities=FSMs,MachineStates,Transitions,PartTypes,Parts,PartLinks,Constants"
     },
     {
       "MatchedTranspiler": {
@@ -88,6 +88,39 @@
       "Name": "JsonHbarsTransform",
       "RelativePath": "/docs/CreateFSM",
       "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i FSM.hbars -o ../FSM.md"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "7d24b632-a7a5-45a2-ba2a-99b26e47477d",
+        "Name": "JsonHbarsTransform",
+        "Description": "Json-Hbars-Transform"
+      },
+      "ProjectTranspilerId": "8dec30ef-5eae-4ad3-b150-a61fba4e6e59",
+      "Name": "JsonHbarsTransform",
+      "RelativePath": "/arduino2/constantsCPP",
+      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i constants.hbars -o ../Constants.cpp"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "7d24b632-a7a5-45a2-ba2a-99b26e47477d",
+        "Name": "JsonHbarsTransform",
+        "Description": "Json-Hbars-Transform"
+      },
+      "ProjectTranspilerId": "46a91324-f627-4b28-b09f-10f27c242af3",
+      "Name": "JsonHbarsTransform",
+      "RelativePath": "/arduino2/constantsH",
+      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i constantHeaders.hbars -o ../Constants.h"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "7d24b632-a7a5-45a2-ba2a-99b26e47477d",
+        "Name": "JsonHbarsTransform",
+        "Description": "Json-Hbars-Transform"
+      },
+      "ProjectTranspilerId": "486b4e23-ce60-43ba-a6a6-6edb85814ed0",
+      "Name": "JsonHbarsTransform",
+      "RelativePath": "/arduino2/generateFSM",
+      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i .\\generateStateMachine.hbars"
     }
   ]
 }
