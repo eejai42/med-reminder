@@ -5,7 +5,7 @@
 class Bootup : public BaseBootup {
 public:
     using BaseBootup::BaseBootup;
-    Bootup(MedReminderStateMachine* machine);
+    Bootup(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

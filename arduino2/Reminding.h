@@ -5,7 +5,7 @@
 class Reminding : public BaseReminding {
 public:
     using BaseReminding::BaseReminding;
-    Reminding(MedReminderStateMachine* machine);
+    Reminding(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

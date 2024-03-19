@@ -5,7 +5,7 @@
 class MovementDetected : public BaseMovementDetected {
 public:
     using BaseMovementDetected::BaseMovementDetected;
-    MovementDetected(MedReminderStateMachine* machine);
+    MovementDetected(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

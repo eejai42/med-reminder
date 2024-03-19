@@ -5,7 +5,7 @@
 class SaveReminders : public BaseSaveReminders {
 public:
     using BaseSaveReminders::BaseSaveReminders;
-    SaveReminders(MedReminderStateMachine* machine);
+    SaveReminders(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

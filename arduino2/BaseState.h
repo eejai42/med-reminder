@@ -1,11 +1,11 @@
 #pragma once
+#include "BaseStateMachine.h"
 
-template<typename MachineType>
 class BaseState {
 public:
-    MachineType* machine;
+    BaseStateMachine* machine;
 
-    BaseState(MachineType* machine) : machine(machine) {}
+    BaseState(BaseStateMachine* machine) : machine(machine) {}
     virtual ~BaseState() = default;
 
     virtual void onCheck() = 0; // called in the arduio loop

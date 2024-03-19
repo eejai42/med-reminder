@@ -5,7 +5,7 @@
 class CountMovement : public BaseCountMovement {
 public:
     using BaseCountMovement::BaseCountMovement;
-    CountMovement(MedReminderStateMachine* machine);
+    CountMovement(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

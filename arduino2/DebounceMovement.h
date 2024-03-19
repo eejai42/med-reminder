@@ -5,7 +5,7 @@
 class DebounceMovement : public BaseDebounceMovement {
 public:
     using BaseDebounceMovement::BaseDebounceMovement;
-    DebounceMovement(MedReminderStateMachine* machine);
+    DebounceMovement(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

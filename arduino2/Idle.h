@@ -5,7 +5,7 @@
 class Idle : public BaseIdle {
 public:
     using BaseIdle::BaseIdle;
-    Idle(MedReminderStateMachine* machine);
+    Idle(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

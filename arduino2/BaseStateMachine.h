@@ -1,36 +1,17 @@
 #pragma once
 #include <memory>
-#include "BaseState.h"
 
-template <typename StateType>
-class BaseStateMachine
-{
+// Forward declaration of BaseState to avoid circular dependency.
+class BaseState;
+
+class BaseStateMachine {
 protected:
-    std::unique_ptr<StateType> currentState;
-
+    std::unique_ptr<BaseState> currentState;
 
 public:
-    BaseStateMachine() = default;
-    virtual ~BaseStateMachine() = default;
+    BaseStateMachine();
+    virtual ~BaseStateMachine();
 
-    void changeState(std::unique_ptr<StateType> newState)
-    {
-        if (currentState)
-        {
-            currentState->onExit();
-        }
-        currentState = std::move(newState);
-        if (currentState)
-        {
-            currentState->onEnter();
-        }
-    }
-
-
-    void checkState() {
-        if (currentState)
-        {
-            currentState->onCheck();
-        }
-    }
+    void changeState(std::unique_ptr<BaseState> newState);
+    void checkState();
 };

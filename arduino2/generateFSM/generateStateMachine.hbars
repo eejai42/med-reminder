@@ -10,7 +10,7 @@
 // Declaration for {{@key}}StateMachine and base state classes
 // ***************************************************************
 
-class {{@key}}StateMachine : public BaseStateMachine<BaseState<{{@key}}StateMachine>> {
+class {{@key}}StateMachine : public BaseStateMachine {
 public:
     {{@key}}StateMachine();
 
@@ -19,9 +19,9 @@ public:
 
 {{#each MachineStates.MachineState}}
 
-class Base{{Name}} : public BaseState<MedReminderStateMachine> {
+class Base{{Name}} : public BaseState {
 public:
-    Base{{Name}}(MedReminderStateMachine* machine);
+    Base{{Name}}(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -70,7 +70,7 @@ void Base{{Name}}::onCheck() {
 class {{Name}} : public Base{{Name}} {
 public:
     using Base{{Name}}::Base{{Name}};
-    {{Name}}({{@../key}}StateMachine* machine);
+    {{Name}}(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 
@@ -88,7 +88,7 @@ public:
 #include "{{Name}}.h"
 #include <iostream> // Include if you use std::cout or similar in implementations
 
-{{Name}}::{{Name}}({{@../key}}StateMachine* machine) : Base{{Name}}(machine) {
+{{Name}}::{{Name}}(BaseStateMachine* machine) : Base{{Name}}(machine) {
     // Constructor implementation, if needed
 }
 {{/each}}
@@ -96,13 +96,13 @@ public:
 
 [[FileSetFile/RelativePath[../BaseState.h]]]
 #pragma once
+#include "BaseStateMachine.h"
 
-template<typename MachineType>
 class BaseState {
 public:
-    MachineType* machine;
+    BaseStateMachine* machine;
 
-    BaseState(MachineType* machine) : machine(machine) {}
+    BaseState(BaseStateMachine* machine) : machine(machine) {}
     virtual ~BaseState() = default;
 
     virtual void onCheck() = 0; // called in the arduio loop
@@ -116,18 +116,17 @@ public:
 #include <memory>
 #include "BaseState.h"
 
-template <typename StateType>
 class BaseStateMachine
 {
 protected:
-    std::unique_ptr<StateType> currentState;
+    std::unique_ptr<BaseState> currentState;
 
 
 public:
     BaseStateMachine() = default;
     virtual ~BaseStateMachine() = default;
 
-    void changeState(std::unique_ptr<StateType> newState)
+    void changeState(std::unique_ptr<BaseState> newState)
     {
         if (currentState)
         {

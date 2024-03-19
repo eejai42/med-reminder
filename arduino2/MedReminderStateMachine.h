@@ -8,7 +8,7 @@
 // Declaration for MedReminderStateMachine and base state classes
 // ***************************************************************
 
-class MedReminderStateMachine : public BaseStateMachine<BaseState<MedReminderStateMachine>> {
+class MedReminderStateMachine : public BaseStateMachine {
 public:
     MedReminderStateMachine();
 
@@ -16,9 +16,9 @@ public:
 };
 
 
-class BaseBootup : public BaseState<MedReminderStateMachine> {
+class BaseBootup : public BaseState {
 public:
-    BaseBootup(MedReminderStateMachine* machine);
+    BaseBootup(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -27,9 +27,9 @@ public:
     virtual bool hasBootupCompleted();
 };
 
-class BaseGatherReminders : public BaseState<MedReminderStateMachine> {
+class BaseGatherReminders : public BaseState {
 public:
-    BaseGatherReminders(MedReminderStateMachine* machine);
+    BaseGatherReminders(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -38,9 +38,9 @@ public:
     virtual bool hasGatheringRemindersCompleted();
 };
 
-class BaseSaveReminders : public BaseState<MedReminderStateMachine> {
+class BaseSaveReminders : public BaseState {
 public:
-    BaseSaveReminders(MedReminderStateMachine* machine);
+    BaseSaveReminders(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -49,9 +49,9 @@ public:
     virtual bool hasRemindersSaved();
 };
 
-class BaseReminding : public BaseState<MedReminderStateMachine> {
+class BaseReminding : public BaseState {
 public:
-    BaseReminding(MedReminderStateMachine* machine);
+    BaseReminding(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -60,9 +60,9 @@ public:
     virtual bool hasWheelMoved();
 };
 
-class BaseIdle : public BaseState<MedReminderStateMachine> {
+class BaseIdle : public BaseState {
 public:
-    BaseIdle(MedReminderStateMachine* machine);
+    BaseIdle(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -72,9 +72,9 @@ public:
     virtual bool hasWheelMoved();
 };
 
-class BaseDebounceMovement : public BaseState<MedReminderStateMachine> {
+class BaseDebounceMovement : public BaseState {
 public:
-    BaseDebounceMovement(MedReminderStateMachine* machine);
+    BaseDebounceMovement(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -85,9 +85,9 @@ public:
     virtual bool hasDebouncePassed();
 };
 
-class BaseCountMovement : public BaseState<MedReminderStateMachine> {
+class BaseCountMovement : public BaseState {
 public:
-    BaseCountMovement(MedReminderStateMachine* machine);
+    BaseCountMovement(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -96,9 +96,9 @@ public:
     virtual bool hasMovementCounted();
 };
 
-class BaseWaitForMoreMovement : public BaseState<MedReminderStateMachine> {
+class BaseWaitForMoreMovement : public BaseState {
 public:
-    BaseWaitForMoreMovement(MedReminderStateMachine* machine);
+    BaseWaitForMoreMovement(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
@@ -108,9 +108,9 @@ public:
     virtual bool hasWheelNotMoved();
 };
 
-class BaseMovementDetected : public BaseState<MedReminderStateMachine> {
+class BaseMovementDetected : public BaseState {
 public:
-    BaseMovementDetected(MedReminderStateMachine* machine);
+    BaseMovementDetected(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;

@@ -5,7 +5,7 @@
 class WaitForMoreMovement : public BaseWaitForMoreMovement {
 public:
     using BaseWaitForMoreMovement::BaseWaitForMoreMovement;
-    WaitForMoreMovement(MedReminderStateMachine* machine);
+    WaitForMoreMovement(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

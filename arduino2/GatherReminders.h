@@ -5,7 +5,7 @@
 class GatherReminders : public BaseGatherReminders {
 public:
     using BaseGatherReminders::BaseGatherReminders;
-    GatherReminders(MedReminderStateMachine* machine);
+    GatherReminders(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 
