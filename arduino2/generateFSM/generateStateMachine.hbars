@@ -88,9 +88,16 @@ public:
 #include "{{Name}}.h"
 #include <iostream> // Include if you use std::cout or similar in implementations
 
-{{Name}}::{{Name}}(BaseStateMachine* machine) : Base{{Name}}(machine) {
-    // Constructor implementation, if needed
-}
+    {{Name}}::{{Name}}(BaseStateMachine* machine) : Base{{Name}}(machine) {
+        // Constructor implementation, if needed
+    }
+
+{{#each FromTransitions.FromTransition}}
+    bool {{../Name}}::has{{ActionName}}() {
+        // Determine if {{ActionName}}
+        return false; // assume this has not yet happened
+    }
+    {{/each}}
 {{/each}}
 {{/each}}
 
@@ -114,36 +121,43 @@ public:
 [[FileSetFile/RelativePath[../BaseStateMachine.h]]]
 #pragma once
 #include <memory>
-#include "BaseState.h"
 
-class BaseStateMachine
-{
+// Forward declaration of BaseState to avoid circular dependency.
+class BaseState;
+
+class BaseStateMachine {
 protected:
     std::unique_ptr<BaseState> currentState;
 
-
 public:
-    BaseStateMachine() = default;
-    virtual ~BaseStateMachine() = default;
+    BaseStateMachine();
+    virtual ~BaseStateMachine();
 
-    void changeState(std::unique_ptr<BaseState> newState)
-    {
-        if (currentState)
-        {
-            currentState->onExit();
-        }
-        currentState = std::move(newState);
-        if (currentState)
-        {
-            currentState->onEnter();
-        }
-    }
-
-
-    void checkState() {
-        if (currentState)
-        {
-            currentState->onCheck();
-        }
-    }
+    void changeState(std::unique_ptr<BaseState> newState);
+    void checkState();
 };
+
+[[FileSetFile/RelativePath[../BaseStateMachine.cpp]]]
+#pragma once
+#include "BaseStateMachine.h"
+#include "BaseState.h" // Include here to have the complete type for BaseState.
+
+BaseStateMachine::BaseStateMachine() = default;
+
+BaseStateMachine::~BaseStateMachine() = default;
+
+void BaseStateMachine::changeState(std::unique_ptr<BaseState> newState) {
+    if (currentState) {
+        currentState->onExit();
+    }
+    currentState = std::move(newState);
+    if (currentState) {
+        currentState->onEnter();
+    }
+}
+
+void BaseStateMachine::checkState() {
+    if (currentState) {
+        currentState->onCheck();
+    }
+}
