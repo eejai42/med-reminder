@@ -5,12 +5,12 @@ class Idle : public BaseIdle {
 public:
     Idle(MedReminderStateMachine* machine) : BaseIdle(machine) {}
 
-    bool hasWheelMoved() override {
-        // Transition logic for WheelMoved
+    bool hasReminderTimeReached() override {
+        // Transition logic for ReminderTimeReached
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    bool hasMainInputClicked() override {
-        // Transition logic for MainInputClicked
+    bool hasWheelMoved() override {
+        // Transition logic for WheelMoved
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };

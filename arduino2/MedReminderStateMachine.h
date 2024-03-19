@@ -6,15 +6,12 @@
 #include "Bootup.h"
 #include "GatherReminders.h"
 #include "SaveReminders.h"
+#include "Reminding.h"
 #include "Idle.h"
 #include "DebounceMovement.h"
 #include "CountMovement.h"
 #include "WaitForMoreMovement.h"
 #include "MovementDetected.h"
-#include "WaitForCommands.h"
-#include "AdvanceCurrentReminder.h"
-#include "SetExpectedReminder.h"
-#include "Reboot.h"
 
 // ***************************************************************
 // Generated State Machine Classes for MedReminder project
@@ -24,12 +21,14 @@ class MedReminderStateMachine : public BaseStateMachine<BaseState<MedReminderSta
 public:
     MedReminderStateMachine() : BaseStateMachine() {
         // Initialize the machine with the Bootup state
-        changeState(std::make_unique<Bootup>(this));
-    }
+        changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new Bootup(this)));
+    }    
 };
 
 class BaseBootup : public BaseState<MedReminderStateMachine> {
 public:
+    using BaseState::BaseState; 
+
     BaseBootup(MedReminderStateMachine* machine) : BaseState(machine) {}
 
     void onEnter() override {
@@ -43,7 +42,7 @@ public:
     void onCheck() override {
         // Handle transitions
         if (this->hasBootupCompleted()) {
-            machine->changeState(std::make_unique<GatherReminders>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new GatherReminders(machine)));
             return;
         }
     }
@@ -68,14 +67,14 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->hasRemindersGathered()) {
-            machine->changeState(std::make_unique<SaveReminders>(machine));
+        if (this->hasGatheringRemindersCompleted()) {
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new SaveReminders(machine)));
             return;
         }
     }
 
-    virtual bool hasRemindersGathered() {
-        // Transition logic for RemindersGathered
+    virtual bool hasGatheringRemindersCompleted() {
+        // Transition logic for GatheringRemindersCompleted
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -95,7 +94,7 @@ public:
     void onCheck() override {
         // Handle transitions
         if (this->hasRemindersSaved()) {
-            machine->changeState(std::make_unique<Idle>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new Idle(machine)));
             return;
         }
     }
@@ -106,8 +105,35 @@ public:
     }
 };
 
+class BaseReminding : public BaseState<MedReminderStateMachine> {
+public:
+    BaseReminding(MedReminderStateMachine* machine) : BaseState(machine) {}
+
+    void onEnter() override {
+        std::cout << "" << std::endl;
+    }
+
+    void onExit() override {
+        // Custom exit logic for Reminding
+    }
+
+    void onCheck() override {
+        // Handle transitions
+        if (this->hasWheelMoved()) {
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new DebounceMovement(machine)));
+            return;
+        }
+    }
+
+    virtual bool hasWheelMoved() {
+        // Transition logic for WheelMoved
+        return false; // Placeholder for actual condition that will be provided in derived class
+    }
+};
+
 class BaseIdle : public BaseState<MedReminderStateMachine> {
 public:
+    using BaseState::BaseState; 
     BaseIdle(MedReminderStateMachine* machine) : BaseState(machine) {}
 
     void onEnter() override {
@@ -120,22 +146,22 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->hasWheelMoved()) {
-            machine->changeState(std::make_unique<DebounceMovement>(machine));
+        if (this->hasReminderTimeReached()) {
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new Reminding(machine)));
             return;
         }
-        if (this->hasMainInputClicked()) {
-            machine->changeState(std::make_unique<WaitForCommands>(machine));
+        if (this->hasWheelMoved()) {
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new DebounceMovement(machine)));
             return;
         }
     }
 
-    virtual bool hasWheelMoved() {
-        // Transition logic for WheelMoved
+    virtual bool hasReminderTimeReached() {
+        // Transition logic for ReminderTimeReached
         return false; // Placeholder for actual condition that will be provided in derived class
     }
-    virtual bool hasMainInputClicked() {
-        // Transition logic for MainInputClicked
+    virtual bool hasWheelMoved() {
+        // Transition logic for WheelMoved
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -154,22 +180,30 @@ public:
 
     void onCheck() override {
         // Handle transitions
-        if (this->hasDebouncePassed()) {
-            machine->changeState(std::make_unique<CountMovement>(machine));
+        if (this->hasReminderDebounceFailed()) {
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new Reminding(machine)));
             return;
         }
         if (this->hasDebounceFailed()) {
-            machine->changeState(std::make_unique<Idle>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new Idle(machine)));
+            return;
+        }
+        if (this->hasDebouncePassed()) {
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new CountMovement(machine)));
             return;
         }
     }
 
-    virtual bool hasDebouncePassed() {
-        // Transition logic for DebouncePassed
+    virtual bool hasReminderDebounceFailed() {
+        // Transition logic for ReminderDebounceFailed
         return false; // Placeholder for actual condition that will be provided in derived class
     }
     virtual bool hasDebounceFailed() {
         // Transition logic for DebounceFailed
+        return false; // Placeholder for actual condition that will be provided in derived class
+    }
+    virtual bool hasDebouncePassed() {
+        // Transition logic for DebouncePassed
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };
@@ -189,7 +223,7 @@ public:
     void onCheck() override {
         // Handle transitions
         if (this->hasMovementCounted()) {
-            machine->changeState(std::make_unique<WaitForMoreMovement>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new WaitForMoreMovement(machine)));
             return;
         }
     }
@@ -215,11 +249,11 @@ public:
     void onCheck() override {
         // Handle transitions
         if (this->hasWheelMoved()) {
-            machine->changeState(std::make_unique<CountMovement>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new CountMovement(machine)));
             return;
         }
         if (this->hasWheelNotMoved()) {
-            machine->changeState(std::make_unique<MovementDetected>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new MovementDetected(machine)));
             return;
         }
     }
@@ -256,126 +290,6 @@ public:
 
     virtual bool hasMovementHandled() {
         // Transition logic for MovementHandled
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-};
-
-class BaseWaitForCommands : public BaseState<MedReminderStateMachine> {
-public:
-    BaseWaitForCommands(MedReminderStateMachine* machine) : BaseState(machine) {}
-
-    void onEnter() override {
-        std::cout << "Enters a mode waiting for user commands through the main interface.  " << std::endl;
-    }
-
-    void onExit() override {
-        // Custom exit logic for WaitForCommands
-    }
-
-    void onCheck() override {
-        // Handle transitions
-        if (this->hasMainInputDoubleClicked()) {
-            machine->changeState(std::make_unique<SetExpectedReminder>(machine));
-            return;
-        }
-        if (this->hasMainInputClicked()) {
-            machine->changeState(std::make_unique<AdvanceCurrentReminder>(machine));
-            return;
-        }
-        if (this->hasMainInputHeld()) {
-            machine->changeState(std::make_unique<Reboot>(machine));
-            return;
-        }
-    }
-
-    virtual bool hasMainInputDoubleClicked() {
-        // Transition logic for MainInputDoubleClicked
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-    virtual bool hasMainInputClicked() {
-        // Transition logic for MainInputClicked
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-    virtual bool hasMainInputHeld() {
-        // Transition logic for MainInputHeld
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-};
-
-class BaseAdvanceCurrentReminder : public BaseState<MedReminderStateMachine> {
-public:
-    BaseAdvanceCurrentReminder(MedReminderStateMachine* machine) : BaseState(machine) {}
-
-    void onEnter() override {
-        std::cout << "Advances the medication reminder to the next scheduled time.  " << std::endl;
-    }
-
-    void onExit() override {
-        // Custom exit logic for AdvanceCurrentReminder
-    }
-
-    void onCheck() override {
-        // Handle transitions
-        if (this->hasCurrentReminderAdvanced()) {
-            machine->changeState(std::make_unique<Idle>(machine));
-            return;
-        }
-    }
-
-    virtual bool hasCurrentReminderAdvanced() {
-        // Transition logic for CurrentReminderAdvanced
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-};
-
-class BaseSetExpectedReminder : public BaseState<MedReminderStateMachine> {
-public:
-    BaseSetExpectedReminder(MedReminderStateMachine* machine) : BaseState(machine) {}
-
-    void onEnter() override {
-        std::cout << "Enables setting a new time for the next medication reminder.  " << std::endl;
-    }
-
-    void onExit() override {
-        // Custom exit logic for SetExpectedReminder
-    }
-
-    void onCheck() override {
-        // Handle transitions
-        if (this->hasExpectedReminderSet()) {
-            machine->changeState(std::make_unique<Idle>(machine));
-            return;
-        }
-    }
-
-    virtual bool hasExpectedReminderSet() {
-        // Transition logic for ExpectedReminderSet
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-};
-
-class BaseReboot : public BaseState<MedReminderStateMachine> {
-public:
-    BaseReboot(MedReminderStateMachine* machine) : BaseState(machine) {}
-
-    void onEnter() override {
-        std::cout << "Reinitializes the system, effectively restarting it.  " << std::endl;
-    }
-
-    void onExit() override {
-        // Custom exit logic for Reboot
-    }
-
-    void onCheck() override {
-        // Handle transitions
-        if (this->hasRebootStarted()) {
-            machine->changeState(std::make_unique<Bootup>(machine));
-            return;
-        }
-    }
-
-    virtual bool hasRebootStarted() {
-        // Transition logic for RebootStarted
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };

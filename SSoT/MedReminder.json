@@ -366,47 +366,13 @@
           "Name": "ArduinoR4",
           "Description": "",
           "QuantityNeeded": 1,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "ArduinoR4-01-Motherboard",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "N/A",
-                "Quantity": 1,
-                "Purpose": "Motherboard",
-                "PartType": {
-                  "Name": "ArduinoR4",
-                  "QuantityNeeded": 1
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
+          "Parts": ""
         },
         {
           "Name": "Breadboard",
           "Description": "",
           "QuantityNeeded": 1,
-          "Parts": {
-            "Part": [
-              {
-                "Name": "Breadboard-01-MainBreadboard",
-                "Description": "",
-                "PartIndex": 1,
-                "Color": "N/A",
-                "Quantity": 1,
-                "Purpose": "MainBreadboard",
-                "PartType": {
-                  "Name": "Breadboard",
-                  "QuantityNeeded": 1
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              }
-            ]
-          }
+          "Parts": ""
         },
         {
           "Name": "HallEffectSensor",
@@ -539,7 +505,7 @@
                 "Name": "JumperWire-0-ConnectParts",
                 "Description": "",
                 "PartIndex": "",
-                "Color": "Red",
+                "Color": "Orange",
                 "Quantity": 2,
                 "Purpose": "ConnectParts",
                 "PartType": {
@@ -567,6 +533,20 @@
                 "Name": "JumperWire-0-ConnectParts",
                 "Description": "",
                 "PartIndex": "",
+                "Color": "Blue",
+                "Quantity": 2,
+                "Purpose": "ConnectParts",
+                "PartType": {
+                  "Name": "JumperWire",
+                  "QuantityNeeded": 10
+                },
+                "FromPartLinks": "",
+                "ToPartLinks": ""
+              },
+              {
+                "Name": "JumperWire-0-ConnectParts",
+                "Description": "",
+                "PartIndex": "",
                 "Color": "Yellow",
                 "Quantity": 2,
                 "Purpose": "ConnectParts",
@@ -581,21 +561,7 @@
                 "Name": "JumperWire-0-ConnectParts",
                 "Description": "",
                 "PartIndex": "",
-                "Color": "Orange",
-                "Quantity": 2,
-                "Purpose": "ConnectParts",
-                "PartType": {
-                  "Name": "JumperWire",
-                  "QuantityNeeded": 10
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": ""
-              },
-              {
-                "Name": "JumperWire-0-ConnectParts",
-                "Description": "",
-                "PartIndex": "",
-                "Color": "Blue",
+                "Color": "Red",
                 "Quantity": 2,
                 "Purpose": "ConnectParts",
                 "PartType": {
@@ -1002,9 +968,9 @@
             "FromTransition": [
               {
                 "Description": "Waits for the first medication reminder after the initial setup is completed.",
-                "ActionName": "RemindersGathered",
+                "ActionName": "GatheringRemindersCompleted",
                 "ToStateName": "SaveReminders",
-                "Name": "GatherReminders-to-SaveReminders-after--RemindersGathered"
+                "Name": "GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted"
               }
             ]
           },
@@ -1036,9 +1002,39 @@
             "ToTransition": [
               {
                 "Description": "Waits for the first medication reminder after the initial setup is completed.",
-                "ActionName": "RemindersGathered",
+                "ActionName": "GatheringRemindersCompleted",
                 "FromStateName": "GatherReminders",
-                "Name": "GatherReminders-to-SaveReminders-after--RemindersGathered"
+                "Name": "GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "Reminding",
+          "Description": "",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "Quite the reminder, when the wheel moves",
+                "ActionName": "WheelMoved",
+                "ToStateName": "DebounceMovement",
+                "Name": "Reminding-to-DebounceMovement-after--WheelMoved"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Alert periodically until the wheel next moves",
+                "ActionName": "ReminderTimeReached",
+                "FromStateName": "Idle",
+                "Name": "Idle-to-Reminding-after--ReminderTimeReached"
+              },
+              {
+                "Description": "If the movement while reminding doesn't actually complete, keep reminding.",
+                "ActionName": "ReminderDebounceFailed",
+                "FromStateName": "DebounceMovement",
+                "Name": "DebounceMovement-to-Reminding-after--ReminderDebounceFailed"
               }
             ]
           }
@@ -1049,27 +1045,21 @@
           "FromTransitions": {
             "FromTransition": [
               {
+                "Description": "Alert periodically until the wheel next moves",
+                "ActionName": "ReminderTimeReached",
+                "ToStateName": "Reminding",
+                "Name": "Idle-to-Reminding-after--ReminderTimeReached"
+              },
+              {
                 "Description": "Filters out false wheel movements to prevent erroneous operations.",
                 "ActionName": "WheelMoved",
                 "ToStateName": "DebounceMovement",
                 "Name": "Idle-to-DebounceMovement-after--WheelMoved"
-              },
-              {
-                "Description": "Enters command waiting state in response to user interaction via main input.",
-                "ActionName": "MainInputClicked",
-                "ToStateName": "WaitForCommands",
-                "Name": "Idle-to-WaitForCommands-after--MainInputClicked"
               }
             ]
           },
           "ToTransitions": {
             "ToTransition": [
-              {
-                "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
-                "ActionName": "ExpectedReminderSet",
-                "FromStateName": "SetExpectedReminder",
-                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
-              },
               {
                 "Description": "Saves reminder times for future reference and then moves to Idle.",
                 "ActionName": "RemindersSaved",
@@ -1077,10 +1067,10 @@
                 "Name": "SaveReminders-to-Idle-after--RemindersSaved"
               },
               {
-                "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
-                "ActionName": "CurrentReminderAdvanced",
-                "FromStateName": "AdvanceCurrentReminder",
-                "Name": "AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced"
+                "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
+                "ActionName": "DebounceFailed",
+                "FromStateName": "DebounceMovement",
+                "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
               },
               {
                 "Description": "Completes processing of movement and awaits further user interaction.",
@@ -1089,10 +1079,16 @@
                 "Name": "MovementDetected-to-Idle-after--MovementHandled"
               },
               {
-                "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
-                "ActionName": "DebounceFailed",
-                "FromStateName": "DebounceMovement",
-                "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
+                "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
+                "ActionName": "CurrentReminderAdvanced",
+                "FromStateName": "AdvanceCurrentReminder",
+                "Name": "AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced"
+              },
+              {
+                "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
+                "ActionName": "ExpectedReminderSet",
+                "FromStateName": "SetExpectedReminder",
+                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
               }
             ]
           }
@@ -1103,21 +1099,33 @@
           "FromTransitions": {
             "FromTransition": [
               {
-                "Description": "Counts validated wheel movement towards medication adherence tracking.",
-                "ActionName": "DebouncePassed",
-                "ToStateName": "CountMovement",
-                "Name": "DebounceMovement-to-CountMovement-after--DebouncePassed"
+                "Description": "If the movement while reminding doesn't actually complete, keep reminding.",
+                "ActionName": "ReminderDebounceFailed",
+                "ToStateName": "Reminding",
+                "Name": "DebounceMovement-to-Reminding-after--ReminderDebounceFailed"
               },
               {
                 "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
                 "ActionName": "DebounceFailed",
                 "ToStateName": "Idle",
                 "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
+              },
+              {
+                "Description": "Counts validated wheel movement towards medication adherence tracking.",
+                "ActionName": "DebouncePassed",
+                "ToStateName": "CountMovement",
+                "Name": "DebounceMovement-to-CountMovement-after--DebouncePassed"
               }
             ]
           },
           "ToTransitions": {
             "ToTransition": [
+              {
+                "Description": "Quite the reminder, when the wheel moves",
+                "ActionName": "WheelMoved",
+                "FromStateName": "Reminding",
+                "Name": "Reminding-to-DebounceMovement-after--WheelMoved"
+              },
               {
                 "Description": "Filters out false wheel movements to prevent erroneous operations.",
                 "ActionName": "WheelMoved",
@@ -1207,114 +1215,6 @@
                 "ActionName": "WheelNotMoved",
                 "FromStateName": "WaitForMoreMovement",
                 "Name": "WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "WaitForCommands",
-          "Description": "Enters a mode waiting for user commands through the main interface.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Allows the user to set a new medication reminder through double-clicking.",
-                "ActionName": "MainInputDoubleClicked",
-                "ToStateName": "SetExpectedReminder",
-                "Name": "WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClicked"
-              },
-              {
-                "Description": "Updates the current medication reminder schedule upon user request.",
-                "ActionName": "MainInputClicked",
-                "ToStateName": "AdvanceCurrentReminder",
-                "Name": "WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClicked"
-              },
-              {
-                "Description": "Triggers a system reboot when the main input is held down, allowing for maintenance or updates.",
-                "ActionName": "MainInputHeld",
-                "ToStateName": "Reboot",
-                "Name": "WaitForCommands-to-Reboot-after--MainInputHeld"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Enters command waiting state in response to user interaction via main input.",
-                "ActionName": "MainInputClicked",
-                "FromStateName": "Idle",
-                "Name": "Idle-to-WaitForCommands-after--MainInputClicked"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "AdvanceCurrentReminder",
-          "Description": "Advances the medication reminder to the next scheduled time.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
-                "ActionName": "CurrentReminderAdvanced",
-                "ToStateName": "Idle",
-                "Name": "AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Updates the current medication reminder schedule upon user request.",
-                "ActionName": "MainInputClicked",
-                "FromStateName": "WaitForCommands",
-                "Name": "WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClicked"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "SetExpectedReminder",
-          "Description": "Enables setting a new time for the next medication reminder.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
-                "ActionName": "ExpectedReminderSet",
-                "ToStateName": "Idle",
-                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Allows the user to set a new medication reminder through double-clicking.",
-                "ActionName": "MainInputDoubleClicked",
-                "FromStateName": "WaitForCommands",
-                "Name": "WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClicked"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "Reboot",
-          "Description": "Reinitializes the system, effectively restarting it.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Restarts the system, moving from the reboot phase back to the initial operational state.",
-                "ActionName": "RebootStarted",
-                "ToStateName": "Bootup",
-                "Name": "Reboot-to-Bootup-after--RebootStarted"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Triggers a system reboot when the main input is held down, allowing for maintenance or updates.",
-                "ActionName": "MainInputHeld",
-                "FromStateName": "WaitForCommands",
-                "Name": "WaitForCommands-to-Reboot-after--MainInputHeld"
               }
             ]
           }

@@ -5,8 +5,8 @@ class GatherReminders : public BaseGatherReminders {
 public:
     GatherReminders(MedReminderStateMachine* machine) : BaseGatherReminders(machine) {}
 
-    bool hasRemindersGathered() override {
-        // Transition logic for RemindersGathered
+    bool hasGatheringRemindersCompleted() override {
+        // Transition logic for GatheringRemindersCompleted
         return false; // Placeholder for actual condition that will be provided in derived class
     }
 };

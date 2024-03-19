@@ -19,35 +19,45 @@ Awaits the time for the first medication reminder.
 
  - **⬅ Bootup(`BootupCompleted`): ⬅** Initializes the recording of the current time slice immediately after system startup.
 
- - **➡ SaveReminders(`RemindersGathered`): ➡** Waits for the first medication reminder after the initial setup is completed..
+ - **➡ SaveReminders(`GatheringRemindersCompleted`): ➡** Waits for the first medication reminder after the initial setup is completed..
 #### 3. SaveReminders
 Captures the current time as a reference point for tracking.  
 
 
- - **⬅ GatherReminders(`RemindersGathered`): ⬅** Waits for the first medication reminder after the initial setup is completed..
+ - **⬅ GatherReminders(`GatheringRemindersCompleted`): ⬅** Waits for the first medication reminder after the initial setup is completed..
 
  - **➡ Idle(`RemindersSaved`): ➡** Saves reminder times for future reference and then moves to Idle..
-#### 4. Idle
+#### 4. Reminding
+
+
+
+ - **⬅ Idle(`ReminderTimeReached`): ⬅** Alert periodically until the wheel next moves.
+ - **⬅ DebounceMovement(`ReminderDebounceFailed`): ⬅** If the movement while reminding doesn't actually complete, keep reminding..
+
+ - **➡ DebounceMovement(`WheelMoved`): ➡** Quite the reminder, when the wheel moves.
+#### 5. Idle
 The system is in a standby mode, waiting for interaction or the next event.  
 
 
- - **⬅ SetExpectedReminder(`ExpectedReminderSet`): ⬅** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
  - **⬅ SaveReminders(`RemindersSaved`): ⬅** Saves reminder times for future reference and then moves to Idle..
- - **⬅ AdvanceCurrentReminder(`CurrentReminderAdvanced`): ⬅** Resumes idle state after the current medication reminder has been successfully advanced..
- - **⬅ MovementDetected(`MovementHandled`): ⬅** Completes processing of movement and awaits further user interaction..
  - **⬅ DebounceMovement(`DebounceFailed`): ⬅** Returns to idle on failing to validate the wheel movement (debouncing)..
+ - **⬅ MovementDetected(`MovementHandled`): ⬅** Completes processing of movement and awaits further user interaction..
+ - **⬅ AdvanceCurrentReminder(`CurrentReminderAdvanced`): ⬅** Resumes idle state after the current medication reminder has been successfully advanced..
+ - **⬅ SetExpectedReminder(`ExpectedReminderSet`): ⬅** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
 
+ - **➡ Reminding(`ReminderTimeReached`): ➡** Alert periodically until the wheel next moves.
  - **➡ DebounceMovement(`WheelMoved`): ➡** Filters out false wheel movements to prevent erroneous operations..
- - **➡ WaitForCommands(`MainInputClicked`): ➡** Enters command waiting state in response to user interaction via main input..
-#### 5. DebounceMovement
+#### 6. DebounceMovement
 Filters out false movements to ensure accurate detection.  
 
 
+ - **⬅ Reminding(`WheelMoved`): ⬅** Quite the reminder, when the wheel moves.
  - **⬅ Idle(`WheelMoved`): ⬅** Filters out false wheel movements to prevent erroneous operations..
 
- - **➡ CountMovement(`DebouncePassed`): ➡** Counts validated wheel movement towards medication adherence tracking..
+ - **➡ Reminding(`ReminderDebounceFailed`): ➡** If the movement while reminding doesn't actually complete, keep reminding..
  - **➡ Idle(`DebounceFailed`): ➡** Returns to idle on failing to validate the wheel movement (debouncing)..
-#### 6. CountMovement
+ - **➡ CountMovement(`DebouncePassed`): ➡** Counts validated wheel movement towards medication adherence tracking..
+#### 7. CountMovement
 Counts valid movement events for processing.  
 
 
@@ -55,7 +65,7 @@ Counts valid movement events for processing.
  - **⬅ WaitForMoreMovement(`WheelMoved`): ⬅** Increments movement count upon further detected wheel movements..
 
  - **➡ WaitForMoreMovement(`MovementCounted`): ➡** Monitors for additional wheel movement to confirm continuous user interaction..
-#### 7. WaitForMoreMovement
+#### 8. WaitForMoreMovement
 Awaits additional movement to confirm or complete an action.  
 
 
@@ -63,43 +73,13 @@ Awaits additional movement to confirm or complete an action.
 
  - **➡ CountMovement(`WheelMoved`): ➡** Increments movement count upon further detected wheel movements..
  - **➡ MovementDetected(`WheelNotMoved`): ➡** Finalizes the movement count if no additional wheel activity is detected..
-#### 8. MovementDetected
+#### 9. MovementDetected
 Detects confirmed movement, signaling a completed interaction.  
 
 
  - **⬅ WaitForMoreMovement(`WheelNotMoved`): ⬅** Finalizes the movement count if no additional wheel activity is detected..
 
  - **➡ Idle(`MovementHandled`): ➡** Completes processing of movement and awaits further user interaction..
-#### 9. WaitForCommands
-Enters a mode waiting for user commands through the main interface.  
-
-
- - **⬅ Idle(`MainInputClicked`): ⬅** Enters command waiting state in response to user interaction via main input..
-
- - **➡ SetExpectedReminder(`MainInputDoubleClicked`): ➡** Allows the user to set a new medication reminder through double-clicking..
- - **➡ AdvanceCurrentReminder(`MainInputClicked`): ➡** Updates the current medication reminder schedule upon user request..
- - **➡ Reboot(`MainInputHeld`): ➡** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
-#### 10. AdvanceCurrentReminder
-Advances the medication reminder to the next scheduled time.  
-
-
- - **⬅ WaitForCommands(`MainInputClicked`): ⬅** Updates the current medication reminder schedule upon user request..
-
- - **➡ Idle(`CurrentReminderAdvanced`): ➡** Resumes idle state after the current medication reminder has been successfully advanced..
-#### 11. SetExpectedReminder
-Enables setting a new time for the next medication reminder.  
-
-
- - **⬅ WaitForCommands(`MainInputDoubleClicked`): ⬅** Allows the user to set a new medication reminder through double-clicking..
-
- - **➡ Idle(`ExpectedReminderSet`): ➡** Transitions to idle after the user has set and confirmed the expected time for the next reminder..
-#### 12. Reboot
-Reinitializes the system, effectively restarting it.  
-
-
- - **⬅ WaitForCommands(`MainInputHeld`): ⬅** Triggers a system reboot when the main input is held down, allowing for maintenance or updates..
-
- - **➡ Bootup(`RebootStarted`): ➡** Restarts the system, moving from the reboot phase back to the initial operational state..
 
 
 ### Initial State

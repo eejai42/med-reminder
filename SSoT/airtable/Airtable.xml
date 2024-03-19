@@ -52,135 +52,13 @@
       <AllStates>recAOq6bdEWYQTrlZ</AllStates>
       <AllStates>recECxeEkqmx516aC</AllStates>
       <AllStates>recFKy8iPNAIUMqgM</AllStates>
+      <AllStates>rec10HUiMuU9ICJeg</AllStates>
       <InitialState>recHgqCtj0vzHWaVO</InitialState>
       <Name>Med Reminder</Name>
       <InitialStateName>Bootup</InitialStateName>
     </FSM>
   </FSMs>
   <MachineStates>
-    <MachineState>
-      <MachineStateId>rec61asoqXuI2yXK3</MachineStateId>
-      <createdTime>2024-03-07T22:15:11Z</createdTime>
-      <FromTransitions>recbNE8LYGEwTPt3Y</FromTransitions>
-      <ToTransitions>recDMEa8NE8Big3c3</ToTransitions>
-      <AutoNumber>8</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>18</SortOrder>
-      <Name>AdvanceCurrentReminder</Name>
-      <Description>Advances the medication reminder to the next scheduled time.  </Description>
-      <FromTransitionNames>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</FromTransitionNames>
-      <ToTransitionNames>WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClicked</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>rec7RSbV1tXC5mjGV</MachineStateId>
-      <createdTime>2024-03-07T22:15:10Z</createdTime>
-      <FromTransitions>recAW4QtPWA3GC89z</FromTransitions>
-      <FromTransitions>recWoSt7wwDKBTjUC</FromTransitions>
-      <ToTransitions>recLshMf3321k4bmF</ToTransitions>
-      <ToTransitions>recvSPAPThYmT7jgP</ToTransitions>
-      <ToTransitions>recpmkvEEysUur5V9</ToTransitions>
-      <ToTransitions>recbNE8LYGEwTPt3Y</ToTransitions>
-      <ToTransitions>recU7wbcYsZdYYhRv</ToTransitions>
-      <AutoNumber>7</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>10</SortOrder>
-      <Name>Idle</Name>
-      <Description>The system is in a standby mode, waiting for interaction or the next event.  </Description>
-      <FromTransitionNames>Idle-to-DebounceMovement-after--WheelMoved</FromTransitionNames>
-      <FromTransitionNames>Idle-to-WaitForCommands-after--MainInputClicked</FromTransitionNames>
-      <ToTransitionNames>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</ToTransitionNames>
-      <ToTransitionNames>DebounceMovement-to-Idle-after--DebounceFailed</ToTransitionNames>
-      <ToTransitionNames>MovementDetected-to-Idle-after--MovementHandled</ToTransitionNames>
-      <ToTransitionNames>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</ToTransitionNames>
-      <ToTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</ToTransitionNames>
-      <CountIOfIncomingTransitions>5</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recAOq6bdEWYQTrlZ</MachineStateId>
-      <createdTime>2024-03-08T23:26:06Z</createdTime>
-      <FromTransitions>recpmkvEEysUur5V9</FromTransitions>
-      <ToTransitions>recxGjHE6jhg6HDap</ToTransitions>
-      <AutoNumber>20</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>14</SortOrder>
-      <Name>MovementDetected</Name>
-      <Description>Detects confirmed movement, signaling a completed interaction.  </Description>
-      <FromTransitionNames>MovementDetected-to-Idle-after--MovementHandled</FromTransitionNames>
-      <ToTransitionNames>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recECxeEkqmx516aC</MachineStateId>
-      <createdTime>2024-03-09T17:55:44Z</createdTime>
-      <FromTransitions>recDMEa8NE8Big3c3</FromTransitions>
-      <FromTransitions>rec3Qe2ZNML7Ekvsa</FromTransitions>
-      <FromTransitions>recVPWQ0MtXfQevkB</FromTransitions>
-      <ToTransitions>recWoSt7wwDKBTjUC</ToTransitions>
-      <AutoNumber>21</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>17</SortOrder>
-      <Name>WaitForCommands</Name>
-      <Description>Enters a mode waiting for user commands through the main interface.  </Description>
-      <FromTransitionNames>WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClicked</FromTransitionNames>
-      <FromTransitionNames>WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClicked</FromTransitionNames>
-      <FromTransitionNames>WaitForCommands-to-Reboot-after--MainInputHeld</FromTransitionNames>
-      <ToTransitionNames>Idle-to-WaitForCommands-after--MainInputClicked</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recFKy8iPNAIUMqgM</MachineStateId>
-      <createdTime>2024-03-09T18:13:40Z</createdTime>
-      <FromTransitions>recR57pGXNufjmqja</FromTransitions>
-      <ToTransitions>recVPWQ0MtXfQevkB</ToTransitions>
-      <AutoNumber>22</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>20</SortOrder>
-      <Name>Reboot</Name>
-      <Description>Reinitializes the system, effectively restarting it.  </Description>
-      <FromTransitionNames>Reboot-to-Bootup-after--RebootStarted</FromTransitionNames>
-      <ToTransitionNames>WaitForCommands-to-Reboot-after--MainInputHeld</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recH4OfQCArbJvg1A</MachineStateId>
-      <createdTime>2024-03-08T23:25:41Z</createdTime>
-      <FromTransitions>recoLj6udzO7nU6ad</FromTransitions>
-      <FromTransitions>recxGjHE6jhg6HDap</FromTransitions>
-      <ToTransitions>recNDJD7P8NqeMSNh</ToTransitions>
-      <AutoNumber>19</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>13</SortOrder>
-      <Name>WaitForMoreMovement</Name>
-      <Description>Awaits additional movement to confirm or complete an action.  </Description>
-      <FromTransitionNames>WaitForMoreMovement-to-CountMovement-after--WheelMoved</FromTransitionNames>
-      <FromTransitionNames>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</FromTransitionNames>
-      <ToTransitionNames>CountMovement-to-WaitForMoreMovement-after--MovementCounted</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recHbG1BLdYrR3W19</MachineStateId>
-      <createdTime>2024-03-08T23:25:34Z</createdTime>
-      <FromTransitions>recNDJD7P8NqeMSNh</FromTransitions>
-      <ToTransitions>rec1yyjQAFfwgkomD</ToTransitions>
-      <ToTransitions>recoLj6udzO7nU6ad</ToTransitions>
-      <AutoNumber>18</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>12</SortOrder>
-      <Name>CountMovement</Name>
-      <Description>Counts valid movement events for processing.  </Description>
-      <FromTransitionNames>CountMovement-to-WaitForMoreMovement-after--MovementCounted</FromTransitionNames>
-      <ToTransitionNames>DebounceMovement-to-CountMovement-after--DebouncePassed</ToTransitionNames>
-      <ToTransitionNames>WaitForMoreMovement-to-CountMovement-after--WheelMoved</ToTransitionNames>
-      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
     <MachineState>
       <MachineStateId>recHgqCtj0vzHWaVO</MachineStateId>
       <createdTime>2024-03-07T22:12:21Z</createdTime>
@@ -191,6 +69,7 @@
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>1</SortOrder>
       <Name>Bootup</Name>
+      <IsImplemented>true</IsImplemented>
       <Description>Initializes the system and prepares for operation.  </Description>
       <DefaultTimeout>15000</DefaultTimeout>
       <FromTransitionNames>Bootup-to-GatherReminders-after-15000-BootupCompleted</FromTransitionNames>
@@ -207,6 +86,7 @@
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>2</SortOrder>
       <Name>GatherReminders</Name>
+      <IsImplemented>true</IsImplemented>
       <Description>Awaits the time for the first medication reminder.  </Description>
       <FromTransitionNames>GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted</FromTransitionNames>
       <ToTransitionNames>Bootup-to-GatherReminders-after-15000-BootupCompleted</ToTransitionNames>
@@ -222,6 +102,7 @@
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>3</SortOrder>
       <Name>SaveReminders</Name>
+      <IsImplemented>true</IsImplemented>
       <Description>Captures the current time as a reference point for tracking.  </Description>
       <FromTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</FromTransitionNames>
       <ToTransitionNames>GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted</ToTransitionNames>
@@ -229,81 +110,126 @@
       <StateMachineName>Med Reminder</StateMachineName>
     </MachineState>
     <MachineState>
+      <MachineStateId>rec10HUiMuU9ICJeg</MachineStateId>
+      <createdTime>2024-03-18T23:43:02Z</createdTime>
+      <FromTransitions>reckoARmSnb5wF2j7</FromTransitions>
+      <ToTransitions>recbiLP9lesboXrPj</ToTransitions>
+      <ToTransitions>reczXCjkomuf41Yej</ToTransitions>
+      <AutoNumber>26</AutoNumber>
+      <FSM>recly4hkn9xXMrb5Z</FSM>
+      <SortOrder>5</SortOrder>
+      <Name>Reminding</Name>
+      <IsImplemented>true</IsImplemented>
+      <FromTransitionNames>Reminding-to-DebounceMovement-after--WheelMoved</FromTransitionNames>
+      <ToTransitionNames>Idle-to-Reminding-after--ReminderTimeReached</ToTransitionNames>
+      <ToTransitionNames>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</ToTransitionNames>
+      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+    </MachineState>
+    <MachineState>
+      <MachineStateId>rec7RSbV1tXC5mjGV</MachineStateId>
+      <createdTime>2024-03-07T22:15:10Z</createdTime>
+      <FromTransitions>recAW4QtPWA3GC89z</FromTransitions>
+      <FromTransitions>recWoSt7wwDKBTjUC</FromTransitions>
+      <FromTransitions>recbiLP9lesboXrPj</FromTransitions>
+      <ToTransitions>recLshMf3321k4bmF</ToTransitions>
+      <ToTransitions>recvSPAPThYmT7jgP</ToTransitions>
+      <ToTransitions>recpmkvEEysUur5V9</ToTransitions>
+      <ToTransitions>recbNE8LYGEwTPt3Y</ToTransitions>
+      <ToTransitions>recU7wbcYsZdYYhRv</ToTransitions>
+      <AutoNumber>7</AutoNumber>
+      <FSM>recly4hkn9xXMrb5Z</FSM>
+      <SortOrder>10</SortOrder>
+      <Name>Idle</Name>
+      <IsImplemented>true</IsImplemented>
+      <Description>The system is in a standby mode, waiting for interaction or the next event.  </Description>
+      <FromTransitionNames>Idle-to-DebounceMovement-after--WheelMoved</FromTransitionNames>
+      <FromTransitionNames>Idle-to-WaitForCommands-after--MainInputClicked</FromTransitionNames>
+      <FromTransitionNames>Idle-to-Reminding-after--ReminderTimeReached</FromTransitionNames>
+      <ToTransitionNames>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</ToTransitionNames>
+      <ToTransitionNames>DebounceMovement-to-Idle-after--DebounceFailed</ToTransitionNames>
+      <ToTransitionNames>MovementDetected-to-Idle-after--MovementHandled</ToTransitionNames>
+      <ToTransitionNames>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</ToTransitionNames>
+      <ToTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</ToTransitionNames>
+      <CountIOfIncomingTransitions>5</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+    </MachineState>
+    <MachineState>
       <MachineStateId>recpmO4bsRvpEFL5i</MachineStateId>
       <createdTime>2024-03-08T23:25:28Z</createdTime>
       <FromTransitions>rec1yyjQAFfwgkomD</FromTransitions>
       <FromTransitions>recvSPAPThYmT7jgP</FromTransitions>
+      <FromTransitions>reczXCjkomuf41Yej</FromTransitions>
       <ToTransitions>recAW4QtPWA3GC89z</ToTransitions>
+      <ToTransitions>reckoARmSnb5wF2j7</ToTransitions>
       <AutoNumber>17</AutoNumber>
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>11</SortOrder>
       <Name>DebounceMovement</Name>
+      <IsImplemented>true</IsImplemented>
       <Description>Filters out false movements to ensure accurate detection.  </Description>
       <FromTransitionNames>DebounceMovement-to-CountMovement-after--DebouncePassed</FromTransitionNames>
       <FromTransitionNames>DebounceMovement-to-Idle-after--DebounceFailed</FromTransitionNames>
+      <FromTransitionNames>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</FromTransitionNames>
       <ToTransitionNames>Idle-to-DebounceMovement-after--WheelMoved</ToTransitionNames>
+      <ToTransitionNames>Reminding-to-DebounceMovement-after--WheelMoved</ToTransitionNames>
+      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+    </MachineState>
+    <MachineState>
+      <MachineStateId>recHbG1BLdYrR3W19</MachineStateId>
+      <createdTime>2024-03-08T23:25:34Z</createdTime>
+      <FromTransitions>recNDJD7P8NqeMSNh</FromTransitions>
+      <ToTransitions>rec1yyjQAFfwgkomD</ToTransitions>
+      <ToTransitions>recoLj6udzO7nU6ad</ToTransitions>
+      <AutoNumber>18</AutoNumber>
+      <FSM>recly4hkn9xXMrb5Z</FSM>
+      <SortOrder>12</SortOrder>
+      <Name>CountMovement</Name>
+      <IsImplemented>true</IsImplemented>
+      <Description>Counts valid movement events for processing.  </Description>
+      <FromTransitionNames>CountMovement-to-WaitForMoreMovement-after--MovementCounted</FromTransitionNames>
+      <ToTransitionNames>DebounceMovement-to-CountMovement-after--DebouncePassed</ToTransitionNames>
+      <ToTransitionNames>WaitForMoreMovement-to-CountMovement-after--WheelMoved</ToTransitionNames>
+      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+    </MachineState>
+    <MachineState>
+      <MachineStateId>recH4OfQCArbJvg1A</MachineStateId>
+      <createdTime>2024-03-08T23:25:41Z</createdTime>
+      <FromTransitions>recoLj6udzO7nU6ad</FromTransitions>
+      <FromTransitions>recxGjHE6jhg6HDap</FromTransitions>
+      <ToTransitions>recNDJD7P8NqeMSNh</ToTransitions>
+      <AutoNumber>19</AutoNumber>
+      <FSM>recly4hkn9xXMrb5Z</FSM>
+      <SortOrder>13</SortOrder>
+      <Name>WaitForMoreMovement</Name>
+      <IsImplemented>true</IsImplemented>
+      <Description>Awaits additional movement to confirm or complete an action.  </Description>
+      <FromTransitionNames>WaitForMoreMovement-to-CountMovement-after--WheelMoved</FromTransitionNames>
+      <FromTransitionNames>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</FromTransitionNames>
+      <ToTransitionNames>CountMovement-to-WaitForMoreMovement-after--MovementCounted</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
     </MachineState>
     <MachineState>
-      <MachineStateId>recr1KOjhPkHHqiLj</MachineStateId>
-      <createdTime>2024-03-07T22:15:11Z</createdTime>
-      <FromTransitions>recLshMf3321k4bmF</FromTransitions>
-      <ToTransitions>rec3Qe2ZNML7Ekvsa</ToTransitions>
-      <AutoNumber>9</AutoNumber>
+      <MachineStateId>recAOq6bdEWYQTrlZ</MachineStateId>
+      <createdTime>2024-03-08T23:26:06Z</createdTime>
+      <FromTransitions>recpmkvEEysUur5V9</FromTransitions>
+      <ToTransitions>recxGjHE6jhg6HDap</ToTransitions>
+      <AutoNumber>20</AutoNumber>
       <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>19</SortOrder>
-      <Name>SetExpectedReminder</Name>
-      <Description>Enables setting a new time for the next medication reminder.  </Description>
-      <FromTransitionNames>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</FromTransitionNames>
-      <ToTransitionNames>WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClicked</ToTransitionNames>
+      <SortOrder>14</SortOrder>
+      <Name>MovementDetected</Name>
+      <IsImplemented>true</IsImplemented>
+      <Description>Detects confirmed movement, signaling a completed interaction.  </Description>
+      <FromTransitionNames>MovementDetected-to-Idle-after--MovementHandled</FromTransitionNames>
+      <ToTransitionNames>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
     </MachineState>
   </MachineStates>
   <Transitions>
-    <Transition>
-      <TransitionId>rec1yyjQAFfwgkomD</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recHbG1BLdYrR3W19</ToState>
-      <Description>Counts validated wheel movement towards medication adherence tracking.</Description>
-      <FromState>recpmO4bsRvpEFL5i</FromState>
-      <ActionName>DebouncePassed</ActionName>
-      <Name>DebounceMovement-to-CountMovement-after--DebouncePassed</Name>
-      <FromStateName>DebounceMovement</FromStateName>
-      <ToStateName>CountMovement</ToStateName>
-      <FromParentOrder>11</FromParentOrder>
-      <FromStateSortOrder>11</FromStateSortOrder>
-      <ToStateSortOrder>12</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>rec3Qe2ZNML7Ekvsa</TransitionId>
-      <createdTime>2024-03-09T18:09:21Z</createdTime>
-      <ToState>recr1KOjhPkHHqiLj</ToState>
-      <Description>Allows the user to set a new medication reminder through double-clicking.</Description>
-      <FromState>recECxeEkqmx516aC</FromState>
-      <ActionName>MainInputDoubleClicked</ActionName>
-      <Name>WaitForCommands-to-SetExpectedReminder-after--MainInputDoubleClicked</Name>
-      <FromStateName>WaitForCommands</FromStateName>
-      <ToStateName>SetExpectedReminder</ToStateName>
-      <FromParentOrder>17</FromParentOrder>
-      <FromStateSortOrder>17</FromStateSortOrder>
-      <ToStateSortOrder>19</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recAW4QtPWA3GC89z</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recpmO4bsRvpEFL5i</ToState>
-      <Description>Filters out false wheel movements to prevent erroneous operations.</Description>
-      <FromState>rec7RSbV1tXC5mjGV</FromState>
-      <ActionName>WheelMoved</ActionName>
-      <Name>Idle-to-DebounceMovement-after--WheelMoved</Name>
-      <FromStateName>Idle</FromStateName>
-      <ToStateName>DebounceMovement</ToStateName>
-      <FromParentOrder>10</FromParentOrder>
-      <FromStateSortOrder>10</FromStateSortOrder>
-      <ToStateSortOrder>11</ToStateSortOrder>
-    </Transition>
     <Transition>
       <TransitionId>recBomrKK1bqTybwI</TransitionId>
       <createdTime>2024-03-08T23:23:48Z</createdTime>
@@ -319,20 +245,7 @@
       <FromParentOrder>1</FromParentOrder>
       <FromStateSortOrder>1</FromStateSortOrder>
       <ToStateSortOrder>2</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recDMEa8NE8Big3c3</TransitionId>
-      <createdTime>2024-03-09T17:54:21Z</createdTime>
-      <ToState>rec61asoqXuI2yXK3</ToState>
-      <Description>Updates the current medication reminder schedule upon user request.</Description>
-      <FromState>recECxeEkqmx516aC</FromState>
-      <ActionName>MainInputClicked</ActionName>
-      <Name>WaitForCommands-to-AdvanceCurrentReminder-after--MainInputClicked</Name>
-      <FromStateName>WaitForCommands</FromStateName>
-      <ToStateName>AdvanceCurrentReminder</ToStateName>
-      <FromParentOrder>17</FromParentOrder>
-      <FromStateSortOrder>17</FromStateSortOrder>
-      <ToStateSortOrder>18</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recK7FbZxDNytiTG2</TransitionId>
@@ -347,48 +260,7 @@
       <FromParentOrder>2</FromParentOrder>
       <FromStateSortOrder>2</FromStateSortOrder>
       <ToStateSortOrder>3</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recLshMf3321k4bmF</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Transitions to idle after the user has set and confirmed the expected time for the next reminder.</Description>
-      <FromState>recr1KOjhPkHHqiLj</FromState>
-      <ActionName>ExpectedReminderSet</ActionName>
-      <Name>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</Name>
-      <FromStateName>SetExpectedReminder</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>19</FromParentOrder>
-      <FromStateSortOrder>19</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recNDJD7P8NqeMSNh</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recH4OfQCArbJvg1A</ToState>
-      <Description>Monitors for additional wheel movement to confirm continuous user interaction.</Description>
-      <FromState>recHbG1BLdYrR3W19</FromState>
-      <ActionName>MovementCounted</ActionName>
-      <Name>CountMovement-to-WaitForMoreMovement-after--MovementCounted</Name>
-      <FromStateName>CountMovement</FromStateName>
-      <ToStateName>WaitForMoreMovement</ToStateName>
-      <FromParentOrder>12</FromParentOrder>
-      <FromStateSortOrder>12</FromStateSortOrder>
-      <ToStateSortOrder>13</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recR57pGXNufjmqja</TransitionId>
-      <createdTime>2024-03-09T18:09:39Z</createdTime>
-      <ToState>recHgqCtj0vzHWaVO</ToState>
-      <Description>Restarts the system, moving from the reboot phase back to the initial operational state.</Description>
-      <FromState>recFKy8iPNAIUMqgM</FromState>
-      <ActionName>RebootStarted</ActionName>
-      <Name>Reboot-to-Bootup-after--RebootStarted</Name>
-      <FromStateName>Reboot</FromStateName>
-      <ToStateName>Bootup</ToStateName>
-      <FromParentOrder>20</FromParentOrder>
-      <FromStateSortOrder>20</FromStateSortOrder>
-      <ToStateSortOrder>1</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recU7wbcYsZdYYhRv</TransitionId>
@@ -403,76 +275,67 @@
       <FromParentOrder>3</FromParentOrder>
       <FromStateSortOrder>3</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
-      <TransitionId>recVPWQ0MtXfQevkB</TransitionId>
-      <createdTime>2024-03-09T18:09:37Z</createdTime>
-      <ToState>recFKy8iPNAIUMqgM</ToState>
-      <Description>Triggers a system reboot when the main input is held down, allowing for maintenance or updates.</Description>
-      <FromState>recECxeEkqmx516aC</FromState>
-      <ActionName>MainInputHeld</ActionName>
-      <Name>WaitForCommands-to-Reboot-after--MainInputHeld</Name>
-      <FromStateName>WaitForCommands</FromStateName>
-      <ToStateName>Reboot</ToStateName>
-      <FromParentOrder>17</FromParentOrder>
-      <FromStateSortOrder>17</FromStateSortOrder>
-      <ToStateSortOrder>20</ToStateSortOrder>
+      <TransitionId>reckoARmSnb5wF2j7</TransitionId>
+      <createdTime>2024-03-18T23:43:16Z</createdTime>
+      <ToState>recpmO4bsRvpEFL5i</ToState>
+      <Description>Quite the reminder, when the wheel moves</Description>
+      <FromState>rec10HUiMuU9ICJeg</FromState>
+      <ActionName>WheelMoved</ActionName>
+      <Name>Reminding-to-DebounceMovement-after--WheelMoved</Name>
+      <FromStateName>Reminding</FromStateName>
+      <ToStateName>DebounceMovement</ToStateName>
+      <FromParentOrder>5</FromParentOrder>
+      <FromStateSortOrder>5</FromStateSortOrder>
+      <ToStateSortOrder>11</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
-      <TransitionId>recWoSt7wwDKBTjUC</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recECxeEkqmx516aC</ToState>
-      <Description>Enters command waiting state in response to user interaction via main input.</Description>
+      <TransitionId>recbiLP9lesboXrPj</TransitionId>
+      <createdTime>2024-03-18T23:42:41Z</createdTime>
+      <ToState>rec10HUiMuU9ICJeg</ToState>
+      <Description>Alert periodically until the wheel next moves</Description>
       <FromState>rec7RSbV1tXC5mjGV</FromState>
-      <ActionName>MainInputClicked</ActionName>
-      <Name>Idle-to-WaitForCommands-after--MainInputClicked</Name>
+      <ActionName>ReminderTimeReached</ActionName>
+      <Name>Idle-to-Reminding-after--ReminderTimeReached</Name>
       <FromStateName>Idle</FromStateName>
-      <ToStateName>WaitForCommands</ToStateName>
+      <ToStateName>Reminding</ToStateName>
       <FromParentOrder>10</FromParentOrder>
       <FromStateSortOrder>10</FromStateSortOrder>
-      <ToStateSortOrder>17</ToStateSortOrder>
+      <ToStateSortOrder>5</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
-      <TransitionId>recbNE8LYGEwTPt3Y</TransitionId>
-      <createdTime>2024-03-10T21:38:05Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Resumes idle state after the current medication reminder has been successfully advanced.</Description>
-      <FromState>rec61asoqXuI2yXK3</FromState>
-      <ActionName>CurrentReminderAdvanced</ActionName>
-      <Name>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</Name>
-      <FromStateName>AdvanceCurrentReminder</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>18</FromParentOrder>
-      <FromStateSortOrder>18</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-    </Transition>
-    <Transition>
-      <TransitionId>recoLj6udzO7nU6ad</TransitionId>
+      <TransitionId>recAW4QtPWA3GC89z</TransitionId>
       <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recHbG1BLdYrR3W19</ToState>
-      <Description>Increments movement count upon further detected wheel movements.</Description>
-      <FromState>recH4OfQCArbJvg1A</FromState>
+      <ToState>recpmO4bsRvpEFL5i</ToState>
+      <Description>Filters out false wheel movements to prevent erroneous operations.</Description>
+      <FromState>rec7RSbV1tXC5mjGV</FromState>
       <ActionName>WheelMoved</ActionName>
-      <Name>WaitForMoreMovement-to-CountMovement-after--WheelMoved</Name>
-      <FromStateName>WaitForMoreMovement</FromStateName>
-      <ToStateName>CountMovement</ToStateName>
-      <FromParentOrder>13</FromParentOrder>
-      <FromStateSortOrder>13</FromStateSortOrder>
-      <ToStateSortOrder>12</ToStateSortOrder>
+      <Name>Idle-to-DebounceMovement-after--WheelMoved</Name>
+      <FromStateName>Idle</FromStateName>
+      <ToStateName>DebounceMovement</ToStateName>
+      <FromParentOrder>10</FromParentOrder>
+      <FromStateSortOrder>10</FromStateSortOrder>
+      <ToStateSortOrder>11</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
-      <TransitionId>recpmkvEEysUur5V9</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Completes processing of movement and awaits further user interaction.</Description>
-      <FromState>recAOq6bdEWYQTrlZ</FromState>
-      <ActionName>MovementHandled</ActionName>
-      <Name>MovementDetected-to-Idle-after--MovementHandled</Name>
-      <FromStateName>MovementDetected</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>14</FromParentOrder>
-      <FromStateSortOrder>14</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
+      <TransitionId>reczXCjkomuf41Yej</TransitionId>
+      <createdTime>2024-03-18T23:59:14Z</createdTime>
+      <ToState>rec10HUiMuU9ICJeg</ToState>
+      <Description>If the movement while reminding doesn't actually complete, keep reminding.</Description>
+      <FromState>recpmO4bsRvpEFL5i</FromState>
+      <ActionName>ReminderDebounceFailed</ActionName>
+      <Name>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</Name>
+      <FromStateName>DebounceMovement</FromStateName>
+      <ToStateName>Reminding</ToStateName>
+      <FromParentOrder>11</FromParentOrder>
+      <FromStateSortOrder>11</FromStateSortOrder>
+      <ToStateSortOrder>5</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recvSPAPThYmT7jgP</TransitionId>
@@ -487,6 +350,52 @@
       <FromParentOrder>11</FromParentOrder>
       <FromStateSortOrder>11</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>rec1yyjQAFfwgkomD</TransitionId>
+      <createdTime>2024-03-09T17:27:43Z</createdTime>
+      <ToState>recHbG1BLdYrR3W19</ToState>
+      <Description>Counts validated wheel movement towards medication adherence tracking.</Description>
+      <FromState>recpmO4bsRvpEFL5i</FromState>
+      <ActionName>DebouncePassed</ActionName>
+      <Name>DebounceMovement-to-CountMovement-after--DebouncePassed</Name>
+      <FromStateName>DebounceMovement</FromStateName>
+      <ToStateName>CountMovement</ToStateName>
+      <FromParentOrder>11</FromParentOrder>
+      <FromStateSortOrder>11</FromStateSortOrder>
+      <ToStateSortOrder>12</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recNDJD7P8NqeMSNh</TransitionId>
+      <createdTime>2024-03-09T17:27:43Z</createdTime>
+      <ToState>recH4OfQCArbJvg1A</ToState>
+      <Description>Monitors for additional wheel movement to confirm continuous user interaction.</Description>
+      <FromState>recHbG1BLdYrR3W19</FromState>
+      <ActionName>MovementCounted</ActionName>
+      <Name>CountMovement-to-WaitForMoreMovement-after--MovementCounted</Name>
+      <FromStateName>CountMovement</FromStateName>
+      <ToStateName>WaitForMoreMovement</ToStateName>
+      <FromParentOrder>12</FromParentOrder>
+      <FromStateSortOrder>12</FromStateSortOrder>
+      <ToStateSortOrder>13</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recoLj6udzO7nU6ad</TransitionId>
+      <createdTime>2024-03-09T17:27:43Z</createdTime>
+      <ToState>recHbG1BLdYrR3W19</ToState>
+      <Description>Increments movement count upon further detected wheel movements.</Description>
+      <FromState>recH4OfQCArbJvg1A</FromState>
+      <ActionName>WheelMoved</ActionName>
+      <Name>WaitForMoreMovement-to-CountMovement-after--WheelMoved</Name>
+      <FromStateName>WaitForMoreMovement</FromStateName>
+      <ToStateName>CountMovement</ToStateName>
+      <FromParentOrder>13</FromParentOrder>
+      <FromStateSortOrder>13</FromStateSortOrder>
+      <ToStateSortOrder>12</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recxGjHE6jhg6HDap</TransitionId>
@@ -501,9 +410,122 @@
       <FromParentOrder>13</FromParentOrder>
       <FromStateSortOrder>13</FromStateSortOrder>
       <ToStateSortOrder>14</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recpmkvEEysUur5V9</TransitionId>
+      <createdTime>2024-03-09T17:27:43Z</createdTime>
+      <ToState>rec7RSbV1tXC5mjGV</ToState>
+      <Description>Completes processing of movement and awaits further user interaction.</Description>
+      <FromState>recAOq6bdEWYQTrlZ</FromState>
+      <ActionName>MovementHandled</ActionName>
+      <Name>MovementDetected-to-Idle-after--MovementHandled</Name>
+      <FromStateName>MovementDetected</FromStateName>
+      <ToStateName>Idle</ToStateName>
+      <FromParentOrder>14</FromParentOrder>
+      <FromStateSortOrder>14</FromStateSortOrder>
+      <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recbNE8LYGEwTPt3Y</TransitionId>
+      <createdTime>2024-03-10T21:38:05Z</createdTime>
+      <ToState>rec7RSbV1tXC5mjGV</ToState>
+      <Description>Resumes idle state after the current medication reminder has been successfully advanced.</Description>
+      <FromState>rec61asoqXuI2yXK3</FromState>
+      <ActionName>CurrentReminderAdvanced</ActionName>
+      <Name>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</Name>
+      <FromStateName>AdvanceCurrentReminder</FromStateName>
+      <ToStateName>Idle</ToStateName>
+      <FromParentOrder>18</FromParentOrder>
+      <FromStateSortOrder>18</FromStateSortOrder>
+      <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recLshMf3321k4bmF</TransitionId>
+      <createdTime>2024-03-09T17:27:43Z</createdTime>
+      <ToState>rec7RSbV1tXC5mjGV</ToState>
+      <Description>Transitions to idle after the user has set and confirmed the expected time for the next reminder.</Description>
+      <FromState>recr1KOjhPkHHqiLj</FromState>
+      <ActionName>ExpectedReminderSet</ActionName>
+      <Name>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</Name>
+      <FromStateName>SetExpectedReminder</FromStateName>
+      <ToStateName>Idle</ToStateName>
+      <FromParentOrder>19</FromParentOrder>
+      <FromStateSortOrder>19</FromStateSortOrder>
+      <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recR57pGXNufjmqja</TransitionId>
+      <createdTime>2024-03-09T18:09:39Z</createdTime>
+      <ToState>recHgqCtj0vzHWaVO</ToState>
+      <Description>Restarts the system, moving from the reboot phase back to the initial operational state.</Description>
+      <FromState>recFKy8iPNAIUMqgM</FromState>
+      <ActionName>RebootStarted</ActionName>
+      <Name>Reboot-to-Bootup-after--RebootStarted</Name>
+      <FromStateName>Reboot</FromStateName>
+      <ToStateName>Bootup</ToStateName>
+      <FromParentOrder>20</FromParentOrder>
+      <FromStateSortOrder>20</FromStateSortOrder>
+      <ToStateSortOrder>1</ToStateSortOrder>
+      <IsImplemented>true</IsImplemented>
     </Transition>
   </Transitions>
   <PartTypes>
+    <PartType>
+      <PartTypeId>recU4ryOvBsGMVTPF</PartTypeId>
+      <createdTime>2024-03-07T22:21:02Z</createdTime>
+      <Name>ArduinoR4</Name>
+      <Parts>recjSMf6DGEH9mXg6</Parts>
+      <QuantityNeeded>1</QuantityNeeded>
+    </PartType>
+    <PartType>
+      <PartTypeId>recIGlXd6Rsc2ccAj</PartTypeId>
+      <createdTime>2024-03-07T22:21:02Z</createdTime>
+      <Name>LatchingSwitch</Name>
+      <Parts>recr8rl3vZZaRNx4y</Parts>
+      <Parts>rechOQKGvB2SZjWlE</Parts>
+      <Parts>recE8e1QT6vCqoYnC</Parts>
+      <Parts>recf1NFxHRxf0YVm1</Parts>
+      <QuantityNeeded>4</QuantityNeeded>
+    </PartType>
+    <PartType>
+      <PartTypeId>recyh1hvxp92bx6RH</PartTypeId>
+      <createdTime>2024-03-07T22:21:02Z</createdTime>
+      <Name>Led</Name>
+      <Parts>recfhWMkMa7TZ28wR</Parts>
+      <Parts>recMeTo9CNzTBXuSs</Parts>
+      <Parts>reckxGZX9rTlH5iaM</Parts>
+      <Parts>recL0Dsj02FEJ17xs</Parts>
+      <Parts>recTPEebvYy1GG3mj</Parts>
+      <QuantityNeeded>5</QuantityNeeded>
+    </PartType>
+    <PartType>
+      <PartTypeId>recochHIqPnxbyt6E</PartTypeId>
+      <createdTime>2024-03-07T22:21:34Z</createdTime>
+      <Name>HallEffectSensor</Name>
+      <Parts>recFvu8CmnIIml99g</Parts>
+      <Parts>recsB65Pg7HSUVpUV</Parts>
+      <Parts>recrYWW4Z5NpJCpEr</Parts>
+      <Parts>recrw1QfQGdqo6PVd</Parts>
+      <QuantityNeeded>4</QuantityNeeded>
+    </PartType>
+    <PartType>
+      <PartTypeId>rec9P46DD24KwErYJ</PartTypeId>
+      <createdTime>2024-03-07T22:21:46Z</createdTime>
+      <Name>Breadboard</Name>
+      <Parts>recv9IeSbJsx8KivY</Parts>
+      <QuantityNeeded>1</QuantityNeeded>
+    </PartType>
+    <PartType>
+      <PartTypeId>recx7kz8CP1e4FIRL</PartTypeId>
+      <createdTime>2024-03-07T22:21:55Z</createdTime>
+      <Name>Speaker</Name>
+      <Parts>recP8DhibnbMfvL2e</Parts>
+      <QuantityNeeded>1</QuantityNeeded>
+    </PartType>
     <PartType>
       <PartTypeId>rec6tIWSm8kiKMmNR</PartTypeId>
       <createdTime>2024-03-07T23:06:22Z</createdTime>
@@ -524,28 +546,12 @@
       <QuantityNeeded>0</QuantityNeeded>
     </PartType>
     <PartType>
-      <PartTypeId>rec9P46DD24KwErYJ</PartTypeId>
-      <createdTime>2024-03-07T22:21:46Z</createdTime>
-      <Name>Breadboard</Name>
-      <Parts>recv9IeSbJsx8KivY</Parts>
-      <QuantityNeeded>1</QuantityNeeded>
-    </PartType>
-    <PartType>
-      <PartTypeId>recBitIoBRkGUKBEK</PartTypeId>
-      <createdTime>2024-03-10T23:38:51Z</createdTime>
-      <Name>Round7DayPillDispenser</Name>
-      <Parts>recIENY8PFMM3HOzk</Parts>
-      <QuantityNeeded>2</QuantityNeeded>
-    </PartType>
-    <PartType>
-      <PartTypeId>recIGlXd6Rsc2ccAj</PartTypeId>
-      <createdTime>2024-03-07T22:21:02Z</createdTime>
-      <Name>LatchingSwitch</Name>
-      <Parts>recr8rl3vZZaRNx4y</Parts>
-      <Parts>rechOQKGvB2SZjWlE</Parts>
-      <Parts>recE8e1QT6vCqoYnC</Parts>
-      <Parts>recf1NFxHRxf0YVm1</Parts>
-      <QuantityNeeded>4</QuantityNeeded>
+      <PartTypeId>recZBCe3rxpdTItmj</PartTypeId>
+      <createdTime>2024-03-08T18:46:14Z</createdTime>
+      <Name>EMPTY</Name>
+      <Parts>rec29roNZDFFdrEyV</Parts>
+      <IsUnused>true</IsUnused>
+      <QuantityNeeded>0</QuantityNeeded>
     </PartType>
     <PartType>
       <PartTypeId>recNjHuYBJTk2qAIM</PartTypeId>
@@ -555,36 +561,11 @@
       <QuantityNeeded>26</QuantityNeeded>
     </PartType>
     <PartType>
-      <PartTypeId>recU4ryOvBsGMVTPF</PartTypeId>
-      <createdTime>2024-03-07T22:21:02Z</createdTime>
-      <Name>ArduinoR4</Name>
-      <Parts>recjSMf6DGEH9mXg6</Parts>
-      <QuantityNeeded>1</QuantityNeeded>
-    </PartType>
-    <PartType>
-      <PartTypeId>recZBCe3rxpdTItmj</PartTypeId>
-      <createdTime>2024-03-08T18:46:14Z</createdTime>
-      <Name>EMPTY</Name>
-      <Parts>rec29roNZDFFdrEyV</Parts>
-      <IsUnused>true</IsUnused>
-      <QuantityNeeded>0</QuantityNeeded>
-    </PartType>
-    <PartType>
-      <PartTypeId>recochHIqPnxbyt6E</PartTypeId>
-      <createdTime>2024-03-07T22:21:34Z</createdTime>
-      <Name>HallEffectSensor</Name>
-      <Parts>recFvu8CmnIIml99g</Parts>
-      <Parts>recsB65Pg7HSUVpUV</Parts>
-      <Parts>recrYWW4Z5NpJCpEr</Parts>
-      <Parts>recrw1QfQGdqo6PVd</Parts>
-      <QuantityNeeded>4</QuantityNeeded>
-    </PartType>
-    <PartType>
-      <PartTypeId>recx7kz8CP1e4FIRL</PartTypeId>
-      <createdTime>2024-03-07T22:21:55Z</createdTime>
-      <Name>Speaker</Name>
-      <Parts>recP8DhibnbMfvL2e</Parts>
-      <QuantityNeeded>1</QuantityNeeded>
+      <PartTypeId>recBitIoBRkGUKBEK</PartTypeId>
+      <createdTime>2024-03-10T23:38:51Z</createdTime>
+      <Name>Round7DayPillDispenser</Name>
+      <Parts>recIENY8PFMM3HOzk</Parts>
+      <QuantityNeeded>2</QuantityNeeded>
     </PartType>
     <PartType>
       <PartTypeId>recy1FA7pBWva4x55</PartTypeId>
@@ -598,120 +579,64 @@
       <Parts>rec2WTK8ShVs5nQUc</Parts>
       <QuantityNeeded>10</QuantityNeeded>
     </PartType>
-    <PartType>
-      <PartTypeId>recyh1hvxp92bx6RH</PartTypeId>
-      <createdTime>2024-03-07T22:21:02Z</createdTime>
-      <Name>Led</Name>
-      <Parts>recfhWMkMa7TZ28wR</Parts>
-      <Parts>recMeTo9CNzTBXuSs</Parts>
-      <Parts>reckxGZX9rTlH5iaM</Parts>
-      <Parts>recL0Dsj02FEJ17xs</Parts>
-      <Parts>recTPEebvYy1GG3mj</Parts>
-      <QuantityNeeded>5</QuantityNeeded>
-    </PartType>
   </PartTypes>
   <Parts>
     <Part>
-      <PartId>rec29roNZDFFdrEyV</PartId>
-      <createdTime>2024-03-08T18:46:02Z</createdTime>
-      <AutoNumber>45</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>recZBCe3rxpdTItmj</PartType>
-      <Quantity>0</Quantity>
-      <Purpose>UNUSED</Purpose>
-      <IsUnused>true</IsUnused>
-      <Name>EMPTY-0-UNUSED</Name>
-      <IsEmpty>true</IsEmpty>
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>rec2WTK8ShVs5nQUc</PartId>
-      <createdTime>2024-03-10T23:45:26Z</createdTime>
-      <AutoNumber>58</AutoNumber>
-      <Color>Red</Color>
-      <PartType>recy1FA7pBWva4x55</PartType>
-      <Quantity>2</Quantity>
-      <Purpose>ConnectParts</Purpose>
-      <Name>JumperWire-0-ConnectParts</Name>
+      <PartId>recM0IfALpO5TFEgv</PartId>
+      <createdTime>2024-03-10T23:37:32Z</createdTime>
+      <AutoNumber>47</AutoNumber>
+      <Color>Silver</Color>
+      <PartType>recNjHuYBJTk2qAIM</PartType>
+      <Quantity>26</Quantity>
+      <Name>NeoDimiumMagnets-0-</Name>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
     <Part>
-      <PartId>rec2d7PAw43KwbsYV</PartId>
-      <createdTime>2024-03-10T23:45:26Z</createdTime>
-      <AutoNumber>52</AutoNumber>
+      <PartId>recIENY8PFMM3HOzk</PartId>
+      <createdTime>2024-03-10T23:38:35Z</createdTime>
+      <AutoNumber>48</AutoNumber>
+      <Color>Blue</Color>
+      <PartType>recBitIoBRkGUKBEK</PartType>
+      <Quantity>2</Quantity>
+      <MagnetsNeededPerItem>13</MagnetsNeededPerItem>
+      <Name>Round7DayPillDispenser-0-</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>26</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recfhWMkMa7TZ28wR</PartId>
+      <createdTime>2024-03-07T23:04:00Z</createdTime>
+      <AutoNumber>8</AutoNumber>
       <Color>White</Color>
-      <PartType>recy1FA7pBWva4x55</PartType>
-      <Quantity>2</Quantity>
-      <Purpose>ConnectParts</Purpose>
-      <Name>JumperWire-0-ConnectParts</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>rec8LUCevZiSJcKp7</PartId>
-      <createdTime>2024-03-10T23:45:23Z</createdTime>
-      <AutoNumber>50</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>recy1FA7pBWva4x55</PartType>
-      <Quantity>0</Quantity>
-      <Purpose>ConnectParts</Purpose>
-      <IsUnused>true</IsUnused>
-      <Name>JumperWire-0-ConnectParts</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>rec9b4y5LjzFr19RJ</PartId>
-      <createdTime>2024-03-07T23:06:16Z</createdTime>
-      <AutoNumber>2</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <Purpose>EMPTY</Purpose>
-      <IsUnused>true</IsUnused>
-      <PartIndex>1</PartIndex>
-      <Name>Pin-01-EMPTY</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recE8e1QT6vCqoYnC</PartId>
-      <createdTime>2024-03-07T23:04:14Z</createdTime>
-      <AutoNumber>5</AutoNumber>
-      <Color>Yellow</Color>
-      <PartType>recIGlXd6Rsc2ccAj</PartType>
+      <PartType>recyh1hvxp92bx6RH</PartType>
       <Quantity>1</Quantity>
-      <LinkFromParts>recWQCA4hwpJKy7Sq</LinkFromParts>
-      <Purpose>LatchAmPm</Purpose>
-      <PartIndex>3</PartIndex>
-      <Name>LatchingSwitch-03-LatchAmPm</Name>
+      <LinkFromParts>reco9mF15Qa0N4ZU8</LinkFromParts>
+      <Purpose>Bit1Status</Purpose>
+      <PartIndex>1</PartIndex>
+      <Name>Led-01-Bit1Status</Name>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
     <Part>
-      <PartId>recFIECqf7ec9StBh</PartId>
-      <createdTime>2024-03-10T23:45:26Z</createdTime>
-      <AutoNumber>56</AutoNumber>
-      <Color>Yellow</Color>
-      <PartType>recy1FA7pBWva4x55</PartType>
-      <Quantity>2</Quantity>
-      <Purpose>ConnectParts</Purpose>
-      <Name>JumperWire-0-ConnectParts</Name>
+      <PartId>recr8rl3vZZaRNx4y</PartId>
+      <createdTime>2024-03-07T23:04:00Z</createdTime>
+      <AutoNumber>3</AutoNumber>
+      <Color>White</Color>
+      <PartType>recIGlXd6Rsc2ccAj</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>rec85jzX4EnaR4xlH</LinkFromParts>
+      <Purpose>LatchBit1</Purpose>
+      <PartIndex>1</PartIndex>
+      <Name>LatchingSwitch-01-LatchBit1</Name>
       <IsEmpty />
-      <CountFrom>0</CountFrom>
+      <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
@@ -732,94 +657,50 @@
       <CountToLinks>0</CountToLinks>
     </Part>
     <Part>
-      <PartId>recG8aZqdhYRke7SX</PartId>
-      <createdTime>2024-03-07T23:08:45Z</createdTime>
-      <AutoNumber>33</AutoNumber>
-      <Color>Blue</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recNmLk1tV6epyIzM</LinkToParts>
-      <Purpose>Bit2LedPin</Purpose>
-      <PartIndex>5</PartIndex>
-      <Name>Pin-05-Bit2LedPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>1</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recIENY8PFMM3HOzk</PartId>
-      <createdTime>2024-03-10T23:38:35Z</createdTime>
-      <AutoNumber>48</AutoNumber>
-      <Color>Blue</Color>
-      <PartType>recBitIoBRkGUKBEK</PartType>
-      <Quantity>2</Quantity>
-      <MagnetsNeededPerItem>13</MagnetsNeededPerItem>
-      <Name>Round7DayPillDispenser-0-</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>26</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recImtkPIwt1UPXIq</PartId>
-      <createdTime>2024-03-07T23:09:08Z</createdTime>
-      <AutoNumber>38</AutoNumber>
-      <Color>Red</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recpPKO7mujptxgs9</LinkToParts>
-      <LinkToParts>reccuXwXh9BDjQpnQ</LinkToParts>
-      <Purpose>WheelSensorPin</Purpose>
-      <PartIndex>10</PartIndex>
-      <Name>Pin-10-WheelSensorPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>2</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recIrFLv6gFajoSHN</PartId>
-      <createdTime>2024-03-07T23:09:08Z</createdTime>
-      <AutoNumber>40</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <Purpose>EMPTY</Purpose>
-      <IsUnused>true</IsUnused>
-      <PartIndex>12</PartIndex>
-      <Name>Pin-12-EMPTY</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recL0Dsj02FEJ17xs</PartId>
-      <createdTime>2024-03-07T23:04:18Z</createdTime>
-      <AutoNumber>11</AutoNumber>
-      <Color>Red</Color>
-      <PartType>recyh1hvxp92bx6RH</PartType>
+      <PartId>recP8DhibnbMfvL2e</PartId>
+      <createdTime>2024-03-07T23:04:00Z</createdTime>
+      <AutoNumber>19</AutoNumber>
+      <Color>Orange</Color>
+      <PartType>recx7kz8CP1e4FIRL</PartType>
       <Quantity>1</Quantity>
-      <LinkFromParts>recJrcbM89fzFkhxh</LinkFromParts>
-      <Purpose>WheelStatus</Purpose>
-      <PartIndex>4</PartIndex>
-      <Name>Led-04-WheelStatus</Name>
+      <LinkFromParts>recUzAMBYEgLQPVOc</LinkFromParts>
+      <Purpose>StatusBeeps</Purpose>
+      <PartIndex>1</PartIndex>
+      <Name>Speaker-01-StatusBeeps</Name>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
     <Part>
-      <PartId>recM0IfALpO5TFEgv</PartId>
-      <createdTime>2024-03-10T23:37:32Z</createdTime>
-      <AutoNumber>47</AutoNumber>
-      <Color>Silver</Color>
-      <PartType>recNjHuYBJTk2qAIM</PartType>
-      <Quantity>26</Quantity>
-      <Name>NeoDimiumMagnets-0-</Name>
+      <PartId>recsB65Pg7HSUVpUV</PartId>
+      <createdTime>2024-03-07T23:04:11Z</createdTime>
+      <AutoNumber>15</AutoNumber>
+      <Color>Blue</Color>
+      <PartType>recochHIqPnxbyt6E</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>recHQ0RCmt741AGkn</LinkFromParts>
+      <Purpose>SenseBit2</Purpose>
+      <PartIndex>2</PartIndex>
+      <Name>HallEffectSensor-02-SenseBit2</Name>
       <IsEmpty />
-      <CountFrom>0</CountFrom>
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>rechOQKGvB2SZjWlE</PartId>
+      <createdTime>2024-03-07T23:04:14Z</createdTime>
+      <AutoNumber>4</AutoNumber>
+      <Color>Blue</Color>
+      <PartType>recIGlXd6Rsc2ccAj</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>rec2dLPcXlB5mpcr0</LinkFromParts>
+      <Purpose>LatchBit2</Purpose>
+      <PartIndex>2</PartIndex>
+      <Name>LatchingSwitch-02-LatchBit2</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
@@ -834,6 +715,70 @@
       <Purpose>Bit2Status</Purpose>
       <PartIndex>2</PartIndex>
       <Name>Led-02-Bit2Status</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recizLSeMD6bAPCFi</PartId>
+      <createdTime>2024-03-07T23:08:23Z</createdTime>
+      <AutoNumber>30</AutoNumber>
+      <Color>Orange</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recUzAMBYEgLQPVOc</LinkToParts>
+      <Purpose>SpeakerPin</Purpose>
+      <PartIndex>2</PartIndex>
+      <Name>Pin-02-SpeakerPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>1</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recrYWW4Z5NpJCpEr</PartId>
+      <createdTime>2024-03-07T23:04:11Z</createdTime>
+      <AutoNumber>16</AutoNumber>
+      <Color>Yellow</Color>
+      <PartType>recochHIqPnxbyt6E</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>reclbaQ29uzr9NICQ</LinkFromParts>
+      <Purpose>SenseAmPm</Purpose>
+      <PartIndex>3</PartIndex>
+      <Name>HallEffectSensor-03-SenseAmPm</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recE8e1QT6vCqoYnC</PartId>
+      <createdTime>2024-03-07T23:04:14Z</createdTime>
+      <AutoNumber>5</AutoNumber>
+      <Color>Yellow</Color>
+      <PartType>recIGlXd6Rsc2ccAj</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>recWQCA4hwpJKy7Sq</LinkFromParts>
+      <Purpose>LatchAmPm</Purpose>
+      <PartIndex>3</PartIndex>
+      <Name>LatchingSwitch-03-LatchAmPm</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>reckxGZX9rTlH5iaM</PartId>
+      <createdTime>2024-03-07T23:04:18Z</createdTime>
+      <AutoNumber>10</AutoNumber>
+      <Color>Yellow</Color>
+      <PartType>recyh1hvxp92bx6RH</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>recbGiPgVmuXDdbvA</LinkFromParts>
+      <Purpose>AmPmStatus</Purpose>
+      <PartIndex>3</PartIndex>
+      <Name>Led-03-AmPmStatus</Name>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
@@ -856,20 +801,134 @@
       <CountToLinks>1</CountToLinks>
     </Part>
     <Part>
-      <PartId>recP8DhibnbMfvL2e</PartId>
-      <createdTime>2024-03-07T23:04:00Z</createdTime>
-      <AutoNumber>19</AutoNumber>
-      <Color>Orange</Color>
-      <PartType>recx7kz8CP1e4FIRL</PartType>
+      <PartId>recrw1QfQGdqo6PVd</PartId>
+      <createdTime>2024-03-07T23:04:11Z</createdTime>
+      <AutoNumber>17</AutoNumber>
+      <Color>Red</Color>
+      <PartType>recochHIqPnxbyt6E</PartType>
       <Quantity>1</Quantity>
-      <LinkFromParts>recUzAMBYEgLQPVOc</LinkFromParts>
-      <Purpose>StatusBeeps</Purpose>
-      <PartIndex>1</PartIndex>
-      <Name>Speaker-01-StatusBeeps</Name>
+      <LinkFromParts>recpPKO7mujptxgs9</LinkFromParts>
+      <Purpose>SenseWheel</Purpose>
+      <PartIndex>4</PartIndex>
+      <Name>HallEffectSensor-04-SenseWheel</Name>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recf1NFxHRxf0YVm1</PartId>
+      <createdTime>2024-03-07T23:04:14Z</createdTime>
+      <AutoNumber>6</AutoNumber>
+      <Color>Red</Color>
+      <PartType>recIGlXd6Rsc2ccAj</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>reccuXwXh9BDjQpnQ</LinkFromParts>
+      <Purpose>LatchWheel</Purpose>
+      <PartIndex>4</PartIndex>
+      <Name>LatchingSwitch-04-LatchWheel</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recL0Dsj02FEJ17xs</PartId>
+      <createdTime>2024-03-07T23:04:18Z</createdTime>
+      <AutoNumber>11</AutoNumber>
+      <Color>Red</Color>
+      <PartType>recyh1hvxp92bx6RH</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>recJrcbM89fzFkhxh</LinkFromParts>
+      <Purpose>WheelStatus</Purpose>
+      <PartIndex>4</PartIndex>
+      <Name>Led-04-WheelStatus</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>rece0c5L2994wH1yY</PartId>
+      <createdTime>2024-03-07T23:08:45Z</createdTime>
+      <AutoNumber>32</AutoNumber>
+      <Color>White</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recUm9oFBRBzaKNcp</LinkToParts>
+      <LinkToParts>rec85jzX4EnaR4xlH</LinkToParts>
+      <Purpose>Bit1SensorPin</Purpose>
+      <PartIndex>4</PartIndex>
+      <Name>Pin-04-Bit1SensorPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>2</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recTPEebvYy1GG3mj</PartId>
+      <createdTime>2024-03-07T23:04:18Z</createdTime>
+      <AutoNumber>12</AutoNumber>
+      <Color>Orange</Color>
+      <PartType>recyh1hvxp92bx6RH</PartType>
+      <Quantity>1</Quantity>
+      <LinkFromParts>recWb4vxXgcm65Sv7</LinkFromParts>
+      <Purpose>StatusStatus</Purpose>
+      <PartIndex>5</PartIndex>
+      <Name>Led-05-StatusStatus</Name>
+      <IsEmpty />
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recG8aZqdhYRke7SX</PartId>
+      <createdTime>2024-03-07T23:08:45Z</createdTime>
+      <AutoNumber>33</AutoNumber>
+      <Color>Blue</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recNmLk1tV6epyIzM</LinkToParts>
+      <Purpose>Bit2LedPin</Purpose>
+      <PartIndex>5</PartIndex>
+      <Name>Pin-05-Bit2LedPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>1</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recZ7UoOQ5Cz88LFx</PartId>
+      <createdTime>2024-03-07T23:08:45Z</createdTime>
+      <AutoNumber>34</AutoNumber>
+      <Color>Blue</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recHQ0RCmt741AGkn</LinkToParts>
+      <LinkToParts>rec2dLPcXlB5mpcr0</LinkToParts>
+      <Purpose>Bit2SensorPin</Purpose>
+      <PartIndex>6</PartIndex>
+      <Name>Pin-06-Bit2SensorPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>2</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recqwFeNgXlRZrIH8</PartId>
+      <createdTime>2024-03-07T23:08:45Z</createdTime>
+      <AutoNumber>35</AutoNumber>
+      <Color>Yellow</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recbGiPgVmuXDdbvA</LinkToParts>
+      <Purpose>AmPmLedPin</Purpose>
+      <PartIndex>7</PartIndex>
+      <Name>Pin-07-AmPmLedPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>1</CountToLinks>
     </Part>
     <Part>
       <PartId>recPTrLTl5VqCpZLU</PartId>
@@ -883,6 +942,39 @@
       <Purpose>AmPmSensorPin</Purpose>
       <PartIndex>8</PartIndex>
       <Name>Pin-08-AmPmSensorPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>2</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recYl5uead9cJDGrf</PartId>
+      <createdTime>2024-03-07T23:09:08Z</createdTime>
+      <AutoNumber>37</AutoNumber>
+      <Color>Red</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recJrcbM89fzFkhxh</LinkToParts>
+      <Purpose>WheelLedPin</Purpose>
+      <PartIndex>9</PartIndex>
+      <Name>Pin-09-WheelLedPin</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>1</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recImtkPIwt1UPXIq</PartId>
+      <createdTime>2024-03-07T23:09:08Z</createdTime>
+      <AutoNumber>38</AutoNumber>
+      <Color>Red</Color>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <Quantity>0</Quantity>
+      <LinkToParts>recpPKO7mujptxgs9</LinkToParts>
+      <LinkToParts>reccuXwXh9BDjQpnQ</LinkToParts>
+      <Purpose>WheelSensorPin</Purpose>
+      <PartIndex>10</PartIndex>
+      <Name>Pin-10-WheelSensorPin</Name>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
@@ -919,274 +1011,14 @@
       <CountToLinks>0</CountToLinks>
     </Part>
     <Part>
-      <PartId>recTPEebvYy1GG3mj</PartId>
-      <createdTime>2024-03-07T23:04:18Z</createdTime>
-      <AutoNumber>12</AutoNumber>
-      <Color>Orange</Color>
-      <PartType>recyh1hvxp92bx6RH</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>recWb4vxXgcm65Sv7</LinkFromParts>
-      <Purpose>StatusStatus</Purpose>
-      <PartIndex>5</PartIndex>
-      <Name>Led-05-StatusStatus</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recYl5uead9cJDGrf</PartId>
-      <createdTime>2024-03-07T23:09:08Z</createdTime>
-      <AutoNumber>37</AutoNumber>
-      <Color>Red</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recJrcbM89fzFkhxh</LinkToParts>
-      <Purpose>WheelLedPin</Purpose>
-      <PartIndex>9</PartIndex>
-      <Name>Pin-09-WheelLedPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>1</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recZ7UoOQ5Cz88LFx</PartId>
-      <createdTime>2024-03-07T23:08:45Z</createdTime>
-      <AutoNumber>34</AutoNumber>
-      <Color>Blue</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recHQ0RCmt741AGkn</LinkToParts>
-      <LinkToParts>rec2dLPcXlB5mpcr0</LinkToParts>
-      <Purpose>Bit2SensorPin</Purpose>
-      <PartIndex>6</PartIndex>
-      <Name>Pin-06-Bit2SensorPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>2</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>rece0c5L2994wH1yY</PartId>
-      <createdTime>2024-03-07T23:08:45Z</createdTime>
-      <AutoNumber>32</AutoNumber>
+      <PartId>rec2d7PAw43KwbsYV</PartId>
+      <createdTime>2024-03-10T23:45:26Z</createdTime>
+      <AutoNumber>52</AutoNumber>
       <Color>White</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recUm9oFBRBzaKNcp</LinkToParts>
-      <LinkToParts>rec85jzX4EnaR4xlH</LinkToParts>
-      <Purpose>Bit1SensorPin</Purpose>
-      <PartIndex>4</PartIndex>
-      <Name>Pin-04-Bit1SensorPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>2</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recf1NFxHRxf0YVm1</PartId>
-      <createdTime>2024-03-07T23:04:14Z</createdTime>
-      <AutoNumber>6</AutoNumber>
-      <Color>Red</Color>
-      <PartType>recIGlXd6Rsc2ccAj</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>reccuXwXh9BDjQpnQ</LinkFromParts>
-      <Purpose>LatchWheel</Purpose>
-      <PartIndex>4</PartIndex>
-      <Name>LatchingSwitch-04-LatchWheel</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recfhWMkMa7TZ28wR</PartId>
-      <createdTime>2024-03-07T23:04:00Z</createdTime>
-      <AutoNumber>8</AutoNumber>
-      <Color>White</Color>
-      <PartType>recyh1hvxp92bx6RH</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>reco9mF15Qa0N4ZU8</LinkFromParts>
-      <Purpose>Bit1Status</Purpose>
-      <PartIndex>1</PartIndex>
-      <Name>Led-01-Bit1Status</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>rechOQKGvB2SZjWlE</PartId>
-      <createdTime>2024-03-07T23:04:14Z</createdTime>
-      <AutoNumber>4</AutoNumber>
-      <Color>Blue</Color>
-      <PartType>recIGlXd6Rsc2ccAj</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>rec2dLPcXlB5mpcr0</LinkFromParts>
-      <Purpose>LatchBit2</Purpose>
-      <PartIndex>2</PartIndex>
-      <Name>LatchingSwitch-02-LatchBit2</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recizLSeMD6bAPCFi</PartId>
-      <createdTime>2024-03-07T23:08:23Z</createdTime>
-      <AutoNumber>30</AutoNumber>
-      <Color>Orange</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recUzAMBYEgLQPVOc</LinkToParts>
-      <Purpose>SpeakerPin</Purpose>
-      <PartIndex>2</PartIndex>
-      <Name>Pin-02-SpeakerPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>1</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recjSMf6DGEH9mXg6</PartId>
-      <createdTime>2024-03-07T23:03:48Z</createdTime>
-      <AutoNumber>1</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>recU4ryOvBsGMVTPF</PartType>
-      <Quantity>1</Quantity>
-      <Purpose>Motherboard</Purpose>
-      <IsUnused>true</IsUnused>
-      <PartIndex>1</PartIndex>
-      <Name>ArduinoR4-01-Motherboard</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>reckxGZX9rTlH5iaM</PartId>
-      <createdTime>2024-03-07T23:04:18Z</createdTime>
-      <AutoNumber>10</AutoNumber>
-      <Color>Yellow</Color>
-      <PartType>recyh1hvxp92bx6RH</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>recbGiPgVmuXDdbvA</LinkFromParts>
-      <Purpose>AmPmStatus</Purpose>
-      <PartIndex>3</PartIndex>
-      <Name>Led-03-AmPmStatus</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recozUjOkMtlFRcEf</PartId>
-      <createdTime>2024-03-07T23:09:08Z</createdTime>
-      <AutoNumber>41</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <Purpose>EMPTY</Purpose>
-      <IsUnused>true</IsUnused>
-      <PartIndex>13</PartIndex>
-      <Name>Pin-13-EMPTY</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recqwFeNgXlRZrIH8</PartId>
-      <createdTime>2024-03-07T23:08:45Z</createdTime>
-      <AutoNumber>35</AutoNumber>
-      <Color>Yellow</Color>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <Quantity>0</Quantity>
-      <LinkToParts>recbGiPgVmuXDdbvA</LinkToParts>
-      <Purpose>AmPmLedPin</Purpose>
-      <PartIndex>7</PartIndex>
-      <Name>Pin-07-AmPmLedPin</Name>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>1</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recr8rl3vZZaRNx4y</PartId>
-      <createdTime>2024-03-07T23:04:00Z</createdTime>
-      <AutoNumber>3</AutoNumber>
-      <Color>White</Color>
-      <PartType>recIGlXd6Rsc2ccAj</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>rec85jzX4EnaR4xlH</LinkFromParts>
-      <Purpose>LatchBit1</Purpose>
-      <PartIndex>1</PartIndex>
-      <Name>LatchingSwitch-01-LatchBit1</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recrYWW4Z5NpJCpEr</PartId>
-      <createdTime>2024-03-07T23:04:11Z</createdTime>
-      <AutoNumber>16</AutoNumber>
-      <Color>Yellow</Color>
-      <PartType>recochHIqPnxbyt6E</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>reclbaQ29uzr9NICQ</LinkFromParts>
-      <Purpose>SenseAmPm</Purpose>
-      <PartIndex>3</PartIndex>
-      <Name>HallEffectSensor-03-SenseAmPm</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recrw1QfQGdqo6PVd</PartId>
-      <createdTime>2024-03-07T23:04:11Z</createdTime>
-      <AutoNumber>17</AutoNumber>
-      <Color>Red</Color>
-      <PartType>recochHIqPnxbyt6E</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>recpPKO7mujptxgs9</LinkFromParts>
-      <Purpose>SenseWheel</Purpose>
-      <PartIndex>4</PartIndex>
-      <Name>HallEffectSensor-04-SenseWheel</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recsB65Pg7HSUVpUV</PartId>
-      <createdTime>2024-03-07T23:04:11Z</createdTime>
-      <AutoNumber>15</AutoNumber>
-      <Color>Blue</Color>
-      <PartType>recochHIqPnxbyt6E</PartType>
-      <Quantity>1</Quantity>
-      <LinkFromParts>recHQ0RCmt741AGkn</LinkFromParts>
-      <Purpose>SenseBit2</Purpose>
-      <PartIndex>2</PartIndex>
-      <Name>HallEffectSensor-02-SenseBit2</Name>
-      <IsEmpty />
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-    </Part>
-    <Part>
-      <PartId>recv9IeSbJsx8KivY</PartId>
-      <createdTime>2024-03-07T23:04:00Z</createdTime>
-      <AutoNumber>18</AutoNumber>
-      <Color>N/A</Color>
-      <PartType>rec9P46DD24KwErYJ</PartType>
-      <Quantity>1</Quantity>
-      <Purpose>MainBreadboard</Purpose>
-      <IsUnused>true</IsUnused>
-      <PartIndex>1</PartIndex>
-      <Name>Breadboard-01-MainBreadboard</Name>
+      <PartType>recy1FA7pBWva4x55</PartType>
+      <Quantity>2</Quantity>
+      <Purpose>ConnectParts</Purpose>
+      <Name>JumperWire-0-ConnectParts</Name>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
@@ -1206,150 +1038,36 @@
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
+    <Part>
+      <PartId>recFIECqf7ec9StBh</PartId>
+      <createdTime>2024-03-10T23:45:26Z</createdTime>
+      <AutoNumber>56</AutoNumber>
+      <Color>Yellow</Color>
+      <PartType>recy1FA7pBWva4x55</PartType>
+      <Quantity>2</Quantity>
+      <Purpose>ConnectParts</Purpose>
+      <Name>JumperWire-0-ConnectParts</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>rec2WTK8ShVs5nQUc</PartId>
+      <createdTime>2024-03-10T23:45:26Z</createdTime>
+      <AutoNumber>58</AutoNumber>
+      <Color>Red</Color>
+      <PartType>recy1FA7pBWva4x55</PartType>
+      <Quantity>2</Quantity>
+      <Purpose>ConnectParts</Purpose>
+      <Name>JumperWire-0-ConnectParts</Name>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+    </Part>
   </Parts>
   <PartLinks>
-    <PartLink>
-      <PartLinkId>rec2dLPcXlB5mpcr0</PartLinkId>
-      <createdTime>2024-03-08T20:05:54Z</createdTime>
-      <ToPart>rechOQKGvB2SZjWlE</ToPart>
-      <Constants>reca6BGGNpG6xmYW6</Constants>
-      <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
-      <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
-      <Name>Pin-06-Bit2SensorPin-LatchingSwitch</Name>
-      <FromPartPartIndex>2</FromPartPartIndex>
-      <FromPartColor>Blue</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Blue</ToPartColor>
-      <FromPartPurpose>Bit2SensorPin</FromPartPurpose>
-      <ToPartName>Pin-06-Bit2SensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>LatchBit2</ToPartPurposes>
-      <VariableNameCamelCase>latchBit2_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartIndex>6</ToPartPartIndex>
-      <PinNumber>6</PinNumber>
-      <LowerVairableName>latch_bit2_latching_switch</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>rec85jzX4EnaR4xlH</PartLinkId>
-      <createdTime>2024-03-08T20:05:44Z</createdTime>
-      <ToPart>recr8rl3vZZaRNx4y</ToPart>
-      <Constants>recAVNdsMPu66hpQX</Constants>
-      <FromPart>rece0c5L2994wH1yY</FromPart>
-      <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
-      <Name>Pin-04-Bit1SensorPin-LatchingSwitch</Name>
-      <FromPartPartIndex>1</FromPartPartIndex>
-      <FromPartColor>White</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>White</ToPartColor>
-      <FromPartPurpose>Bit1SensorPin</FromPartPurpose>
-      <ToPartName>Pin-04-Bit1SensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>LatchBit1</ToPartPurposes>
-      <VariableNameCamelCase>latchBit1_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartIndex>4</ToPartPartIndex>
-      <PinNumber>4</PinNumber>
-      <LowerVairableName>latch_bit1_latching_switch</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recHQ0RCmt741AGkn</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>recsB65Pg7HSUVpUV</ToPart>
-      <InputOutputType>INPUT</InputOutputType>
-      <Constants>recmWTBwGpigBJi95</Constants>
-      <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
-      <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
-      <Name>Pin-06-Bit2SensorPin-HallEffectSensor</Name>
-      <FromPartPartIndex>2</FromPartPartIndex>
-      <FromPartColor>Blue</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Blue</ToPartColor>
-      <FromPartPurpose>Bit2SensorPin</FromPartPurpose>
-      <ToPartName>Pin-06-Bit2SensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>SenseBit2</ToPartPurposes>
-      <VariableNameCamelCase>senseBit2_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartIndex>6</ToPartPartIndex>
-      <PinNumber>6</PinNumber>
-      <LowerVairableName>sense_bit2_hall_effect_sensor</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recJrcbM89fzFkhxh</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>recL0Dsj02FEJ17xs</ToPart>
-      <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>rec2rwpeHVASSQ4Kg</Constants>
-      <FromPart>recYl5uead9cJDGrf</FromPart>
-      <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
-      <Name>Pin-09-WheelLedPin-Led</Name>
-      <FromPartPartIndex>4</FromPartPartIndex>
-      <FromPartColor>Red</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Red</ToPartColor>
-      <FromPartPurpose>WheelLedPin</FromPartPurpose>
-      <ToPartName>Pin-09-WheelLedPin</ToPartName>
-      <ToPartCount>1</ToPartCount>
-      <ToPartPurposes>WheelStatus</ToPartPurposes>
-      <VariableNameCamelCase>wheelStatus_Led</VariableNameCamelCase>
-      <ToPartPartIndex>9</ToPartPartIndex>
-      <PinNumber>9</PinNumber>
-      <LowerVairableName>wheel_status_led</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recNmLk1tV6epyIzM</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>recMeTo9CNzTBXuSs</ToPart>
-      <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recOp1LtC6TbRtQ7v</Constants>
-      <FromPart>recG8aZqdhYRke7SX</FromPart>
-      <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
-      <Name>Pin-05-Bit2LedPin-Led</Name>
-      <FromPartPartIndex>2</FromPartPartIndex>
-      <FromPartColor>Red</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Blue</ToPartColor>
-      <FromPartPurpose>Bit2LedPin</FromPartPurpose>
-      <ToPartName>Pin-05-Bit2LedPin</ToPartName>
-      <ToPartCount>1</ToPartCount>
-      <ToPartPurposes>Bit2Status</ToPartPurposes>
-      <VariableNameCamelCase>bit2Status_Led</VariableNameCamelCase>
-      <ToPartPartIndex>5</ToPartPartIndex>
-      <PinNumber>5</PinNumber>
-      <LowerVairableName>bit2_status_led</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recUm9oFBRBzaKNcp</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>recFvu8CmnIIml99g</ToPart>
-      <InputOutputType>INPUT</InputOutputType>
-      <Constants>recnhs8zmvIXVWMOl</Constants>
-      <FromPart>rece0c5L2994wH1yY</FromPart>
-      <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
-      <Name>Pin-04-Bit1SensorPin-HallEffectSensor</Name>
-      <FromPartPartIndex>1</FromPartPartIndex>
-      <FromPartColor>White</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>White</ToPartColor>
-      <FromPartPurpose>Bit1SensorPin</FromPartPurpose>
-      <ToPartName>Pin-04-Bit1SensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>SenseBit1</ToPartPurposes>
-      <VariableNameCamelCase>senseBit1_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartIndex>4</ToPartPartIndex>
-      <PinNumber>4</PinNumber>
-      <LowerVairableName>sense_bit1_hall_effect_sensor</LowerVairableName>
-    </PartLink>
     <PartLink>
       <PartLinkId>recUzAMBYEgLQPVOc</PartLinkId>
       <createdTime>2024-03-08T19:42:19Z</createdTime>
@@ -1373,124 +1091,6 @@
       <ToPartPartIndex>2</ToPartPartIndex>
       <PinNumber>2</PinNumber>
       <LowerVairableName>status_beeps_speaker</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recWQCA4hwpJKy7Sq</PartLinkId>
-      <createdTime>2024-03-08T20:05:55Z</createdTime>
-      <ToPart>recE8e1QT6vCqoYnC</ToPart>
-      <Constants>recwQMDCDueArSiju</Constants>
-      <FromPart>recPTrLTl5VqCpZLU</FromPart>
-      <Description>Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</Description>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
-      <Name>Pin-08-AmPmSensorPin-LatchingSwitch</Name>
-      <FromPartPartIndex>3</FromPartPartIndex>
-      <FromPartColor>Yellow</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Yellow</ToPartColor>
-      <FromPartPurpose>AmPmSensorPin</FromPartPurpose>
-      <ToPartName>Pin-08-AmPmSensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>LatchAmPm</ToPartPurposes>
-      <VariableNameCamelCase>latchAmPm_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartIndex>8</ToPartPartIndex>
-      <PinNumber>8</PinNumber>
-      <LowerVairableName>latch_am_pm_latching_switch</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recWb4vxXgcm65Sv7</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>recTPEebvYy1GG3mj</ToPart>
-      <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recpKzCCwLnezixFm</Constants>
-      <FromPart>recRVVqxFTthRg7LB</FromPart>
-      <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
-      <Name>Pin-11-StatusLedPin-Led</Name>
-      <FromPartPartIndex>5</FromPartPartIndex>
-      <FromPartColor>Orange</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Orange</ToPartColor>
-      <FromPartPurpose>StatusLedPin</FromPartPurpose>
-      <ToPartName>Pin-11-StatusLedPin</ToPartName>
-      <ToPartCount>1</ToPartCount>
-      <ToPartPurposes>StatusStatus</ToPartPurposes>
-      <VariableNameCamelCase>statusStatus_Led</VariableNameCamelCase>
-      <ToPartPartIndex>11</ToPartPartIndex>
-      <PinNumber>11</PinNumber>
-      <LowerVairableName>status_status_led</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recbGiPgVmuXDdbvA</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>reckxGZX9rTlH5iaM</ToPart>
-      <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recGXGC8P6wFrHRnJ</Constants>
-      <FromPart>recqwFeNgXlRZrIH8</FromPart>
-      <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
-      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
-      <ToPartPartTypeName>Led</ToPartPartTypeName>
-      <Name>Pin-07-AmPmLedPin-Led</Name>
-      <FromPartPartIndex>3</FromPartPartIndex>
-      <FromPartColor>Yellow</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Yellow</ToPartColor>
-      <FromPartPurpose>AmPmLedPin</FromPartPurpose>
-      <ToPartName>Pin-07-AmPmLedPin</ToPartName>
-      <ToPartCount>1</ToPartCount>
-      <ToPartPurposes>AmPmStatus</ToPartPurposes>
-      <VariableNameCamelCase>amPmStatus_Led</VariableNameCamelCase>
-      <ToPartPartIndex>7</ToPartPartIndex>
-      <PinNumber>7</PinNumber>
-      <LowerVairableName>am_pm_status_led</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>reccuXwXh9BDjQpnQ</PartLinkId>
-      <createdTime>2024-03-08T20:05:55Z</createdTime>
-      <ToPart>recf1NFxHRxf0YVm1</ToPart>
-      <Constants>reciDvlgbEa2RXPNk</Constants>
-      <FromPart>recImtkPIwt1UPXIq</FromPart>
-      <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
-      <Name>Pin-10-WheelSensorPin-LatchingSwitch</Name>
-      <FromPartPartIndex>4</FromPartPartIndex>
-      <FromPartColor>Red</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Red</ToPartColor>
-      <FromPartPurpose>WheelSensorPin</FromPartPurpose>
-      <ToPartName>Pin-10-WheelSensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>LatchWheel</ToPartPurposes>
-      <VariableNameCamelCase>latchWheel_LatchingSwitch</VariableNameCamelCase>
-      <ToPartPartIndex>10</ToPartPartIndex>
-      <PinNumber>10</PinNumber>
-      <LowerVairableName>latch_wheel_latching_switch</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>reclbaQ29uzr9NICQ</PartLinkId>
-      <createdTime>2024-03-08T19:16:10Z</createdTime>
-      <ToPart>recrYWW4Z5NpJCpEr</ToPart>
-      <InputOutputType>INPUT</InputOutputType>
-      <Constants>recfmU5BP7K1ayrEH</Constants>
-      <FromPart>recPTrLTl5VqCpZLU</FromPart>
-      <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
-      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
-      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
-      <Name>Pin-08-AmPmSensorPin-HallEffectSensor</Name>
-      <FromPartPartIndex>3</FromPartPartIndex>
-      <FromPartColor>Yellow</FromPartColor>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Yellow</ToPartColor>
-      <FromPartPurpose>AmPmSensorPin</FromPartPurpose>
-      <ToPartName>Pin-08-AmPmSensorPin</ToPartName>
-      <ToPartCount>2</ToPartCount>
-      <ToPartPurposes>SenseAmPm</ToPartPurposes>
-      <VariableNameCamelCase>senseAmPm_HallEffectSensor</VariableNameCamelCase>
-      <ToPartPartIndex>8</ToPartPartIndex>
-      <PinNumber>8</PinNumber>
-      <LowerVairableName>sense_am_pm_hall_effect_sensor</LowerVairableName>
     </PartLink>
     <PartLink>
       <PartLinkId>reco9mF15Qa0N4ZU8</PartLinkId>
@@ -1517,6 +1117,219 @@
       <LowerVairableName>bit1_status_led</LowerVairableName>
     </PartLink>
     <PartLink>
+      <PartLinkId>recUm9oFBRBzaKNcp</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>recFvu8CmnIIml99g</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
+      <Constants>recnhs8zmvIXVWMOl</Constants>
+      <FromPart>rece0c5L2994wH1yY</FromPart>
+      <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <Name>Pin-04-Bit1SensorPin-HallEffectSensor</Name>
+      <FromPartPartIndex>1</FromPartPartIndex>
+      <FromPartColor>White</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>White</ToPartColor>
+      <FromPartPurpose>Bit1SensorPin</FromPartPurpose>
+      <ToPartName>Pin-04-Bit1SensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>SenseBit1</ToPartPurposes>
+      <VariableNameCamelCase>senseBit1_HallEffectSensor</VariableNameCamelCase>
+      <ToPartPartIndex>4</ToPartPartIndex>
+      <PinNumber>4</PinNumber>
+      <LowerVairableName>sense_bit1_hall_effect_sensor</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>rec85jzX4EnaR4xlH</PartLinkId>
+      <createdTime>2024-03-08T20:05:44Z</createdTime>
+      <ToPart>recr8rl3vZZaRNx4y</ToPart>
+      <Constants>recAVNdsMPu66hpQX</Constants>
+      <FromPart>rece0c5L2994wH1yY</FromPart>
+      <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <Name>Pin-04-Bit1SensorPin-LatchingSwitch</Name>
+      <FromPartPartIndex>1</FromPartPartIndex>
+      <FromPartColor>White</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>White</ToPartColor>
+      <FromPartPurpose>Bit1SensorPin</FromPartPurpose>
+      <ToPartName>Pin-04-Bit1SensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>LatchBit1</ToPartPurposes>
+      <VariableNameCamelCase>latchBit1_LatchingSwitch</VariableNameCamelCase>
+      <ToPartPartIndex>4</ToPartPartIndex>
+      <PinNumber>4</PinNumber>
+      <LowerVairableName>latch_bit1_latching_switch</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recNmLk1tV6epyIzM</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>recMeTo9CNzTBXuSs</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
+      <Constants>recOp1LtC6TbRtQ7v</Constants>
+      <FromPart>recG8aZqdhYRke7SX</FromPart>
+      <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <Name>Pin-05-Bit2LedPin-Led</Name>
+      <FromPartPartIndex>2</FromPartPartIndex>
+      <FromPartColor>Red</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Blue</ToPartColor>
+      <FromPartPurpose>Bit2LedPin</FromPartPurpose>
+      <ToPartName>Pin-05-Bit2LedPin</ToPartName>
+      <ToPartCount>1</ToPartCount>
+      <ToPartPurposes>Bit2Status</ToPartPurposes>
+      <VariableNameCamelCase>bit2Status_Led</VariableNameCamelCase>
+      <ToPartPartIndex>5</ToPartPartIndex>
+      <PinNumber>5</PinNumber>
+      <LowerVairableName>bit2_status_led</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recHQ0RCmt741AGkn</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>recsB65Pg7HSUVpUV</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
+      <Constants>recmWTBwGpigBJi95</Constants>
+      <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
+      <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <Name>Pin-06-Bit2SensorPin-HallEffectSensor</Name>
+      <FromPartPartIndex>2</FromPartPartIndex>
+      <FromPartColor>Blue</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Blue</ToPartColor>
+      <FromPartPurpose>Bit2SensorPin</FromPartPurpose>
+      <ToPartName>Pin-06-Bit2SensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>SenseBit2</ToPartPurposes>
+      <VariableNameCamelCase>senseBit2_HallEffectSensor</VariableNameCamelCase>
+      <ToPartPartIndex>6</ToPartPartIndex>
+      <PinNumber>6</PinNumber>
+      <LowerVairableName>sense_bit2_hall_effect_sensor</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>rec2dLPcXlB5mpcr0</PartLinkId>
+      <createdTime>2024-03-08T20:05:54Z</createdTime>
+      <ToPart>rechOQKGvB2SZjWlE</ToPart>
+      <Constants>reca6BGGNpG6xmYW6</Constants>
+      <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
+      <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <Name>Pin-06-Bit2SensorPin-LatchingSwitch</Name>
+      <FromPartPartIndex>2</FromPartPartIndex>
+      <FromPartColor>Blue</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Blue</ToPartColor>
+      <FromPartPurpose>Bit2SensorPin</FromPartPurpose>
+      <ToPartName>Pin-06-Bit2SensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>LatchBit2</ToPartPurposes>
+      <VariableNameCamelCase>latchBit2_LatchingSwitch</VariableNameCamelCase>
+      <ToPartPartIndex>6</ToPartPartIndex>
+      <PinNumber>6</PinNumber>
+      <LowerVairableName>latch_bit2_latching_switch</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recbGiPgVmuXDdbvA</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>reckxGZX9rTlH5iaM</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
+      <Constants>recGXGC8P6wFrHRnJ</Constants>
+      <FromPart>recqwFeNgXlRZrIH8</FromPart>
+      <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <Name>Pin-07-AmPmLedPin-Led</Name>
+      <FromPartPartIndex>3</FromPartPartIndex>
+      <FromPartColor>Yellow</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Yellow</ToPartColor>
+      <FromPartPurpose>AmPmLedPin</FromPartPurpose>
+      <ToPartName>Pin-07-AmPmLedPin</ToPartName>
+      <ToPartCount>1</ToPartCount>
+      <ToPartPurposes>AmPmStatus</ToPartPurposes>
+      <VariableNameCamelCase>amPmStatus_Led</VariableNameCamelCase>
+      <ToPartPartIndex>7</ToPartPartIndex>
+      <PinNumber>7</PinNumber>
+      <LowerVairableName>am_pm_status_led</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>reclbaQ29uzr9NICQ</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>recrYWW4Z5NpJCpEr</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
+      <Constants>recfmU5BP7K1ayrEH</Constants>
+      <FromPart>recPTrLTl5VqCpZLU</FromPart>
+      <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
+      <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
+      <ToPartPartTypeName>HallEffectSensor</ToPartPartTypeName>
+      <Name>Pin-08-AmPmSensorPin-HallEffectSensor</Name>
+      <FromPartPartIndex>3</FromPartPartIndex>
+      <FromPartColor>Yellow</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Yellow</ToPartColor>
+      <FromPartPurpose>AmPmSensorPin</FromPartPurpose>
+      <ToPartName>Pin-08-AmPmSensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>SenseAmPm</ToPartPurposes>
+      <VariableNameCamelCase>senseAmPm_HallEffectSensor</VariableNameCamelCase>
+      <ToPartPartIndex>8</ToPartPartIndex>
+      <PinNumber>8</PinNumber>
+      <LowerVairableName>sense_am_pm_hall_effect_sensor</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recWQCA4hwpJKy7Sq</PartLinkId>
+      <createdTime>2024-03-08T20:05:55Z</createdTime>
+      <ToPart>recE8e1QT6vCqoYnC</ToPart>
+      <Constants>recwQMDCDueArSiju</Constants>
+      <FromPart>recPTrLTl5VqCpZLU</FromPart>
+      <Description>Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</Description>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <Name>Pin-08-AmPmSensorPin-LatchingSwitch</Name>
+      <FromPartPartIndex>3</FromPartPartIndex>
+      <FromPartColor>Yellow</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Yellow</ToPartColor>
+      <FromPartPurpose>AmPmSensorPin</FromPartPurpose>
+      <ToPartName>Pin-08-AmPmSensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>LatchAmPm</ToPartPurposes>
+      <VariableNameCamelCase>latchAmPm_LatchingSwitch</VariableNameCamelCase>
+      <ToPartPartIndex>8</ToPartPartIndex>
+      <PinNumber>8</PinNumber>
+      <LowerVairableName>latch_am_pm_latching_switch</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recJrcbM89fzFkhxh</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>recL0Dsj02FEJ17xs</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
+      <Constants>rec2rwpeHVASSQ4Kg</Constants>
+      <FromPart>recYl5uead9cJDGrf</FromPart>
+      <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <Name>Pin-09-WheelLedPin-Led</Name>
+      <FromPartPartIndex>4</FromPartPartIndex>
+      <FromPartColor>Red</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Red</ToPartColor>
+      <FromPartPurpose>WheelLedPin</FromPartPurpose>
+      <ToPartName>Pin-09-WheelLedPin</ToPartName>
+      <ToPartCount>1</ToPartCount>
+      <ToPartPurposes>WheelStatus</ToPartPurposes>
+      <VariableNameCamelCase>wheelStatus_Led</VariableNameCamelCase>
+      <ToPartPartIndex>9</ToPartPartIndex>
+      <PinNumber>9</PinNumber>
+      <LowerVairableName>wheel_status_led</LowerVairableName>
+    </PartLink>
+    <PartLink>
       <PartLinkId>recpPKO7mujptxgs9</PartLinkId>
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recrw1QfQGdqo6PVd</ToPart>
@@ -1540,27 +1353,72 @@
       <PinNumber>10</PinNumber>
       <LowerVairableName>sense_wheel_hall_effect_sensor</LowerVairableName>
     </PartLink>
+    <PartLink>
+      <PartLinkId>reccuXwXh9BDjQpnQ</PartLinkId>
+      <createdTime>2024-03-08T20:05:55Z</createdTime>
+      <ToPart>recf1NFxHRxf0YVm1</ToPart>
+      <Constants>reciDvlgbEa2RXPNk</Constants>
+      <FromPart>recImtkPIwt1UPXIq</FromPart>
+      <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <Name>Pin-10-WheelSensorPin-LatchingSwitch</Name>
+      <FromPartPartIndex>4</FromPartPartIndex>
+      <FromPartColor>Red</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Red</ToPartColor>
+      <FromPartPurpose>WheelSensorPin</FromPartPurpose>
+      <ToPartName>Pin-10-WheelSensorPin</ToPartName>
+      <ToPartCount>2</ToPartCount>
+      <ToPartPurposes>LatchWheel</ToPartPurposes>
+      <VariableNameCamelCase>latchWheel_LatchingSwitch</VariableNameCamelCase>
+      <ToPartPartIndex>10</ToPartPartIndex>
+      <PinNumber>10</PinNumber>
+      <LowerVairableName>latch_wheel_latching_switch</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recWb4vxXgcm65Sv7</PartLinkId>
+      <createdTime>2024-03-08T19:16:10Z</createdTime>
+      <ToPart>recTPEebvYy1GG3mj</ToPart>
+      <InputOutputType>OUTPUT</InputOutputType>
+      <Constants>recpKzCCwLnezixFm</Constants>
+      <FromPart>recRVVqxFTthRg7LB</FromPart>
+      <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
+      <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
+      <ToPartPartTypeName>Led</ToPartPartTypeName>
+      <Name>Pin-11-StatusLedPin-Led</Name>
+      <FromPartPartIndex>5</FromPartPartIndex>
+      <FromPartColor>Orange</FromPartColor>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Orange</ToPartColor>
+      <FromPartPurpose>StatusLedPin</FromPartPurpose>
+      <ToPartName>Pin-11-StatusLedPin</ToPartName>
+      <ToPartCount>1</ToPartCount>
+      <ToPartPurposes>StatusStatus</ToPartPurposes>
+      <VariableNameCamelCase>statusStatus_Led</VariableNameCamelCase>
+      <ToPartPartIndex>11</ToPartPartIndex>
+      <PinNumber>11</PinNumber>
+      <LowerVairableName>status_status_led</LowerVairableName>
+    </PartLink>
   </PartLinks>
   <Constants>
     <Constant>
-      <ConstantId>rec2rwpeHVASSQ4Kg</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>11</SortOrder>
-      <Name>wheelStatus_Led</Name>
-      <ConstantForPartLink>recJrcbM89fzFkhxh</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>wheelStatus_Led</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>wheelStatus_Led</VariableNameCamelCase>
-      <LowerVariableName>wheel_status_led</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int wheel_status_led</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int wheel_status_led;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</ConstantForPartLinkDescription>
-      <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
-      <ConstantForPartLinkPinNumber>9</ConstantForPartLinkPinNumber>
-      <ConstantValue>9</ConstantValue>
-      <ArduinoConstant>const unsigned int wheel_status_led = 9; // Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>wheel_status_led</ConstantForPartLinkLowerVairableName>
+      <ConstantId>rectea3stFU1WB8wg</ConstantId>
+      <createdTime>2024-03-18T15:32:52Z</createdTime>
+      <CustomDescription>Debounce delay in milliseconds</CustomDescription>
+      <SortOrder>1</SortOrder>
+      <Name>debounceDelay</Name>
+      <CustomConstantValue>500</CustomConstantValue>
+      <Type>unsigned long</Type>
+      <Category>Debouncing</Category>
+      <VariableNameCamelCase>debounceDelay</VariableNameCamelCase>
+      <LowerVariableName>debounce_delay</LowerVariableName>
+      <ArduinoConstantCore>const unsigned long debounce_delay</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned long debounce_delay;</ArduinoConstantHeader>
+      <Description>Debounce delay in milliseconds</Description>
+      <ConstantValue>500</ConstantValue>
+      <ArduinoConstant>const unsigned long debounce_delay = 500; // Debounce delay in milliseconds</ArduinoConstant>
+      <CategoryLabel>Debouncing constants</CategoryLabel>
     </Constant>
     <Constant>
       <ConstantId>rec2wueU4dZ7lQEQs</ConstantId>
@@ -1580,140 +1438,6 @@
       <ArduinoConstant>const unsigned long wheel_turn_debounce_ms = 150; // Debounce time for wheel turn detection</ArduinoConstant>
     </Constant>
     <Constant>
-      <ConstantId>recAVNdsMPu66hpQX</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>4</SortOrder>
-      <Name>senseBit1_HallEffectSensor</Name>
-      <ConstantForPartLink>rec85jzX4EnaR4xlH</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>latchBit1_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>latchBit1_LatchingSwitch</VariableNameCamelCase>
-      <LowerVariableName>latch_bit1_latching_switch</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int latch_bit1_latching_switch</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int latch_bit1_latching_switch;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</ConstantForPartLinkDescription>
-      <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
-      <ConstantForPartLinkPinNumber>4</ConstantForPartLinkPinNumber>
-      <ConstantValue>4</ConstantValue>
-      <ArduinoConstant>const unsigned int latch_bit1_latching_switch = 4; // The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>latch_bit1_latching_switch</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recGXGC8P6wFrHRnJ</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>8</SortOrder>
-      <Name>amPmStatus_Led</Name>
-      <ConstantForPartLink>recbGiPgVmuXDdbvA</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>amPmStatus_Led</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>amPmStatus_Led</VariableNameCamelCase>
-      <LowerVariableName>am_pm_status_led</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int am_pm_status_led</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int am_pm_status_led;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</ConstantForPartLinkDescription>
-      <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
-      <ConstantForPartLinkPinNumber>7</ConstantForPartLinkPinNumber>
-      <ConstantValue>7</ConstantValue>
-      <ArduinoConstant>const unsigned int am_pm_status_led = 7; // A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>am_pm_status_led</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recGizcq3h6h89FEL</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>12</SortOrder>
-      <Name>senseWheel_HallEffectSensor</Name>
-      <ConstantForPartLink>recpPKO7mujptxgs9</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>senseWheel_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>senseWheel_HallEffectSensor</VariableNameCamelCase>
-      <LowerVariableName>sense_wheel_hall_effect_sensor</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int sense_wheel_hall_effect_sensor</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int sense_wheel_hall_effect_sensor;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</ConstantForPartLinkDescription>
-      <Description>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</Description>
-      <ConstantForPartLinkPinNumber>10</ConstantForPartLinkPinNumber>
-      <ConstantValue>10</ConstantValue>
-      <ArduinoConstant>const unsigned int sense_wheel_hall_effect_sensor = 10; // Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>sense_wheel_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recM7xBg3SEHQ3RSN</ConstantId>
-      <createdTime>2024-03-18T15:33:19Z</createdTime>
-      <CustomDescription>Milliseconds that should be silent between beeps</CustomDescription>
-      <SortOrder>3</SortOrder>
-      <Name>msBetweenBeeps</Name>
-      <CustomConstantValue>85</CustomConstantValue>
-      <Type>unsigned int</Type>
-      <Category>SpeedOfTime</Category>
-      <VariableNameCamelCase>msBetweenBeeps</VariableNameCamelCase>
-      <LowerVariableName>ms_between_beeps</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int ms_between_beeps</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int ms_between_beeps;</ArduinoConstantHeader>
-      <Description>Milliseconds that should be silent between beeps</Description>
-      <ConstantValue>85</ConstantValue>
-      <ArduinoConstant>const unsigned int ms_between_beeps = 85; // Milliseconds that should be silent between beeps</ArduinoConstant>
-    </Constant>
-    <Constant>
-      <ConstantId>recNCgjm6NLAjYuLr</ConstantId>
-      <createdTime>2024-03-18T15:33:19Z</createdTime>
-      <CustomDescription>How many seconds should be between the first reminder, and the second</CustomDescription>
-      <SortOrder>2</SortOrder>
-      <Name>initialReminderDelaySeconds</Name>
-      <CustomConstantValue>2</CustomConstantValue>
-      <Type>unsigned int</Type>
-      <Category>Reminders</Category>
-      <VariableNameCamelCase>initialReminderDelaySeconds</VariableNameCamelCase>
-      <LowerVariableName>initial_reminder_delay_seconds</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int initial_reminder_delay_seconds</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int initial_reminder_delay_seconds;</ArduinoConstantHeader>
-      <Description>How many seconds should be between the first reminder, and the second</Description>
-      <ConstantValue>2</ConstantValue>
-      <ArduinoConstant>const unsigned int initial_reminder_delay_seconds = 2; // How many seconds should be between the first reminder, and the second</ArduinoConstant>
-    </Constant>
-    <Constant>
-      <ConstantId>recOp1LtC6TbRtQ7v</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>5</SortOrder>
-      <Name>bit2Status_Led</Name>
-      <ConstantForPartLink>recNmLk1tV6epyIzM</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>bit2Status_Led</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>bit2Status_Led</VariableNameCamelCase>
-      <LowerVariableName>bit2_status_led</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int bit2_status_led</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int bit2_status_led;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</ConstantForPartLinkDescription>
-      <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
-      <ConstantForPartLinkPinNumber>5</ConstantForPartLinkPinNumber>
-      <ConstantValue>5</ConstantValue>
-      <ArduinoConstant>const unsigned int bit2_status_led = 5; // From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>bit2_status_led</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recPTYQvO0NBgDsIq</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>2</SortOrder>
-      <Name>bit1Status_Led</Name>
-      <ConstantForPartLink>reco9mF15Qa0N4ZU8</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>bit1Status_Led</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>bit1Status_Led</VariableNameCamelCase>
-      <LowerVariableName>bit1_status_led</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int bit1_status_led</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int bit1_status_led;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</ConstantForPartLinkDescription>
-      <Description>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</Description>
-      <ConstantForPartLinkPinNumber>3</ConstantForPartLinkPinNumber>
-      <ConstantValue>3</ConstantValue>
-      <ArduinoConstant>const unsigned int bit1_status_led = 3; // The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>bit1_status_led</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
       <ConstantId>recXO6aieslWOmguj</ConstantId>
       <createdTime>2024-03-18T15:33:19Z</createdTime>
       <CustomDescription>Threshold for quick turn detection</CustomDescription>
@@ -1729,64 +1453,6 @@
       <Description>Threshold for quick turn detection</Description>
       <ConstantValue>300</ConstantValue>
       <ArduinoConstant>const unsigned long quick_turn_threshold_ms = 300; // Threshold for quick turn detection</ArduinoConstant>
-    </Constant>
-    <Constant>
-      <ConstantId>reca6BGGNpG6xmYW6</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>7</SortOrder>
-      <Name>senseBit2_HallEffectSensor</Name>
-      <ConstantForPartLink>rec2dLPcXlB5mpcr0</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>latchBit2_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>latchBit2_LatchingSwitch</VariableNameCamelCase>
-      <LowerVariableName>latch_bit2_latching_switch</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int latch_bit2_latching_switch</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int latch_bit2_latching_switch;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</ConstantForPartLinkDescription>
-      <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
-      <ConstantForPartLinkPinNumber>6</ConstantForPartLinkPinNumber>
-      <ConstantValue>6</ConstantValue>
-      <ArduinoConstant>const unsigned int latch_bit2_latching_switch = 6; // Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>latch_bit2_latching_switch</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recd17L0yrdVQSyZ1</ConstantId>
-      <createdTime>2024-03-18T15:33:19Z</createdTime>
-      <CustomDescription>The number of times that the sound should occur</CustomDescription>
-      <SortOrder>1</SortOrder>
-      <Name>initialTimesToBeep</Name>
-      <CustomConstantValue>5</CustomConstantValue>
-      <Type>unsigned int</Type>
-      <Category>Reminders</Category>
-      <VariableNameCamelCase>initialTimesToBeep</VariableNameCamelCase>
-      <LowerVariableName>initial_times_to_beep</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int initial_times_to_beep</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int initial_times_to_beep;</ArduinoConstantHeader>
-      <Description>The number of times that the sound should occur</Description>
-      <ConstantValue>5</ConstantValue>
-      <ArduinoConstant>const unsigned int initial_times_to_beep = 5; // The number of times that the sound should occur</ArduinoConstant>
-      <CategoryLabel>Reminders constants</CategoryLabel>
-    </Constant>
-    <Constant>
-      <ConstantId>recfmU5BP7K1ayrEH</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>9</SortOrder>
-      <Name>senseAmPm_HallEffectSensor</Name>
-      <ConstantForPartLink>reclbaQ29uzr9NICQ</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>senseAmPm_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>senseAmPm_HallEffectSensor</VariableNameCamelCase>
-      <LowerVariableName>sense_am_pm_hall_effect_sensor</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int sense_am_pm_hall_effect_sensor</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int sense_am_pm_hall_effect_sensor;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</ConstantForPartLinkDescription>
-      <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
-      <ConstantForPartLinkPinNumber>8</ConstantForPartLinkPinNumber>
-      <ConstantValue>8</ConstantValue>
-      <ArduinoConstant>const unsigned int sense_am_pm_hall_effect_sensor = 8; // The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>sense_am_pm_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
     </Constant>
     <Constant>
       <ConstantId>reci088oVUMHJi8ze</ConstantId>
@@ -1813,107 +1479,6 @@ const unsigned int ms_per_minute = 60000;
       <CategoryLabel>SpeedOfTime constants</CategoryLabel>
     </Constant>
     <Constant>
-      <ConstantId>reciDvlgbEa2RXPNk</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>13</SortOrder>
-      <Name>senseWheel_HallEffectSensor</Name>
-      <ConstantForPartLink>reccuXwXh9BDjQpnQ</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>latchWheel_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>latchWheel_LatchingSwitch</VariableNameCamelCase>
-      <LowerVariableName>latch_wheel_latching_switch</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int latch_wheel_latching_switch</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int latch_wheel_latching_switch;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</ConstantForPartLinkDescription>
-      <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
-      <ConstantForPartLinkPinNumber>10</ConstantForPartLinkPinNumber>
-      <ConstantValue>10</ConstantValue>
-      <ArduinoConstant>const unsigned int latch_wheel_latching_switch = 10; // The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>latch_wheel_latching_switch</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recmWTBwGpigBJi95</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>6</SortOrder>
-      <Name>senseBit2_HallEffectSensor</Name>
-      <ConstantForPartLink>recHQ0RCmt741AGkn</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>senseBit2_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>senseBit2_HallEffectSensor</VariableNameCamelCase>
-      <LowerVariableName>sense_bit2_hall_effect_sensor</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int sense_bit2_hall_effect_sensor</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int sense_bit2_hall_effect_sensor;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</ConstantForPartLinkDescription>
-      <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
-      <ConstantForPartLinkPinNumber>6</ConstantForPartLinkPinNumber>
-      <ConstantValue>6</ConstantValue>
-      <ArduinoConstant>const unsigned int sense_bit2_hall_effect_sensor = 6; // The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>sense_bit2_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recnhs8zmvIXVWMOl</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>3</SortOrder>
-      <Name>senseBit1_HallEffectSensor</Name>
-      <ConstantForPartLink>recUm9oFBRBzaKNcp</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>senseBit1_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>senseBit1_HallEffectSensor</VariableNameCamelCase>
-      <LowerVariableName>sense_bit1_hall_effect_sensor</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int sense_bit1_hall_effect_sensor</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int sense_bit1_hall_effect_sensor;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</ConstantForPartLinkDescription>
-      <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
-      <ConstantForPartLinkPinNumber>4</ConstantForPartLinkPinNumber>
-      <ConstantValue>4</ConstantValue>
-      <ArduinoConstant>const unsigned int sense_bit1_hall_effect_sensor = 4; // Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>sense_bit1_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recpKzCCwLnezixFm</ConstantId>
-      <createdTime>2024-03-18T18:57:39Z</createdTime>
-      <SortOrder>14</SortOrder>
-      <Name>statusStatus_Led</Name>
-      <ConstantForPartLink>recWb4vxXgcm65Sv7</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>statusStatus_Led</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>statusStatus_Led</VariableNameCamelCase>
-      <LowerVariableName>status_status_led</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int status_status_led</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int status_status_led;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</ConstantForPartLinkDescription>
-      <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
-      <ConstantForPartLinkPinNumber>11</ConstantForPartLinkPinNumber>
-      <ConstantValue>11</ConstantValue>
-      <ArduinoConstant>const unsigned int status_status_led = 11; // Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</ArduinoConstant>
-      <ConstantForPartLinkLowerVairableName>status_status_led</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recql5ebWysHS1IFU</ConstantId>
-      <createdTime>2024-03-18T18:56:30Z</createdTime>
-      <SortOrder>1</SortOrder>
-      <Name>statusBeeps_Speaker</Name>
-      <ConstantForPartLink>recUzAMBYEgLQPVOc</ConstantForPartLink>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <ConstantForPartLinkVariableNameCamelCase>statusBeeps_Speaker</ConstantForPartLinkVariableNameCamelCase>
-      <VariableNameCamelCase>statusBeeps_Speaker</VariableNameCamelCase>
-      <LowerVariableName>status_beeps_speaker</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int status_beeps_speaker</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int status_beeps_speaker;</ArduinoConstantHeader>
-      <ConstantForPartLinkDescription>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</ConstantForPartLinkDescription>
-      <Description>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</Description>
-      <ConstantForPartLinkPinNumber>2</ConstantForPartLinkPinNumber>
-      <ConstantValue>2</ConstantValue>
-      <ArduinoConstant>const unsigned int status_beeps_speaker = 2; // The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</ArduinoConstant>
-      <CategoryLabel>Parts constants</CategoryLabel>
-      <ConstantForPartLinkLowerVairableName>status_beeps_speaker</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
       <ConstantId>recrKDXn2bVwVCmUj</ConstantId>
       <createdTime>2024-03-18T15:33:19Z</createdTime>
       <CustomDescription>How many "minutes" should be in a day</CustomDescription>
@@ -1937,22 +1502,237 @@ const unsigned int minutes_per_day = 1440;
 </ArduinoConstant>
     </Constant>
     <Constant>
-      <ConstantId>rectea3stFU1WB8wg</ConstantId>
-      <createdTime>2024-03-18T15:32:52Z</createdTime>
-      <CustomDescription>Debounce delay in milliseconds</CustomDescription>
+      <ConstantId>recM7xBg3SEHQ3RSN</ConstantId>
+      <createdTime>2024-03-18T15:33:19Z</createdTime>
+      <CustomDescription>Milliseconds that should be silent between beeps</CustomDescription>
+      <SortOrder>3</SortOrder>
+      <Name>msBetweenBeeps</Name>
+      <CustomConstantValue>85</CustomConstantValue>
+      <Type>unsigned int</Type>
+      <Category>SpeedOfTime</Category>
+      <VariableNameCamelCase>msBetweenBeeps</VariableNameCamelCase>
+      <LowerVariableName>ms_between_beeps</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int ms_between_beeps</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int ms_between_beeps;</ArduinoConstantHeader>
+      <Description>Milliseconds that should be silent between beeps</Description>
+      <ConstantValue>85</ConstantValue>
+      <ArduinoConstant>const unsigned int ms_between_beeps = 85; // Milliseconds that should be silent between beeps</ArduinoConstant>
+    </Constant>
+    <Constant>
+      <ConstantId>recd17L0yrdVQSyZ1</ConstantId>
+      <createdTime>2024-03-18T15:33:19Z</createdTime>
+      <CustomDescription>The number of times that the sound should occur</CustomDescription>
       <SortOrder>1</SortOrder>
-      <Name>debounceDelay</Name>
-      <CustomConstantValue>500</CustomConstantValue>
-      <Type>unsigned long</Type>
-      <Category>Debouncing</Category>
-      <VariableNameCamelCase>debounceDelay</VariableNameCamelCase>
-      <LowerVariableName>debounce_delay</LowerVariableName>
-      <ArduinoConstantCore>const unsigned long debounce_delay</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned long debounce_delay;</ArduinoConstantHeader>
-      <Description>Debounce delay in milliseconds</Description>
-      <ConstantValue>500</ConstantValue>
-      <ArduinoConstant>const unsigned long debounce_delay = 500; // Debounce delay in milliseconds</ArduinoConstant>
-      <CategoryLabel>Debouncing constants</CategoryLabel>
+      <Name>initialTimesToBeep</Name>
+      <CustomConstantValue>5</CustomConstantValue>
+      <Type>unsigned int</Type>
+      <Category>Reminders</Category>
+      <VariableNameCamelCase>initialTimesToBeep</VariableNameCamelCase>
+      <LowerVariableName>initial_times_to_beep</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int initial_times_to_beep</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int initial_times_to_beep;</ArduinoConstantHeader>
+      <Description>The number of times that the sound should occur</Description>
+      <ConstantValue>5</ConstantValue>
+      <ArduinoConstant>const unsigned int initial_times_to_beep = 5; // The number of times that the sound should occur</ArduinoConstant>
+      <CategoryLabel>Reminders constants</CategoryLabel>
+    </Constant>
+    <Constant>
+      <ConstantId>recNCgjm6NLAjYuLr</ConstantId>
+      <createdTime>2024-03-18T15:33:19Z</createdTime>
+      <CustomDescription>How many seconds should be between the first reminder, and the second</CustomDescription>
+      <SortOrder>2</SortOrder>
+      <Name>initialReminderDelaySeconds</Name>
+      <CustomConstantValue>2</CustomConstantValue>
+      <Type>unsigned int</Type>
+      <Category>Reminders</Category>
+      <VariableNameCamelCase>initialReminderDelaySeconds</VariableNameCamelCase>
+      <LowerVariableName>initial_reminder_delay_seconds</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int initial_reminder_delay_seconds</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int initial_reminder_delay_seconds;</ArduinoConstantHeader>
+      <Description>How many seconds should be between the first reminder, and the second</Description>
+      <ConstantValue>2</ConstantValue>
+      <ArduinoConstant>const unsigned int initial_reminder_delay_seconds = 2; // How many seconds should be between the first reminder, and the second</ArduinoConstant>
+    </Constant>
+    <Constant>
+      <ConstantId>recql5ebWysHS1IFU</ConstantId>
+      <createdTime>2024-03-18T18:56:30Z</createdTime>
+      <SortOrder>1</SortOrder>
+      <Name>statusBeeps_Speaker</Name>
+      <ConstantForPartLink>recUzAMBYEgLQPVOc</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>statusBeeps_Speaker</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>statusBeeps_Speaker</VariableNameCamelCase>
+      <LowerVariableName>status_beeps_speaker</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int status_beeps_speaker</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int status_beeps_speaker;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</ConstantForPartLinkDescription>
+      <Description>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</Description>
+      <ConstantForPartLinkPinNumber>2</ConstantForPartLinkPinNumber>
+      <ConstantValue>2</ConstantValue>
+      <ArduinoConstant>const unsigned int status_beeps_speaker = 2; // The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</ArduinoConstant>
+      <CategoryLabel>Parts constants</CategoryLabel>
+      <ConstantForPartLinkLowerVairableName>status_beeps_speaker</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recPTYQvO0NBgDsIq</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>2</SortOrder>
+      <Name>bit1Status_Led</Name>
+      <ConstantForPartLink>reco9mF15Qa0N4ZU8</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>bit1Status_Led</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>bit1Status_Led</VariableNameCamelCase>
+      <LowerVariableName>bit1_status_led</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int bit1_status_led</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int bit1_status_led;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</ConstantForPartLinkDescription>
+      <Description>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</Description>
+      <ConstantForPartLinkPinNumber>3</ConstantForPartLinkPinNumber>
+      <ConstantValue>3</ConstantValue>
+      <ArduinoConstant>const unsigned int bit1_status_led = 3; // The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>bit1_status_led</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recnhs8zmvIXVWMOl</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>3</SortOrder>
+      <Name>senseBit1_HallEffectSensor</Name>
+      <ConstantForPartLink>recUm9oFBRBzaKNcp</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>senseBit1_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>senseBit1_HallEffectSensor</VariableNameCamelCase>
+      <LowerVariableName>sense_bit1_hall_effect_sensor</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int sense_bit1_hall_effect_sensor</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int sense_bit1_hall_effect_sensor;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</ConstantForPartLinkDescription>
+      <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
+      <ConstantForPartLinkPinNumber>4</ConstantForPartLinkPinNumber>
+      <ConstantValue>4</ConstantValue>
+      <ArduinoConstant>const unsigned int sense_bit1_hall_effect_sensor = 4; // Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>sense_bit1_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recAVNdsMPu66hpQX</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>4</SortOrder>
+      <Name>senseBit1_HallEffectSensor</Name>
+      <ConstantForPartLink>rec85jzX4EnaR4xlH</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>latchBit1_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>latchBit1_LatchingSwitch</VariableNameCamelCase>
+      <LowerVariableName>latch_bit1_latching_switch</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int latch_bit1_latching_switch</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int latch_bit1_latching_switch;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</ConstantForPartLinkDescription>
+      <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
+      <ConstantForPartLinkPinNumber>4</ConstantForPartLinkPinNumber>
+      <ConstantValue>4</ConstantValue>
+      <ArduinoConstant>const unsigned int latch_bit1_latching_switch = 4; // The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>latch_bit1_latching_switch</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recOp1LtC6TbRtQ7v</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>5</SortOrder>
+      <Name>bit2Status_Led</Name>
+      <ConstantForPartLink>recNmLk1tV6epyIzM</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>bit2Status_Led</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>bit2Status_Led</VariableNameCamelCase>
+      <LowerVariableName>bit2_status_led</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int bit2_status_led</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int bit2_status_led;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</ConstantForPartLinkDescription>
+      <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
+      <ConstantForPartLinkPinNumber>5</ConstantForPartLinkPinNumber>
+      <ConstantValue>5</ConstantValue>
+      <ArduinoConstant>const unsigned int bit2_status_led = 5; // From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>bit2_status_led</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recmWTBwGpigBJi95</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>6</SortOrder>
+      <Name>senseBit2_HallEffectSensor</Name>
+      <ConstantForPartLink>recHQ0RCmt741AGkn</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>senseBit2_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>senseBit2_HallEffectSensor</VariableNameCamelCase>
+      <LowerVariableName>sense_bit2_hall_effect_sensor</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int sense_bit2_hall_effect_sensor</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int sense_bit2_hall_effect_sensor;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</ConstantForPartLinkDescription>
+      <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
+      <ConstantForPartLinkPinNumber>6</ConstantForPartLinkPinNumber>
+      <ConstantValue>6</ConstantValue>
+      <ArduinoConstant>const unsigned int sense_bit2_hall_effect_sensor = 6; // The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>sense_bit2_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>reca6BGGNpG6xmYW6</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>7</SortOrder>
+      <Name>senseBit2_HallEffectSensor</Name>
+      <ConstantForPartLink>rec2dLPcXlB5mpcr0</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>latchBit2_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>latchBit2_LatchingSwitch</VariableNameCamelCase>
+      <LowerVariableName>latch_bit2_latching_switch</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int latch_bit2_latching_switch</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int latch_bit2_latching_switch;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</ConstantForPartLinkDescription>
+      <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
+      <ConstantForPartLinkPinNumber>6</ConstantForPartLinkPinNumber>
+      <ConstantValue>6</ConstantValue>
+      <ArduinoConstant>const unsigned int latch_bit2_latching_switch = 6; // Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>latch_bit2_latching_switch</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recGXGC8P6wFrHRnJ</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>8</SortOrder>
+      <Name>amPmStatus_Led</Name>
+      <ConstantForPartLink>recbGiPgVmuXDdbvA</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>amPmStatus_Led</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>amPmStatus_Led</VariableNameCamelCase>
+      <LowerVariableName>am_pm_status_led</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int am_pm_status_led</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int am_pm_status_led;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</ConstantForPartLinkDescription>
+      <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
+      <ConstantForPartLinkPinNumber>7</ConstantForPartLinkPinNumber>
+      <ConstantValue>7</ConstantValue>
+      <ArduinoConstant>const unsigned int am_pm_status_led = 7; // A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>am_pm_status_led</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recfmU5BP7K1ayrEH</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>9</SortOrder>
+      <Name>senseAmPm_HallEffectSensor</Name>
+      <ConstantForPartLink>reclbaQ29uzr9NICQ</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>senseAmPm_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>senseAmPm_HallEffectSensor</VariableNameCamelCase>
+      <LowerVariableName>sense_am_pm_hall_effect_sensor</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int sense_am_pm_hall_effect_sensor</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int sense_am_pm_hall_effect_sensor;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</ConstantForPartLinkDescription>
+      <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
+      <ConstantForPartLinkPinNumber>8</ConstantForPartLinkPinNumber>
+      <ConstantValue>8</ConstantValue>
+      <ArduinoConstant>const unsigned int sense_am_pm_hall_effect_sensor = 8; // The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>sense_am_pm_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
     </Constant>
     <Constant>
       <ConstantId>recwQMDCDueArSiju</ConstantId>
@@ -1973,6 +1753,86 @@ const unsigned int minutes_per_day = 1440;
       <ConstantValue>8</ConstantValue>
       <ArduinoConstant>const unsigned int latch_am_pm_latching_switch = 8; // Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</ArduinoConstant>
       <ConstantForPartLinkLowerVairableName>latch_am_pm_latching_switch</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>rec2rwpeHVASSQ4Kg</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>11</SortOrder>
+      <Name>wheelStatus_Led</Name>
+      <ConstantForPartLink>recJrcbM89fzFkhxh</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>wheelStatus_Led</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>wheelStatus_Led</VariableNameCamelCase>
+      <LowerVariableName>wheel_status_led</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int wheel_status_led</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int wheel_status_led;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</ConstantForPartLinkDescription>
+      <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
+      <ConstantForPartLinkPinNumber>9</ConstantForPartLinkPinNumber>
+      <ConstantValue>9</ConstantValue>
+      <ArduinoConstant>const unsigned int wheel_status_led = 9; // Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>wheel_status_led</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recGizcq3h6h89FEL</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>12</SortOrder>
+      <Name>senseWheel_HallEffectSensor</Name>
+      <ConstantForPartLink>recpPKO7mujptxgs9</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>senseWheel_HallEffectSensor</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>senseWheel_HallEffectSensor</VariableNameCamelCase>
+      <LowerVariableName>sense_wheel_hall_effect_sensor</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int sense_wheel_hall_effect_sensor</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int sense_wheel_hall_effect_sensor;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</ConstantForPartLinkDescription>
+      <Description>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</Description>
+      <ConstantForPartLinkPinNumber>10</ConstantForPartLinkPinNumber>
+      <ConstantValue>10</ConstantValue>
+      <ArduinoConstant>const unsigned int sense_wheel_hall_effect_sensor = 10; // Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>sense_wheel_hall_effect_sensor</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>reciDvlgbEa2RXPNk</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>13</SortOrder>
+      <Name>senseWheel_HallEffectSensor</Name>
+      <ConstantForPartLink>reccuXwXh9BDjQpnQ</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>latchWheel_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>latchWheel_LatchingSwitch</VariableNameCamelCase>
+      <LowerVariableName>latch_wheel_latching_switch</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int latch_wheel_latching_switch</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int latch_wheel_latching_switch;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</ConstantForPartLinkDescription>
+      <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
+      <ConstantForPartLinkPinNumber>10</ConstantForPartLinkPinNumber>
+      <ConstantValue>10</ConstantValue>
+      <ArduinoConstant>const unsigned int latch_wheel_latching_switch = 10; // The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>latch_wheel_latching_switch</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recpKzCCwLnezixFm</ConstantId>
+      <createdTime>2024-03-18T18:57:39Z</createdTime>
+      <SortOrder>14</SortOrder>
+      <Name>statusStatus_Led</Name>
+      <ConstantForPartLink>recWb4vxXgcm65Sv7</ConstantForPartLink>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <ConstantForPartLinkVariableNameCamelCase>statusStatus_Led</ConstantForPartLinkVariableNameCamelCase>
+      <VariableNameCamelCase>statusStatus_Led</VariableNameCamelCase>
+      <LowerVariableName>status_status_led</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int status_status_led</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int status_status_led;</ArduinoConstantHeader>
+      <ConstantForPartLinkDescription>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</ConstantForPartLinkDescription>
+      <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
+      <ConstantForPartLinkPinNumber>11</ConstantForPartLinkPinNumber>
+      <ConstantValue>11</ConstantValue>
+      <ArduinoConstant>const unsigned int status_status_led = 11; // Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</ArduinoConstant>
+      <ConstantForPartLinkLowerVairableName>status_status_led</ConstantForPartLinkLowerVairableName>
     </Constant>
   </Constants>
 </Airtable>

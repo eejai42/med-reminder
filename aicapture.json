@@ -21,7 +21,7 @@
       "ProjectTranspilerId": "d9898a20-d317-4b49-b225-dcfbe64eba33",
       "Name": "AirtableToXml",
       "RelativePath": "/SSoT/airtable",
-      "CommandLine": "airtable/airtable-to-xml -p baseid=apph60kkVmuGzN9tS -p entities=FSMs,MachineStates,Transitions,PartTypes,Parts,PartLinks,Constants"
+      "CommandLine": "airtable/airtable-to-xml -p baseid=apph60kkVmuGzN9tS  -p view=ForExport -p entities=FSMs,MachineStates,Transitions,PartTypes,Parts,PartLinks,Constants"
     },
     {
       "MatchedTranspiler": {

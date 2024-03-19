@@ -16,8 +16,8 @@ class {{@key}}StateMachine : public BaseStateMachine<BaseState<{{@key}}StateMach
 public:
     {{@key}}StateMachine() : BaseStateMachine() {
         // Initialize the machine with the Bootup state
-        changeState(std::make_unique<{{FSMs.FSM.InitialStateName}}>(this));
-    }
+        changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new {{FSMs.FSM.InitialStateName}}(this)));
+    }    
 };
 
 {{#each MachineStates.MachineState}}
@@ -37,7 +37,7 @@ public:
         // Handle transitions
         {{#each FromTransitions.FromTransition}}
         if (this->has{{ActionName}}()) {
-            machine->changeState(std::make_unique<{{ToStateName}}>(machine));
+            machine->changeState(std::make_unique<BaseState<MedReminderStateMachine>>(new {{ToStateName}}(machine)));
             return;
         }
         {{/each}}
