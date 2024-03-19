@@ -1,16 +1,12 @@
 #pragma once
 #include "MedReminderStateMachine.h"
+// #include "BaseWaitForMoreMovement.h" // Ensure base class is included if separate
 
 class WaitForMoreMovement : public BaseWaitForMoreMovement {
 public:
-    WaitForMoreMovement(MedReminderStateMachine* machine) : BaseWaitForMoreMovement(machine) {}
+    using BaseWaitForMoreMovement::BaseWaitForMoreMovement;
+    WaitForMoreMovement(MedReminderStateMachine* machine);
 
-    bool hasWheelMoved() override {
-        // Transition logic for WheelMoved
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
-    bool hasWheelNotMoved() override {
-        // Transition logic for WheelNotMoved
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
+    bool hasWheelMoved() override;
+    bool hasWheelNotMoved() override;
 };

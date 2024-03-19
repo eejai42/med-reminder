@@ -1,12 +1,11 @@
 #pragma once
 #include "MedReminderStateMachine.h"
+// #include "BaseBootup.h" // Ensure base class is included if separate
 
 class Bootup : public BaseBootup {
 public:
-    Bootup(MedReminderStateMachine* machine) : BaseBootup(machine) {}
+    using BaseBootup::BaseBootup;
+    Bootup(MedReminderStateMachine* machine);
 
-    bool hasBootupCompleted() override {
-        // Transition logic for BootupCompleted
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
+    bool hasBootupCompleted() override;
 };

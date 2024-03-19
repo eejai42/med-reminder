@@ -1,12 +1,11 @@
 #pragma once
 #include "MedReminderStateMachine.h"
+// #include "BaseMovementDetected.h" // Ensure base class is included if separate
 
 class MovementDetected : public BaseMovementDetected {
 public:
-    MovementDetected(MedReminderStateMachine* machine) : BaseMovementDetected(machine) {}
+    using BaseMovementDetected::BaseMovementDetected;
+    MovementDetected(MedReminderStateMachine* machine);
 
-    bool hasMovementHandled() override {
-        // Transition logic for MovementHandled
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
+    bool hasMovementHandled() override;
 };

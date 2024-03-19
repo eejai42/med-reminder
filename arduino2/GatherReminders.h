@@ -1,12 +1,11 @@
 #pragma once
 #include "MedReminderStateMachine.h"
+// #include "BaseGatherReminders.h" // Ensure base class is included if separate
 
 class GatherReminders : public BaseGatherReminders {
 public:
-    GatherReminders(MedReminderStateMachine* machine) : BaseGatherReminders(machine) {}
+    using BaseGatherReminders::BaseGatherReminders;
+    GatherReminders(MedReminderStateMachine* machine);
 
-    bool hasGatheringRemindersCompleted() override {
-        // Transition logic for GatheringRemindersCompleted
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
+    bool hasGatheringRemindersCompleted() override;
 };

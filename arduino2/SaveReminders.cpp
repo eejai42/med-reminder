@@ -1,0 +1,7 @@
+#pragma once
+#include "SaveReminders.h"
+#include <iostream> // Include if you use std::cout or similar in implementations
+
+SaveReminders::SaveReminders(MedReminderStateMachine* machine) : BaseSaveReminders(machine) {
+    // Constructor implementation, if needed
+}

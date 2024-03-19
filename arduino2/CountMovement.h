@@ -1,12 +1,11 @@
 #pragma once
 #include "MedReminderStateMachine.h"
+// #include "BaseCountMovement.h" // Ensure base class is included if separate
 
 class CountMovement : public BaseCountMovement {
 public:
-    CountMovement(MedReminderStateMachine* machine) : BaseCountMovement(machine) {}
+    using BaseCountMovement::BaseCountMovement;
+    CountMovement(MedReminderStateMachine* machine);
 
-    bool hasMovementCounted() override {
-        // Transition logic for MovementCounted
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
+    bool hasMovementCounted() override;
 };

@@ -1,12 +1,11 @@
 #pragma once
 #include "MedReminderStateMachine.h"
+// #include "BaseSaveReminders.h" // Ensure base class is included if separate
 
 class SaveReminders : public BaseSaveReminders {
 public:
-    SaveReminders(MedReminderStateMachine* machine) : BaseSaveReminders(machine) {}
+    using BaseSaveReminders::BaseSaveReminders;
+    SaveReminders(MedReminderStateMachine* machine);
 
-    bool hasRemindersSaved() override {
-        // Transition logic for RemindersSaved
-        return false; // Placeholder for actual condition that will be provided in derived class
-    }
+    bool hasRemindersSaved() override;
 };

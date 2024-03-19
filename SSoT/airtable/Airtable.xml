@@ -57,6 +57,17 @@
       <Name>Med Reminder</Name>
       <InitialStateName>Bootup</InitialStateName>
     </FSM>
+    <FSM>
+      <FSMId>recWZEuZs2s022uFa</FSMId>
+      <createdTime>2024-03-19T01:23:57Z</createdTime>
+      <AllStates>recgpIocf7HeIvkoX</AllStates>
+      <AllStates>recV2EcBnQ0s5Fld0</AllStates>
+      <AllStates>recmzF91p34m3kMro</AllStates>
+      <AllStates>recGX4xOcFUhe27Dd</AllStates>
+      <InitialState>recgpIocf7HeIvkoX</InitialState>
+      <Name>GumballMachine</Name>
+      <InitialStateName>WaitingForCoin</InitialStateName>
+    </FSM>
   </FSMs>
   <MachineStates>
     <MachineState>
@@ -246,6 +257,7 @@
       <FromStateSortOrder>1</FromStateSortOrder>
       <ToStateSortOrder>2</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recK7FbZxDNytiTG2</TransitionId>
@@ -261,6 +273,7 @@
       <FromStateSortOrder>2</FromStateSortOrder>
       <ToStateSortOrder>3</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recU7wbcYsZdYYhRv</TransitionId>
@@ -276,6 +289,7 @@
       <FromStateSortOrder>3</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>reckoARmSnb5wF2j7</TransitionId>
@@ -291,6 +305,7 @@
       <FromStateSortOrder>5</FromStateSortOrder>
       <ToStateSortOrder>11</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recbiLP9lesboXrPj</TransitionId>
@@ -306,6 +321,7 @@
       <FromStateSortOrder>10</FromStateSortOrder>
       <ToStateSortOrder>5</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recAW4QtPWA3GC89z</TransitionId>
@@ -321,6 +337,7 @@
       <FromStateSortOrder>10</FromStateSortOrder>
       <ToStateSortOrder>11</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>reczXCjkomuf41Yej</TransitionId>
@@ -336,6 +353,7 @@
       <FromStateSortOrder>11</FromStateSortOrder>
       <ToStateSortOrder>5</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recvSPAPThYmT7jgP</TransitionId>
@@ -351,6 +369,7 @@
       <FromStateSortOrder>11</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>rec1yyjQAFfwgkomD</TransitionId>
@@ -366,6 +385,7 @@
       <FromStateSortOrder>11</FromStateSortOrder>
       <ToStateSortOrder>12</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recNDJD7P8NqeMSNh</TransitionId>
@@ -381,6 +401,7 @@
       <FromStateSortOrder>12</FromStateSortOrder>
       <ToStateSortOrder>13</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recoLj6udzO7nU6ad</TransitionId>
@@ -396,6 +417,7 @@
       <FromStateSortOrder>13</FromStateSortOrder>
       <ToStateSortOrder>12</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recxGjHE6jhg6HDap</TransitionId>
@@ -411,6 +433,7 @@
       <FromStateSortOrder>13</FromStateSortOrder>
       <ToStateSortOrder>14</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recpmkvEEysUur5V9</TransitionId>
@@ -426,6 +449,7 @@
       <FromStateSortOrder>14</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recbNE8LYGEwTPt3Y</TransitionId>
@@ -441,6 +465,7 @@
       <FromStateSortOrder>18</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recLshMf3321k4bmF</TransitionId>
@@ -456,6 +481,7 @@
       <FromStateSortOrder>19</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
     <Transition>
       <TransitionId>recR57pGXNufjmqja</TransitionId>
@@ -471,6 +497,7 @@
       <FromStateSortOrder>20</FromStateSortOrder>
       <ToStateSortOrder>1</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
     </Transition>
   </Transitions>
   <PartTypes>

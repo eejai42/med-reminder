@@ -930,10 +930,16 @@
       ]
     },
     "FSMs": {
-      "FSM": {
-        "Name": "Med Reminder",
-        "InitialStateName": "Bootup"
-      }
+      "FSM": [
+        {
+          "Name": "Med Reminder",
+          "InitialStateName": "Bootup"
+        },
+        {
+          "Name": "GumballMachine",
+          "InitialStateName": "WaitingForCoin"
+        }
+      ]
     },
     "MachineStates": {
       "MachineState": [
