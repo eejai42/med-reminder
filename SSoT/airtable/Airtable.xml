@@ -56,6 +56,7 @@
       <InitialState>recHgqCtj0vzHWaVO</InitialState>
       <Name>Med Reminder</Name>
       <InitialStateName>Bootup</InitialStateName>
+      <IsActive>true</IsActive>
     </FSM>
   </FSMs>
   <MachineStates>
@@ -76,6 +77,7 @@
       <ToTransitionNames>Reboot-to-Bootup-after--RebootStarted</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
     <MachineState>
       <MachineStateId>recQbDDd67dey6Es0</MachineStateId>
@@ -92,6 +94,7 @@
       <ToTransitionNames>Bootup-to-GatherReminders-after-15000-BootupCompleted</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
     <MachineState>
       <MachineStateId>recnIaoQU4Qpw5BHY</MachineStateId>
@@ -108,6 +111,7 @@
       <ToTransitionNames>GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
     <MachineState>
       <MachineStateId>rec10HUiMuU9ICJeg</MachineStateId>
@@ -125,6 +129,7 @@
       <ToTransitionNames>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</ToTransitionNames>
       <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
     <MachineState>
       <MachineStateId>rec7RSbV1tXC5mjGV</MachineStateId>
@@ -153,6 +158,7 @@
       <ToTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</ToTransitionNames>
       <CountIOfIncomingTransitions>5</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
     <MachineState>
       <MachineStateId>recpmO4bsRvpEFL5i</MachineStateId>
@@ -168,55 +174,20 @@
       <Name>DebounceMovement</Name>
       <IsImplemented>true</IsImplemented>
       <Description>Filters out false movements to ensure accurate detection.  </Description>
-      <FromTransitionNames>DebounceMovement-to-CountMovement-after--DebouncePassed</FromTransitionNames>
+      <FromTransitionNames>DebounceMovement-to-MovementDetected-after--DebouncePassed</FromTransitionNames>
       <FromTransitionNames>DebounceMovement-to-Idle-after--DebounceFailed</FromTransitionNames>
       <FromTransitionNames>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</FromTransitionNames>
       <ToTransitionNames>Idle-to-DebounceMovement-after--WheelMoved</ToTransitionNames>
       <ToTransitionNames>Reminding-to-DebounceMovement-after--WheelMoved</ToTransitionNames>
       <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recHbG1BLdYrR3W19</MachineStateId>
-      <createdTime>2024-03-08T23:25:34Z</createdTime>
-      <FromTransitions>recNDJD7P8NqeMSNh</FromTransitions>
-      <ToTransitions>rec1yyjQAFfwgkomD</ToTransitions>
-      <ToTransitions>recoLj6udzO7nU6ad</ToTransitions>
-      <AutoNumber>18</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>12</SortOrder>
-      <Name>CountMovement</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Counts valid movement events for processing.  </Description>
-      <FromTransitionNames>CountMovement-to-WaitForMoreMovement-after--MovementCounted</FromTransitionNames>
-      <ToTransitionNames>DebounceMovement-to-CountMovement-after--DebouncePassed</ToTransitionNames>
-      <ToTransitionNames>WaitForMoreMovement-to-CountMovement-after--WheelMoved</ToTransitionNames>
-      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recH4OfQCArbJvg1A</MachineStateId>
-      <createdTime>2024-03-08T23:25:41Z</createdTime>
-      <FromTransitions>recoLj6udzO7nU6ad</FromTransitions>
-      <FromTransitions>recxGjHE6jhg6HDap</FromTransitions>
-      <ToTransitions>recNDJD7P8NqeMSNh</ToTransitions>
-      <AutoNumber>19</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>13</SortOrder>
-      <Name>WaitForMoreMovement</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Awaits additional movement to confirm or complete an action.  </Description>
-      <FromTransitionNames>WaitForMoreMovement-to-CountMovement-after--WheelMoved</FromTransitionNames>
-      <FromTransitionNames>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</FromTransitionNames>
-      <ToTransitionNames>CountMovement-to-WaitForMoreMovement-after--MovementCounted</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
     <MachineState>
       <MachineStateId>recAOq6bdEWYQTrlZ</MachineStateId>
       <createdTime>2024-03-08T23:26:06Z</createdTime>
       <FromTransitions>recpmkvEEysUur5V9</FromTransitions>
-      <ToTransitions>recxGjHE6jhg6HDap</ToTransitions>
+      <ToTransitions>rec1yyjQAFfwgkomD</ToTransitions>
       <AutoNumber>20</AutoNumber>
       <FSM>recly4hkn9xXMrb5Z</FSM>
       <SortOrder>14</SortOrder>
@@ -224,9 +195,10 @@
       <IsImplemented>true</IsImplemented>
       <Description>Detects confirmed movement, signaling a completed interaction.  </Description>
       <FromTransitionNames>MovementDetected-to-Idle-after--MovementHandled</FromTransitionNames>
-      <ToTransitionNames>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</ToTransitionNames>
+      <ToTransitionNames>DebounceMovement-to-MovementDetected-after--DebouncePassed</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <FSMIsActive>true</FSMIsActive>
     </MachineState>
   </MachineStates>
   <Transitions>
@@ -247,6 +219,8 @@
       <ToStateSortOrder>2</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recK7FbZxDNytiTG2</TransitionId>
@@ -263,6 +237,8 @@
       <ToStateSortOrder>3</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recU7wbcYsZdYYhRv</TransitionId>
@@ -279,6 +255,8 @@
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>reckoARmSnb5wF2j7</TransitionId>
@@ -295,6 +273,8 @@
       <ToStateSortOrder>11</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recbiLP9lesboXrPj</TransitionId>
@@ -311,6 +291,8 @@
       <ToStateSortOrder>5</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recAW4QtPWA3GC89z</TransitionId>
@@ -327,6 +309,8 @@
       <ToStateSortOrder>11</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>reczXCjkomuf41Yej</TransitionId>
@@ -343,6 +327,8 @@
       <ToStateSortOrder>5</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recvSPAPThYmT7jgP</TransitionId>
@@ -359,70 +345,26 @@
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>rec1yyjQAFfwgkomD</TransitionId>
       <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recHbG1BLdYrR3W19</ToState>
       <Description>Counts validated wheel movement towards medication adherence tracking.</Description>
       <FromState>recpmO4bsRvpEFL5i</FromState>
       <ActionName>DebouncePassed</ActionName>
-      <Name>DebounceMovement-to-CountMovement-after--DebouncePassed</Name>
+      <Name>DebounceMovement-to-MovementDetected-after--DebouncePassed</Name>
       <FromStateName>DebounceMovement</FromStateName>
-      <ToStateName>CountMovement</ToStateName>
       <FromParentOrder>11</FromParentOrder>
       <FromStateSortOrder>11</FromStateSortOrder>
-      <ToStateSortOrder>12</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-    </Transition>
-    <Transition>
-      <TransitionId>recNDJD7P8NqeMSNh</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recH4OfQCArbJvg1A</ToState>
-      <Description>Monitors for additional wheel movement to confirm continuous user interaction.</Description>
-      <FromState>recHbG1BLdYrR3W19</FromState>
-      <ActionName>MovementCounted</ActionName>
-      <Name>CountMovement-to-WaitForMoreMovement-after--MovementCounted</Name>
-      <FromStateName>CountMovement</FromStateName>
-      <ToStateName>WaitForMoreMovement</ToStateName>
-      <FromParentOrder>12</FromParentOrder>
-      <FromStateSortOrder>12</FromStateSortOrder>
-      <ToStateSortOrder>13</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-    </Transition>
-    <Transition>
-      <TransitionId>recoLj6udzO7nU6ad</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recHbG1BLdYrR3W19</ToState>
-      <Description>Increments movement count upon further detected wheel movements.</Description>
-      <FromState>recH4OfQCArbJvg1A</FromState>
-      <ActionName>WheelMoved</ActionName>
-      <Name>WaitForMoreMovement-to-CountMovement-after--WheelMoved</Name>
-      <FromStateName>WaitForMoreMovement</FromStateName>
-      <ToStateName>CountMovement</ToStateName>
-      <FromParentOrder>13</FromParentOrder>
-      <FromStateSortOrder>13</FromStateSortOrder>
-      <ToStateSortOrder>12</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-    </Transition>
-    <Transition>
-      <TransitionId>recxGjHE6jhg6HDap</TransitionId>
-      <createdTime>2024-03-09T17:33:55Z</createdTime>
       <ToState>recAOq6bdEWYQTrlZ</ToState>
-      <Description>Finalizes the movement count if no additional wheel activity is detected.</Description>
-      <FromState>recH4OfQCArbJvg1A</FromState>
-      <ActionName>WheelNotMoved</ActionName>
-      <Name>WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved</Name>
-      <FromStateName>WaitForMoreMovement</FromStateName>
       <ToStateName>MovementDetected</ToStateName>
-      <FromParentOrder>13</FromParentOrder>
-      <FromStateSortOrder>13</FromStateSortOrder>
       <ToStateSortOrder>14</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recpmkvEEysUur5V9</TransitionId>
@@ -439,54 +381,8 @@
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
       <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-    </Transition>
-    <Transition>
-      <TransitionId>recbNE8LYGEwTPt3Y</TransitionId>
-      <createdTime>2024-03-10T21:38:05Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Resumes idle state after the current medication reminder has been successfully advanced.</Description>
-      <FromState>rec61asoqXuI2yXK3</FromState>
-      <ActionName>CurrentReminderAdvanced</ActionName>
-      <Name>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</Name>
-      <FromStateName>AdvanceCurrentReminder</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>18</FromParentOrder>
-      <FromStateSortOrder>18</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-    </Transition>
-    <Transition>
-      <TransitionId>recLshMf3321k4bmF</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Transitions to idle after the user has set and confirmed the expected time for the next reminder.</Description>
-      <FromState>recr1KOjhPkHHqiLj</FromState>
-      <ActionName>ExpectedReminderSet</ActionName>
-      <Name>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</Name>
-      <FromStateName>SetExpectedReminder</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>19</FromParentOrder>
-      <FromStateSortOrder>19</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-    </Transition>
-    <Transition>
-      <TransitionId>recR57pGXNufjmqja</TransitionId>
-      <createdTime>2024-03-09T18:09:39Z</createdTime>
-      <ToState>recHgqCtj0vzHWaVO</ToState>
-      <Description>Restarts the system, moving from the reboot phase back to the initial operational state.</Description>
-      <FromState>recFKy8iPNAIUMqgM</FromState>
-      <ActionName>RebootStarted</ActionName>
-      <Name>Reboot-to-Bootup-after--RebootStarted</Name>
-      <FromStateName>Reboot</FromStateName>
-      <ToStateName>Bootup</ToStateName>
-      <FromParentOrder>20</FromParentOrder>
-      <FromStateSortOrder>20</FromStateSortOrder>
-      <ToStateSortOrder>1</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>
   </Transitions>
   <PartTypes>

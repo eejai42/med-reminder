@@ -52,22 +52,6 @@ void MedReminderStateMachine::checkState() {
                 return;
             }
             if (hasDebounceMovement_DebouncePassed()) {
-                transitionTo(State::CountMovement); // Transition based on specific action being true
-                return;
-            }
-            break;
-        case State::CountMovement:
-            if (hasCountMovement_MovementCounted()) {
-                transitionTo(State::WaitForMoreMovement); // Transition based on specific action being true
-                return;
-            }
-            break;
-        case State::WaitForMoreMovement:
-            if (hasWaitForMoreMovement_WheelMoved()) {
-                transitionTo(State::CountMovement); // Transition based on specific action being true
-                return;
-            }
-            if (hasWaitForMoreMovement_WheelNotMoved()) {
                 transitionTo(State::MovementDetected); // Transition based on specific action being true
                 return;
             }
@@ -107,12 +91,6 @@ void MedReminderStateMachine::onExit(State state) {
         case State::DebounceMovement:
             exitDebounceMovement();
             break;
-        case State::CountMovement:
-            exitCountMovement();
-            break;
-        case State::WaitForMoreMovement:
-            exitWaitForMoreMovement();
-            break;
         case State::MovementDetected:
             exitMovementDetected();
             break;
@@ -138,12 +116,6 @@ void MedReminderStateMachine::onEnter(State state) {
             break;
         case State::DebounceMovement:
             enterDebounceMovement();
-            break;
-        case State::CountMovement:
-            enterCountMovement();
-            break;
-        case State::WaitForMoreMovement:
-            enterWaitForMoreMovement();
             break;
         case State::MovementDetected:
             enterMovementDetected();

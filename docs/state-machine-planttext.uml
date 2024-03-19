@@ -6,8 +6,6 @@ state SaveReminders
 state Reminding
 state Idle
 state DebounceMovement
-state CountMovement
-state WaitForMoreMovement
 state MovementDetected
 
 Bootup --> GatherReminders : "BootupCompleted"
@@ -26,13 +24,7 @@ DebounceMovement --> Reminding : "ReminderDebounceFailed"
     
 DebounceMovement --> Idle : "DebounceFailed"
     
-DebounceMovement --> CountMovement : "DebouncePassed"
-    
-CountMovement --> WaitForMoreMovement : "MovementCounted"
-    
-WaitForMoreMovement --> CountMovement : "WheelMoved"
-    
-WaitForMoreMovement --> MovementDetected : "WheelNotMoved"
+DebounceMovement --> MovementDetected : "DebouncePassed"
     
 MovementDetected --> Idle : "MovementHandled"
     

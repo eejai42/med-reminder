@@ -950,16 +950,7 @@
               }
             ]
           },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Restarts the system, moving from the reboot phase back to the initial operational state.",
-                "ActionName": "RebootStarted",
-                "FromStateName": "Reboot",
-                "Name": "Reboot-to-Bootup-after--RebootStarted"
-              }
-            ]
-          }
+          "ToTransitions": ""
         },
         {
           "Name": "GatherReminders",
@@ -1077,18 +1068,6 @@
                 "ActionName": "MovementHandled",
                 "FromStateName": "MovementDetected",
                 "Name": "MovementDetected-to-Idle-after--MovementHandled"
-              },
-              {
-                "Description": "Resumes idle state after the current medication reminder has been successfully advanced.",
-                "ActionName": "CurrentReminderAdvanced",
-                "FromStateName": "AdvanceCurrentReminder",
-                "Name": "AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced"
-              },
-              {
-                "Description": "Transitions to idle after the user has set and confirmed the expected time for the next reminder.",
-                "ActionName": "ExpectedReminderSet",
-                "FromStateName": "SetExpectedReminder",
-                "Name": "SetExpectedReminder-to-Idle-after--ExpectedReminderSet"
               }
             ]
           }
@@ -1113,8 +1092,8 @@
               {
                 "Description": "Counts validated wheel movement towards medication adherence tracking.",
                 "ActionName": "DebouncePassed",
-                "ToStateName": "CountMovement",
-                "Name": "DebounceMovement-to-CountMovement-after--DebouncePassed"
+                "ToStateName": "MovementDetected",
+                "Name": "DebounceMovement-to-MovementDetected-after--DebouncePassed"
               }
             ]
           },
@@ -1136,66 +1115,6 @@
           }
         },
         {
-          "Name": "CountMovement",
-          "Description": "Counts valid movement events for processing.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Monitors for additional wheel movement to confirm continuous user interaction.",
-                "ActionName": "MovementCounted",
-                "ToStateName": "WaitForMoreMovement",
-                "Name": "CountMovement-to-WaitForMoreMovement-after--MovementCounted"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Counts validated wheel movement towards medication adherence tracking.",
-                "ActionName": "DebouncePassed",
-                "FromStateName": "DebounceMovement",
-                "Name": "DebounceMovement-to-CountMovement-after--DebouncePassed"
-              },
-              {
-                "Description": "Increments movement count upon further detected wheel movements.",
-                "ActionName": "WheelMoved",
-                "FromStateName": "WaitForMoreMovement",
-                "Name": "WaitForMoreMovement-to-CountMovement-after--WheelMoved"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "WaitForMoreMovement",
-          "Description": "Awaits additional movement to confirm or complete an action.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Increments movement count upon further detected wheel movements.",
-                "ActionName": "WheelMoved",
-                "ToStateName": "CountMovement",
-                "Name": "WaitForMoreMovement-to-CountMovement-after--WheelMoved"
-              },
-              {
-                "Description": "Finalizes the movement count if no additional wheel activity is detected.",
-                "ActionName": "WheelNotMoved",
-                "ToStateName": "MovementDetected",
-                "Name": "WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Monitors for additional wheel movement to confirm continuous user interaction.",
-                "ActionName": "MovementCounted",
-                "FromStateName": "CountMovement",
-                "Name": "CountMovement-to-WaitForMoreMovement-after--MovementCounted"
-              }
-            ]
-          }
-        },
-        {
           "Name": "MovementDetected",
           "Description": "Detects confirmed movement, signaling a completed interaction.  ",
           "FromTransitions": {
@@ -1211,10 +1130,10 @@
           "ToTransitions": {
             "ToTransition": [
               {
-                "Description": "Finalizes the movement count if no additional wheel activity is detected.",
-                "ActionName": "WheelNotMoved",
-                "FromStateName": "WaitForMoreMovement",
-                "Name": "WaitForMoreMovement-to-MovementDetected-after--WheelNotMoved"
+                "Description": "Counts validated wheel movement towards medication adherence tracking.",
+                "ActionName": "DebouncePassed",
+                "FromStateName": "DebounceMovement",
+                "Name": "DebounceMovement-to-MovementDetected-after--DebouncePassed"
               }
             ]
           }

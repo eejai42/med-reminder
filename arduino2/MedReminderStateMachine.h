@@ -9,8 +9,6 @@ enum class State {
     Reminding,
     Idle,
     DebounceMovement,
-    CountMovement,
-    WaitForMoreMovement,
     MovementDetected,
     // Add additional states here
 };
@@ -67,19 +65,6 @@ public:
     bool hasDebounceMovement_ReminderDebounceFailed();
     bool hasDebounceMovement_DebounceFailed();
     bool hasDebounceMovement_DebouncePassed();
-    // Enter and Exit methods for CountMovement state
-    void enterCountMovement();
-    void exitCountMovement();
-
-    // Action handlers for the CountMovement state
-    bool hasCountMovement_MovementCounted();
-    // Enter and Exit methods for WaitForMoreMovement state
-    void enterWaitForMoreMovement();
-    void exitWaitForMoreMovement();
-
-    // Action handlers for the WaitForMoreMovement state
-    bool hasWaitForMoreMovement_WheelMoved();
-    bool hasWaitForMoreMovement_WheelNotMoved();
     // Enter and Exit methods for MovementDetected state
     void enterMovementDetected();
     void exitMovementDetected();
