@@ -1,16 +1,19 @@
 #pragma once
-#include "Idle.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    Idle::Idle(BaseStateMachine* machine) : BaseIdle(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterIdle() {
+    // Actions to perform on entering Idle
+}
 
-    bool Idle::hasReminderTimeReached() {
-        // Determine if ReminderTimeReached
-        return false; // assume this has not yet happened
-    }
-    bool Idle::hasWheelMoved() {
-        // Determine if WheelMoved
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitIdle() {
+    // Actions to perform on exiting Idle
+}
+
+bool MedReminderStateMachine::hasIdle_ReminderTimeReached() {
+    // Check condition for ReminderTimeReached in Idle state
+    return false; // Placeholder implementation
+}
+bool MedReminderStateMachine::hasIdle_WheelMoved() {
+    // Check condition for WheelMoved in Idle state
+    return false; // Placeholder implementation
+}

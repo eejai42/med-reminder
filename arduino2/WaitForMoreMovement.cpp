@@ -1,16 +1,19 @@
 #pragma once
-#include "WaitForMoreMovement.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    WaitForMoreMovement::WaitForMoreMovement(BaseStateMachine* machine) : BaseWaitForMoreMovement(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterWaitForMoreMovement() {
+    // Actions to perform on entering WaitForMoreMovement
+}
 
-    bool WaitForMoreMovement::hasWheelMoved() {
-        // Determine if WheelMoved
-        return false; // assume this has not yet happened
-    }
-    bool WaitForMoreMovement::hasWheelNotMoved() {
-        // Determine if WheelNotMoved
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitWaitForMoreMovement() {
+    // Actions to perform on exiting WaitForMoreMovement
+}
+
+bool MedReminderStateMachine::hasWaitForMoreMovement_WheelMoved() {
+    // Check condition for WheelMoved in WaitForMoreMovement state
+    return false; // Placeholder implementation
+}
+bool MedReminderStateMachine::hasWaitForMoreMovement_WheelNotMoved() {
+    // Check condition for WheelNotMoved in WaitForMoreMovement state
+    return false; // Placeholder implementation
+}

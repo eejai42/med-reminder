@@ -1,12 +1,15 @@
 #pragma once
-#include "Reminding.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    Reminding::Reminding(BaseStateMachine* machine) : BaseReminding(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterReminding() {
+    // Actions to perform on entering Reminding
+}
 
-    bool Reminding::hasWheelMoved() {
-        // Determine if WheelMoved
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitReminding() {
+    // Actions to perform on exiting Reminding
+}
+
+bool MedReminderStateMachine::hasReminding_WheelMoved() {
+    // Check condition for WheelMoved in Reminding state
+    return false; // Placeholder implementation
+}

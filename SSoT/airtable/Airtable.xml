@@ -57,17 +57,6 @@
       <Name>Med Reminder</Name>
       <InitialStateName>Bootup</InitialStateName>
     </FSM>
-    <FSM>
-      <FSMId>recWZEuZs2s022uFa</FSMId>
-      <createdTime>2024-03-19T01:23:57Z</createdTime>
-      <AllStates>recgpIocf7HeIvkoX</AllStates>
-      <AllStates>recV2EcBnQ0s5Fld0</AllStates>
-      <AllStates>recmzF91p34m3kMro</AllStates>
-      <AllStates>recGX4xOcFUhe27Dd</AllStates>
-      <InitialState>recgpIocf7HeIvkoX</InitialState>
-      <Name>GumballMachine</Name>
-      <InitialStateName>WaitingForCoin</InitialStateName>
-    </FSM>
   </FSMs>
   <MachineStates>
     <MachineState>

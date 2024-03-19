@@ -1,20 +1,23 @@
 #pragma once
-#include "DebounceMovement.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    DebounceMovement::DebounceMovement(BaseStateMachine* machine) : BaseDebounceMovement(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterDebounceMovement() {
+    // Actions to perform on entering DebounceMovement
+}
 
-    bool DebounceMovement::hasReminderDebounceFailed() {
-        // Determine if ReminderDebounceFailed
-        return false; // assume this has not yet happened
-    }
-    bool DebounceMovement::hasDebounceFailed() {
-        // Determine if DebounceFailed
-        return false; // assume this has not yet happened
-    }
-    bool DebounceMovement::hasDebouncePassed() {
-        // Determine if DebouncePassed
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitDebounceMovement() {
+    // Actions to perform on exiting DebounceMovement
+}
+
+bool MedReminderStateMachine::hasDebounceMovement_ReminderDebounceFailed() {
+    // Check condition for ReminderDebounceFailed in DebounceMovement state
+    return false; // Placeholder implementation
+}
+bool MedReminderStateMachine::hasDebounceMovement_DebounceFailed() {
+    // Check condition for DebounceFailed in DebounceMovement state
+    return false; // Placeholder implementation
+}
+bool MedReminderStateMachine::hasDebounceMovement_DebouncePassed() {
+    // Check condition for DebouncePassed in DebounceMovement state
+    return false; // Placeholder implementation
+}

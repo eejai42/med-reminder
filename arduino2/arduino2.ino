@@ -1,15 +1,15 @@
 // main.cpp
-#include "Arduino.h"
+#include <Arduino.h>
 #include "Constants.h"
 #include "MedReminderStateMachine.h"
 
-MedReminderStateMachine* sm = nullptr;
+
 
 void setup() {
   // Initialize serial communication at 9600 bits per second:
   Serial.begin(9600);
-   sm = new MedReminderStateMachine();
-  // setupAlarms(); // Initialize speaker pin
+  stateMachine = new MedReminderStateMachine();
+  // setupAlarms(); // Initialize speaker p
   // setupWheel(); // Initialize wheel sensor pins
   // simulateSetupTime(); // setup time.
 }
@@ -17,7 +17,7 @@ void setup() {
 
 void loop() {
   //Main loop code to check wheel movement, play beeps, and handle time reminders
-  sm->checkState();
+  stateMachine->checkState();
   // checkState();
 
   // // Example: Detect and handle debounced wheel movement

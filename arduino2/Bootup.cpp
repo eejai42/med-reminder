@@ -1,12 +1,15 @@
 #pragma once
-#include "Bootup.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    Bootup::Bootup(BaseStateMachine* machine) : BaseBootup(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterBootup() {
+    // Actions to perform on entering Bootup
+}
 
-    bool Bootup::hasBootupCompleted() {
-        // Determine if BootupCompleted
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitBootup() {
+    // Actions to perform on exiting Bootup
+}
+
+bool MedReminderStateMachine::hasBootup_BootupCompleted() {
+    // Check condition for BootupCompleted in Bootup state
+    return false; // Placeholder implementation
+}

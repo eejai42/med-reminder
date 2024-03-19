@@ -1,12 +1,15 @@
 #pragma once
-#include "GatherReminders.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    GatherReminders::GatherReminders(BaseStateMachine* machine) : BaseGatherReminders(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterGatherReminders() {
+    // Actions to perform on entering GatherReminders
+}
 
-    bool GatherReminders::hasGatheringRemindersCompleted() {
-        // Determine if GatheringRemindersCompleted
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitGatherReminders() {
+    // Actions to perform on exiting GatherReminders
+}
+
+bool MedReminderStateMachine::hasGatherReminders_GatheringRemindersCompleted() {
+    // Check condition for GatheringRemindersCompleted in GatherReminders state
+    return false; // Placeholder implementation
+}

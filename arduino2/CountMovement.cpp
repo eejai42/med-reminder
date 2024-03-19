@@ -1,12 +1,15 @@
 #pragma once
-#include "CountMovement.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    CountMovement::CountMovement(BaseStateMachine* machine) : BaseCountMovement(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterCountMovement() {
+    // Actions to perform on entering CountMovement
+}
 
-    bool CountMovement::hasMovementCounted() {
-        // Determine if MovementCounted
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitCountMovement() {
+    // Actions to perform on exiting CountMovement
+}
+
+bool MedReminderStateMachine::hasCountMovement_MovementCounted() {
+    // Check condition for MovementCounted in CountMovement state
+    return false; // Placeholder implementation
+}

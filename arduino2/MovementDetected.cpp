@@ -1,12 +1,15 @@
 #pragma once
-#include "MovementDetected.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    MovementDetected::MovementDetected(BaseStateMachine* machine) : BaseMovementDetected(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterMovementDetected() {
+    // Actions to perform on entering MovementDetected
+}
 
-    bool MovementDetected::hasMovementHandled() {
-        // Determine if MovementHandled
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitMovementDetected() {
+    // Actions to perform on exiting MovementDetected
+}
+
+bool MedReminderStateMachine::hasMovementDetected_MovementHandled() {
+    // Check condition for MovementHandled in MovementDetected state
+    return false; // Placeholder implementation
+}
