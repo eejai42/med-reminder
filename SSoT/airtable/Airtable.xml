@@ -55,8 +55,8 @@
       <AllStates>rec10HUiMuU9ICJeg</AllStates>
       <InitialState>recHgqCtj0vzHWaVO</InitialState>
       <Name>Med Reminder</Name>
-      <InitialStateName>Bootup</InitialStateName>
       <IsActive>true</IsActive>
+      <InitialStateName>Bootup</InitialStateName>
     </FSM>
   </FSMs>
   <MachineStates>
@@ -351,18 +351,18 @@
     <Transition>
       <TransitionId>rec1yyjQAFfwgkomD</TransitionId>
       <createdTime>2024-03-09T17:27:43Z</createdTime>
+      <ToState>recAOq6bdEWYQTrlZ</ToState>
       <Description>Counts validated wheel movement towards medication adherence tracking.</Description>
       <FromState>recpmO4bsRvpEFL5i</FromState>
       <ActionName>DebouncePassed</ActionName>
       <Name>DebounceMovement-to-MovementDetected-after--DebouncePassed</Name>
       <FromStateName>DebounceMovement</FromStateName>
+      <ToStateName>MovementDetected</ToStateName>
       <FromParentOrder>11</FromParentOrder>
       <FromStateSortOrder>11</FromStateSortOrder>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <ToState>recAOq6bdEWYQTrlZ</ToState>
-      <ToStateName>MovementDetected</ToStateName>
       <ToStateSortOrder>14</ToStateSortOrder>
       <IsImplemented>true</IsImplemented>
+      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
       <FromStateIsImplemented>true</FromStateIsImplemented>
     </Transition>

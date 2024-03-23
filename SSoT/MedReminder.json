@@ -398,11 +398,11 @@
                       "Name": "Pin-04-Bit1SensorPin-HallEffectSensor",
                       "Description": "Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.",
                       "PinNumber": 4,
-                      "FromPartName": "",
-                      "FromPartColor": "White",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-04-Bit1SensorPin",
+                      "ToPartColor": "White",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "SenseBit1",
+                      "ToPartPartTypeName": "HallEffectSensor",
                       "LowerVariableName": "sense_bit1_hall_effect_sensor"
                     }
                   ]
@@ -426,11 +426,11 @@
                       "Name": "Pin-06-Bit2SensorPin-HallEffectSensor",
                       "Description": "The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.",
                       "PinNumber": 6,
-                      "FromPartName": "",
-                      "FromPartColor": "Blue",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-06-Bit2SensorPin",
+                      "ToPartColor": "Blue",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "SenseBit2",
+                      "ToPartPartTypeName": "HallEffectSensor",
                       "LowerVariableName": "sense_bit2_hall_effect_sensor"
                     }
                   ]
@@ -454,11 +454,11 @@
                       "Name": "Pin-08-AmPmSensorPin-HallEffectSensor",
                       "Description": "The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.",
                       "PinNumber": 8,
-                      "FromPartName": "",
-                      "FromPartColor": "Yellow",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-08-AmPmSensorPin",
+                      "ToPartColor": "Yellow",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "SenseAmPm",
+                      "ToPartPartTypeName": "HallEffectSensor",
                       "LowerVariableName": "sense_am_pm_hall_effect_sensor"
                     }
                   ]
@@ -482,11 +482,11 @@
                       "Name": "Pin-10-WheelSensorPin-HallEffectSensor",
                       "Description": "Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.",
                       "PinNumber": 10,
-                      "FromPartName": "",
-                      "FromPartColor": "Red",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-10-WheelSensorPin",
+                      "ToPartColor": "Red",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "SenseWheel",
+                      "ToPartPartTypeName": "HallEffectSensor",
                       "LowerVariableName": "sense_wheel_hall_effect_sensor"
                     }
                   ]
@@ -598,11 +598,11 @@
                       "Name": "Pin-04-Bit1SensorPin-LatchingSwitch",
                       "Description": "The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.",
                       "PinNumber": 4,
-                      "FromPartName": "",
-                      "FromPartColor": "White",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-04-Bit1SensorPin",
+                      "ToPartColor": "White",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "LatchBit1",
+                      "ToPartPartTypeName": "LatchingSwitch",
                       "LowerVariableName": "latch_bit1_latching_switch"
                     }
                   ]
@@ -626,11 +626,11 @@
                       "Name": "Pin-06-Bit2SensorPin-LatchingSwitch",
                       "Description": "Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.",
                       "PinNumber": 6,
-                      "FromPartName": "",
-                      "FromPartColor": "Blue",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-06-Bit2SensorPin",
+                      "ToPartColor": "Blue",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "LatchBit2",
+                      "ToPartPartTypeName": "LatchingSwitch",
                       "LowerVariableName": "latch_bit2_latching_switch"
                     }
                   ]
@@ -654,11 +654,11 @@
                       "Name": "Pin-08-AmPmSensorPin-LatchingSwitch",
                       "Description": "Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.",
                       "PinNumber": 8,
-                      "FromPartName": "",
-                      "FromPartColor": "Yellow",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-08-AmPmSensorPin",
+                      "ToPartColor": "Yellow",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "LatchAmPm",
+                      "ToPartPartTypeName": "LatchingSwitch",
                       "LowerVariableName": "latch_am_pm_latching_switch"
                     }
                   ]
@@ -682,11 +682,11 @@
                       "Name": "Pin-10-WheelSensorPin-LatchingSwitch",
                       "Description": "The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.",
                       "PinNumber": 10,
-                      "FromPartName": "",
-                      "FromPartColor": "Red",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-10-WheelSensorPin",
+                      "ToPartColor": "Red",
+                      "ToPartCount": 2,
+                      "ToPartPurposes": "LatchWheel",
+                      "ToPartPartTypeName": "LatchingSwitch",
                       "LowerVariableName": "latch_wheel_latching_switch"
                     }
                   ]
@@ -719,11 +719,11 @@
                       "Name": "Pin-03-Bit1LedPin-Led",
                       "Description": "The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.",
                       "PinNumber": 3,
-                      "FromPartName": "",
-                      "FromPartColor": "White",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-03-Bit1LedPin",
+                      "ToPartColor": "White",
+                      "ToPartCount": 1,
+                      "ToPartPurposes": "Bit1Status",
+                      "ToPartPartTypeName": "Led",
                       "LowerVariableName": "bit1_status_led"
                     }
                   ]
@@ -747,11 +747,11 @@
                       "Name": "Pin-05-Bit2LedPin-Led",
                       "Description": "From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.",
                       "PinNumber": 5,
-                      "FromPartName": "",
-                      "FromPartColor": "Red",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-05-Bit2LedPin",
+                      "ToPartColor": "Blue",
+                      "ToPartCount": 1,
+                      "ToPartPurposes": "Bit2Status",
+                      "ToPartPartTypeName": "Led",
                       "LowerVariableName": "bit2_status_led"
                     }
                   ]
@@ -775,11 +775,11 @@
                       "Name": "Pin-07-AmPmLedPin-Led",
                       "Description": "A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.",
                       "PinNumber": 7,
-                      "FromPartName": "",
-                      "FromPartColor": "Yellow",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-07-AmPmLedPin",
+                      "ToPartColor": "Yellow",
+                      "ToPartCount": 1,
+                      "ToPartPurposes": "AmPmStatus",
+                      "ToPartPartTypeName": "Led",
                       "LowerVariableName": "am_pm_status_led"
                     }
                   ]
@@ -803,11 +803,11 @@
                       "Name": "Pin-09-WheelLedPin-Led",
                       "Description": "Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.",
                       "PinNumber": 9,
-                      "FromPartName": "",
-                      "FromPartColor": "Red",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-09-WheelLedPin",
+                      "ToPartColor": "Red",
+                      "ToPartCount": 1,
+                      "ToPartPurposes": "WheelStatus",
+                      "ToPartPartTypeName": "Led",
                       "LowerVariableName": "wheel_status_led"
                     }
                   ]
@@ -831,11 +831,11 @@
                       "Name": "Pin-11-StatusLedPin-Led",
                       "Description": "Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.",
                       "PinNumber": 11,
-                      "FromPartName": "",
-                      "FromPartColor": "Orange",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-11-StatusLedPin",
+                      "ToPartColor": "Orange",
+                      "ToPartCount": 1,
+                      "ToPartPurposes": "StatusStatus",
+                      "ToPartPartTypeName": "Led",
                       "LowerVariableName": "status_status_led"
                     }
                   ]
@@ -914,11 +914,11 @@
                       "Name": "Pin-02-SpeakerPin-Speaker",
                       "Description": "The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.",
                       "PinNumber": 2,
-                      "FromPartName": "",
-                      "FromPartColor": "Orange",
-                      "FromPartCount": "",
-                      "FromPartPurposes": "",
-                      "FromPartPartTypeName": "",
+                      "ToPartName": "Pin-02-SpeakerPin",
+                      "ToPartColor": "Orange",
+                      "ToPartCount": 1,
+                      "ToPartPurposes": "StatusBeeps",
+                      "ToPartPartTypeName": "Speaker",
                       "LowerVariableName": "status_beeps_speaker"
                     }
                   ]

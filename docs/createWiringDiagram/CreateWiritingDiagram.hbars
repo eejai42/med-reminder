@@ -1,0 +1,32 @@
+{{#with MedReminder}}@startuml
+
+component Arduino
+
+{{#each PartTypes.PartType}}
+  {{#if this.Parts}}
+    {{#each this.Parts.Part}}
+      {{#unless this.PartIndex}}
+        {{!-- If there is no PartIndex, we don't create a component --}}
+      {{else}}
+        component "{{this.Purpose}}" as {{this.ToPartLinks.PartLink.0.ToPartPurposes}} #{{this.Color}} {
+          to-Pin : {{this.ToPartLinks.PartLink.0.PinNumber}}
+        }
+      {{/unless}}
+    {{/each}}
+  {{/if}}
+{{/each}}
+
+{{#each PartTypes.PartType}}
+  {{#if this.Parts}}
+    {{#each this.Parts.Part}}
+      {{#unless this.PartIndex}}
+        {{!-- If there is no PartIndex, we don't create a connection --}}
+      {{else}}
+        Arduino -down-> {{this.ToPartLinks.PartLink.0.ToPartPurposes}} : {{this.ToPartLinks.PartLink.0.PinNumber}}\n#{{this.ToPartLinks.PartLink.0.ToPartPurposes}}
+      {{/unless}}
+    {{/each}}
+  {{/if}}
+{{/each}}
+
+@enduml
+{{/with}}

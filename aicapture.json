@@ -121,6 +121,28 @@
       "Name": "JsonHbarsTransform",
       "RelativePath": "/arduino2/generateFSM",
       "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i .\\generateStateMachine.hbars"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "7d24b632-a7a5-45a2-ba2a-99b26e47477d",
+        "Name": "JsonHbarsTransform",
+        "Description": "Json-Hbars-Transform"
+      },
+      "ProjectTranspilerId": "48fefbc5-717d-4b74-932b-892d712eade2",
+      "Name": "JsonHbarsTransform",
+      "RelativePath": "/docs/createWiringDiagram",
+      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i .\\CreateWiritingDiagram.hbars -o ../wiring-diagram.uml"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "fddc44e8-1e48-49bb-b9db-56a10d39c6aa",
+        "Name": "PlantTextToPng",
+        "Description": "PlantText to Png"
+      },
+      "ProjectTranspilerId": "15a8cc4b-adf8-4ad3-8327-b9d17eec0714",
+      "Name": "PlantTextToPng",
+      "RelativePath": "/docs/createWiringDiagram",
+      "CommandLine": "planttext-to-png -i ..\\wiring-diagram.uml"
     }
   ]
 }

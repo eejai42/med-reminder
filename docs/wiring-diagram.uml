@@ -1,0 +1,64 @@
+@startuml
+
+component Arduino
+
+        component "SenseBit1" as SenseBit1 #White {
+          to-Pin : 4
+        }
+        component "SenseBit2" as SenseBit2 #Blue {
+          to-Pin : 6
+        }
+        component "SenseAmPm" as SenseAmPm #Yellow {
+          to-Pin : 8
+        }
+        component "SenseWheel" as SenseWheel #Red {
+          to-Pin : 10
+        }
+        component "LatchBit1" as LatchBit1 #White {
+          to-Pin : 4
+        }
+        component "LatchBit2" as LatchBit2 #Blue {
+          to-Pin : 6
+        }
+        component "LatchAmPm" as LatchAmPm #Yellow {
+          to-Pin : 8
+        }
+        component "LatchWheel" as LatchWheel #Red {
+          to-Pin : 10
+        }
+        component "Bit1Status" as Bit1Status #White {
+          to-Pin : 3
+        }
+        component "Bit2Status" as Bit2Status #Red {
+          to-Pin : 5
+        }
+        component "AmPmStatus" as AmPmStatus #Yellow {
+          to-Pin : 7
+        }
+        component "WheelStatus" as WheelStatus #Red {
+          to-Pin : 9
+        }
+        component "StatusStatus" as StatusStatus #Orange {
+          to-Pin : 11
+        }
+        component "StatusBeeps" as StatusBeeps #Orange {
+          to-Pin : 2
+        }
+
+        Arduino -down-> SenseBit1 : 4\n#SenseBit1
+        Arduino -down-> SenseBit2 : 6\n#SenseBit2
+        Arduino -down-> SenseAmPm : 8\n#SenseAmPm
+        Arduino -down-> SenseWheel : 10\n#SenseWheel
+        Arduino -down-> LatchBit1 : 4\n#LatchBit1
+        Arduino -down-> LatchBit2 : 6\n#LatchBit2
+        Arduino -down-> LatchAmPm : 8\n#LatchAmPm
+        Arduino -down-> LatchWheel : 10\n#LatchWheel
+        Arduino -down-> Bit1Status : 3\n#Bit1Status
+        Arduino -down-> Bit2Status : 5\n#Bit2Status
+        Arduino -down-> AmPmStatus : 7\n#AmPmStatus
+        Arduino -down-> WheelStatus : 9\n#WheelStatus
+        Arduino -down-> StatusStatus : 11\n#StatusStatus
+        Arduino -down-> StatusBeeps : 2\n#StatusBeeps
+
+@enduml
+

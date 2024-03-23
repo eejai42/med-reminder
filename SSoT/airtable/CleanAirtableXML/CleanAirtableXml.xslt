@@ -169,13 +169,13 @@ xmlns:json="http://james.newtonking.com/projects/json">
             <Name><xsl:value-of select="Name"/></Name>
             <Description><xsl:value-of select="Description"/></Description>
             <!-- Include FromPart details -->
-            <ToPartName><xsl:value-of select="ToPartName"/></ToPartName>
-            <!-- Additional FromPartLink details -->
-            <ToPartColor><xsl:value-of select="ToPartColor"/></ToPartColor>
-            <ToPartCount><xsl:value-of select="ToPartCount"/></ToPartCount>
-            <ToPartPurposes><xsl:value-of select="ToPartPurposes"/></ToPartPurposes>
-            <ToPartPartTypeName><xsl:value-of select="ToPartPartTypeName"/></ToPartPartTypeName>
             <LowerVariableName><xsl:value-of select="LowerVairableName"/></LowerVariableName>
+            <FromPartName><xsl:value-of select="FromPartName"/></FromPartName>
+            <!-- Additional ToPartLink details -->
+            <FromPartColor><xsl:value-of select="FromPartColor"/></FromPartColor>
+            <FromPartCount><xsl:value-of select="FromPartCount"/></FromPartCount>
+            <FromPartPurposes><xsl:value-of select="FromPartPurposes"/></FromPartPurposes>
+            <FromPartPartTypeName><xsl:value-of select="FromPartPartTypeName"/></FromPartPartTypeName>
         </PartLink>
     </xsl:template>
 
@@ -186,12 +186,12 @@ xmlns:json="http://james.newtonking.com/projects/json">
             <Description><xsl:value-of select="Description"/></Description>
             <PinNumber><xsl:value-of select="PinNumber"/></PinNumber>
             <!-- Include ToPart details -->
-            <FromPartName><xsl:value-of select="FromPartName"/></FromPartName>
-            <!-- Additional ToPartLink details -->
-            <FromPartColor><xsl:value-of select="FromPartColor"/></FromPartColor>
-            <FromPartCount><xsl:value-of select="FromPartCount"/></FromPartCount>
-            <FromPartPurposes><xsl:value-of select="FromPartPurposes"/></FromPartPurposes>
-            <FromPartPartTypeName><xsl:value-of select="FromPartPartTypeName"/></FromPartPartTypeName>
+            <ToPartName><xsl:value-of select="ToPartName"/></ToPartName>
+            <!-- Additional FromPartLink details -->
+            <ToPartColor><xsl:value-of select="ToPartColor"/></ToPartColor>
+            <ToPartCount><xsl:value-of select="ToPartCount"/></ToPartCount>
+            <ToPartPurposes><xsl:value-of select="ToPartPurposes"/></ToPartPurposes>
+            <ToPartPartTypeName><xsl:value-of select="ToPartPartTypeName"/></ToPartPartTypeName>
             <LowerVariableName><xsl:value-of select="LowerVairableName"/></LowerVariableName>
         </PartLink>
     </xsl:template>

@@ -1,7 +1,7 @@
 // constants.cpp
 // #include "Arduino.h"
 #include "constants.h"
-#define DEBUG;
+#define DEBUG
 
 // Speaker pin configuration
 const int ledPin = 13;
@@ -34,4 +34,3 @@ const unsigned long msPerMinute = 60000;
 extern const int initial_reminder_delay_seconds = 2;
 extern const int initial_times_to_beep = 5;
 extern const int msBetweenBeeps = 85;
-

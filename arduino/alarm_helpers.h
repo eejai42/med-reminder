@@ -1,6 +1,6 @@
 #ifndef ALARM_HELPERS_H
 #define ALARM_HELPERS_H
-
+extern int reminding;
 
 struct DayTime {
   int dow; // Day of the week (1 = Monday, ... 7 = Sunday)

@@ -12,7 +12,7 @@ int timer1OffsetMS = -1;
 int timer1OffsetMinutes = -1;
 unsigned long timer1 = -1;  // Minute mark for the second timer
 unsigned long timer2 = -1;  // Minute mark for the second timer
-bool reminding = false;
+int reminding = false;
 int beepsBeeped = 0;
 double timesToBeep = initial_times_to_beep;
 double secondsBetweenReminders = initial_reminder_delay_seconds;
@@ -98,7 +98,8 @@ void stopReminding() {
     remindersSnoozedAtMS = 0;
     Serial.println();
     Serial.println("            *******************************");
-    Serial.println("            ** Pills taken!!!! Nice work **!");
+    Serial.println("            ** Pills taken!! Nice work **!");
+    Serial.println("Pills taken");
     Serial.println("            *******************************");
     Serial.println();
   }
@@ -149,14 +150,15 @@ void checkAlarmBeeping() {
 }
 
 void checkAlarms() {
-    if (timer1OffsetMS == -1) {
-      //timer1IsAM = getIsAM();
-      timer1OffsetMinutes = 0; //timer1IsAM ? 0 : minutesPerDay / 2;
-      timer1OffsetMS = 0; // timer1IsAM ? 0 : timer1OffsetMinutes * msPerMinute;
-      if (timer1OffsetMS > 0) {
-        Serial.println("INCLUDING OFFSETS: ADDING " + String(timer1OffsetMinutes));
-      }
+  return;
+  if (timer1OffsetMS == -1) {
+    //timer1IsAM = getIsAM();
+    timer1OffsetMinutes = 0;  //timer1IsAM ? 0 : minutesPerDay / 2;
+    timer1OffsetMS = 0;       // timer1IsAM ? 0 : timer1OffsetMinutes * msPerMinute;
+    if (timer1OffsetMS > 0) {
+      Serial.println("INCLUDING OFFSETS: ADDING " + String(timer1OffsetMinutes));
     }
+  }
 
   unsigned long tempMinutes = minutes_since_day_started();
   if (tempMinutes != currentMinutes) {
@@ -231,10 +233,11 @@ void triggerTimer() {
       printSetTimerMsg(finalSliceTOD + " Reminder set for 00:", timer2);
       printDowTod();
     } else {
+      Serial.println("setting reminding = false");
       stopReminding();
     }
   } else {
-    clearMovement();    
+    clearMovement();
     initialDay = getIndex();
     Serial.println();
     Serial.println("      Done setting up Med Reminder v0.1");
@@ -296,7 +299,7 @@ String minutesToAMPMString(int minutes) {
   minutes++;
   minutes = (minutes + timer1OffsetMinutes) % minutesPerDay;
   String tod = getTOD(minutes);
-  if (tod == "pm") minutes = minutes% (minutesPerDay); // / 2);
+  if (tod == "pm") minutes = minutes % (minutesPerDay);  // / 2);
   if (minutes < 10) results = "0";
   results = results + String(minutes) + tod;
   // Serial.println();
@@ -316,7 +319,9 @@ void printSystemTime() {
   // Serial.print(mymillis() % msPerMinute);
   Serial.print(minutesToAMPMString(dt.system_minutes));
 
-  if (reminding) Serial.print("                                ---- REMINDING TAKE PILLS YO!!!!    -");
+  if (reminding) {
+    Serial.println("                                ---- REMINDING TAKE PILLS YO!!    -");
+  }
   Serial.print("    timer1 min:" + String(timer1) + " timer2 min: " + String(timer2));
   // if (dt.timer2_minutes < 10) "0";
   // Serial.print(dt.timer2_minutes);

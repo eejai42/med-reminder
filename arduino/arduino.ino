@@ -19,8 +19,8 @@ void loop() {
 
   // Example: Detect and handle debounced wheel movement
   if (movementDetected()) {
-    printAndClearMovement();
-    triggerTimer();
+     printAndClearMovement();
+     triggerTimer();
   } 
 
   checkAlarms();
