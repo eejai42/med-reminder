@@ -176,8 +176,15 @@ xmlns:json="http://james.newtonking.com/projects/json">
             <!-- Additional ToPartLink details -->
             <FromPartColor><xsl:value-of select="FromPartColor"/></FromPartColor>
             <FromPartCount><xsl:value-of select="FromPartCount"/></FromPartCount>
-            <FromPartPurposes><xsl:value-of select="FromPartPurposes"/></FromPartPurposes>
+            <FromPartPurpose><xsl:value-of select="FromPartPurpose"/></FromPartPurpose>
             <FromPartPartTypeName><xsl:value-of select="FromPartPartTypeName"/></FromPartPartTypeName>
+            <!-- Include ToPart details -->
+            <ToPartName><xsl:value-of select="ToPartName"/></ToPartName>
+            <!-- Additional FromPartLink details -->
+            <ToPartColor><xsl:value-of select="ToPartColor"/></ToPartColor>
+            <ToPartCount><xsl:value-of select="ToPartCount"/></ToPartCount>
+            <ToPartPurpose><xsl:value-of select="ToPartPurposes"/></ToPartPurpose>
+            <ToPartPartTypeName><xsl:value-of select="ToPartPartTypeName"/></ToPartPartTypeName>
         </PartLink>
     </xsl:template>
 
@@ -192,8 +199,14 @@ xmlns:json="http://james.newtonking.com/projects/json">
             <!-- Additional FromPartLink details -->
             <ToPartColor><xsl:value-of select="ToPartColor"/></ToPartColor>
             <ToPartCount><xsl:value-of select="ToPartCount"/></ToPartCount>
-            <ToPartPurposes><xsl:value-of select="ToPartPurposes"/></ToPartPurposes>
+            <ToPartPurpose><xsl:value-of select="ToPartPurposes"/></ToPartPurpose>
             <ToPartPartTypeName><xsl:value-of select="ToPartPartTypeName"/></ToPartPartTypeName>
+            <FromPartName><xsl:value-of select="FromPartName"/></FromPartName>
+            <!-- Additional ToPartLink details -->
+            <FromPartColor><xsl:value-of select="FromPartColor"/></FromPartColor>
+            <FromPartCount><xsl:value-of select="FromPartCount"/></FromPartCount>
+            <FromPartPurpose><xsl:value-of select="FromPartPurpose"/></FromPartPurpose>
+            <FromPartPartTypeName><xsl:value-of select="FromPartPartTypeName"/></FromPartPartTypeName>
             <LowerVariableName><xsl:value-of select="LowerVairableName"/></LowerVariableName>
         </PartLink>
     </xsl:template>
@@ -218,7 +231,7 @@ xmlns:json="http://james.newtonking.com/projects/json">
             <ToPartName><xsl:value-of select="ToPartName"/></ToPartName>
             <ToPartColor><xsl:value-of select="ToPartColor"/></ToPartColor>
             <ToPartCount><xsl:value-of select="ToPartCount"/></ToPartCount>
-            <ToPartPurposes><xsl:value-of select="ToPartPurposes"/></ToPartPurposes>
+            <ToPartPurpose><xsl:value-of select="ToPartPurposes"/></ToPartPurpose>
             <ToPartPartTypeName><xsl:value-of select="ToPartPartTypeName"/></ToPartPartTypeName>
             <LowerVariableName><xsl:value-of select="LowerVairableName"/></LowerVariableName>
             <!-- Additional PartLink details can be listed here -->

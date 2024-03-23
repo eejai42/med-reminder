@@ -1,48 +1,52 @@
 @startuml
-
+left to right direction
 component Arduino
 
+
+together {
     
     package "HallEffectSensor" {
-          component "[SenseBit1]" as SenseBit11 #White
-          component "[SenseBit2]" as SenseBit22 #Blue
-          component "[SenseAmPm]" as SenseAmPm3 #Yellow
-          component "[SenseWheel]" as SenseWheel4 #Red
+          component "SenseBit1\nBit1SensorPin" as SenseBit1 #White
+          component "SenseBit2\nBit2SensorPin" as SenseBit2 #Blue
+          component "SenseAmPm\nAmPmSensorPin" as SenseAmPm #Yellow
+          component "SenseWheel\nWheelSensorPin" as SenseWheel #Red
     }
         
     package "LatchingSwitch" {
-          component "[LatchBit1]" as LatchBit11 #White
-          component "[LatchBit2]" as LatchBit22 #Blue
-          component "[LatchAmPm]" as LatchAmPm3 #Yellow
-          component "[LatchWheel]" as LatchWheel4 #Red
+          component "LatchBit1\nBit1SensorPin" as LatchBit1 #White
+          component "LatchBit2\nBit2SensorPin" as LatchBit2 #Blue
+          component "LatchAmPm\nAmPmSensorPin" as LatchAmPm #Yellow
+          component "LatchWheel\nWheelSensorPin" as LatchWheel #Red
+          component "TakeAdminControl\nAdminOverride" as TakeAdminControl #Purple
     }
     
     package "Led" {
-          component "[Bit1Status]" as Bit1Status1 #White
-          component "[Bit2Status]" as Bit2Status2 #Red
-          component "[AmPmStatus]" as AmPmStatus3 #Yellow
-          component "[WheelStatus]" as WheelStatus4 #Red
-          component "[StatusStatus]" as StatusStatus5 #Orange
+          component "Bit1Status\nBit1LedPin" as Bit1Status #White
+          component "Bit2Status\nBit2LedPin" as Bit2Status #Blue
+          component "AmPmStatus\nAmPmLedPin" as AmPmStatus #Yellow
+          component "WheelStatus\nWheelLedPin" as WheelStatus #Red
+          component "StatusStatus\nStatusLedPin" as StatusStatus #Orange
     }
             
     package "Speaker" {
-          component "[StatusBeeps]" as StatusBeeps1 #Orange
+          component "StatusBeeps\nSpeakerPin" as StatusBeeps #Orange
     }
-
-        Arduino --> SenseBit11 : [Pin: 4]\n#White
-        Arduino --> SenseBit22 : [Pin: 6]\n#Blue
-        Arduino --> SenseAmPm3 : [Pin: 8]\n#Yellow
-        Arduino --> SenseWheel4 : [Pin: 10]\n#Red
-        Arduino --> LatchBit11 : [Pin: 4]\n#White
-        Arduino --> LatchBit22 : [Pin: 6]\n#Blue
-        Arduino --> LatchAmPm3 : [Pin: 8]\n#Yellow
-        Arduino --> LatchWheel4 : [Pin: 10]\n#Red
-        Arduino --> Bit1Status1 : [Pin: 3]\n#White
-        Arduino --> Bit2Status2 : [Pin: 5]\n#Red
-        Arduino --> AmPmStatus3 : [Pin: 7]\n#Yellow
-        Arduino --> WheelStatus4 : [Pin: 9]\n#Red
-        Arduino --> StatusStatus5 : [Pin: 11]\n#Orange
-        Arduino --> StatusBeeps1 : [Pin: 2]\n#Orange
+}
+        Arduino --> SenseBit1 : Pin: 4 White
+        Arduino --> SenseBit2 : Pin: 6 Blue
+        Arduino --> SenseAmPm : Pin: 8 Yellow
+        Arduino --> SenseWheel : Pin: 10 Red
+        Arduino --> LatchBit1 : Pin: 4 White
+        Arduino --> LatchBit2 : Pin: 6 Blue
+        Arduino --> LatchAmPm : Pin: 8 Yellow
+        Arduino --> LatchWheel : Pin: 10 Red
+        Arduino --> TakeAdminControl : Pin: 13 Purple
+        Arduino --> Bit1Status : Pin: 3 White
+        Arduino --> Bit2Status : Pin: 5 Blue
+        Arduino --> AmPmStatus : Pin: 7 Yellow
+        Arduino --> WheelStatus : Pin: 9 Red
+        Arduino --> StatusStatus : Pin: 11 Orange
+        Arduino --> StatusBeeps : Pin: 2 Orange
 
 @enduml
 

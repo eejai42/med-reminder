@@ -1,7 +1,9 @@
 {{#with MedReminder}}@startuml
-
+left to right direction
 component Arduino
 
+
+together {
 {{#each PartTypes.PartType}}
   {{#if this.Parts}}
     {{#eq this.CountAllLinkFromParts 0}}{{else}}
@@ -10,21 +12,21 @@ component Arduino
         {{#unless this.PartIndex}}
           {{!-- If there is no PartIndex, we don't create a component --}}
         {{else}}
-          component "[{{this.ToPartLinks.PartLink.0.ToPartPurposes}}]" as {{this.ToPartLinks.PartLink.0.ToPartPurposes}}{{this.PartIndex}} #{{this.Color}}
+          component "{{this.ToPartLinks.PartLink.0.ToPartPurpose}}\n{{this.ToPartLinks.PartLink.0.FromPartPurpose}}" as {{this.ToPartLinks.PartLink.0.ToPartPurpose}} #{{this.Color}}
         {{/unless}}
       {{/each}}
     }
     {{/eq}}
   {{/if}}
 {{/each}}
-
+}
 {{#each PartTypes.PartType}}
   {{#if this.Parts}}
     {{#each this.Parts.Part}}
       {{#unless this.PartIndex}}
         {{!-- If there is no PartIndex, we don't create a connection --}}
       {{else}}
-        Arduino --> {{this.ToPartLinks.PartLink.0.ToPartPurposes}}{{this.PartIndex}} : [Pin: {{this.ToPartLinks.PartLink.0.PinNumber}}]\n#{{this.Color}}
+        Arduino --> {{ToPartLinks.PartLink.0.ToPartPurpose}} : Pin: {{this.ToPartLinks.PartLink.0.PinNumber}} {{this.Color}}
       {{/unless}}
     {{/each}}
   {{/if}}

@@ -403,9 +403,10 @@
       <Parts>rechOQKGvB2SZjWlE</Parts>
       <Parts>recE8e1QT6vCqoYnC</Parts>
       <Parts>recf1NFxHRxf0YVm1</Parts>
-      <QuantityNeeded>4</QuantityNeeded>
+      <Parts>recDYURMybwh5nM1t</Parts>
+      <QuantityNeeded>5</QuantityNeeded>
       <CountAllLinkToParts>0</CountAllLinkToParts>
-      <CountAllLinkFromParts>4</CountAllLinkFromParts>
+      <CountAllLinkFromParts>5</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recyh1hvxp92bx6RH</PartTypeId>
@@ -465,10 +466,10 @@
       <Parts>recImtkPIwt1UPXIq</Parts>
       <Parts>recRVVqxFTthRg7LB</Parts>
       <Parts>recIrFLv6gFajoSHN</Parts>
-      <Parts>recozUjOkMtlFRcEf</Parts>
       <Parts>recizLSeMD6bAPCFi</Parts>
+      <Parts>recozUjOkMtlFRcEf</Parts>
       <QuantityNeeded>0</QuantityNeeded>
-      <CountAllLinkToParts>14</CountAllLinkToParts>
+      <CountAllLinkToParts>15</CountAllLinkToParts>
       <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
@@ -523,12 +524,12 @@
       <PartType>recNjHuYBJTk2qAIM</PartType>
       <Quantity>26</Quantity>
       <Name>NeoDimiumMagnets-0-</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recIENY8PFMM3HOzk</PartId>
@@ -539,12 +540,12 @@
       <Quantity>2</Quantity>
       <MagnetsNeededPerItem>13</MagnetsNeededPerItem>
       <Name>Round7DayPillDispenser-0-</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>26</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recfhWMkMa7TZ28wR</PartId>
@@ -557,12 +558,12 @@
       <Purpose>Bit1Status</Purpose>
       <PartIndex>1</PartIndex>
       <Name>Led-01-Bit1Status</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recr8rl3vZZaRNx4y</PartId>
@@ -575,12 +576,12 @@
       <Purpose>LatchBit1</Purpose>
       <PartIndex>1</PartIndex>
       <Name>LatchingSwitch-01-LatchBit1</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recFvu8CmnIIml99g</PartId>
@@ -593,12 +594,12 @@
       <Purpose>SenseBit1</Purpose>
       <PartIndex>1</PartIndex>
       <Name>HallEffectSensor-01-SenseBit1</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recP8DhibnbMfvL2e</PartId>
@@ -611,12 +612,12 @@
       <Purpose>StatusBeeps</Purpose>
       <PartIndex>1</PartIndex>
       <Name>Speaker-01-StatusBeeps</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recsB65Pg7HSUVpUV</PartId>
@@ -629,12 +630,12 @@
       <Purpose>SenseBit2</Purpose>
       <PartIndex>2</PartIndex>
       <Name>HallEffectSensor-02-SenseBit2</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rechOQKGvB2SZjWlE</PartId>
@@ -647,30 +648,30 @@
       <Purpose>LatchBit2</Purpose>
       <PartIndex>2</PartIndex>
       <Name>LatchingSwitch-02-LatchBit2</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recMeTo9CNzTBXuSs</PartId>
       <createdTime>2024-03-07T23:04:18Z</createdTime>
       <AutoNumber>9</AutoNumber>
-      <Color>Red</Color>
+      <Color>Blue</Color>
       <PartType>recyh1hvxp92bx6RH</PartType>
       <Quantity>1</Quantity>
       <LinkFromParts>recNmLk1tV6epyIzM</LinkFromParts>
       <Purpose>Bit2Status</Purpose>
       <PartIndex>2</PartIndex>
       <Name>Led-02-Bit2Status</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recizLSeMD6bAPCFi</PartId>
@@ -683,12 +684,12 @@
       <Purpose>SpeakerPin</Purpose>
       <PartIndex>2</PartIndex>
       <Name>Pin-02-SpeakerPin</Name>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
-      <CountOfLinkToParts>1</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recrYWW4Z5NpJCpEr</PartId>
@@ -701,12 +702,12 @@
       <Purpose>SenseAmPm</Purpose>
       <PartIndex>3</PartIndex>
       <Name>HallEffectSensor-03-SenseAmPm</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recE8e1QT6vCqoYnC</PartId>
@@ -719,12 +720,12 @@
       <Purpose>LatchAmPm</Purpose>
       <PartIndex>3</PartIndex>
       <Name>LatchingSwitch-03-LatchAmPm</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>reckxGZX9rTlH5iaM</PartId>
@@ -737,12 +738,12 @@
       <Purpose>AmPmStatus</Purpose>
       <PartIndex>3</PartIndex>
       <Name>Led-03-AmPmStatus</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recMybfPDGzVKFlsi</PartId>
@@ -755,12 +756,12 @@
       <Purpose>Bit1LedPin</Purpose>
       <PartIndex>3</PartIndex>
       <Name>Pin-03-Bit1LedPin</Name>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
-      <CountOfLinkToParts>1</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recrw1QfQGdqo6PVd</PartId>
@@ -773,12 +774,12 @@
       <Purpose>SenseWheel</Purpose>
       <PartIndex>4</PartIndex>
       <Name>HallEffectSensor-04-SenseWheel</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recf1NFxHRxf0YVm1</PartId>
@@ -791,12 +792,12 @@
       <Purpose>LatchWheel</Purpose>
       <PartIndex>4</PartIndex>
       <Name>LatchingSwitch-04-LatchWheel</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recL0Dsj02FEJ17xs</PartId>
@@ -809,12 +810,12 @@
       <Purpose>WheelStatus</Purpose>
       <PartIndex>4</PartIndex>
       <Name>Led-04-WheelStatus</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rece0c5L2994wH1yY</PartId>
@@ -828,12 +829,12 @@
       <Purpose>Bit1SensorPin</Purpose>
       <PartIndex>4</PartIndex>
       <Name>Pin-04-Bit1SensorPin</Name>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
-      <CountOfLinkToParts>2</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recTPEebvYy1GG3mj</PartId>
@@ -846,12 +847,12 @@
       <Purpose>StatusStatus</Purpose>
       <PartIndex>5</PartIndex>
       <Name>Led-05-StatusStatus</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recG8aZqdhYRke7SX</PartId>
@@ -864,12 +865,12 @@
       <Purpose>Bit2LedPin</Purpose>
       <PartIndex>5</PartIndex>
       <Name>Pin-05-Bit2LedPin</Name>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
-      <CountOfLinkToParts>1</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recZ7UoOQ5Cz88LFx</PartId>
@@ -883,12 +884,12 @@
       <Purpose>Bit2SensorPin</Purpose>
       <PartIndex>6</PartIndex>
       <Name>Pin-06-Bit2SensorPin</Name>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
-      <CountOfLinkToParts>2</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recqwFeNgXlRZrIH8</PartId>
@@ -901,12 +902,12 @@
       <Purpose>AmPmLedPin</Purpose>
       <PartIndex>7</PartIndex>
       <Name>Pin-07-AmPmLedPin</Name>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
-      <CountOfLinkToParts>1</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recPTrLTl5VqCpZLU</PartId>
@@ -920,12 +921,12 @@
       <Purpose>AmPmSensorPin</Purpose>
       <PartIndex>8</PartIndex>
       <Name>Pin-08-AmPmSensorPin</Name>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
-      <CountOfLinkToParts>2</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recYl5uead9cJDGrf</PartId>
@@ -938,12 +939,12 @@
       <Purpose>WheelLedPin</Purpose>
       <PartIndex>9</PartIndex>
       <Name>Pin-09-WheelLedPin</Name>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
-      <CountOfLinkToParts>1</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recImtkPIwt1UPXIq</PartId>
@@ -957,12 +958,12 @@
       <Purpose>WheelSensorPin</Purpose>
       <PartIndex>10</PartIndex>
       <Name>Pin-10-WheelSensorPin</Name>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
-      <CountOfLinkToParts>2</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recRVVqxFTthRg7LB</PartId>
@@ -975,12 +976,30 @@
       <Purpose>StatusLedPin</Purpose>
       <PartIndex>11</PartIndex>
       <Name>Pin-11-StatusLedPin</Name>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recozUjOkMtlFRcEf</PartId>
+      <createdTime>2024-03-07T23:09:08Z</createdTime>
+      <PartType>rec6tIWSm8kiKMmNR</PartType>
+      <AutoNumber>41</AutoNumber>
+      <PartIndex>13</PartIndex>
+      <Purpose>AdminOverride</Purpose>
+      <Quantity>0</Quantity>
+      <Name>Pin-13-AdminOverride</Name>
       <CountOfLinkToParts>1</CountOfLinkToParts>
       <CountOfLinkFromParts>0</CountOfLinkFromParts>
+      <IsEmpty />
+      <CountFrom>0</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>1</CountToLinks>
+      <Color>Purple</Color>
+      <LinkToParts>recvp2Feep498Ik8g</LinkToParts>
     </Part>
     <Part>
       <PartId>recT722uvnhbHa1we</PartId>
@@ -991,12 +1010,12 @@
       <Quantity>2</Quantity>
       <Purpose>ConnectParts</Purpose>
       <Name>JumperWire-0-ConnectParts</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rec2d7PAw43KwbsYV</PartId>
@@ -1007,12 +1026,12 @@
       <Quantity>2</Quantity>
       <Purpose>ConnectParts</Purpose>
       <Name>JumperWire-0-ConnectParts</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recyT5sMUuEgc14fe</PartId>
@@ -1023,12 +1042,12 @@
       <Quantity>2</Quantity>
       <Purpose>ConnectParts</Purpose>
       <Name>JumperWire-0-ConnectParts</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recFIECqf7ec9StBh</PartId>
@@ -1039,12 +1058,12 @@
       <Quantity>2</Quantity>
       <Purpose>ConnectParts</Purpose>
       <Name>JumperWire-0-ConnectParts</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rec2WTK8ShVs5nQUc</PartId>
@@ -1055,12 +1074,30 @@
       <Quantity>2</Quantity>
       <Purpose>ConnectParts</Purpose>
       <Name>JumperWire-0-ConnectParts</Name>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
       <IsEmpty />
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+    </Part>
+    <Part>
+      <PartId>recDYURMybwh5nM1t</PartId>
+      <createdTime>2024-03-23T19:17:54Z</createdTime>
+      <AutoNumber>65</AutoNumber>
+      <Quantity>1</Quantity>
+      <Name>LatchingSwitch-13-TakeAdminControl</Name>
       <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
+      <CountFrom>1</CountFrom>
+      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
+      <CountToLinks>0</CountToLinks>
+      <LinkFromParts>recvp2Feep498Ik8g</LinkFromParts>
+      <PartType>recIGlXd6Rsc2ccAj</PartType>
+      <IsEmpty />
+      <Purpose>TakeAdminControl</Purpose>
+      <Color>Purple</Color>
+      <PartIndex>13</PartIndex>
     </Part>
   </Parts>
   <PartLinks>
@@ -1140,6 +1177,7 @@
       <PartLinkId>rec85jzX4EnaR4xlH</PartLinkId>
       <createdTime>2024-03-08T20:05:44Z</createdTime>
       <ToPart>recr8rl3vZZaRNx4y</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <Constants>recAVNdsMPu66hpQX</Constants>
       <FromPart>rece0c5L2994wH1yY</FromPart>
       <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
@@ -1171,7 +1209,7 @@
       <ToPartPartTypeName>Led</ToPartPartTypeName>
       <Name>Pin-05-Bit2LedPin-Led</Name>
       <FromPartPartIndex>2</FromPartPartIndex>
-      <FromPartColor>Red</FromPartColor>
+      <FromPartColor>Blue</FromPartColor>
       <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
       <ToPartColor>Blue</ToPartColor>
       <FromPartPurpose>Bit2LedPin</FromPartPurpose>
@@ -1211,6 +1249,7 @@
       <PartLinkId>rec2dLPcXlB5mpcr0</PartLinkId>
       <createdTime>2024-03-08T20:05:54Z</createdTime>
       <ToPart>rechOQKGvB2SZjWlE</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <Constants>reca6BGGNpG6xmYW6</Constants>
       <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
       <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
@@ -1282,6 +1321,7 @@
       <PartLinkId>recWQCA4hwpJKy7Sq</PartLinkId>
       <createdTime>2024-03-08T20:05:55Z</createdTime>
       <ToPart>recE8e1QT6vCqoYnC</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <Constants>recwQMDCDueArSiju</Constants>
       <FromPart>recPTrLTl5VqCpZLU</FromPart>
       <Description>Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</Description>
@@ -1353,6 +1393,7 @@
       <PartLinkId>reccuXwXh9BDjQpnQ</PartLinkId>
       <createdTime>2024-03-08T20:05:55Z</createdTime>
       <ToPart>recf1NFxHRxf0YVm1</ToPart>
+      <InputOutputType>INPUT</InputOutputType>
       <Constants>reciDvlgbEa2RXPNk</Constants>
       <FromPart>recImtkPIwt1UPXIq</FromPart>
       <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
@@ -1395,6 +1436,30 @@
       <ToPartPartIndex>11</ToPartPartIndex>
       <PinNumber>11</PinNumber>
       <LowerVairableName>status_status_led</LowerVairableName>
+    </PartLink>
+    <PartLink>
+      <PartLinkId>recvp2Feep498Ik8g</PartLinkId>
+      <createdTime>2024-03-23T19:17:42Z</createdTime>
+      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
+      <Name>Pin-13-AdminOverride-LatchingSwitch</Name>
+      <VariableNameCamelCase>takeAdminControl_LatchingSwitch</VariableNameCamelCase>
+      <LowerVairableName>take_admin_control_latching_switch</LowerVairableName>
+      <FromPart>recozUjOkMtlFRcEf</FromPart>
+      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
+      <ToPartColor>Purple</ToPartColor>
+      <FromPartPurpose>AdminOverride</FromPartPurpose>
+      <ToPartName>Pin-13-AdminOverride</ToPartName>
+      <ToPartCount>1</ToPartCount>
+      <ToPartPartIndex>13</ToPartPartIndex>
+      <PinNumber>13</PinNumber>
+      <ToPart>recDYURMybwh5nM1t</ToPart>
+      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
+      <ToPartPurposes>TakeAdminControl</ToPartPurposes>
+      <FromPartColor>Purple</FromPartColor>
+      <FromPartPartIndex>13</FromPartPartIndex>
+      <Constants>recTFM8X6ThIo4luB</Constants>
+      <InputOutputType>INPUT</InputOutputType>
+      <Description>Overrides board, takes admin control</Description>
     </PartLink>
   </PartLinks>
   <Constants>
@@ -1829,6 +1894,26 @@ const unsigned int minutes_per_day = 1440;
       <ConstantValue>11</ConstantValue>
       <ArduinoConstant>const unsigned int status_status_led = 11; // Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</ArduinoConstant>
       <ConstantForPartLinkLowerVairableName>status_status_led</ConstantForPartLinkLowerVairableName>
+    </Constant>
+    <Constant>
+      <ConstantId>recTFM8X6ThIo4luB</ConstantId>
+      <createdTime>2024-03-23T19:18:21Z</createdTime>
+      <Name>admin</Name>
+      <VariableNameCamelCase>takeAdminControl_LatchingSwitch</VariableNameCamelCase>
+      <LowerVariableName>take_admin_control_latching_switch</LowerVariableName>
+      <ArduinoConstantCore>const unsigned int take_admin_control_latching_switch</ArduinoConstantCore>
+      <ArduinoConstantHeader>extern const unsigned int take_admin_control_latching_switch;</ArduinoConstantHeader>
+      <Description>Overrides board, takes admin control</Description>
+      <ArduinoConstant>const unsigned int take_admin_control_latching_switch = 13; // Overrides board, takes admin control</ArduinoConstant>
+      <ConstantForPartLink>recvp2Feep498Ik8g</ConstantForPartLink>
+      <ConstantForPartLinkVariableNameCamelCase>takeAdminControl_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
+      <ConstantForPartLinkPinNumber>13</ConstantForPartLinkPinNumber>
+      <ConstantValue>13</ConstantValue>
+      <ConstantForPartLinkLowerVairableName>take_admin_control_latching_switch</ConstantForPartLinkLowerVairableName>
+      <ConstantForPartLinkDescription>Overrides board, takes admin control</ConstantForPartLinkDescription>
+      <Type>unsigned int</Type>
+      <Category>Parts</Category>
+      <SortOrder>15</SortOrder>
     </Constant>
   </Constants>
 </Airtable>
