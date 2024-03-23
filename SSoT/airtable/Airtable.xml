@@ -392,6 +392,8 @@
       <Name>ArduinoR4</Name>
       <Parts>recjSMf6DGEH9mXg6</Parts>
       <QuantityNeeded>1</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recIGlXd6Rsc2ccAj</PartTypeId>
@@ -402,6 +404,8 @@
       <Parts>recE8e1QT6vCqoYnC</Parts>
       <Parts>recf1NFxHRxf0YVm1</Parts>
       <QuantityNeeded>4</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>4</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recyh1hvxp92bx6RH</PartTypeId>
@@ -413,6 +417,8 @@
       <Parts>recL0Dsj02FEJ17xs</Parts>
       <Parts>recTPEebvYy1GG3mj</Parts>
       <QuantityNeeded>5</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>5</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recochHIqPnxbyt6E</PartTypeId>
@@ -423,6 +429,8 @@
       <Parts>recrYWW4Z5NpJCpEr</Parts>
       <Parts>recrw1QfQGdqo6PVd</Parts>
       <QuantityNeeded>4</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>4</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>rec9P46DD24KwErYJ</PartTypeId>
@@ -430,6 +438,8 @@
       <Name>Breadboard</Name>
       <Parts>recv9IeSbJsx8KivY</Parts>
       <QuantityNeeded>1</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recx7kz8CP1e4FIRL</PartTypeId>
@@ -437,6 +447,8 @@
       <Name>Speaker</Name>
       <Parts>recP8DhibnbMfvL2e</Parts>
       <QuantityNeeded>1</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>1</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>rec6tIWSm8kiKMmNR</PartTypeId>
@@ -456,6 +468,8 @@
       <Parts>recozUjOkMtlFRcEf</Parts>
       <Parts>recizLSeMD6bAPCFi</Parts>
       <QuantityNeeded>0</QuantityNeeded>
+      <CountAllLinkToParts>14</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recZBCe3rxpdTItmj</PartTypeId>
@@ -464,6 +478,8 @@
       <Parts>rec29roNZDFFdrEyV</Parts>
       <IsUnused>true</IsUnused>
       <QuantityNeeded>0</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recNjHuYBJTk2qAIM</PartTypeId>
@@ -471,6 +487,8 @@
       <Name>NeoDimiumMagnets</Name>
       <Parts>recM0IfALpO5TFEgv</Parts>
       <QuantityNeeded>26</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recBitIoBRkGUKBEK</PartTypeId>
@@ -478,6 +496,8 @@
       <Name>Round7DayPillDispenser</Name>
       <Parts>recIENY8PFMM3HOzk</Parts>
       <QuantityNeeded>2</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recy1FA7pBWva4x55</PartTypeId>
@@ -490,6 +510,8 @@
       <Parts>recFIECqf7ec9StBh</Parts>
       <Parts>rec2WTK8ShVs5nQUc</Parts>
       <QuantityNeeded>10</QuantityNeeded>
+      <CountAllLinkToParts>0</CountAllLinkToParts>
+      <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
   </PartTypes>
   <Parts>
@@ -505,6 +527,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recIENY8PFMM3HOzk</PartId>
@@ -519,6 +543,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>26</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recfhWMkMa7TZ28wR</PartId>
@@ -535,6 +561,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recr8rl3vZZaRNx4y</PartId>
@@ -551,6 +579,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recFvu8CmnIIml99g</PartId>
@@ -567,6 +597,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recP8DhibnbMfvL2e</PartId>
@@ -583,6 +615,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recsB65Pg7HSUVpUV</PartId>
@@ -599,6 +633,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rechOQKGvB2SZjWlE</PartId>
@@ -615,6 +651,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recMeTo9CNzTBXuSs</PartId>
@@ -631,6 +669,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recizLSeMD6bAPCFi</PartId>
@@ -647,6 +687,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recrYWW4Z5NpJCpEr</PartId>
@@ -663,6 +705,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recE8e1QT6vCqoYnC</PartId>
@@ -679,6 +723,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>reckxGZX9rTlH5iaM</PartId>
@@ -695,6 +741,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recMybfPDGzVKFlsi</PartId>
@@ -711,6 +759,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recrw1QfQGdqo6PVd</PartId>
@@ -727,6 +777,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recf1NFxHRxf0YVm1</PartId>
@@ -743,6 +795,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recL0Dsj02FEJ17xs</PartId>
@@ -759,6 +813,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rece0c5L2994wH1yY</PartId>
@@ -776,6 +832,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recTPEebvYy1GG3mj</PartId>
@@ -792,6 +850,8 @@
       <CountFrom>1</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>1</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recG8aZqdhYRke7SX</PartId>
@@ -808,6 +868,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recZ7UoOQ5Cz88LFx</PartId>
@@ -825,6 +887,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recqwFeNgXlRZrIH8</PartId>
@@ -841,6 +905,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recPTrLTl5VqCpZLU</PartId>
@@ -858,6 +924,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recYl5uead9cJDGrf</PartId>
@@ -874,6 +942,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recImtkPIwt1UPXIq</PartId>
@@ -891,6 +961,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>2</CountToLinks>
+      <CountOfLinkToParts>2</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recRVVqxFTthRg7LB</PartId>
@@ -907,6 +979,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>1</CountToLinks>
+      <CountOfLinkToParts>1</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recT722uvnhbHa1we</PartId>
@@ -921,6 +995,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rec2d7PAw43KwbsYV</PartId>
@@ -935,6 +1011,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recyT5sMUuEgc14fe</PartId>
@@ -949,6 +1027,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>recFIECqf7ec9StBh</PartId>
@@ -963,6 +1043,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
     <Part>
       <PartId>rec2WTK8ShVs5nQUc</PartId>
@@ -977,6 +1059,8 @@
       <CountFrom>0</CountFrom>
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
+      <CountOfLinkToParts>0</CountOfLinkToParts>
+      <CountOfLinkFromParts>0</CountOfLinkFromParts>
     </Part>
   </Parts>
   <PartLinks>

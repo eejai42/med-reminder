@@ -4,15 +4,17 @@ component Arduino
 
 {{#each PartTypes.PartType}}
   {{#if this.Parts}}
-    {{#each this.Parts.Part}}
-      {{#unless this.PartIndex}}
-        {{!-- If there is no PartIndex, we don't create a component --}}
-      {{else}}
-        component "{{this.Purpose}}" as {{this.ToPartLinks.PartLink.0.ToPartPurposes}} #{{this.Color}} {
-          to-Pin : {{this.ToPartLinks.PartLink.0.PinNumber}}
-        }
-      {{/unless}}
-    {{/each}}
+    {{#eq this.CountAllLinkFromParts 0}}{{else}}
+    package "{{this.Name}}" {
+      {{#each this.Parts.Part}}
+        {{#unless this.PartIndex}}
+          {{!-- If there is no PartIndex, we don't create a component --}}
+        {{else}}
+          component "[{{this.ToPartLinks.PartLink.0.ToPartPurposes}}]" as {{this.ToPartLinks.PartLink.0.ToPartPurposes}}{{this.PartIndex}} #{{this.Color}}
+        {{/unless}}
+      {{/each}}
+    }
+    {{/eq}}
   {{/if}}
 {{/each}}
 
@@ -22,7 +24,7 @@ component Arduino
       {{#unless this.PartIndex}}
         {{!-- If there is no PartIndex, we don't create a connection --}}
       {{else}}
-        Arduino -down-> {{this.ToPartLinks.PartLink.0.ToPartPurposes}} : {{this.ToPartLinks.PartLink.0.PinNumber}}\n#{{this.ToPartLinks.PartLink.0.ToPartPurposes}}
+        Arduino --> {{this.ToPartLinks.PartLink.0.ToPartPurposes}}{{this.PartIndex}} : [Pin: {{this.ToPartLinks.PartLink.0.PinNumber}}]\n#{{this.Color}}
       {{/unless}}
     {{/each}}
   {{/if}}

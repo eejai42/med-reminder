@@ -111,6 +111,8 @@ xmlns:json="http://james.newtonking.com/projects/json">
             <Name><xsl:value-of select="Name"/></Name>
             <Description><xsl:value-of select="Description"/></Description>
             <QuantityNeeded><xsl:value-of select="QuantityNeeded"/></QuantityNeeded>
+            <CountAllLinkToParts><xsl:value-of select="CountAllLinkToParts"/></CountAllLinkToParts>
+            <CountAllLinkFromParts><xsl:value-of select="CountAllLinkFromParts"/></CountAllLinkFromParts>
             <Parts>
                 <xsl:for-each select="//Part[PartType=current()/PartTypeId and Quantity > 0]">
                     <xsl:sort select="Name" />

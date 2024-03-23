@@ -366,18 +366,24 @@
           "Name": "ArduinoR4",
           "Description": "",
           "QuantityNeeded": 1,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 0,
           "Parts": ""
         },
         {
           "Name": "Breadboard",
           "Description": "",
           "QuantityNeeded": 1,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 0,
           "Parts": ""
         },
         {
           "Name": "HallEffectSensor",
           "Description": "",
           "QuantityNeeded": 4,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 4,
           "Parts": {
             "Part": [
               {
@@ -499,6 +505,8 @@
           "Name": "JumperWire",
           "Description": "",
           "QuantityNeeded": 10,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 0,
           "Parts": {
             "Part": [
               {
@@ -578,6 +586,8 @@
           "Name": "LatchingSwitch",
           "Description": "",
           "QuantityNeeded": 4,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 4,
           "Parts": {
             "Part": [
               {
@@ -699,6 +709,8 @@
           "Name": "Led",
           "Description": "",
           "QuantityNeeded": 5,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 5,
           "Parts": {
             "Part": [
               {
@@ -848,6 +860,8 @@
           "Name": "NeoDimiumMagnets",
           "Description": "",
           "QuantityNeeded": 26,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 0,
           "Parts": {
             "Part": [
               {
@@ -871,6 +885,8 @@
           "Name": "Round7DayPillDispenser",
           "Description": "",
           "QuantityNeeded": 2,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 0,
           "Parts": {
             "Part": [
               {
@@ -894,6 +910,8 @@
           "Name": "Speaker",
           "Description": "",
           "QuantityNeeded": 1,
+          "CountAllLinkToParts": 0,
+          "CountAllLinkFromParts": 1,
           "Parts": {
             "Part": [
               {
