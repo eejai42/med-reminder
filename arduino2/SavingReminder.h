@@ -1,11 +1,11 @@
 #pragma once
 #include "MedReminderStateMachine.h"
-// #include "BaseTrainingMovement.h" // Ensure base class is included if separate
+// #include "BaseSavingReminder.h" // Ensure base class is included if separate
 
-class TrainingMovement : public BaseTrainingMovement {
+class SavingReminder : public BaseSavingReminder {
 public:
-    using BaseTrainingMovement::BaseTrainingMovement;
-    TrainingMovement(BaseStateMachine* machine);
+    using BaseSavingReminder::BaseSavingReminder;
+    SavingReminder(BaseStateMachine* machine);
 
     virtual void onCheck() override; // called in the arduio loop
 

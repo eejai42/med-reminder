@@ -1,17 +1,17 @@
 @startuml
-                    
+                    [*] -> Training
 state Training
-state TrainingMovement
+state SavingReminder
 state Idle
 state AboutToAlert
 state Alerting
 state ClearReminder
 
-Training --> TrainingMovement : "MovementDetected"
+Training --> SavingReminder : "MovementDetected"
     
 Training --> Idle : "NewDay"
     
-TrainingMovement --> Training : "ReminderSaved"
+SavingReminder --> Training : "ReminderSaved"
     
 Idle --> AboutToAlert : "WithinMSOfNextReminder"
     

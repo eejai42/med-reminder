@@ -48,293 +48,296 @@
       <AllStates>reck5d8ZfDSF1Wpa2</AllStates>
       <Name>Med Reminder</Name>
       <IsActive>true</IsActive>
+      <InitialState>recaRDFMUx0REoAaf</InitialState>
+      <InitialStateName>Training</InitialStateName>
     </FSM>
   </FSMs>
   <MachineStates>
     <MachineState>
       <MachineStateId>recaRDFMUx0REoAaf</MachineStateId>
       <createdTime>2024-03-23T23:34:00Z</createdTime>
+      <FromTransitions>recED2uTetqnGjGhn</FromTransitions>
+      <FromTransitions>rec4XXq75RyQi7vuQ</FromTransitions>
+      <ToTransitions>recpcPSuT8LT3jJmX</ToTransitions>
       <Name>Training</Name>
       <AutoNumber>34</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>1</SortOrder>
+      <Description>First day - it just counts when pills are taken</Description>
       <FSMIsActive>true</FSMIsActive>
       <FQName>Training</FQName>
+      <FromTransitionNames>Training-to-SavingReminder-after--MovementDetected</FromTransitionNames>
+      <FromTransitionNames>Training-to-Idle-after--NewDay</FromTransitionNames>
+      <ToTransitionNames>SavingReminder-to-Training-after--ReminderSaved</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <FromTransitions>recED2uTetqnGjGhn</FromTransitions>
-      <FromTransitions>rec4XXq75RyQi7vuQ</FromTransitions>
-      <FromTransitionNames>Training-to-TrainingMovement-after--MovementDetected</FromTransitionNames>
-      <FromTransitionNames>Training-to-Idle-after--NewDay</FromTransitionNames>
-      <ToTransitions>recpcPSuT8LT3jJmX</ToTransitions>
-      <ToTransitionNames>TrainingMovement-to-Training-after--ReminderSaved</ToTransitionNames>
-      <Description>First day - it just counts when pills are taken</Description>
+      <InitialStateForFSMs>recCef92M3qYQDHYo</InitialStateForFSMs>
     </MachineState>
     <MachineState>
       <MachineStateId>recAogmoVNsRcRjwj</MachineStateId>
       <createdTime>2024-03-23T23:33:43Z</createdTime>
-      <Name>TrainingMovement</Name>
+      <FromTransitions>recpcPSuT8LT3jJmX</FromTransitions>
+      <ToTransitions>recED2uTetqnGjGhn</ToTransitions>
       <AutoNumber>33</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>2</SortOrder>
+      <Description>When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)</Description>
       <FSMIsActive>true</FSMIsActive>
-      <FQName>TrainingMovement</FQName>
+      <FQName>SavingReminder</FQName>
+      <FromTransitionNames>SavingReminder-to-Training-after--ReminderSaved</FromTransitionNames>
+      <ToTransitionNames>Training-to-SavingReminder-after--MovementDetected</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <ToTransitions>recED2uTetqnGjGhn</ToTransitions>
-      <ToTransitionNames>Training-to-TrainingMovement-after--MovementDetected</ToTransitionNames>
-      <FromTransitions>recpcPSuT8LT3jJmX</FromTransitions>
-      <FromTransitionNames>TrainingMovement-to-Training-after--ReminderSaved</FromTransitionNames>
-      <Description>When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)</Description>
+      <Name>SavingReminder</Name>
     </MachineState>
     <MachineState>
       <MachineStateId>reczUjayrHtycYFlN</MachineStateId>
       <createdTime>2024-03-23T23:34:53Z</createdTime>
+      <FromTransitions>recKeJGsw5YWeuA9C</FromTransitions>
+      <ToTransitions>rec4XXq75RyQi7vuQ</ToTransitions>
+      <ToTransitions>rec4jl4sOM7b5WekW</ToTransitions>
       <Name>Idle</Name>
       <AutoNumber>35</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>4</SortOrder>
+      <Description>This is the state that the device will spend most of it's time in, after training, but not while in the brief reminding/alerting phases.</Description>
       <FSMIsActive>true</FSMIsActive>
       <FQName>Idle</FQName>
+      <FromTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</FromTransitionNames>
+      <ToTransitionNames>Training-to-Idle-after--NewDay</ToTransitionNames>
+      <ToTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</ToTransitionNames>
       <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <ToTransitions>rec4XXq75RyQi7vuQ</ToTransitions>
-      <ToTransitions>rec4jl4sOM7b5WekW</ToTransitions>
-      <ToTransitionNames>Training-to-Idle-after--NewDay</ToTransitionNames>
-      <ToTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</ToTransitionNames>
-      <FromTransitions>recKeJGsw5YWeuA9C</FromTransitions>
-      <FromTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</FromTransitionNames>
-      <Description>This is the state that the device will spend most of it's time in, after training, but not while in the brief reminding/alerting phases.</Description>
     </MachineState>
     <MachineState>
       <MachineStateId>reck5d8ZfDSF1Wpa2</MachineStateId>
       <createdTime>2024-03-23T23:37:26Z</createdTime>
+      <FromTransitions>recMvVnmyY0r4NuYg</FromTransitions>
+      <FromTransitions>reciRYvdYwpSGznq1</FromTransitions>
+      <ToTransitions>recKeJGsw5YWeuA9C</ToTransitions>
       <Name>AboutToAlert</Name>
       <AutoNumber>39</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>5</SortOrder>
+      <Description>When we are within a little bit of time of the reminder, any movement detected will clear the next reminder, but it will not start actively alerting yet</Description>
       <FSMIsActive>true</FSMIsActive>
       <FQName>AboutToAlert</FQName>
+      <FromTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</FromTransitionNames>
+      <FromTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</FromTransitionNames>
+      <ToTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <ToTransitions>recKeJGsw5YWeuA9C</ToTransitions>
-      <ToTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</ToTransitionNames>
-      <FromTransitions>recMvVnmyY0r4NuYg</FromTransitions>
-      <FromTransitions>reciRYvdYwpSGznq1</FromTransitions>
-      <FromTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</FromTransitionNames>
-      <FromTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</FromTransitionNames>
-      <Description>When we are within a little bit of time of the reminder, any movement detected will clear the next reminder, but it will not start actively alerting yet</Description>
     </MachineState>
     <MachineState>
       <MachineStateId>recoQhqfC6xM6OaZf</MachineStateId>
       <createdTime>2024-03-23T23:36:20Z</createdTime>
+      <FromTransitions>recIN4Dp2mC3BVLui</FromTransitions>
+      <FromTransitions>recSfKtAdqRXPXqzJ</FromTransitions>
+      <ToTransitions>reciRYvdYwpSGznq1</ToTransitions>
       <Name>Alerting</Name>
       <AutoNumber>38</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>6</SortOrder>
+      <Description>When the actual alerting time is reached, it starts alerting.
+</Description>
       <FSMIsActive>true</FSMIsActive>
       <FQName>Alerting</FQName>
+      <FromTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</FromTransitionNames>
+      <FromTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</FromTransitionNames>
+      <ToTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <ToTransitions>reciRYvdYwpSGznq1</ToTransitions>
-      <ToTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</ToTransitionNames>
-      <FromTransitions>recIN4Dp2mC3BVLui</FromTransitions>
-      <FromTransitions>recSfKtAdqRXPXqzJ</FromTransitions>
-      <FromTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</FromTransitionNames>
-      <FromTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</FromTransitionNames>
-      <Description>When the actual alerting time is reached, it starts alerting.
-</Description>
     </MachineState>
     <MachineState>
       <MachineStateId>reclIaDU5IaJ59ij6</MachineStateId>
       <createdTime>2024-03-23T23:35:51Z</createdTime>
+      <FromTransitions>rec4jl4sOM7b5WekW</FromTransitions>
+      <ToTransitions>recMvVnmyY0r4NuYg</ToTransitions>
+      <ToTransitions>recIN4Dp2mC3BVLui</ToTransitions>
+      <ToTransitions>recSfKtAdqRXPXqzJ</ToTransitions>
       <Name>ClearReminder</Name>
       <AutoNumber>37</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>10</SortOrder>
+      <Description>In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle</Description>
       <FSMIsActive>true</FSMIsActive>
       <FQName>ClearReminder</FQName>
-      <CountIOfIncomingTransitions>3</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-      <IsImplemented>1</IsImplemented>
-      <ToTransitions>recMvVnmyY0r4NuYg</ToTransitions>
-      <ToTransitions>recIN4Dp2mC3BVLui</ToTransitions>
-      <ToTransitions>recSfKtAdqRXPXqzJ</ToTransitions>
+      <FromTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</FromTransitionNames>
       <ToTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</ToTransitionNames>
       <ToTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</ToTransitionNames>
       <ToTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</ToTransitionNames>
-      <FromTransitions>rec4jl4sOM7b5WekW</FromTransitions>
-      <FromTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</FromTransitionNames>
-      <Description>In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle</Description>
+      <CountIOfIncomingTransitions>3</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+      <IsImplemented>1</IsImplemented>
     </MachineState>
   </MachineStates>
   <Transitions>
     <Transition>
       <TransitionId>recED2uTetqnGjGhn</TransitionId>
       <createdTime>2024-03-24T16:24:52Z</createdTime>
-      <Name>Training-to-TrainingMovement-after--MovementDetected</Name>
-      <ActionName>MovementDetected</ActionName>
       <ToState>recAogmoVNsRcRjwj</ToState>
-      <ToStateName>TrainingMovement</ToStateName>
-      <ToStateSortOrder>2</ToStateSortOrder>
-      <IsImplemented>1</IsImplemented>
-      <FSMIsActive>true</FSMIsActive>
+      <Description>On training day, movement saves the reminder</Description>
       <FromState>recaRDFMUx0REoAaf</FromState>
+      <ActionName>MovementDetected</ActionName>
+      <Name>Training-to-SavingReminder-after--MovementDetected</Name>
       <FromStateName>Training</FromStateName>
+      <ToStateName>SavingReminder</ToStateName>
       <FromParentOrder>1</FromParentOrder>
       <FromStateSortOrder>1</FromStateSortOrder>
+      <ToStateSortOrder>2</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
       <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
       <FromStateIsImplemented>1</FromStateIsImplemented>
-      <Description>On training day, movement saves the reminder</Description>
     </Transition>
     <Transition>
       <TransitionId>rec4XXq75RyQi7vuQ</TransitionId>
       <createdTime>2024-03-24T16:28:54Z</createdTime>
-      <Name>Training-to-Idle-after--NewDay</Name>
+      <ToState>reczUjayrHtycYFlN</ToState>
+      <Description>When the first 24 hours is reached, the system stops training, and moves into the idle state</Description>
       <FromState>recaRDFMUx0REoAaf</FromState>
+      <ActionName>NewDay</ActionName>
+      <Name>Training-to-Idle-after--NewDay</Name>
       <FromStateName>Training</FromStateName>
+      <ToStateName>Idle</ToStateName>
       <FromParentOrder>1</FromParentOrder>
       <FromStateSortOrder>1</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ActionName>NewDay</ActionName>
-      <ToState>reczUjayrHtycYFlN</ToState>
-      <ToStateName>Idle</ToStateName>
       <ToStateSortOrder>4</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <Description>When the first 24 hours is reached, the system stops training, and moves into the idle state</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recpcPSuT8LT3jJmX</TransitionId>
       <createdTime>2024-03-24T16:28:16Z</createdTime>
-      <Name>TrainingMovement-to-Training-after--ReminderSaved</Name>
+      <ToState>recaRDFMUx0REoAaf</ToState>
+      <Description>On training day, the reminder is saved, and returns to Training.</Description>
       <FromState>recAogmoVNsRcRjwj</FromState>
-      <FromStateName>TrainingMovement</FromStateName>
+      <ActionName>ReminderSaved</ActionName>
+      <Name>SavingReminder-to-Training-after--ReminderSaved</Name>
+      <FromStateName>SavingReminder</FromStateName>
+      <ToStateName>Training</ToStateName>
       <FromParentOrder>2</FromParentOrder>
       <FromStateSortOrder>2</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ToState>recaRDFMUx0REoAaf</ToState>
-      <ToStateName>Training</ToStateName>
       <ToStateSortOrder>1</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <ActionName>ReminderSaved</ActionName>
-      <Description>On training day, the reminder is saved, and returns to Training.</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recKeJGsw5YWeuA9C</TransitionId>
       <createdTime>2024-03-24T16:29:28Z</createdTime>
-      <Name>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</Name>
+      <ToState>reck5d8ZfDSF1Wpa2</ToState>
+      <Description>Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills</Description>
       <FromState>reczUjayrHtycYFlN</FromState>
+      <ActionName>WithinMSOfNextReminder</ActionName>
+      <Name>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</Name>
       <FromStateName>Idle</FromStateName>
+      <ToStateName>AboutToAlert</ToStateName>
       <FromParentOrder>4</FromParentOrder>
       <FromStateSortOrder>4</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ToState>reck5d8ZfDSF1Wpa2</ToState>
-      <ToStateName>AboutToAlert</ToStateName>
       <ToStateSortOrder>5</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <ActionName>WithinMSOfNextReminder</ActionName>
-      <Description>Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>reciRYvdYwpSGznq1</TransitionId>
       <createdTime>2024-03-24T16:30:28Z</createdTime>
-      <Name>AboutToAlert-to-Alerting-after--ReminderTimeReached</Name>
+      <ToState>recoQhqfC6xM6OaZf</ToState>
+      <Description>If we are about  to alert, and the reminder time is reached, start alerting.</Description>
       <FromState>reck5d8ZfDSF1Wpa2</FromState>
+      <ActionName>ReminderTimeReached</ActionName>
+      <Name>AboutToAlert-to-Alerting-after--ReminderTimeReached</Name>
       <FromStateName>AboutToAlert</FromStateName>
+      <ToStateName>Alerting</ToStateName>
       <FromParentOrder>5</FromParentOrder>
       <FromStateSortOrder>5</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ActionName>ReminderTimeReached</ActionName>
-      <ToState>recoQhqfC6xM6OaZf</ToState>
-      <ToStateName>Alerting</ToStateName>
       <ToStateSortOrder>6</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <Description>If we are about  to alert, and the reminder time is reached, start alerting.</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recMvVnmyY0r4NuYg</TransitionId>
       <createdTime>2024-03-24T16:30:00Z</createdTime>
-      <Name>AboutToAlert-to-ClearReminder-after--MovementDetected</Name>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <Description>Movement in the about to alert state will move to clear the appropriate reminder.</Description>
       <FromState>reck5d8ZfDSF1Wpa2</FromState>
+      <ActionName>MovementDetected</ActionName>
+      <Name>AboutToAlert-to-ClearReminder-after--MovementDetected</Name>
       <FromStateName>AboutToAlert</FromStateName>
+      <ToStateName>ClearReminder</ToStateName>
       <FromParentOrder>5</FromParentOrder>
       <FromStateSortOrder>5</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ActionName>MovementDetected</ActionName>
-      <ToState>reclIaDU5IaJ59ij6</ToState>
-      <ToStateName>ClearReminder</ToStateName>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <Description>Movement in the about to alert state will move to clear the appropriate reminder.</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recIN4Dp2mC3BVLui</TransitionId>
       <createdTime>2024-03-24T16:30:52Z</createdTime>
-      <Name>Alerting-to-ClearReminder-after--SystemButtonPushed</Name>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <Description>While alerting, if the system button is pushed, move to clear the reminder.</Description>
       <FromState>recoQhqfC6xM6OaZf</FromState>
+      <ActionName>SystemButtonPushed</ActionName>
+      <Name>Alerting-to-ClearReminder-after--SystemButtonPushed</Name>
       <FromStateName>Alerting</FromStateName>
+      <ToStateName>ClearReminder</ToStateName>
       <FromParentOrder>6</FromParentOrder>
       <FromStateSortOrder>6</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ActionName>SystemButtonPushed</ActionName>
-      <ToState>reclIaDU5IaJ59ij6</ToState>
-      <ToStateName>ClearReminder</ToStateName>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <Description>While alerting, if the system button is pushed, move to clear the reminder.</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recSfKtAdqRXPXqzJ</TransitionId>
       <createdTime>2024-03-24T16:36:36Z</createdTime>
-      <Name>Alerting-to-ClearReminder-after--MovementDetected</Name>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <Description>While alerting, if movement is detected, go to clear the reminder.</Description>
       <FromState>recoQhqfC6xM6OaZf</FromState>
+      <ActionName>MovementDetected</ActionName>
+      <Name>Alerting-to-ClearReminder-after--MovementDetected</Name>
       <FromStateName>Alerting</FromStateName>
+      <ToStateName>ClearReminder</ToStateName>
       <FromParentOrder>6</FromParentOrder>
       <FromStateSortOrder>6</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ActionName>MovementDetected</ActionName>
-      <ToState>reclIaDU5IaJ59ij6</ToState>
-      <ToStateName>ClearReminder</ToStateName>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <Description>While alerting, if movement is detected, go to clear the reminder.</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>rec4jl4sOM7b5WekW</TransitionId>
       <createdTime>2024-03-24T16:36:58Z</createdTime>
-      <Name>ClearReminder-to-Idle-after--ReminderCleared</Name>
+      <ToState>reczUjayrHtycYFlN</ToState>
+      <Description>After the appropriate reminder has been cleared, go back to the idle state.</Description>
       <FromState>reclIaDU5IaJ59ij6</FromState>
+      <ActionName>ReminderCleared</ActionName>
+      <Name>ClearReminder-to-Idle-after--ReminderCleared</Name>
       <FromStateName>ClearReminder</FromStateName>
+      <ToStateName>Idle</ToStateName>
       <FromParentOrder>10</FromParentOrder>
       <FromStateSortOrder>10</FromStateSortOrder>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
-      <ActionName>ReminderCleared</ActionName>
-      <ToState>reczUjayrHtycYFlN</ToState>
-      <ToStateName>Idle</ToStateName>
       <ToStateSortOrder>4</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <Description>After the appropriate reminder has been cleared, go back to the idle state.</Description>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
   </Transitions>
   <PartTypes>

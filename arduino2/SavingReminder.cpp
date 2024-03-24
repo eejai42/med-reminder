@@ -1,12 +1,12 @@
 #pragma once
-#include "TrainingMovement.h"
+#include "SavingReminder.h"
 #include <iostream> // Include if you use std::cout or similar in implementations
 
-    TrainingMovement::TrainingMovement(BaseStateMachine* machine) : BaseTrainingMovement(machine) {
+    SavingReminder::SavingReminder(BaseStateMachine* machine) : BaseSavingReminder(machine) {
         // Constructor implementation, if needed
     }
 
-    bool TrainingMovement::hasReminderSaved() {
+    bool SavingReminder::hasReminderSaved() {
         // Determine if ReminderSaved
         return false; // assume this has not yet happened
     }

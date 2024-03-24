@@ -10,21 +10,17 @@
 #### {{add @index 1}}. {{Name}}
 {{Description}}
 
-{{#if EntryActions}}
-- **Entry Actions**: {{EntryActions}}
-{{/if}}
-{{#if ExitActions}}
-- **Exit Actions**: {{ExitActions}}
-{{/if}}
-
+{{#each FromTransitions.FromTransition}}
+ - **`{{../Name}} .`**_`{{ActionName}}`_**`( ➡ {{ToStateName}} )`:** 
+ <span style="font-size: 1em; margin-bottom: 0.75em; color: green;">{{Description}}.<br />&nbsp;<span>
+{{/each}}
+---------
 {{#each ToTransitions.ToTransition}}
- - **⬅ {{FromStateName}}(`{{ActionName}}`): ⬅** {{Description}}.
+ - **`{{FromStateName}} .`**_`{{ActionName}}`_**`( this )`:** 
+ <span style="font-size: 0.8em; padding-bottom: 0.25em; color: darkgray;">{{Description}}<span>
 {{/each}}
 
-{{#each FromTransitions.FromTransition}}
- - **➡ {{ToStateName}}(`{{ActionName}}`): ➡** {{Description}}.
-{{/each}}{{/each}}
-
+{{/each}}
 ### Initial State
 - **Idle**: The machine initializes in the Idle state, awaiting the first user interaction to begin the detection and handling process.
 

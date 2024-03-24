@@ -1020,7 +1020,7 @@
     "FSMs": {
       "FSM": {
         "Name": "Med Reminder",
-        "InitialStateName": ""
+        "InitialStateName": "Training"
       }
     },
     "MachineStates": {
@@ -1033,8 +1033,8 @@
               {
                 "Description": "On training day, movement saves the reminder",
                 "ActionName": "MovementDetected",
-                "ToStateName": "TrainingMovement",
-                "Name": "Training-to-TrainingMovement-after--MovementDetected"
+                "ToStateName": "SavingReminder",
+                "Name": "Training-to-SavingReminder-after--MovementDetected"
               },
               {
                 "Description": "When the first 24 hours is reached, the system stops training, and moves into the idle state",
@@ -1049,14 +1049,14 @@
               {
                 "Description": "On training day, the reminder is saved, and returns to Training.",
                 "ActionName": "ReminderSaved",
-                "FromStateName": "TrainingMovement",
-                "Name": "TrainingMovement-to-Training-after--ReminderSaved"
+                "FromStateName": "SavingReminder",
+                "Name": "SavingReminder-to-Training-after--ReminderSaved"
               }
             ]
           }
         },
         {
-          "Name": "TrainingMovement",
+          "Name": "SavingReminder",
           "Description": "When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)",
           "FromTransitions": {
             "FromTransition": [
@@ -1064,7 +1064,7 @@
                 "Description": "On training day, the reminder is saved, and returns to Training.",
                 "ActionName": "ReminderSaved",
                 "ToStateName": "Training",
-                "Name": "TrainingMovement-to-Training-after--ReminderSaved"
+                "Name": "SavingReminder-to-Training-after--ReminderSaved"
               }
             ]
           },
@@ -1074,7 +1074,7 @@
                 "Description": "On training day, movement saves the reminder",
                 "ActionName": "MovementDetected",
                 "FromStateName": "Training",
-                "Name": "Training-to-TrainingMovement-after--MovementDetected"
+                "Name": "Training-to-SavingReminder-after--MovementDetected"
               }
             ]
           }

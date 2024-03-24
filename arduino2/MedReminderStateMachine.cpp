@@ -1,7 +1,7 @@
 #include "MedReminderStateMachine.h"
 #include <iostream>
 #include "Training.h"
-#include "TrainingMovement.h"
+#include "SavingReminder.h"
 #include "Idle.h"
 #include "AboutToAlert.h"
 #include "Alerting.h"
@@ -13,13 +13,13 @@
 
 MedReminderStateMachine::MedReminderStateMachine() : BaseStateMachine() {
     // Constructor implementation
-    // Example: changeState(std::make_unique<>(this));
+    // Example: changeState(std::make_unique<Training>(this));
 }
 
 void BaseTraining::onCheck() {
     // Handle transitions
     if (this->hasMovementDetected()) {
-        machine->changeState(std::make_unique<TrainingMovement>(machine));
+        machine->changeState(std::make_unique<SavingReminder>(machine));
         return;
     }
     if (this->hasNewDay()) {
@@ -27,7 +27,7 @@ void BaseTraining::onCheck() {
         return;
     }
 }
-void BaseTrainingMovement::onCheck() {
+void BaseSavingReminder::onCheck() {
     // Handle transitions
     if (this->hasReminderSaved()) {
         machine->changeState(std::make_unique<Training>(machine));

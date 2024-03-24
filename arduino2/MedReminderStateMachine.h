@@ -28,9 +28,9 @@ public:
     virtual bool hasNewDay();
 };
 
-class BaseTrainingMovement : public BaseState {
+class BaseSavingReminder : public BaseState {
 public:
-    BaseTrainingMovement(BaseStateMachine* machine);
+    BaseSavingReminder(BaseStateMachine* machine);
 
     void onEnter() override;
     void onExit() override;
