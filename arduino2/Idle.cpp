@@ -1,12 +1,17 @@
 #pragma once
-#include "Idle.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    Idle::Idle(BaseStateMachine* machine) : BaseIdle(machine) {
-        // Constructor implementation, if needed
-    }
+int ms = 0;
+void MedReminderStateMachine::enterIdle() {
+    // Actions to perform on entering Idle
+}
 
-    bool Idle::hasWithinMSOfNextReminder() {
-        // Determine if WithinMSOfNextReminder
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitIdle() {
+    // Actions to perform on exiting Idle
+}
+
+bool MedReminderStateMachine::hasIdle_WithinMSOfNextReminder() {
+    // Determine if WithinMSOfNextReminder
+    if (ms++ == 100) return true;
+    else return false; // assume this has not yet happened
+}

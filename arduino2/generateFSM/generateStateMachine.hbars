@@ -33,7 +33,7 @@ public:
 };
 {{/each}}
 
-[[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp]]]
+[[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp:never]]]
 #include "{{@key}}StateMachine.h"
 #include <iostream>
 {{#each MachineStates.MachineState}}
@@ -83,7 +83,7 @@ public:
 };
 {{/each}}
 {{#each MachineStates.MachineState}}
-[[FileSetFile/RelativePath[../{{Name}}.cpp]]]
+[[FileSetFile/RelativePath[../{{Name}}.cpp:never]]]
 #pragma once
 #include "{{Name}}.h"
 #include <iostream> // Include if you use std::cout or similar in implementations

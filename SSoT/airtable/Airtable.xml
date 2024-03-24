@@ -46,9 +46,9 @@
       <AllStates>reclIaDU5IaJ59ij6</AllStates>
       <AllStates>recoQhqfC6xM6OaZf</AllStates>
       <AllStates>reck5d8ZfDSF1Wpa2</AllStates>
+      <InitialState>recaRDFMUx0REoAaf</InitialState>
       <Name>Med Reminder</Name>
       <IsActive>true</IsActive>
-      <InitialState>recaRDFMUx0REoAaf</InitialState>
       <InitialStateName>Training</InitialStateName>
     </FSM>
   </FSMs>
@@ -58,6 +58,7 @@
       <createdTime>2024-03-23T23:34:00Z</createdTime>
       <FromTransitions>recED2uTetqnGjGhn</FromTransitions>
       <FromTransitions>rec4XXq75RyQi7vuQ</FromTransitions>
+      <InitialStateForFSMs>recCef92M3qYQDHYo</InitialStateForFSMs>
       <ToTransitions>recpcPSuT8LT3jJmX</ToTransitions>
       <Name>Training</Name>
       <AutoNumber>34</AutoNumber>
@@ -72,13 +73,13 @@
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <InitialStateForFSMs>recCef92M3qYQDHYo</InitialStateForFSMs>
     </MachineState>
     <MachineState>
       <MachineStateId>recAogmoVNsRcRjwj</MachineStateId>
       <createdTime>2024-03-23T23:33:43Z</createdTime>
       <FromTransitions>recpcPSuT8LT3jJmX</FromTransitions>
       <ToTransitions>recED2uTetqnGjGhn</ToTransitions>
+      <Name>SavingReminder</Name>
       <AutoNumber>33</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>2</SortOrder>
@@ -90,7 +91,6 @@
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
-      <Name>SavingReminder</Name>
     </MachineState>
     <MachineState>
       <MachineStateId>reczUjayrHtycYFlN</MachineStateId>

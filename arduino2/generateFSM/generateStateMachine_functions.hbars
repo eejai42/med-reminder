@@ -39,7 +39,7 @@ public:
 extern {{@key}}StateMachine* stateMachine;
 
 {{!-- StateMachine.cpp Template --}}
-[[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp]]]
+[[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp:never]]]
 #pragma once
 // Adjusted StateMachine.cpp Template for {{@key}}StateMachine
 #include "{{@key}}StateMachine.h"
@@ -93,7 +93,7 @@ void {{@key}}StateMachine::onEnter(State state) {
 
 
 {{#each MachineStates.MachineState}}
-[[FileSetFile/RelativePath[../{{Name}}.cpp]]]
+[[FileSetFile/RelativePath[../{{Name}}.cpp:never]]]
 #pragma once
 #include "MedReminderStateMachine.h"
 
