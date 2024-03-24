@@ -1,12 +1,12 @@
 #pragma once
-#include "Idle.h"
+#include "ClearReminder.h"
 #include <iostream> // Include if you use std::cout or similar in implementations
 
-    Idle::Idle(BaseStateMachine* machine) : BaseIdle(machine) {
+    ClearReminder::ClearReminder(BaseStateMachine* machine) : BaseClearReminder(machine) {
         // Constructor implementation, if needed
     }
 
-    bool Idle::hasWithinMSOfNextReminder() {
-        // Determine if WithinMSOfNextReminder
+    bool ClearReminder::hasReminderCleared() {
+        // Determine if ReminderCleared
         return false; // assume this has not yet happened
     }

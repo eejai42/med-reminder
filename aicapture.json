@@ -32,7 +32,7 @@
       "ProjectTranspilerId": "e8e3c77d-c088-4290-8040-9bd97ecaf620",
       "Name": "XmlToStateMachineXml",
       "RelativePath": "/SSoT/FSM",
-      "CommandLine": "xml-to-statemachine -i ..\\airtable\\Airtable.xml -p initial-state=Bootup"
+      "CommandLine": "xml-to-statemachine -i ..\\airtable\\Airtable.xml"
     },
     {
       "MatchedTranspiler": {

@@ -38,351 +38,303 @@
   </Entities>
   <FSMs>
     <FSM>
-      <FSMId>recly4hkn9xXMrb5Z</FSMId>
-      <createdTime>2024-03-07T22:12:08Z</createdTime>
-      <AllStates>recHgqCtj0vzHWaVO</AllStates>
-      <AllStates>recQbDDd67dey6Es0</AllStates>
-      <AllStates>recnIaoQU4Qpw5BHY</AllStates>
-      <AllStates>rec7RSbV1tXC5mjGV</AllStates>
-      <AllStates>recr1KOjhPkHHqiLj</AllStates>
-      <AllStates>rec61asoqXuI2yXK3</AllStates>
-      <AllStates>recpmO4bsRvpEFL5i</AllStates>
-      <AllStates>recHbG1BLdYrR3W19</AllStates>
-      <AllStates>recH4OfQCArbJvg1A</AllStates>
-      <AllStates>recAOq6bdEWYQTrlZ</AllStates>
-      <AllStates>recECxeEkqmx516aC</AllStates>
-      <AllStates>recFKy8iPNAIUMqgM</AllStates>
-      <AllStates>rec10HUiMuU9ICJeg</AllStates>
-      <InitialState>recHgqCtj0vzHWaVO</InitialState>
+      <FSMId>recCef92M3qYQDHYo</FSMId>
+      <createdTime>2024-03-23T23:24:25Z</createdTime>
+      <AllStates>recAogmoVNsRcRjwj</AllStates>
+      <AllStates>recaRDFMUx0REoAaf</AllStates>
+      <AllStates>reczUjayrHtycYFlN</AllStates>
+      <AllStates>reclIaDU5IaJ59ij6</AllStates>
+      <AllStates>recoQhqfC6xM6OaZf</AllStates>
+      <AllStates>reck5d8ZfDSF1Wpa2</AllStates>
       <Name>Med Reminder</Name>
       <IsActive>true</IsActive>
-      <InitialStateName>Bootup</InitialStateName>
     </FSM>
   </FSMs>
   <MachineStates>
     <MachineState>
-      <MachineStateId>recHgqCtj0vzHWaVO</MachineStateId>
-      <createdTime>2024-03-07T22:12:21Z</createdTime>
-      <FromTransitions>recBomrKK1bqTybwI</FromTransitions>
-      <InitialStateForFSMs>recly4hkn9xXMrb5Z</InitialStateForFSMs>
-      <ToTransitions>recR57pGXNufjmqja</ToTransitions>
-      <AutoNumber>1</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
+      <MachineStateId>recaRDFMUx0REoAaf</MachineStateId>
+      <createdTime>2024-03-23T23:34:00Z</createdTime>
+      <Name>Training</Name>
+      <AutoNumber>34</AutoNumber>
+      <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>1</SortOrder>
-      <Name>Bootup</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Initializes the system and prepares for operation.  </Description>
-      <DefaultTimeout>15000</DefaultTimeout>
-      <FromTransitionNames>Bootup-to-GatherReminders-after-15000-BootupCompleted</FromTransitionNames>
-      <ToTransitionNames>Reboot-to-Bootup-after--RebootStarted</ToTransitionNames>
+      <FSMIsActive>true</FSMIsActive>
+      <FQName>Training</FQName>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
-      <FSMIsActive>true</FSMIsActive>
+      <IsImplemented>1</IsImplemented>
+      <FromTransitions>recED2uTetqnGjGhn</FromTransitions>
+      <FromTransitions>rec4XXq75RyQi7vuQ</FromTransitions>
+      <FromTransitionNames>Training-to-TrainingMovement-after--MovementDetected</FromTransitionNames>
+      <FromTransitionNames>Training-to-Idle-after--NewDay</FromTransitionNames>
+      <ToTransitions>recpcPSuT8LT3jJmX</ToTransitions>
+      <ToTransitionNames>TrainingMovement-to-Training-after--ReminderSaved</ToTransitionNames>
+      <Description>First day - it just counts when pills are taken</Description>
     </MachineState>
     <MachineState>
-      <MachineStateId>recQbDDd67dey6Es0</MachineStateId>
-      <createdTime>2024-03-07T22:15:09Z</createdTime>
-      <FromTransitions>recK7FbZxDNytiTG2</FromTransitions>
-      <ToTransitions>recBomrKK1bqTybwI</ToTransitions>
-      <AutoNumber>3</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
+      <MachineStateId>recAogmoVNsRcRjwj</MachineStateId>
+      <createdTime>2024-03-23T23:33:43Z</createdTime>
+      <Name>TrainingMovement</Name>
+      <AutoNumber>33</AutoNumber>
+      <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>2</SortOrder>
-      <Name>GatherReminders</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Awaits the time for the first medication reminder.  </Description>
-      <FromTransitionNames>GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted</FromTransitionNames>
-      <ToTransitionNames>Bootup-to-GatherReminders-after-15000-BootupCompleted</ToTransitionNames>
+      <FSMIsActive>true</FSMIsActive>
+      <FQName>TrainingMovement</FQName>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
-      <FSMIsActive>true</FSMIsActive>
+      <IsImplemented>1</IsImplemented>
+      <ToTransitions>recED2uTetqnGjGhn</ToTransitions>
+      <ToTransitionNames>Training-to-TrainingMovement-after--MovementDetected</ToTransitionNames>
+      <FromTransitions>recpcPSuT8LT3jJmX</FromTransitions>
+      <FromTransitionNames>TrainingMovement-to-Training-after--ReminderSaved</FromTransitionNames>
+      <Description>When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)</Description>
     </MachineState>
     <MachineState>
-      <MachineStateId>recnIaoQU4Qpw5BHY</MachineStateId>
-      <createdTime>2024-03-07T22:15:09Z</createdTime>
-      <FromTransitions>recU7wbcYsZdYYhRv</FromTransitions>
-      <ToTransitions>recK7FbZxDNytiTG2</ToTransitions>
-      <AutoNumber>2</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>3</SortOrder>
-      <Name>SaveReminders</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Captures the current time as a reference point for tracking.  </Description>
-      <FromTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</FromTransitionNames>
-      <ToTransitionNames>GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-      <FSMIsActive>true</FSMIsActive>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>rec10HUiMuU9ICJeg</MachineStateId>
-      <createdTime>2024-03-18T23:43:02Z</createdTime>
-      <FromTransitions>reckoARmSnb5wF2j7</FromTransitions>
-      <ToTransitions>recbiLP9lesboXrPj</ToTransitions>
-      <ToTransitions>reczXCjkomuf41Yej</ToTransitions>
-      <AutoNumber>26</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>5</SortOrder>
-      <Name>Reminding</Name>
-      <IsImplemented>true</IsImplemented>
-      <FromTransitionNames>Reminding-to-DebounceMovement-after--WheelMoved</FromTransitionNames>
-      <ToTransitionNames>Idle-to-Reminding-after--ReminderTimeReached</ToTransitionNames>
-      <ToTransitionNames>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</ToTransitionNames>
-      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
-      <FSMIsActive>true</FSMIsActive>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>rec7RSbV1tXC5mjGV</MachineStateId>
-      <createdTime>2024-03-07T22:15:10Z</createdTime>
-      <FromTransitions>recAW4QtPWA3GC89z</FromTransitions>
-      <FromTransitions>recWoSt7wwDKBTjUC</FromTransitions>
-      <FromTransitions>recbiLP9lesboXrPj</FromTransitions>
-      <ToTransitions>recLshMf3321k4bmF</ToTransitions>
-      <ToTransitions>recvSPAPThYmT7jgP</ToTransitions>
-      <ToTransitions>recpmkvEEysUur5V9</ToTransitions>
-      <ToTransitions>recbNE8LYGEwTPt3Y</ToTransitions>
-      <ToTransitions>recU7wbcYsZdYYhRv</ToTransitions>
-      <AutoNumber>7</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>10</SortOrder>
+      <MachineStateId>reczUjayrHtycYFlN</MachineStateId>
+      <createdTime>2024-03-23T23:34:53Z</createdTime>
       <Name>Idle</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>The system is in a standby mode, waiting for interaction or the next event.  </Description>
-      <FromTransitionNames>Idle-to-DebounceMovement-after--WheelMoved</FromTransitionNames>
-      <FromTransitionNames>Idle-to-WaitForCommands-after--MainInputClicked</FromTransitionNames>
-      <FromTransitionNames>Idle-to-Reminding-after--ReminderTimeReached</FromTransitionNames>
-      <ToTransitionNames>SetExpectedReminder-to-Idle-after--ExpectedReminderSet</ToTransitionNames>
-      <ToTransitionNames>DebounceMovement-to-Idle-after--DebounceFailed</ToTransitionNames>
-      <ToTransitionNames>MovementDetected-to-Idle-after--MovementHandled</ToTransitionNames>
-      <ToTransitionNames>AdvanceCurrentReminder-to-Idle-after--CurrentReminderAdvanced</ToTransitionNames>
-      <ToTransitionNames>SaveReminders-to-Idle-after--RemindersSaved</ToTransitionNames>
-      <CountIOfIncomingTransitions>5</CountIOfIncomingTransitions>
-      <StateMachineName>Med Reminder</StateMachineName>
+      <AutoNumber>35</AutoNumber>
+      <FSM>recCef92M3qYQDHYo</FSM>
+      <SortOrder>4</SortOrder>
       <FSMIsActive>true</FSMIsActive>
-    </MachineState>
-    <MachineState>
-      <MachineStateId>recpmO4bsRvpEFL5i</MachineStateId>
-      <createdTime>2024-03-08T23:25:28Z</createdTime>
-      <FromTransitions>rec1yyjQAFfwgkomD</FromTransitions>
-      <FromTransitions>recvSPAPThYmT7jgP</FromTransitions>
-      <FromTransitions>reczXCjkomuf41Yej</FromTransitions>
-      <ToTransitions>recAW4QtPWA3GC89z</ToTransitions>
-      <ToTransitions>reckoARmSnb5wF2j7</ToTransitions>
-      <AutoNumber>17</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>11</SortOrder>
-      <Name>DebounceMovement</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Filters out false movements to ensure accurate detection.  </Description>
-      <FromTransitionNames>DebounceMovement-to-MovementDetected-after--DebouncePassed</FromTransitionNames>
-      <FromTransitionNames>DebounceMovement-to-Idle-after--DebounceFailed</FromTransitionNames>
-      <FromTransitionNames>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</FromTransitionNames>
-      <ToTransitionNames>Idle-to-DebounceMovement-after--WheelMoved</ToTransitionNames>
-      <ToTransitionNames>Reminding-to-DebounceMovement-after--WheelMoved</ToTransitionNames>
+      <FQName>Idle</FQName>
       <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
-      <FSMIsActive>true</FSMIsActive>
+      <IsImplemented>1</IsImplemented>
+      <ToTransitions>rec4XXq75RyQi7vuQ</ToTransitions>
+      <ToTransitions>rec4jl4sOM7b5WekW</ToTransitions>
+      <ToTransitionNames>Training-to-Idle-after--NewDay</ToTransitionNames>
+      <ToTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</ToTransitionNames>
+      <FromTransitions>recKeJGsw5YWeuA9C</FromTransitions>
+      <FromTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</FromTransitionNames>
+      <Description>This is the state that the device will spend most of it's time in, after training, but not while in the brief reminding/alerting phases.</Description>
     </MachineState>
     <MachineState>
-      <MachineStateId>recAOq6bdEWYQTrlZ</MachineStateId>
-      <createdTime>2024-03-08T23:26:06Z</createdTime>
-      <FromTransitions>recpmkvEEysUur5V9</FromTransitions>
-      <ToTransitions>rec1yyjQAFfwgkomD</ToTransitions>
-      <AutoNumber>20</AutoNumber>
-      <FSM>recly4hkn9xXMrb5Z</FSM>
-      <SortOrder>14</SortOrder>
-      <Name>MovementDetected</Name>
-      <IsImplemented>true</IsImplemented>
-      <Description>Detects confirmed movement, signaling a completed interaction.  </Description>
-      <FromTransitionNames>MovementDetected-to-Idle-after--MovementHandled</FromTransitionNames>
-      <ToTransitionNames>DebounceMovement-to-MovementDetected-after--DebouncePassed</ToTransitionNames>
+      <MachineStateId>reck5d8ZfDSF1Wpa2</MachineStateId>
+      <createdTime>2024-03-23T23:37:26Z</createdTime>
+      <Name>AboutToAlert</Name>
+      <AutoNumber>39</AutoNumber>
+      <FSM>recCef92M3qYQDHYo</FSM>
+      <SortOrder>5</SortOrder>
+      <FSMIsActive>true</FSMIsActive>
+      <FQName>AboutToAlert</FQName>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
+      <IsImplemented>1</IsImplemented>
+      <ToTransitions>recKeJGsw5YWeuA9C</ToTransitions>
+      <ToTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</ToTransitionNames>
+      <FromTransitions>recMvVnmyY0r4NuYg</FromTransitions>
+      <FromTransitions>reciRYvdYwpSGznq1</FromTransitions>
+      <FromTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</FromTransitionNames>
+      <FromTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</FromTransitionNames>
+      <Description>When we are within a little bit of time of the reminder, any movement detected will clear the next reminder, but it will not start actively alerting yet</Description>
+    </MachineState>
+    <MachineState>
+      <MachineStateId>recoQhqfC6xM6OaZf</MachineStateId>
+      <createdTime>2024-03-23T23:36:20Z</createdTime>
+      <Name>Alerting</Name>
+      <AutoNumber>38</AutoNumber>
+      <FSM>recCef92M3qYQDHYo</FSM>
+      <SortOrder>6</SortOrder>
       <FSMIsActive>true</FSMIsActive>
+      <FQName>Alerting</FQName>
+      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+      <IsImplemented>1</IsImplemented>
+      <ToTransitions>reciRYvdYwpSGznq1</ToTransitions>
+      <ToTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</ToTransitionNames>
+      <FromTransitions>recIN4Dp2mC3BVLui</FromTransitions>
+      <FromTransitions>recSfKtAdqRXPXqzJ</FromTransitions>
+      <FromTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</FromTransitionNames>
+      <FromTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</FromTransitionNames>
+      <Description>When the actual alerting time is reached, it starts alerting.
+</Description>
+    </MachineState>
+    <MachineState>
+      <MachineStateId>reclIaDU5IaJ59ij6</MachineStateId>
+      <createdTime>2024-03-23T23:35:51Z</createdTime>
+      <Name>ClearReminder</Name>
+      <AutoNumber>37</AutoNumber>
+      <FSM>recCef92M3qYQDHYo</FSM>
+      <SortOrder>10</SortOrder>
+      <FSMIsActive>true</FSMIsActive>
+      <FQName>ClearReminder</FQName>
+      <CountIOfIncomingTransitions>3</CountIOfIncomingTransitions>
+      <StateMachineName>Med Reminder</StateMachineName>
+      <IsImplemented>1</IsImplemented>
+      <ToTransitions>recMvVnmyY0r4NuYg</ToTransitions>
+      <ToTransitions>recIN4Dp2mC3BVLui</ToTransitions>
+      <ToTransitions>recSfKtAdqRXPXqzJ</ToTransitions>
+      <ToTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</ToTransitionNames>
+      <ToTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</ToTransitionNames>
+      <ToTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</ToTransitionNames>
+      <FromTransitions>rec4jl4sOM7b5WekW</FromTransitions>
+      <FromTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</FromTransitionNames>
+      <Description>In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle</Description>
     </MachineState>
   </MachineStates>
   <Transitions>
     <Transition>
-      <TransitionId>recBomrKK1bqTybwI</TransitionId>
-      <createdTime>2024-03-08T23:23:48Z</createdTime>
-      <ToState>recQbDDd67dey6Es0</ToState>
-      <Description>Initializes the recording of the current time slice immediately after system startup</Description>
-      <FromState>recHgqCtj0vzHWaVO</FromState>
-      <ActionName>BootupCompleted</ActionName>
-      <FromStateDefaultTransition>15000</FromStateDefaultTransition>
-      <TransitionAfter>15000</TransitionAfter>
-      <Name>Bootup-to-GatherReminders-after-15000-BootupCompleted</Name>
-      <FromStateName>Bootup</FromStateName>
-      <ToStateName>GatherReminders</ToStateName>
+      <TransitionId>recED2uTetqnGjGhn</TransitionId>
+      <createdTime>2024-03-24T16:24:52Z</createdTime>
+      <Name>Training-to-TrainingMovement-after--MovementDetected</Name>
+      <ActionName>MovementDetected</ActionName>
+      <ToState>recAogmoVNsRcRjwj</ToState>
+      <ToStateName>TrainingMovement</ToStateName>
+      <ToStateSortOrder>2</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FSMIsActive>true</FSMIsActive>
+      <FromState>recaRDFMUx0REoAaf</FromState>
+      <FromStateName>Training</FromStateName>
       <FromParentOrder>1</FromParentOrder>
       <FromStateSortOrder>1</FromStateSortOrder>
-      <ToStateSortOrder>2</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <Description>On training day, movement saves the reminder</Description>
     </Transition>
     <Transition>
-      <TransitionId>recK7FbZxDNytiTG2</TransitionId>
-      <createdTime>2024-03-08T23:24:18Z</createdTime>
-      <ToState>recnIaoQU4Qpw5BHY</ToState>
-      <Description>Waits for the first medication reminder after the initial setup is completed.</Description>
-      <FromState>recQbDDd67dey6Es0</FromState>
-      <ActionName>GatheringRemindersCompleted</ActionName>
-      <Name>GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted</Name>
-      <FromStateName>GatherReminders</FromStateName>
-      <ToStateName>SaveReminders</ToStateName>
+      <TransitionId>rec4XXq75RyQi7vuQ</TransitionId>
+      <createdTime>2024-03-24T16:28:54Z</createdTime>
+      <Name>Training-to-Idle-after--NewDay</Name>
+      <FromState>recaRDFMUx0REoAaf</FromState>
+      <FromStateName>Training</FromStateName>
+      <FromParentOrder>1</FromParentOrder>
+      <FromStateSortOrder>1</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ActionName>NewDay</ActionName>
+      <ToState>reczUjayrHtycYFlN</ToState>
+      <ToStateName>Idle</ToStateName>
+      <ToStateSortOrder>4</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FSMIsActive>true</FSMIsActive>
+      <Description>When the first 24 hours is reached, the system stops training, and moves into the idle state</Description>
+    </Transition>
+    <Transition>
+      <TransitionId>recpcPSuT8LT3jJmX</TransitionId>
+      <createdTime>2024-03-24T16:28:16Z</createdTime>
+      <Name>TrainingMovement-to-Training-after--ReminderSaved</Name>
+      <FromState>recAogmoVNsRcRjwj</FromState>
+      <FromStateName>TrainingMovement</FromStateName>
       <FromParentOrder>2</FromParentOrder>
       <FromStateSortOrder>2</FromStateSortOrder>
-      <ToStateSortOrder>3</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ToState>recaRDFMUx0REoAaf</ToState>
+      <ToStateName>Training</ToStateName>
+      <ToStateSortOrder>1</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
       <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
+      <ActionName>ReminderSaved</ActionName>
+      <Description>On training day, the reminder is saved, and returns to Training.</Description>
     </Transition>
     <Transition>
-      <TransitionId>recU7wbcYsZdYYhRv</TransitionId>
-      <createdTime>2024-03-12T17:37:47Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Saves reminder times for future reference and then moves to Idle.</Description>
-      <FromState>recnIaoQU4Qpw5BHY</FromState>
-      <ActionName>RemindersSaved</ActionName>
-      <Name>SaveReminders-to-Idle-after--RemindersSaved</Name>
-      <FromStateName>SaveReminders</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>3</FromParentOrder>
-      <FromStateSortOrder>3</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <TransitionId>recKeJGsw5YWeuA9C</TransitionId>
+      <createdTime>2024-03-24T16:29:28Z</createdTime>
+      <Name>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</Name>
+      <FromState>reczUjayrHtycYFlN</FromState>
+      <FromStateName>Idle</FromStateName>
+      <FromParentOrder>4</FromParentOrder>
+      <FromStateSortOrder>4</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ToState>reck5d8ZfDSF1Wpa2</ToState>
+      <ToStateName>AboutToAlert</ToStateName>
+      <ToStateSortOrder>5</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
       <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
+      <ActionName>WithinMSOfNextReminder</ActionName>
+      <Description>Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills</Description>
     </Transition>
     <Transition>
-      <TransitionId>reckoARmSnb5wF2j7</TransitionId>
-      <createdTime>2024-03-18T23:43:16Z</createdTime>
-      <ToState>recpmO4bsRvpEFL5i</ToState>
-      <Description>Quite the reminder, when the wheel moves</Description>
-      <FromState>rec10HUiMuU9ICJeg</FromState>
-      <ActionName>WheelMoved</ActionName>
-      <Name>Reminding-to-DebounceMovement-after--WheelMoved</Name>
-      <FromStateName>Reminding</FromStateName>
-      <ToStateName>DebounceMovement</ToStateName>
+      <TransitionId>reciRYvdYwpSGznq1</TransitionId>
+      <createdTime>2024-03-24T16:30:28Z</createdTime>
+      <Name>AboutToAlert-to-Alerting-after--ReminderTimeReached</Name>
+      <FromState>reck5d8ZfDSF1Wpa2</FromState>
+      <FromStateName>AboutToAlert</FromStateName>
       <FromParentOrder>5</FromParentOrder>
       <FromStateSortOrder>5</FromStateSortOrder>
-      <ToStateSortOrder>11</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
-    </Transition>
-    <Transition>
-      <TransitionId>recbiLP9lesboXrPj</TransitionId>
-      <createdTime>2024-03-18T23:42:41Z</createdTime>
-      <ToState>rec10HUiMuU9ICJeg</ToState>
-      <Description>Alert periodically until the wheel next moves</Description>
-      <FromState>rec7RSbV1tXC5mjGV</FromState>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
       <ActionName>ReminderTimeReached</ActionName>
-      <Name>Idle-to-Reminding-after--ReminderTimeReached</Name>
-      <FromStateName>Idle</FromStateName>
-      <ToStateName>Reminding</ToStateName>
+      <ToState>recoQhqfC6xM6OaZf</ToState>
+      <ToStateName>Alerting</ToStateName>
+      <ToStateSortOrder>6</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FSMIsActive>true</FSMIsActive>
+      <Description>If we are about  to alert, and the reminder time is reached, start alerting.</Description>
+    </Transition>
+    <Transition>
+      <TransitionId>recMvVnmyY0r4NuYg</TransitionId>
+      <createdTime>2024-03-24T16:30:00Z</createdTime>
+      <Name>AboutToAlert-to-ClearReminder-after--MovementDetected</Name>
+      <FromState>reck5d8ZfDSF1Wpa2</FromState>
+      <FromStateName>AboutToAlert</FromStateName>
+      <FromParentOrder>5</FromParentOrder>
+      <FromStateSortOrder>5</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ActionName>MovementDetected</ActionName>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <ToStateName>ClearReminder</ToStateName>
+      <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FSMIsActive>true</FSMIsActive>
+      <Description>Movement in the about to alert state will move to clear the appropriate reminder.</Description>
+    </Transition>
+    <Transition>
+      <TransitionId>recIN4Dp2mC3BVLui</TransitionId>
+      <createdTime>2024-03-24T16:30:52Z</createdTime>
+      <Name>Alerting-to-ClearReminder-after--SystemButtonPushed</Name>
+      <FromState>recoQhqfC6xM6OaZf</FromState>
+      <FromStateName>Alerting</FromStateName>
+      <FromParentOrder>6</FromParentOrder>
+      <FromStateSortOrder>6</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ActionName>SystemButtonPushed</ActionName>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <ToStateName>ClearReminder</ToStateName>
+      <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FSMIsActive>true</FSMIsActive>
+      <Description>While alerting, if the system button is pushed, move to clear the reminder.</Description>
+    </Transition>
+    <Transition>
+      <TransitionId>recSfKtAdqRXPXqzJ</TransitionId>
+      <createdTime>2024-03-24T16:36:36Z</createdTime>
+      <Name>Alerting-to-ClearReminder-after--MovementDetected</Name>
+      <FromState>recoQhqfC6xM6OaZf</FromState>
+      <FromStateName>Alerting</FromStateName>
+      <FromParentOrder>6</FromParentOrder>
+      <FromStateSortOrder>6</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ActionName>MovementDetected</ActionName>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <ToStateName>ClearReminder</ToStateName>
+      <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FSMIsActive>true</FSMIsActive>
+      <Description>While alerting, if movement is detected, go to clear the reminder.</Description>
+    </Transition>
+    <Transition>
+      <TransitionId>rec4jl4sOM7b5WekW</TransitionId>
+      <createdTime>2024-03-24T16:36:58Z</createdTime>
+      <Name>ClearReminder-to-Idle-after--ReminderCleared</Name>
+      <FromState>reclIaDU5IaJ59ij6</FromState>
+      <FromStateName>ClearReminder</FromStateName>
       <FromParentOrder>10</FromParentOrder>
       <FromStateSortOrder>10</FromStateSortOrder>
-      <ToStateSortOrder>5</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
-    </Transition>
-    <Transition>
-      <TransitionId>recAW4QtPWA3GC89z</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recpmO4bsRvpEFL5i</ToState>
-      <Description>Filters out false wheel movements to prevent erroneous operations.</Description>
-      <FromState>rec7RSbV1tXC5mjGV</FromState>
-      <ActionName>WheelMoved</ActionName>
-      <Name>Idle-to-DebounceMovement-after--WheelMoved</Name>
-      <FromStateName>Idle</FromStateName>
-      <ToStateName>DebounceMovement</ToStateName>
-      <FromParentOrder>10</FromParentOrder>
-      <FromStateSortOrder>10</FromStateSortOrder>
-      <ToStateSortOrder>11</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
-    </Transition>
-    <Transition>
-      <TransitionId>reczXCjkomuf41Yej</TransitionId>
-      <createdTime>2024-03-18T23:59:14Z</createdTime>
-      <ToState>rec10HUiMuU9ICJeg</ToState>
-      <Description>If the movement while reminding doesn't actually complete, keep reminding.</Description>
-      <FromState>recpmO4bsRvpEFL5i</FromState>
-      <ActionName>ReminderDebounceFailed</ActionName>
-      <Name>DebounceMovement-to-Reminding-after--ReminderDebounceFailed</Name>
-      <FromStateName>DebounceMovement</FromStateName>
-      <ToStateName>Reminding</ToStateName>
-      <FromParentOrder>11</FromParentOrder>
-      <FromStateSortOrder>11</FromStateSortOrder>
-      <ToStateSortOrder>5</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
-    </Transition>
-    <Transition>
-      <TransitionId>recvSPAPThYmT7jgP</TransitionId>
-      <createdTime>2024-03-09T17:32:49Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Returns to idle on failing to validate the wheel movement (debouncing).</Description>
-      <FromState>recpmO4bsRvpEFL5i</FromState>
-      <ActionName>DebounceFailed</ActionName>
-      <Name>DebounceMovement-to-Idle-after--DebounceFailed</Name>
-      <FromStateName>DebounceMovement</FromStateName>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ActionName>ReminderCleared</ActionName>
+      <ToState>reczUjayrHtycYFlN</ToState>
       <ToStateName>Idle</ToStateName>
-      <FromParentOrder>11</FromParentOrder>
-      <FromStateSortOrder>11</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
+      <ToStateSortOrder>4</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
       <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
-    </Transition>
-    <Transition>
-      <TransitionId>rec1yyjQAFfwgkomD</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>recAOq6bdEWYQTrlZ</ToState>
-      <Description>Counts validated wheel movement towards medication adherence tracking.</Description>
-      <FromState>recpmO4bsRvpEFL5i</FromState>
-      <ActionName>DebouncePassed</ActionName>
-      <Name>DebounceMovement-to-MovementDetected-after--DebouncePassed</Name>
-      <FromStateName>DebounceMovement</FromStateName>
-      <ToStateName>MovementDetected</ToStateName>
-      <FromParentOrder>11</FromParentOrder>
-      <FromStateSortOrder>11</FromStateSortOrder>
-      <ToStateSortOrder>14</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
-    </Transition>
-    <Transition>
-      <TransitionId>recpmkvEEysUur5V9</TransitionId>
-      <createdTime>2024-03-09T17:27:43Z</createdTime>
-      <ToState>rec7RSbV1tXC5mjGV</ToState>
-      <Description>Completes processing of movement and awaits further user interaction.</Description>
-      <FromState>recAOq6bdEWYQTrlZ</FromState>
-      <ActionName>MovementHandled</ActionName>
-      <Name>MovementDetected-to-Idle-after--MovementHandled</Name>
-      <FromStateName>MovementDetected</FromStateName>
-      <ToStateName>Idle</ToStateName>
-      <FromParentOrder>14</FromParentOrder>
-      <FromStateSortOrder>14</FromStateSortOrder>
-      <ToStateSortOrder>10</ToStateSortOrder>
-      <IsImplemented>true</IsImplemented>
-      <FromStateFSM>recly4hkn9xXMrb5Z</FromStateFSM>
-      <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>true</FromStateIsImplemented>
+      <Description>After the appropriate reminder has been cleared, go back to the idle state.</Description>
     </Transition>
   </Transitions>
   <PartTypes>
@@ -403,10 +355,9 @@
       <Parts>rechOQKGvB2SZjWlE</Parts>
       <Parts>recE8e1QT6vCqoYnC</Parts>
       <Parts>recf1NFxHRxf0YVm1</Parts>
-      <Parts>recDYURMybwh5nM1t</Parts>
-      <QuantityNeeded>5</QuantityNeeded>
+      <QuantityNeeded>4</QuantityNeeded>
       <CountAllLinkToParts>0</CountAllLinkToParts>
-      <CountAllLinkFromParts>5</CountAllLinkFromParts>
+      <CountAllLinkFromParts>4</CountAllLinkFromParts>
     </PartType>
     <PartType>
       <PartTypeId>recyh1hvxp92bx6RH</PartTypeId>
@@ -469,7 +420,7 @@
       <Parts>recizLSeMD6bAPCFi</Parts>
       <Parts>recozUjOkMtlFRcEf</Parts>
       <QuantityNeeded>0</QuantityNeeded>
-      <CountAllLinkToParts>15</CountAllLinkToParts>
+      <CountAllLinkToParts>14</CountAllLinkToParts>
       <CountAllLinkFromParts>0</CountAllLinkFromParts>
     </PartType>
     <PartType>
@@ -984,24 +935,6 @@
       <CountToLinks>1</CountToLinks>
     </Part>
     <Part>
-      <PartId>recozUjOkMtlFRcEf</PartId>
-      <createdTime>2024-03-07T23:09:08Z</createdTime>
-      <PartType>rec6tIWSm8kiKMmNR</PartType>
-      <AutoNumber>41</AutoNumber>
-      <PartIndex>13</PartIndex>
-      <Purpose>AdminOverride</Purpose>
-      <Quantity>0</Quantity>
-      <Name>Pin-13-AdminOverride</Name>
-      <CountOfLinkToParts>1</CountOfLinkToParts>
-      <CountOfLinkFromParts>0</CountOfLinkFromParts>
-      <IsEmpty />
-      <CountFrom>0</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>1</CountToLinks>
-      <Color>Purple</Color>
-      <LinkToParts>recvp2Feep498Ik8g</LinkToParts>
-    </Part>
-    <Part>
       <PartId>recT722uvnhbHa1we</PartId>
       <createdTime>2024-03-10T23:45:26Z</createdTime>
       <AutoNumber>51</AutoNumber>
@@ -1081,24 +1014,6 @@
       <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
       <CountToLinks>0</CountToLinks>
     </Part>
-    <Part>
-      <PartId>recDYURMybwh5nM1t</PartId>
-      <createdTime>2024-03-23T19:17:54Z</createdTime>
-      <AutoNumber>65</AutoNumber>
-      <Quantity>1</Quantity>
-      <Name>LatchingSwitch-13-TakeAdminControl</Name>
-      <CountOfLinkToParts>0</CountOfLinkToParts>
-      <CountOfLinkFromParts>1</CountOfLinkFromParts>
-      <CountFrom>1</CountFrom>
-      <TotalMagnetsNeeded>0</TotalMagnetsNeeded>
-      <CountToLinks>0</CountToLinks>
-      <LinkFromParts>recvp2Feep498Ik8g</LinkFromParts>
-      <PartType>recIGlXd6Rsc2ccAj</PartType>
-      <IsEmpty />
-      <Purpose>TakeAdminControl</Purpose>
-      <Color>Purple</Color>
-      <PartIndex>13</PartIndex>
-    </Part>
   </Parts>
   <PartLinks>
     <PartLink>
@@ -1106,7 +1021,7 @@
       <createdTime>2024-03-08T19:42:19Z</createdTime>
       <ToPart>recP8DhibnbMfvL2e</ToPart>
       <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recql5ebWysHS1IFU</Constants>
+      <Constant>recql5ebWysHS1IFU</Constant>
       <FromPart>recizLSeMD6bAPCFi</FromPart>
       <Description>The status_beeps_speaker wire connects Pin-2 to a speaker emitting auditory beeps for status alerts in an orange color.</Description>
       <ToPartPartType>recx7kz8CP1e4FIRL</ToPartPartType>
@@ -1130,7 +1045,7 @@
       <createdTime>2024-03-08T19:13:07Z</createdTime>
       <ToPart>recfhWMkMa7TZ28wR</ToPart>
       <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recPTYQvO0NBgDsIq</Constants>
+      <Constant>recPTYQvO0NBgDsIq</Constant>
       <FromPart>recMybfPDGzVKFlsi</FromPart>
       <Description>The bit1_status_led wire runs from Pin-3 to a white LED indicating the status of the first bit for medication timing.</Description>
       <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
@@ -1154,7 +1069,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recFvu8CmnIIml99g</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>recnhs8zmvIXVWMOl</Constants>
+      <Constant>recnhs8zmvIXVWMOl</Constant>
       <FromPart>rece0c5L2994wH1yY</FromPart>
       <Description>Connecting Pin-4 to a white Hall Effect Sensor, the sense_bit1_hall_effect_sensor wire senses the first bit's magnetic field change.</Description>
       <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
@@ -1178,7 +1093,7 @@
       <createdTime>2024-03-08T20:05:44Z</createdTime>
       <ToPart>recr8rl3vZZaRNx4y</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>recAVNdsMPu66hpQX</Constants>
+      <Constant>recAVNdsMPu66hpQX</Constant>
       <FromPart>rece0c5L2994wH1yY</FromPart>
       <Description>The latch_bit1_latching_switch wire from Pin-4 to a white Latching Switch captures the first bit's physical state changes.</Description>
       <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
@@ -1202,7 +1117,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recMeTo9CNzTBXuSs</ToPart>
       <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recOp1LtC6TbRtQ7v</Constants>
+      <Constant>recOp1LtC6TbRtQ7v</Constant>
       <FromPart>recG8aZqdhYRke7SX</FromPart>
       <Description>From Pin-5, the bit2_status_led wire leads to a blue LED displaying the second bit's status linked to medication events.</Description>
       <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
@@ -1226,7 +1141,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recsB65Pg7HSUVpUV</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>recmWTBwGpigBJi95</Constants>
+      <Constant>recmWTBwGpigBJi95</Constant>
       <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
       <Description>The sense_bit2_hall_effect_sensor wire from Pin-6 to a blue Hall Effect Sensor detects the magnetic changes for the second bit.</Description>
       <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
@@ -1250,7 +1165,7 @@
       <createdTime>2024-03-08T20:05:54Z</createdTime>
       <ToPart>rechOQKGvB2SZjWlE</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>reca6BGGNpG6xmYW6</Constants>
+      <Constant>reca6BGGNpG6xmYW6</Constant>
       <FromPart>recZ7UoOQ5Cz88LFx</FromPart>
       <Description>Pin-6 also connects to a blue Latching Switch through the latch_bit2_latching_switch wire to lock the second bit's state.</Description>
       <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
@@ -1274,7 +1189,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>reckxGZX9rTlH5iaM</ToPart>
       <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recGXGC8P6wFrHRnJ</Constants>
+      <Constant>recGXGC8P6wFrHRnJ</Constant>
       <FromPart>recqwFeNgXlRZrIH8</FromPart>
       <Description>A yellow LED connected by the am_pm_status_led wire from Pin-7 indicates the AM or PM medication status.</Description>
       <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
@@ -1298,7 +1213,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recrYWW4Z5NpJCpEr</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>recfmU5BP7K1ayrEH</Constants>
+      <Constant>recfmU5BP7K1ayrEH</Constant>
       <FromPart>recPTrLTl5VqCpZLU</FromPart>
       <Description>The sense_am_pm_hall_effect_sensor wire from Pin-8 connects to a yellow Hall Effect Sensor to detect AM/PM status changes.</Description>
       <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
@@ -1322,7 +1237,7 @@
       <createdTime>2024-03-08T20:05:55Z</createdTime>
       <ToPart>recE8e1QT6vCqoYnC</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>recwQMDCDueArSiju</Constants>
+      <Constant>recwQMDCDueArSiju</Constant>
       <FromPart>recPTrLTl5VqCpZLU</FromPart>
       <Description>Also from Pin-8, the latch_am_pm_latching_switch wire links to a yellow Latching Switch for AM/PM state capture.</Description>
       <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
@@ -1346,7 +1261,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recL0Dsj02FEJ17xs</ToPart>
       <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>rec2rwpeHVASSQ4Kg</Constants>
+      <Constant>rec2rwpeHVASSQ4Kg</Constant>
       <FromPart>recYl5uead9cJDGrf</FromPart>
       <Description>Pin-9's wheel_status_led wire attaches to a red LED, which shows the wheel movement status, reflecting medication dispensing actions.</Description>
       <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
@@ -1370,7 +1285,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recrw1QfQGdqo6PVd</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>recGizcq3h6h89FEL</Constants>
+      <Constant>recGizcq3h6h89FEL</Constant>
       <FromPart>recImtkPIwt1UPXIq</FromPart>
       <Description>Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.</Description>
       <ToPartPartType>recochHIqPnxbyt6E</ToPartPartType>
@@ -1394,7 +1309,7 @@
       <createdTime>2024-03-08T20:05:55Z</createdTime>
       <ToPart>recf1NFxHRxf0YVm1</ToPart>
       <InputOutputType>INPUT</InputOutputType>
-      <Constants>reciDvlgbEa2RXPNk</Constants>
+      <Constant>reciDvlgbEa2RXPNk</Constant>
       <FromPart>recImtkPIwt1UPXIq</FromPart>
       <Description>The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.</Description>
       <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
@@ -1418,7 +1333,7 @@
       <createdTime>2024-03-08T19:16:10Z</createdTime>
       <ToPart>recTPEebvYy1GG3mj</ToPart>
       <InputOutputType>OUTPUT</InputOutputType>
-      <Constants>recpKzCCwLnezixFm</Constants>
+      <Constant>recpKzCCwLnezixFm</Constant>
       <FromPart>recRVVqxFTthRg7LB</FromPart>
       <Description>Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</Description>
       <ToPartPartType>recyh1hvxp92bx6RH</ToPartPartType>
@@ -1436,30 +1351,6 @@
       <ToPartPartIndex>11</ToPartPartIndex>
       <PinNumber>11</PinNumber>
       <LowerVairableName>status_status_led</LowerVairableName>
-    </PartLink>
-    <PartLink>
-      <PartLinkId>recvp2Feep498Ik8g</PartLinkId>
-      <createdTime>2024-03-23T19:17:42Z</createdTime>
-      <ToPartPartTypeName>LatchingSwitch</ToPartPartTypeName>
-      <Name>Pin-13-AdminOverride-LatchingSwitch</Name>
-      <VariableNameCamelCase>takeAdminControl_LatchingSwitch</VariableNameCamelCase>
-      <LowerVairableName>take_admin_control_latching_switch</LowerVairableName>
-      <FromPart>recozUjOkMtlFRcEf</FromPart>
-      <FromPartPartType>rec6tIWSm8kiKMmNR</FromPartPartType>
-      <ToPartColor>Purple</ToPartColor>
-      <FromPartPurpose>AdminOverride</FromPartPurpose>
-      <ToPartName>Pin-13-AdminOverride</ToPartName>
-      <ToPartCount>1</ToPartCount>
-      <ToPartPartIndex>13</ToPartPartIndex>
-      <PinNumber>13</PinNumber>
-      <ToPart>recDYURMybwh5nM1t</ToPart>
-      <ToPartPartType>recIGlXd6Rsc2ccAj</ToPartPartType>
-      <ToPartPurposes>TakeAdminControl</ToPartPurposes>
-      <FromPartColor>Purple</FromPartColor>
-      <FromPartPartIndex>13</FromPartPartIndex>
-      <Constants>recTFM8X6ThIo4luB</Constants>
-      <InputOutputType>INPUT</InputOutputType>
-      <Description>Overrides board, takes admin control</Description>
     </PartLink>
   </PartLinks>
   <Constants>
@@ -1894,26 +1785,6 @@ const unsigned int minutes_per_day = 1440;
       <ConstantValue>11</ConstantValue>
       <ArduinoConstant>const unsigned int status_status_led = 11; // Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.</ArduinoConstant>
       <ConstantForPartLinkLowerVairableName>status_status_led</ConstantForPartLinkLowerVairableName>
-    </Constant>
-    <Constant>
-      <ConstantId>recTFM8X6ThIo4luB</ConstantId>
-      <createdTime>2024-03-23T19:18:21Z</createdTime>
-      <Name>admin</Name>
-      <VariableNameCamelCase>takeAdminControl_LatchingSwitch</VariableNameCamelCase>
-      <LowerVariableName>take_admin_control_latching_switch</LowerVariableName>
-      <ArduinoConstantCore>const unsigned int take_admin_control_latching_switch</ArduinoConstantCore>
-      <ArduinoConstantHeader>extern const unsigned int take_admin_control_latching_switch;</ArduinoConstantHeader>
-      <Description>Overrides board, takes admin control</Description>
-      <ArduinoConstant>const unsigned int take_admin_control_latching_switch = 13; // Overrides board, takes admin control</ArduinoConstant>
-      <ConstantForPartLink>recvp2Feep498Ik8g</ConstantForPartLink>
-      <ConstantForPartLinkVariableNameCamelCase>takeAdminControl_LatchingSwitch</ConstantForPartLinkVariableNameCamelCase>
-      <ConstantForPartLinkPinNumber>13</ConstantForPartLinkPinNumber>
-      <ConstantValue>13</ConstantValue>
-      <ConstantForPartLinkLowerVairableName>take_admin_control_latching_switch</ConstantForPartLinkLowerVairableName>
-      <ConstantForPartLinkDescription>Overrides board, takes admin control</ConstantForPartLinkDescription>
-      <Type>unsigned int</Type>
-      <Category>Parts</Category>
-      <SortOrder>15</SortOrder>
     </Constant>
   </Constants>
 </Airtable>

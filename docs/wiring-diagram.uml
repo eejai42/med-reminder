@@ -17,7 +17,6 @@ together {
           component "LatchBit2\nBit2SensorPin" as LatchBit2 #Blue
           component "LatchAmPm\nAmPmSensorPin" as LatchAmPm #Yellow
           component "LatchWheel\nWheelSensorPin" as LatchWheel #Red
-          component "TakeAdminControl\nAdminOverride" as TakeAdminControl #Purple
     }
     
     package "Led" {
@@ -40,7 +39,6 @@ together {
         Arduino --> LatchBit2 : Pin: 6 Blue
         Arduino --> LatchAmPm : Pin: 8 Yellow
         Arduino --> LatchWheel : Pin: 10 Red
-        Arduino --> TakeAdminControl : Pin: 13 Purple
         Arduino --> Bit1Status : Pin: 3 White
         Arduino --> Bit2Status : Pin: 5 Blue
         Arduino --> AmPmStatus : Pin: 7 Yellow

@@ -28,7 +28,6 @@ extern const unsigned int wheel_status_led; // Pin-9's wheel_status_led wire att
 extern const unsigned int sense_wheel_hall_effect_sensor; // Connecting Pin-10 to a red Hall Effect Sensor, the sense_wheel_hall_effect_sensor wire monitors wheel movements for medication timings.
 extern const unsigned int latch_wheel_latching_switch; // The latch_wheel_latching_switch wire from Pin-10 to a red Latching Switch secures the wheel's position post-movement.
 extern const unsigned int status_status_led; // Finally, the status_status_led wire leads from Pin-11 to an orange LED for general status indication of the system.
-extern const unsigned int take_admin_control_latching_switch; // Overrides board, takes admin control
 
 // *** Reminders constants **
 extern const unsigned int initial_times_to_beep; // The number of times that the sound should occur

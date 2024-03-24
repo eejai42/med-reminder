@@ -285,23 +285,6 @@
           "ConstantForPartLinkLowerVairableName": "status_status_led"
         },
         {
-          "Name": "admin",
-          "Description": "Overrides board, takes admin control",
-          "VariableNameCamelCase": "takeAdminControl_LatchingSwitch",
-          "LowerVariableName": "take_admin_control_latching_switch",
-          "ArduinoConstantCore": "const unsigned int take_admin_control_latching_switch",
-          "ArduinoConstantHeader": "extern const unsigned int take_admin_control_latching_switch;",
-          "ArduinoConstant": "const unsigned int take_admin_control_latching_switch = 13; // Overrides board, takes admin control",
-          "ConstantForPartLink": "recvp2Feep498Ik8g",
-          "ConstantForPartLinkVariableNameCamelCase": "takeAdminControl_LatchingSwitch",
-          "ConstantForPartLinkPinNumber": 13,
-          "ConstantValue": 13,
-          "ConstantForPartLinkLowerVairableName": "take_admin_control_latching_switch",
-          "ConstantForPartLinkDescription": "Overrides board, takes admin control",
-          "Type": "unsigned int",
-          "Category": "Parts"
-        },
-        {
           "Name": "initialTimesToBeep",
           "Description": "The number of times that the sound should occur",
           "CustomDescription": "The number of times that the sound should occur",
@@ -622,9 +605,9 @@
         {
           "Name": "LatchingSwitch",
           "Description": "",
-          "QuantityNeeded": 5,
+          "QuantityNeeded": 4,
           "CountAllLinkToParts": 0,
-          "CountAllLinkFromParts": 5,
+          "CountAllLinkFromParts": 4,
           "Parts": {
             "Part": [
               {
@@ -636,7 +619,7 @@
                 "Purpose": "LatchBit1",
                 "PartType": {
                   "Name": "LatchingSwitch",
-                  "QuantityNeeded": 5
+                  "QuantityNeeded": 4
                 },
                 "FromPartLinks": "",
                 "ToPartLinks": {
@@ -669,7 +652,7 @@
                 "Purpose": "LatchBit2",
                 "PartType": {
                   "Name": "LatchingSwitch",
-                  "QuantityNeeded": 5
+                  "QuantityNeeded": 4
                 },
                 "FromPartLinks": "",
                 "ToPartLinks": {
@@ -702,7 +685,7 @@
                 "Purpose": "LatchAmPm",
                 "PartType": {
                   "Name": "LatchingSwitch",
-                  "QuantityNeeded": 5
+                  "QuantityNeeded": 4
                 },
                 "FromPartLinks": "",
                 "ToPartLinks": {
@@ -735,7 +718,7 @@
                 "Purpose": "LatchWheel",
                 "PartType": {
                   "Name": "LatchingSwitch",
-                  "QuantityNeeded": 5
+                  "QuantityNeeded": 4
                 },
                 "FromPartLinks": "",
                 "ToPartLinks": {
@@ -755,39 +738,6 @@
                       "FromPartPurpose": "WheelSensorPin",
                       "FromPartPartTypeName": "",
                       "LowerVariableName": "latch_wheel_latching_switch"
-                    }
-                  ]
-                }
-              },
-              {
-                "Name": "LatchingSwitch-13-TakeAdminControl",
-                "Description": "",
-                "PartIndex": 13,
-                "Color": "Purple",
-                "Quantity": 1,
-                "Purpose": "TakeAdminControl",
-                "PartType": {
-                  "Name": "LatchingSwitch",
-                  "QuantityNeeded": 5
-                },
-                "FromPartLinks": "",
-                "ToPartLinks": {
-                  "PartLink": [
-                    {
-                      "Name": "Pin-13-AdminOverride-LatchingSwitch",
-                      "Description": "Overrides board, takes admin control",
-                      "PinNumber": 13,
-                      "ToPartName": "Pin-13-AdminOverride",
-                      "ToPartColor": "Purple",
-                      "ToPartCount": 1,
-                      "ToPartPurpose": "TakeAdminControl",
-                      "ToPartPartTypeName": "LatchingSwitch",
-                      "FromPartName": "",
-                      "FromPartColor": "Purple",
-                      "FromPartCount": "",
-                      "FromPartPurpose": "AdminOverride",
-                      "FromPartPartTypeName": "",
-                      "LowerVariableName": "take_admin_control_latching_switch"
                     }
                   ]
                 }
@@ -1070,208 +1020,187 @@
     "FSMs": {
       "FSM": {
         "Name": "Med Reminder",
-        "InitialStateName": "Bootup"
+        "InitialStateName": ""
       }
     },
     "MachineStates": {
       "MachineState": [
         {
-          "Name": "Bootup",
-          "Description": "Initializes the system and prepares for operation.  ",
+          "Name": "Training",
+          "Description": "First day - it just counts when pills are taken",
           "FromTransitions": {
             "FromTransition": [
               {
-                "Description": "Initializes the recording of the current time slice immediately after system startup",
-                "ActionName": "BootupCompleted",
-                "ToStateName": "GatherReminders",
-                "Name": "Bootup-to-GatherReminders-after-15000-BootupCompleted"
-              }
-            ]
-          },
-          "ToTransitions": ""
-        },
-        {
-          "Name": "GatherReminders",
-          "Description": "Awaits the time for the first medication reminder.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Waits for the first medication reminder after the initial setup is completed.",
-                "ActionName": "GatheringRemindersCompleted",
-                "ToStateName": "SaveReminders",
-                "Name": "GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Initializes the recording of the current time slice immediately after system startup",
-                "ActionName": "BootupCompleted",
-                "FromStateName": "Bootup",
-                "Name": "Bootup-to-GatherReminders-after-15000-BootupCompleted"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "SaveReminders",
-          "Description": "Captures the current time as a reference point for tracking.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Saves reminder times for future reference and then moves to Idle.",
-                "ActionName": "RemindersSaved",
-                "ToStateName": "Idle",
-                "Name": "SaveReminders-to-Idle-after--RemindersSaved"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Waits for the first medication reminder after the initial setup is completed.",
-                "ActionName": "GatheringRemindersCompleted",
-                "FromStateName": "GatherReminders",
-                "Name": "GatherReminders-to-SaveReminders-after--GatheringRemindersCompleted"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "Reminding",
-          "Description": "",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "Quite the reminder, when the wheel moves",
-                "ActionName": "WheelMoved",
-                "ToStateName": "DebounceMovement",
-                "Name": "Reminding-to-DebounceMovement-after--WheelMoved"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Alert periodically until the wheel next moves",
-                "ActionName": "ReminderTimeReached",
-                "FromStateName": "Idle",
-                "Name": "Idle-to-Reminding-after--ReminderTimeReached"
+                "Description": "On training day, movement saves the reminder",
+                "ActionName": "MovementDetected",
+                "ToStateName": "TrainingMovement",
+                "Name": "Training-to-TrainingMovement-after--MovementDetected"
               },
               {
-                "Description": "If the movement while reminding doesn't actually complete, keep reminding.",
-                "ActionName": "ReminderDebounceFailed",
-                "FromStateName": "DebounceMovement",
-                "Name": "DebounceMovement-to-Reminding-after--ReminderDebounceFailed"
+                "Description": "When the first 24 hours is reached, the system stops training, and moves into the idle state",
+                "ActionName": "NewDay",
+                "ToStateName": "Idle",
+                "Name": "Training-to-Idle-after--NewDay"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "On training day, the reminder is saved, and returns to Training.",
+                "ActionName": "ReminderSaved",
+                "FromStateName": "TrainingMovement",
+                "Name": "TrainingMovement-to-Training-after--ReminderSaved"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "TrainingMovement",
+          "Description": "When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "On training day, the reminder is saved, and returns to Training.",
+                "ActionName": "ReminderSaved",
+                "ToStateName": "Training",
+                "Name": "TrainingMovement-to-Training-after--ReminderSaved"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "On training day, movement saves the reminder",
+                "ActionName": "MovementDetected",
+                "FromStateName": "Training",
+                "Name": "Training-to-TrainingMovement-after--MovementDetected"
               }
             ]
           }
         },
         {
           "Name": "Idle",
-          "Description": "The system is in a standby mode, waiting for interaction or the next event.  ",
+          "Description": "This is the state that the device will spend most of it's time in, after training, but not while in the brief reminding/alerting phases.",
           "FromTransitions": {
             "FromTransition": [
               {
-                "Description": "Alert periodically until the wheel next moves",
+                "Description": "Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills",
+                "ActionName": "WithinMSOfNextReminder",
+                "ToStateName": "AboutToAlert",
+                "Name": "Idle-to-AboutToAlert-after--WithinMSOfNextReminder"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "When the first 24 hours is reached, the system stops training, and moves into the idle state",
+                "ActionName": "NewDay",
+                "FromStateName": "Training",
+                "Name": "Training-to-Idle-after--NewDay"
+              },
+              {
+                "Description": "After the appropriate reminder has been cleared, go back to the idle state.",
+                "ActionName": "ReminderCleared",
+                "FromStateName": "ClearReminder",
+                "Name": "ClearReminder-to-Idle-after--ReminderCleared"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "AboutToAlert",
+          "Description": "When we are within a little bit of time of the reminder, any movement detected will clear the next reminder, but it will not start actively alerting yet",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "If we are about  to alert, and the reminder time is reached, start alerting.",
                 "ActionName": "ReminderTimeReached",
-                "ToStateName": "Reminding",
-                "Name": "Idle-to-Reminding-after--ReminderTimeReached"
+                "ToStateName": "Alerting",
+                "Name": "AboutToAlert-to-Alerting-after--ReminderTimeReached"
               },
               {
-                "Description": "Filters out false wheel movements to prevent erroneous operations.",
-                "ActionName": "WheelMoved",
-                "ToStateName": "DebounceMovement",
-                "Name": "Idle-to-DebounceMovement-after--WheelMoved"
+                "Description": "Movement in the about to alert state will move to clear the appropriate reminder.",
+                "ActionName": "MovementDetected",
+                "ToStateName": "ClearReminder",
+                "Name": "AboutToAlert-to-ClearReminder-after--MovementDetected"
               }
             ]
           },
           "ToTransitions": {
             "ToTransition": [
               {
-                "Description": "Saves reminder times for future reference and then moves to Idle.",
-                "ActionName": "RemindersSaved",
-                "FromStateName": "SaveReminders",
-                "Name": "SaveReminders-to-Idle-after--RemindersSaved"
-              },
-              {
-                "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
-                "ActionName": "DebounceFailed",
-                "FromStateName": "DebounceMovement",
-                "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
-              },
-              {
-                "Description": "Completes processing of movement and awaits further user interaction.",
-                "ActionName": "MovementHandled",
-                "FromStateName": "MovementDetected",
-                "Name": "MovementDetected-to-Idle-after--MovementHandled"
-              }
-            ]
-          }
-        },
-        {
-          "Name": "DebounceMovement",
-          "Description": "Filters out false movements to ensure accurate detection.  ",
-          "FromTransitions": {
-            "FromTransition": [
-              {
-                "Description": "If the movement while reminding doesn't actually complete, keep reminding.",
-                "ActionName": "ReminderDebounceFailed",
-                "ToStateName": "Reminding",
-                "Name": "DebounceMovement-to-Reminding-after--ReminderDebounceFailed"
-              },
-              {
-                "Description": "Returns to idle on failing to validate the wheel movement (debouncing).",
-                "ActionName": "DebounceFailed",
-                "ToStateName": "Idle",
-                "Name": "DebounceMovement-to-Idle-after--DebounceFailed"
-              },
-              {
-                "Description": "Counts validated wheel movement towards medication adherence tracking.",
-                "ActionName": "DebouncePassed",
-                "ToStateName": "MovementDetected",
-                "Name": "DebounceMovement-to-MovementDetected-after--DebouncePassed"
-              }
-            ]
-          },
-          "ToTransitions": {
-            "ToTransition": [
-              {
-                "Description": "Quite the reminder, when the wheel moves",
-                "ActionName": "WheelMoved",
-                "FromStateName": "Reminding",
-                "Name": "Reminding-to-DebounceMovement-after--WheelMoved"
-              },
-              {
-                "Description": "Filters out false wheel movements to prevent erroneous operations.",
-                "ActionName": "WheelMoved",
+                "Description": "Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills",
+                "ActionName": "WithinMSOfNextReminder",
                 "FromStateName": "Idle",
-                "Name": "Idle-to-DebounceMovement-after--WheelMoved"
+                "Name": "Idle-to-AboutToAlert-after--WithinMSOfNextReminder"
               }
             ]
           }
         },
         {
-          "Name": "MovementDetected",
-          "Description": "Detects confirmed movement, signaling a completed interaction.  ",
+          "Name": "Alerting",
+          "Description": "When the actual alerting time is reached, it starts alerting.\n",
           "FromTransitions": {
             "FromTransition": [
               {
-                "Description": "Completes processing of movement and awaits further user interaction.",
-                "ActionName": "MovementHandled",
-                "ToStateName": "Idle",
-                "Name": "MovementDetected-to-Idle-after--MovementHandled"
+                "Description": "While alerting, if the system button is pushed, move to clear the reminder.",
+                "ActionName": "SystemButtonPushed",
+                "ToStateName": "ClearReminder",
+                "Name": "Alerting-to-ClearReminder-after--SystemButtonPushed"
+              },
+              {
+                "Description": "While alerting, if movement is detected, go to clear the reminder.",
+                "ActionName": "MovementDetected",
+                "ToStateName": "ClearReminder",
+                "Name": "Alerting-to-ClearReminder-after--MovementDetected"
               }
             ]
           },
           "ToTransitions": {
             "ToTransition": [
               {
-                "Description": "Counts validated wheel movement towards medication adherence tracking.",
-                "ActionName": "DebouncePassed",
-                "FromStateName": "DebounceMovement",
-                "Name": "DebounceMovement-to-MovementDetected-after--DebouncePassed"
+                "Description": "If we are about  to alert, and the reminder time is reached, start alerting.",
+                "ActionName": "ReminderTimeReached",
+                "FromStateName": "AboutToAlert",
+                "Name": "AboutToAlert-to-Alerting-after--ReminderTimeReached"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "ClearReminder",
+          "Description": "In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle",
+          "FromTransitions": {
+            "FromTransition": [
+              {
+                "Description": "After the appropriate reminder has been cleared, go back to the idle state.",
+                "ActionName": "ReminderCleared",
+                "ToStateName": "Idle",
+                "Name": "ClearReminder-to-Idle-after--ReminderCleared"
+              }
+            ]
+          },
+          "ToTransitions": {
+            "ToTransition": [
+              {
+                "Description": "Movement in the about to alert state will move to clear the appropriate reminder.",
+                "ActionName": "MovementDetected",
+                "FromStateName": "AboutToAlert",
+                "Name": "AboutToAlert-to-ClearReminder-after--MovementDetected"
+              },
+              {
+                "Description": "While alerting, if the system button is pushed, move to clear the reminder.",
+                "ActionName": "SystemButtonPushed",
+                "FromStateName": "Alerting",
+                "Name": "Alerting-to-ClearReminder-after--SystemButtonPushed"
+              },
+              {
+                "Description": "While alerting, if movement is detected, go to clear the reminder.",
+                "ActionName": "MovementDetected",
+                "FromStateName": "Alerting",
+                "Name": "Alerting-to-ClearReminder-after--MovementDetected"
               }
             ]
           }

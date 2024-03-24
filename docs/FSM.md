@@ -6,61 +6,55 @@
 
 ### States and Transitions
 
-#### 1. Bootup
-Initializes the system and prepares for operation.  
+#### 1. Training
+First day - it just counts when pills are taken
+
+
+ - **⬅ TrainingMovement(`ReminderSaved`): ⬅** On training day, the reminder is saved, and returns to Training..
+
+ - **➡ TrainingMovement(`MovementDetected`): ➡** On training day, movement saves the reminder.
+ - **➡ Idle(`NewDay`): ➡** When the first 24 hours is reached, the system stops training, and moves into the idle state.
+#### 2. TrainingMovement
+When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)
+
+
+ - **⬅ Training(`MovementDetected`): ⬅** On training day, movement saves the reminder.
+
+ - **➡ Training(`ReminderSaved`): ➡** On training day, the reminder is saved, and returns to Training..
+#### 3. Idle
+This is the state that the device will spend most of it's time in, after training, but not while in the brief reminding/alerting phases.
+
+
+ - **⬅ Training(`NewDay`): ⬅** When the first 24 hours is reached, the system stops training, and moves into the idle state.
+ - **⬅ ClearReminder(`ReminderCleared`): ⬅** After the appropriate reminder has been cleared, go back to the idle state..
+
+ - **➡ AboutToAlert(`WithinMSOfNextReminder`): ➡** Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills.
+#### 4. AboutToAlert
+When we are within a little bit of time of the reminder, any movement detected will clear the next reminder, but it will not start actively alerting yet
+
+
+ - **⬅ Idle(`WithinMSOfNextReminder`): ⬅** Within, say, a configurable 10 minutes of the reminder, it will switch to an about to alert state, where it is not yet alerting, but will count any movement to clear the pills.
+
+ - **➡ Alerting(`ReminderTimeReached`): ➡** If we are about  to alert, and the reminder time is reached, start alerting..
+ - **➡ ClearReminder(`MovementDetected`): ➡** Movement in the about to alert state will move to clear the appropriate reminder..
+#### 5. Alerting
+When the actual alerting time is reached, it starts alerting.
 
 
 
- - **➡ GatherReminders(`BootupCompleted`): ➡** Initializes the recording of the current time slice immediately after system startup.
-#### 2. GatherReminders
-Awaits the time for the first medication reminder.  
+ - **⬅ AboutToAlert(`ReminderTimeReached`): ⬅** If we are about  to alert, and the reminder time is reached, start alerting..
+
+ - **➡ ClearReminder(`SystemButtonPushed`): ➡** While alerting, if the system button is pushed, move to clear the reminder..
+ - **➡ ClearReminder(`MovementDetected`): ➡** While alerting, if movement is detected, go to clear the reminder..
+#### 6. ClearReminder
+In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle
 
 
- - **⬅ Bootup(`BootupCompleted`): ⬅** Initializes the recording of the current time slice immediately after system startup.
+ - **⬅ AboutToAlert(`MovementDetected`): ⬅** Movement in the about to alert state will move to clear the appropriate reminder..
+ - **⬅ Alerting(`SystemButtonPushed`): ⬅** While alerting, if the system button is pushed, move to clear the reminder..
+ - **⬅ Alerting(`MovementDetected`): ⬅** While alerting, if movement is detected, go to clear the reminder..
 
- - **➡ SaveReminders(`GatheringRemindersCompleted`): ➡** Waits for the first medication reminder after the initial setup is completed..
-#### 3. SaveReminders
-Captures the current time as a reference point for tracking.  
-
-
- - **⬅ GatherReminders(`GatheringRemindersCompleted`): ⬅** Waits for the first medication reminder after the initial setup is completed..
-
- - **➡ Idle(`RemindersSaved`): ➡** Saves reminder times for future reference and then moves to Idle..
-#### 4. Reminding
-
-
-
- - **⬅ Idle(`ReminderTimeReached`): ⬅** Alert periodically until the wheel next moves.
- - **⬅ DebounceMovement(`ReminderDebounceFailed`): ⬅** If the movement while reminding doesn't actually complete, keep reminding..
-
- - **➡ DebounceMovement(`WheelMoved`): ➡** Quite the reminder, when the wheel moves.
-#### 5. Idle
-The system is in a standby mode, waiting for interaction or the next event.  
-
-
- - **⬅ SaveReminders(`RemindersSaved`): ⬅** Saves reminder times for future reference and then moves to Idle..
- - **⬅ DebounceMovement(`DebounceFailed`): ⬅** Returns to idle on failing to validate the wheel movement (debouncing)..
- - **⬅ MovementDetected(`MovementHandled`): ⬅** Completes processing of movement and awaits further user interaction..
-
- - **➡ Reminding(`ReminderTimeReached`): ➡** Alert periodically until the wheel next moves.
- - **➡ DebounceMovement(`WheelMoved`): ➡** Filters out false wheel movements to prevent erroneous operations..
-#### 6. DebounceMovement
-Filters out false movements to ensure accurate detection.  
-
-
- - **⬅ Reminding(`WheelMoved`): ⬅** Quite the reminder, when the wheel moves.
- - **⬅ Idle(`WheelMoved`): ⬅** Filters out false wheel movements to prevent erroneous operations..
-
- - **➡ Reminding(`ReminderDebounceFailed`): ➡** If the movement while reminding doesn't actually complete, keep reminding..
- - **➡ Idle(`DebounceFailed`): ➡** Returns to idle on failing to validate the wheel movement (debouncing)..
- - **➡ MovementDetected(`DebouncePassed`): ➡** Counts validated wheel movement towards medication adherence tracking..
-#### 7. MovementDetected
-Detects confirmed movement, signaling a completed interaction.  
-
-
- - **⬅ DebounceMovement(`DebouncePassed`): ⬅** Counts validated wheel movement towards medication adherence tracking..
-
- - **➡ Idle(`MovementHandled`): ➡** Completes processing of movement and awaits further user interaction..
+ - **➡ Idle(`ReminderCleared`): ➡** After the appropriate reminder has been cleared, go back to the idle state..
 
 
 ### Initial State

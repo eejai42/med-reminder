@@ -1,115 +1,163 @@
 {{#each @root}}
 [[FileSetFile/RelativePath[../{{@key}}StateMachine.h]]]
 #pragma once
-// Adjusted StateMachine.h Template for {{@key}}StateMachine
-#pragma once
+#include "BaseState.h"
+#include "BaseStateMachine.h"
+#include <memory>
+#include <iostream>
 
-enum class State {
-    {{#each MachineStates.MachineState}}
-    {{Name}},
-    {{/each}}
-    // Add additional states here
-};
+// ***************************************************************
+// Declaration for {{@key}}StateMachine and base state classes
+// ***************************************************************
 
-class {{@key}}StateMachine {
-private:
-    State currentState;
-
+class {{@key}}StateMachine : public BaseStateMachine {
 public:
     {{@key}}StateMachine();
-    void checkState();
 
-    // State transition utility methods
-    void transitionTo(State newState);
-    void onExit(State state);
-    void onEnter(State state);
-
-    {{#each MachineStates.MachineState}}
-    // Enter and Exit methods for {{Name}} state
-    void enter{{Name}}();
-    void exit{{Name}}();
-
-    // Action handlers for the {{Name}} state
-    {{#each FromTransitions.FromTransition}}
-    bool has{{../Name}}_{{ActionName}}();
-    {{/each}}
-    {{/each}}
+    // Other member functions...
 };
 
-extern {{@key}}StateMachine* stateMachine;
+{{#each MachineStates.MachineState}}
 
-{{!-- StateMachine.cpp Template --}}
+class Base{{Name}} : public BaseState {
+public:
+    Base{{Name}}(BaseStateMachine* machine);
+
+    void onEnter() override;
+    void onExit() override;
+    void onCheck() override;
+
+    {{#each FromTransitions.FromTransition}}
+    virtual bool has{{ActionName}}();
+    {{/each}}
+};
+{{/each}}
+
 [[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp]]]
-#pragma once
-// Adjusted StateMachine.cpp Template for {{@key}}StateMachine
 #include "{{@key}}StateMachine.h"
+#include <iostream>
+{{#each MachineStates.MachineState}}
+#include "{{Name}}.h"
+{{/each}}
 
-{{@key}}StateMachine::{{@key}}StateMachine() : currentState(State::{{#each FSMs}}{{InitialStateName}}{{/each}}) {
-    onEnter(currentState); // Initial state entry actions
+// ***************************************************************
+// Implementation for {{@key}}StateMachine and base state classes
+// ***************************************************************
+
+{{@key}}StateMachine::{{@key}}StateMachine() : BaseStateMachine() {
+    // Constructor implementation
+    // Example: changeState(std::make_unique<{{FSMs.FSM.InitialStateName}}>(this));
 }
 
-void {{@key}}StateMachine::checkState() {
-    switch (currentState) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            {{#each FromTransitions.FromTransition}}
-            if (has{{../Name}}_{{ActionName}}()) {
-                transitionTo(State::{{ToStateName}}); // Transition based on specific action being true
-                return;
-            }
-            {{/each}}
-            break;
-        {{/each}}
+{{#each MachineStates.MachineState}}
+void Base{{Name}}::onCheck() {
+    // Handle transitions
+    {{#each FromTransitions.FromTransition}}
+    if (this->has{{ActionName}}()) {
+        machine->changeState(std::make_unique<{{ToStateName}}>(machine));
+        return;
     }
+    {{/each}}
 }
+{{/each}}
 
-void {{@key}}StateMachine::transitionTo(State newState) {
-    onExit(currentState);
-    currentState = newState;
-    onEnter(newState);
-}
+{{#each MachineStates.MachineState}}
+[[FileSetFile/RelativePath[../{{Name}}.h]]]
+#pragma once
+#include "{{@../key}}StateMachine.h"
+// #include "Base{{Name}}.h" // Ensure base class is included if separate
 
-void {{@key}}StateMachine::onExit(State state) {
-    switch (state) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            exit{{Name}}();
-            break;
-        {{/each}}
-    }
-}
+class {{Name}} : public Base{{Name}} {
+public:
+    using Base{{Name}}::Base{{Name}};
+    {{Name}}(BaseStateMachine* machine);
 
-void {{@key}}StateMachine::onEnter(State state) {
-    switch (state) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            enter{{Name}}();
-            break;
-        {{/each}}
-    }
-}
+    virtual void onCheck() override; // called in the arduio loop
 
-{{@key}}StateMachine* stateMachine = nullptr;
+    virtual void onEnter() override; // called when the state is activated
+    virtual void onExit() override; // called when the state is de-activated
 
-
+    {{#each FromTransitions.FromTransition}}
+    bool has{{ActionName}}() override;
+    {{/each}}
+};
+{{/each}}
 {{#each MachineStates.MachineState}}
 [[FileSetFile/RelativePath[../{{Name}}.cpp]]]
 #pragma once
-#include "MedReminderStateMachine.h"
+#include "{{Name}}.h"
+#include <iostream> // Include if you use std::cout or similar in implementations
 
-void {{@../key}}StateMachine::enter{{Name}}() {
-    // Actions to perform on entering {{Name}}
-}
-
-void {{@../key}}StateMachine::exit{{Name}}() {
-    // Actions to perform on exiting {{Name}}
-}
+    {{Name}}::{{Name}}(BaseStateMachine* machine) : Base{{Name}}(machine) {
+        // Constructor implementation, if needed
+    }
 
 {{#each FromTransitions.FromTransition}}
-bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
-    // Check condition for {{ActionName}} in {{../Name}} state
-    return false; // Placeholder implementation
+    bool {{../Name}}::has{{ActionName}}() {
+        // Determine if {{ActionName}}
+        return false; // assume this has not yet happened
+    }
+    {{/each}}
+{{/each}}
+{{/each}}
+
+[[FileSetFile/RelativePath[../BaseState.h]]]
+#pragma once
+#include "BaseStateMachine.h"
+
+class BaseState {
+public:
+    BaseStateMachine* machine;
+
+    BaseState(BaseStateMachine* machine) : machine(machine) {}
+    virtual ~BaseState() = default;
+
+    virtual void onCheck() = 0; // called in the arduio loop
+
+    virtual void onEnter() = 0; // called when the state is activated
+    virtual void onExit() = 0; // called when the state is de-activated
+};
+
+[[FileSetFile/RelativePath[../BaseStateMachine.h]]]
+#pragma once
+#include <memory>
+
+// Forward declaration of BaseState to avoid circular dependency.
+class BaseState;
+
+class BaseStateMachine {
+protected:
+    std::unique_ptr<BaseState> currentState;
+
+public:
+    BaseStateMachine();
+    virtual ~BaseStateMachine();
+
+    void changeState(std::unique_ptr<BaseState> newState);
+    void checkState();
+};
+
+[[FileSetFile/RelativePath[../BaseStateMachine.cpp]]]
+#pragma once
+#include "BaseStateMachine.h"
+#include "BaseState.h" // Include here to have the complete type for BaseState.
+
+BaseStateMachine::BaseStateMachine() = default;
+
+BaseStateMachine::~BaseStateMachine() = default;
+
+void BaseStateMachine::changeState(std::unique_ptr<BaseState> newState) {
+    if (currentState) {
+        currentState->onExit();
+    }
+    currentState = std::move(newState);
+    if (currentState) {
+        currentState->onEnter();
+    }
 }
-{{/each}}
-{{/each}}
-{{/each}}
+
+void BaseStateMachine::checkState() {
+    if (currentState) {
+        currentState->onCheck();
+    }
+}

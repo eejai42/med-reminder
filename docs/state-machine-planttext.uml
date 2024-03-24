@@ -1,31 +1,28 @@
 @startuml
-                    [*] -> Bootup
-state Bootup
-state GatherReminders
-state SaveReminders
-state Reminding
+                    
+state Training
+state TrainingMovement
 state Idle
-state DebounceMovement
-state MovementDetected
+state AboutToAlert
+state Alerting
+state ClearReminder
 
-Bootup --> GatherReminders : "BootupCompleted"
+Training --> TrainingMovement : "MovementDetected"
     
-GatherReminders --> SaveReminders : "GatheringRemindersCompleted"
+Training --> Idle : "NewDay"
     
-SaveReminders --> Idle : "RemindersSaved"
+TrainingMovement --> Training : "ReminderSaved"
     
-Reminding --> DebounceMovement : "WheelMoved"
+Idle --> AboutToAlert : "WithinMSOfNextReminder"
     
-Idle --> Reminding : "ReminderTimeReached"
+AboutToAlert --> Alerting : "ReminderTimeReached"
     
-Idle --> DebounceMovement : "WheelMoved"
+AboutToAlert --> ClearReminder : "MovementDetected"
     
-DebounceMovement --> Reminding : "ReminderDebounceFailed"
+Alerting --> ClearReminder : "SystemButtonPushed"
     
-DebounceMovement --> Idle : "DebounceFailed"
+Alerting --> ClearReminder : "MovementDetected"
     
-DebounceMovement --> MovementDetected : "DebouncePassed"
-    
-MovementDetected --> Idle : "MovementHandled"
+ClearReminder --> Idle : "ReminderCleared"
     
 @enduml                    
