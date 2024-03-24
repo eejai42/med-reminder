@@ -2,6 +2,7 @@
 
 ### Pin Configuration
 
+![Diagram](wiring-diagram.uml.png)
 
 
 - **Speaker Pin (Pin 2)**: Utilized for status beep notifications, indicating reminders or alerts. Connected to a digital output pin on the Arduino.
