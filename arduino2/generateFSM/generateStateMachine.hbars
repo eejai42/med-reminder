@@ -119,19 +119,14 @@ String stateToString(State stateToStringify) {
 {{#each FromTransitions.FromTransition}}
 bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
     // Check condition for {{ActionName}} in {{../Name}} state
-    return false; // Placeholder implementation
+    return false;
 }
 {{/each}}
 
-void {{@../key}}StateMachine::enter{{Name}}() {
-    // Actions to perform on entering {{Name}}
-}
+void {{@../key}}StateMachine::enter{{Name}}() {}
 
-void {{@../key}}StateMachine::exit{{Name}}() {
-    // Actions to perform on exiting {{Name}}
-}
+void {{@../key}}StateMachine::exit{{Name}}() {}
 {{/each}}
-
 
 [[FileSetFile/RelativePath[../Common.h:never]]]
 #pragma once

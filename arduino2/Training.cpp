@@ -6,7 +6,6 @@
 
 unsigned long lastMovementDetected = 0;
 bool MedReminderStateMachine::hasTraining_MovementDetected() {
-    // Check condition for MovementDetected in Training state
     unsigned long reminderDurationGoal = (int)(millisPerDay / 2);
 
     if (millis() > lastMovementDetected + (millisPerSecond * 3)) {
@@ -19,18 +18,12 @@ bool MedReminderStateMachine::hasTraining_MovementDetected() {
     return false;
 }
 bool MedReminderStateMachine::hasTraining_NewDay() {
-    // Check condition for NewDay in Training state
-    bool firstDayHasPassed = millis() > millisPerDay;    
-    if (firstDayHasPassed) {
-      Serial.println("First day has passed" + String(millis()));
-    }
-    return firstDayHasPassed;
+    return millis() > millisPerDay;
 }
 
 void MedReminderStateMachine::enterTraining() {
-    // Actions to perform on entering Training
-    delay(1000);
     Serial.println("\nStartinging first day - training for the next 24 hours.");
+    delay(1000);
 }
 
 void MedReminderStateMachine::exitTraining() {
