@@ -36,17 +36,16 @@ const unsigned int initial_times_to_beep = 5; // The number of times that the so
 const unsigned int initial_reminder_delay_seconds = 2; // How many seconds should be between the first reminder, and the second
 
 // *** SpeedOfTime constants **
-const unsigned int ms_per_minute = 8000;
 #ifdef DEBUG  //How many millisconds should a "minute" be
-const unsigned int ms_per_minute = 60000;
+const unsigned int ms_per_minute = 8000;
 #else
+const unsigned int ms_per_minute = 60000;
 #endif
 
-const unsigned int minutes_per_day = 4;
 #ifdef DEBUG  //How many "minutes" should be in a day
-const unsigned int minutes_per_day = 1440;
+const unsigned int minutes_per_day = 4;
 #else
+const unsigned int minutes_per_day = 1440;
 #endif
 
 const unsigned int ms_between_beeps = 85; // Milliseconds that should be silent between beeps
-

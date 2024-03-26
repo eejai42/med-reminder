@@ -53,6 +53,7 @@ extern {{@key}}StateMachine* stateMachine;
 }
 
 void {{@key}}StateMachine::checkState() {
+    checkingState();
     switch (currentState) {
         {{#each MachineStates.MachineState}}
         case State::{{Name}}:
@@ -69,7 +70,7 @@ void {{@key}}StateMachine::checkState() {
 
 void {{@key}}StateMachine::transitionTo(State newState) {
     transitioning(currentState, newState);
-    Serial.print("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
+    Serial.println("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
     onExit(currentState);
     currentState = newState;
     onEnter(newState);
@@ -131,4 +132,48 @@ bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
 }
 {{/each}}
 {{/each}}
+[[FileSetFile/RelativePath[../Common.h:never]]]
+#pragma once
+
+#include <Arduino.h>
+
+#include "MedReminderStateMachine.h"
+
+void beep(int duration = 1000);
+void emitAlarmBeep();
+
+
+{{!-- Common.cpp (initial take anyway) --}}
+[[FileSetFile/RelativePath[../Common.cpp:never]]]
+#pragma once
+
+#include "MedReminderStateMachine.h"
+#include "Common.h"
+
+void checkingState() {
+  // Serial.Println("Checking state in Common.cpp");
+}
+
+void transitioning(State fromState, State toState) {
+ // Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
+}
+
+void transitioned(State fromState, State toState) {
+  // Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
+}
+
+void beep(int duration = 1000) {
+  tone(status_beeps_speaker, 440, ms_between_beeps * 2);
+  digitalWrite(status_status_led, HIGH);  // Turn the LED on (HIGH is the voltage level)
+  delay(ms_between_beeps);       // Wait for a second (1000 milliseconds)
+  digitalWrite(status_status_led, LOW);   // Turn the LED off by making the voltage LOW
+  delay(ms_between_beeps);       // Wait for a second (1000 milliseconds)
+}
+
+void emitAlarmBeep() {
+  //Serial.println("beeping");
+  beep(ms_between_beeps);
+  beepsBeeped++;
+}
+
 {{/each}}
