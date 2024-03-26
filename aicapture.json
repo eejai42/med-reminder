@@ -98,18 +98,7 @@
       "ProjectTranspilerId": "8dec30ef-5eae-4ad3-b150-a61fba4e6e59",
       "Name": "JsonHbarsTransform",
       "RelativePath": "/arduino2/constantsCPP",
-      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i constants.hbars -o ../Constants.cpp"
-    },
-    {
-      "MatchedTranspiler": {
-        "TranspilerId": "7d24b632-a7a5-45a2-ba2a-99b26e47477d",
-        "Name": "JsonHbarsTransform",
-        "Description": "Json-Hbars-Transform"
-      },
-      "ProjectTranspilerId": "46a91324-f627-4b28-b09f-10f27c242af3",
-      "Name": "JsonHbarsTransform",
-      "RelativePath": "/arduino2/constantsH",
-      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i constantHeaders.hbars -o ../Constants.h"
+      "CommandLine": "json-hbars-transform -i ..\\..\\SSoT\\MedReminder.json -i constants.hbars"
     },
     {
       "MatchedTranspiler": {
