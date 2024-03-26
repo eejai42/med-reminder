@@ -66,7 +66,6 @@ void MedReminderStateMachine::checkState() {
 
 void MedReminderStateMachine::transitionTo(State newState) {
     transitioning(currentState, newState);
-    Serial.println("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
     onExit(currentState);
     currentState = newState;
     onEnter(newState);

@@ -1,4 +1,5 @@
 #pragma once
+#define DEBUG
 // Adjusted StateMachine.h Template for MedReminderStateMachine
 #include "common.h"
 

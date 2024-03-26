@@ -6,8 +6,10 @@
 
 unsigned long dailyMillis = 0;
 unsigned long millisPerDay = ms_per_minute * minutes_per_day;
+unsigned int millisPerSecond = ms_per_minute / 60;
 
-int reminders = 0;
+unsigned long reminderTimes[maxReminders]; // Define the storage for reminder times
+unsigned int reminders = 0;
 int beepsBeeped = 0;
 
 void checkingState() {

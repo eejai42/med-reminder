@@ -70,7 +70,6 @@ void {{@key}}StateMachine::checkState() {
 
 void {{@key}}StateMachine::transitionTo(State newState) {
     transitioning(currentState, newState);
-    Serial.println("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
     onExit(currentState);
     currentState = newState;
     onEnter(newState);
@@ -117,6 +116,13 @@ String stateToString(State stateToStringify) {
 #pragma once
 #include "MedReminderStateMachine.h"
 
+{{#each FromTransitions.FromTransition}}
+bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
+    // Check condition for {{ActionName}} in {{../Name}} state
+    return false; // Placeholder implementation
+}
+{{/each}}
+
 void {{@../key}}StateMachine::enter{{Name}}() {
     // Actions to perform on entering {{Name}}
 }
@@ -124,14 +130,9 @@ void {{@../key}}StateMachine::enter{{Name}}() {
 void {{@../key}}StateMachine::exit{{Name}}() {
     // Actions to perform on exiting {{Name}}
 }
+{{/each}}
 
-{{#each FromTransitions.FromTransition}}
-bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
-    // Check condition for {{ActionName}} in {{../Name}} state
-    return false; // Placeholder implementation
-}
-{{/each}}
-{{/each}}
+
 [[FileSetFile/RelativePath[../Common.h:never]]]
 #pragma once
 
