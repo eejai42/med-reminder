@@ -1,4 +1,5 @@
 #pragma once
+#define DEBUG
 /* Project Constant HEADERS
  ************  NOTE! This file is derived using Handlebars 
  ************  Source model json in /SSoT/ folder

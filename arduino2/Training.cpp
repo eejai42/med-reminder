@@ -17,7 +17,13 @@ bool MedReminderStateMachine::hasTraining_MovementDetected() {
     return false;
 }
 bool MedReminderStateMachine::hasTraining_NewDay() {
-    return millis() > millisPerDay;
+  bool isNewDay = millis() > millisPerDay;
+  if (isNewDay) {
+    Serial.println("New day reqached");
+  } else {
+    Serial.println("Not new day: " + String(millis()) + " - " + millisPerDay);
+  }
+  return isNewDay;
 }
 
 void MedReminderStateMachine::enterTraining() {

@@ -1,5 +1,5 @@
 @startuml
-                    
+                    [*] -> Training
 state Training
 state SavingReminder
 state Idle
@@ -7,24 +7,14 @@ state AboutToAlert
 state Alerting
 state ClearReminder
 
-Training --> SavingReminder : "MovementDetected"
-    
-Training --> Idle : "NewDay"
-    
-SavingReminder --> Training : "ReminderSaved"
-    
-Idle --> AboutToAlert : "WithinMSOfNextReminder"
-    
-AboutToAlert --> Alerting : "ReminderTimeReached"
-    
-AboutToAlert --> ClearReminder : "MovementDetected"
-    
-Alerting --> Training : "MainInputDoubleClicked"
-    
-Alerting --> ClearReminder : "SystemButtonPushed"
-    
-Alerting --> ClearReminder : "MovementDetected"
-    
-ClearReminder --> Idle : "ReminderCleared"
-    
+Training --> SavingReminder : MovementDetected
+Training --> Idle : NewDay
+SavingReminder --> Training : ReminderSaved
+Idle --> AboutToAlert : WithinMSOfNextReminder
+AboutToAlert --> Alerting : ReminderTimeReached
+AboutToAlert --> ClearReminder : MovementDetected
+Alerting --> Training : MainInputDoubleClicked
+Alerting --> ClearReminder : SystemButtonPushed
+Alerting --> ClearReminder : MovementDetected
+ClearReminder --> Idle : ReminderCleared
 @enduml                    

@@ -5,7 +5,7 @@
 #include "Common.h"
 
 unsigned long dailyMillis = 0;
-unsigned long millisPerDay = (long)ms_per_minute * (long)minutes_per_day;
+unsigned long millisPerDay = (long)(ms_per_minute * (long)minutes_per_day);
 unsigned int millisPerSecond = (long)(ms_per_minute / 60);
 
 unsigned long reminderTimes[maxReminders]; // Define the storage for reminder times

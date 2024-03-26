@@ -1183,7 +1183,7 @@
         },
         {
           "Name": "ClearReminder",
-          "Description": "In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle",
+          "Description": "In a variety of situations, ",
           "FromTransitions": {
             "FromTransition": [
               {

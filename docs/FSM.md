@@ -65,7 +65,7 @@ When the actual alerting time is reached, it starts alerting.
  <span style="font-size: 0.8em; padding-bottom: 0.25em; color: darkgray;">If we are about  to alert, and the reminder time is reached, start alerting.<span>
 
 #### 6. ClearReminder
-In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle
+In a variety of situations, 
 
  - **`ClearReminder .`**_`ReminderCleared`_**`( ➡ Idle )`:** 
  <span style="font-size: 1em; margin-bottom: 0.75em; color: green;">After the appropriate reminder has been cleared, go back to the idle state..<br /> <span>

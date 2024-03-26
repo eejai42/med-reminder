@@ -43,13 +43,13 @@
       <AllStates>recAogmoVNsRcRjwj</AllStates>
       <AllStates>recaRDFMUx0REoAaf</AllStates>
       <AllStates>reczUjayrHtycYFlN</AllStates>
-      <AllStates>reclIaDU5IaJ59ij6</AllStates>
       <AllStates>recoQhqfC6xM6OaZf</AllStates>
       <AllStates>reck5d8ZfDSF1Wpa2</AllStates>
+      <AllStates>reclIaDU5IaJ59ij6</AllStates>
       <InitialState>recaRDFMUx0REoAaf</InitialState>
       <Name>Med Reminder</Name>
-      <InitialStateName>Training</InitialStateName>
       <IsActive>true</IsActive>
+      <InitialStateName>Training</InitialStateName>
     </FSM>
   </FSMs>
   <MachineStates>
@@ -160,24 +160,24 @@
     <MachineState>
       <MachineStateId>reclIaDU5IaJ59ij6</MachineStateId>
       <createdTime>2024-03-23T23:35:51Z</createdTime>
-      <FromTransitions>rec4jl4sOM7b5WekW</FromTransitions>
-      <ToTransitions>recMvVnmyY0r4NuYg</ToTransitions>
-      <ToTransitions>recIN4Dp2mC3BVLui</ToTransitions>
-      <ToTransitions>recSfKtAdqRXPXqzJ</ToTransitions>
-      <Name>ClearReminder</Name>
-      <AutoNumber>37</AutoNumber>
-      <FSM>recCef92M3qYQDHYo</FSM>
       <SortOrder>10</SortOrder>
-      <Description>In a variety of situations, the current (or next) reminder is cleared, and the state returns back to idle</Description>
+      <FSM>recCef92M3qYQDHYo</FSM>
+      <AutoNumber>37</AutoNumber>
+      <Description>In a variety of situations, </Description>
+      <Name>ClearReminder</Name>
       <FSMIsActive>true</FSMIsActive>
       <FQName>ClearReminder</FQName>
-      <FromTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</FromTransitionNames>
-      <ToTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</ToTransitionNames>
-      <ToTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</ToTransitionNames>
-      <ToTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</ToTransitionNames>
       <CountIOfIncomingTransitions>3</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
+      <ToTransitions>recMvVnmyY0r4NuYg</ToTransitions>
+      <ToTransitions>recIN4Dp2mC3BVLui</ToTransitions>
+      <ToTransitions>recSfKtAdqRXPXqzJ</ToTransitions>
+      <ToTransitionNames>AboutToAlert-to-ClearReminder-after--MovementDetected</ToTransitionNames>
+      <ToTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</ToTransitionNames>
+      <ToTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</ToTransitionNames>
+      <FromTransitions>rec4jl4sOM7b5WekW</FromTransitions>
+      <FromTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</FromTransitionNames>
     </MachineState>
   </MachineStates>
   <Transitions>
@@ -257,7 +257,6 @@
       <TransitionId>reciRYvdYwpSGznq1</TransitionId>
       <createdTime>2024-03-24T16:30:28Z</createdTime>
       <ToState>recoQhqfC6xM6OaZf</ToState>
-      <Description>If we are about  to alert, and the reminder time is reached, start alerting.</Description>
       <FromState>reck5d8ZfDSF1Wpa2</FromState>
       <ActionName>ReminderTimeReached</ActionName>
       <Name>AboutToAlert-to-Alerting-after--ReminderTimeReached</Name>
@@ -270,24 +269,25 @@
       <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
       <FromStateIsImplemented>1</FromStateIsImplemented>
+      <Description>If we are about  to alert, and the reminder time is reached, start alerting.</Description>
     </Transition>
     <Transition>
       <TransitionId>recMvVnmyY0r4NuYg</TransitionId>
       <createdTime>2024-03-24T16:30:00Z</createdTime>
-      <ToState>reclIaDU5IaJ59ij6</ToState>
       <Description>Movement in the about to alert state will move to clear the appropriate reminder.</Description>
       <FromState>reck5d8ZfDSF1Wpa2</FromState>
       <ActionName>MovementDetected</ActionName>
       <Name>AboutToAlert-to-ClearReminder-after--MovementDetected</Name>
       <FromStateName>AboutToAlert</FromStateName>
-      <ToStateName>ClearReminder</ToStateName>
       <FromParentOrder>5</FromParentOrder>
       <FromStateSortOrder>5</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <ToStateName>ClearReminder</ToStateName>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recY2MSsJU2TkEI52</TransitionId>
@@ -310,26 +310,25 @@
     <Transition>
       <TransitionId>recIN4Dp2mC3BVLui</TransitionId>
       <createdTime>2024-03-24T16:30:52Z</createdTime>
-      <ToState>reclIaDU5IaJ59ij6</ToState>
-      <Description>While alerting, if the system button is pushed, move to clear the reminder.</Description>
       <FromState>recoQhqfC6xM6OaZf</FromState>
       <ActionName>SystemButtonPushed</ActionName>
       <Name>Alerting-to-ClearReminder-after--SystemButtonPushed</Name>
       <FromStateName>Alerting</FromStateName>
-      <ToStateName>ClearReminder</ToStateName>
       <FromParentOrder>6</FromParentOrder>
       <FromStateSortOrder>6</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+      <Description>While alerting, if the system button is pushed, move to clear the reminder.</Description>
+      <ToState>reclIaDU5IaJ59ij6</ToState>
+      <ToStateName>ClearReminder</ToStateName>
       <ToStateSortOrder>10</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
-      <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
     <Transition>
       <TransitionId>recSfKtAdqRXPXqzJ</TransitionId>
       <createdTime>2024-03-24T16:36:36Z</createdTime>
       <ToState>reclIaDU5IaJ59ij6</ToState>
-      <Description>While alerting, if movement is detected, go to clear the reminder.</Description>
       <FromState>recoQhqfC6xM6OaZf</FromState>
       <ActionName>MovementDetected</ActionName>
       <Name>Alerting-to-ClearReminder-after--MovementDetected</Name>
@@ -342,23 +341,24 @@
       <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
       <FromStateIsImplemented>1</FromStateIsImplemented>
+      <Description>While alerting, if movement is detected, go to clear the reminder.</Description>
     </Transition>
     <Transition>
       <TransitionId>rec4jl4sOM7b5WekW</TransitionId>
       <createdTime>2024-03-24T16:36:58Z</createdTime>
       <ToState>reczUjayrHtycYFlN</ToState>
-      <Description>After the appropriate reminder has been cleared, go back to the idle state.</Description>
-      <FromState>reclIaDU5IaJ59ij6</FromState>
       <ActionName>ReminderCleared</ActionName>
+      <Description>After the appropriate reminder has been cleared, go back to the idle state.</Description>
       <Name>ClearReminder-to-Idle-after--ReminderCleared</Name>
-      <FromStateName>ClearReminder</FromStateName>
       <ToStateName>Idle</ToStateName>
-      <FromParentOrder>10</FromParentOrder>
-      <FromStateSortOrder>10</FromStateSortOrder>
       <ToStateSortOrder>4</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
-      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>
+      <FromState>reclIaDU5IaJ59ij6</FromState>
+      <FromStateName>ClearReminder</FromStateName>
+      <FromParentOrder>10</FromParentOrder>
+      <FromStateSortOrder>10</FromStateSortOrder>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FromStateIsImplemented>1</FromStateIsImplemented>
     </Transition>
   </Transitions>

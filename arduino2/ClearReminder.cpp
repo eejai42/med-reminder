@@ -3,13 +3,9 @@
 
 bool MedReminderStateMachine::hasClearReminder_ReminderCleared() {
     // Check condition for ReminderCleared in ClearReminder state
-    return true; // Placeholder implementation
+    return false;
 }
 
-void MedReminderStateMachine::enterClearReminder() {
-    // Actions to perform on entering ClearReminder
-}
+void MedReminderStateMachine::enterClearReminder() {}
 
-void MedReminderStateMachine::exitClearReminder() {
-    // Actions to perform on exiting ClearReminder
-}
+void MedReminderStateMachine::exitClearReminder() {}
