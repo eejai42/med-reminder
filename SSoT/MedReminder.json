@@ -1051,6 +1051,12 @@
                 "ActionName": "ReminderSaved",
                 "FromStateName": "SavingReminder",
                 "Name": "SavingReminder-to-Training-after--ReminderSaved"
+              },
+              {
+                "Description": "If the button is ever double  licked, reset the box",
+                "ActionName": "MainInputDoubleClicked",
+                "FromStateName": "Alerting",
+                "Name": "Alerting-to-Training-after--MainInputDoubleClicked"
               }
             ]
           }
@@ -1144,6 +1150,12 @@
           "Description": "When the actual alerting time is reached, it starts alerting.\n",
           "FromTransitions": {
             "FromTransition": [
+              {
+                "Description": "If the button is ever double  licked, reset the box",
+                "ActionName": "MainInputDoubleClicked",
+                "ToStateName": "Training",
+                "Name": "Alerting-to-Training-after--MainInputDoubleClicked"
+              },
               {
                 "Description": "While alerting, if the system button is pushed, move to clear the reminder.",
                 "ActionName": "SystemButtonPushed",

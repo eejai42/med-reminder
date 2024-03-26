@@ -16,6 +16,8 @@ First day - it just counts when pills are taken
 ---------
  - **`SavingReminder .`**_`ReminderSaved`_**`( this )`:** 
  <span style="font-size: 0.8em; padding-bottom: 0.25em; color: darkgray;">On training day, the reminder is saved, and returns to Training.<span>
+ - **`Alerting .`**_`MainInputDoubleClicked`_**`( this )`:** 
+ <span style="font-size: 0.8em; padding-bottom: 0.25em; color: darkgray;">If the button is ever double  licked, reset the box<span>
 
 #### 2. SavingReminder
 When movement is detected during the first day, the reminder time is saved (relative to when the device was turned on)
@@ -52,6 +54,8 @@ When we are within a little bit of time of the reminder, any movement detected w
 When the actual alerting time is reached, it starts alerting.
 
 
+ - **`Alerting .`**_`MainInputDoubleClicked`_**`( ➡ Training )`:** 
+ <span style="font-size: 1em; margin-bottom: 0.75em; color: green;">If the button is ever double  licked, reset the box.<br /> <span>
  - **`Alerting .`**_`SystemButtonPushed`_**`( ➡ ClearReminder )`:** 
  <span style="font-size: 1em; margin-bottom: 0.75em; color: green;">While alerting, if the system button is pushed, move to clear the reminder..<br /> <span>
  - **`Alerting .`**_`MovementDetected`_**`( ➡ ClearReminder )`:** 

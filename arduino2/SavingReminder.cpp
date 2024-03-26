@@ -1,12 +1,18 @@
 #pragma once
-#include "SavingReminder.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    SavingReminder::SavingReminder(BaseStateMachine* machine) : BaseSavingReminder(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterSavingReminder() {
+    // Actions to perform on entering SavingReminder
+    int reminders = 0;
+    Serial.println("SAVING REMINDER");
+    reminders++;
+}
 
-    bool SavingReminder::hasReminderSaved() {
-        // Determine if ReminderSaved
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitSavingReminder() {
+    // Actions to perform on exiting SavingReminder
+}
+
+bool MedReminderStateMachine::hasSavingReminder_ReminderSaved() {
+    // Check condition for ReminderSaved in SavingReminder state
+    return true;
+}

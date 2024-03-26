@@ -1,16 +1,32 @@
 #pragma once
-#include "Training.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include <Arduino.h>
+#include "MedReminderStateMachine.h"
+#include "Constants.h"
+#include "Common.h"
 
-    Training::Training(BaseStateMachine* machine) : BaseTraining(machine) {
-        // Constructor implementation, if needed
-    }
+int millis2 = 0;
+void MedReminderStateMachine::enterTraining() {
+    // Actions to perform on entering Training
+}
 
-    bool Training::hasMovementDetected() {
-        // Determine if MovementDetected
-        return false; // assume this has not yet happened
+void MedReminderStateMachine::exitTraining() {
+    // Actions to perform on exiting Training
+}
+
+bool MedReminderStateMachine::hasTraining_MovementDetected() {
+    // Check condition for MovementDetected in Training state
+    Serial.println("Checking for movement");
+    delay(2000);
+    if (millis() > 5000) return true;
+    return false; // Placeholder implementation
+}
+bool MedReminderStateMachine::hasTraining_NewDay() {
+    // Check condition for NewDay in Training state
+    bool isFirstDay = millis() > dailyMillis;
+    if (ms_per_minute == 24) {
+      millis2 = 5;
     }
-    bool Training::hasNewDay() {
-        // Determine if NewDay
-        return false; // assume this has not yet happened
-    }
+    if (!isFirstDay) {
+      return true;
+    } 
+}

@@ -1,11 +1,10 @@
+#pragma once
 /* Project Constants
  ************  NOTE! This file is derived using Handlebars 
  ************  Source model json in /SSoT/ folder
  ************  ssotme json-hbars-transform -i /SSoT/source-data.json -i constants.hbars -o ../constants.cpp
  ************  ssotme json-hbars-transform -i /SSoT/source-data.json -i constantHeaders.hbars -o ../constants.h
 */
-#ifdef CONSTANTS
-#define CONSTANTS
 #include "Constants.h"
 
 
@@ -51,4 +50,3 @@ const unsigned int minutes_per_day = 1440;
 
 const unsigned int ms_between_beeps = 85; // Milliseconds that should be silent between beeps
 
-#endif

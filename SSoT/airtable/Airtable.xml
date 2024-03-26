@@ -48,8 +48,8 @@
       <AllStates>reck5d8ZfDSF1Wpa2</AllStates>
       <InitialState>recaRDFMUx0REoAaf</InitialState>
       <Name>Med Reminder</Name>
-      <IsActive>true</IsActive>
       <InitialStateName>Training</InitialStateName>
+      <IsActive>true</IsActive>
     </FSM>
   </FSMs>
   <MachineStates>
@@ -60,6 +60,7 @@
       <FromTransitions>rec4XXq75RyQi7vuQ</FromTransitions>
       <InitialStateForFSMs>recCef92M3qYQDHYo</InitialStateForFSMs>
       <ToTransitions>recpcPSuT8LT3jJmX</ToTransitions>
+      <ToTransitions>recY2MSsJU2TkEI52</ToTransitions>
       <Name>Training</Name>
       <AutoNumber>34</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
@@ -70,7 +71,8 @@
       <FromTransitionNames>Training-to-SavingReminder-after--MovementDetected</FromTransitionNames>
       <FromTransitionNames>Training-to-Idle-after--NewDay</FromTransitionNames>
       <ToTransitionNames>SavingReminder-to-Training-after--ReminderSaved</ToTransitionNames>
-      <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
+      <ToTransitionNames>Alerting-to-Training-after--MainInputDoubleClicked</ToTransitionNames>
+      <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
     </MachineState>
@@ -137,6 +139,7 @@
       <createdTime>2024-03-23T23:36:20Z</createdTime>
       <FromTransitions>recIN4Dp2mC3BVLui</FromTransitions>
       <FromTransitions>recSfKtAdqRXPXqzJ</FromTransitions>
+      <FromTransitions>recY2MSsJU2TkEI52</FromTransitions>
       <ToTransitions>reciRYvdYwpSGznq1</ToTransitions>
       <Name>Alerting</Name>
       <AutoNumber>38</AutoNumber>
@@ -148,6 +151,7 @@
       <FQName>Alerting</FQName>
       <FromTransitionNames>Alerting-to-ClearReminder-after--SystemButtonPushed</FromTransitionNames>
       <FromTransitionNames>Alerting-to-ClearReminder-after--MovementDetected</FromTransitionNames>
+      <FromTransitionNames>Alerting-to-Training-after--MainInputDoubleClicked</FromTransitionNames>
       <ToTransitionNames>AboutToAlert-to-Alerting-after--ReminderTimeReached</ToTransitionNames>
       <CountIOfIncomingTransitions>1</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
@@ -280,6 +284,24 @@
       <FromParentOrder>5</FromParentOrder>
       <FromStateSortOrder>5</FromStateSortOrder>
       <ToStateSortOrder>10</ToStateSortOrder>
+      <IsImplemented>1</IsImplemented>
+      <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
+      <FSMIsActive>true</FSMIsActive>
+      <FromStateIsImplemented>1</FromStateIsImplemented>
+    </Transition>
+    <Transition>
+      <TransitionId>recY2MSsJU2TkEI52</TransitionId>
+      <createdTime>2024-03-24T19:33:51Z</createdTime>
+      <ToState>recaRDFMUx0REoAaf</ToState>
+      <Description>If the button is ever double  licked, reset the box</Description>
+      <FromState>recoQhqfC6xM6OaZf</FromState>
+      <ActionName>MainInputDoubleClicked</ActionName>
+      <Name>Alerting-to-Training-after--MainInputDoubleClicked</Name>
+      <FromStateName>Alerting</FromStateName>
+      <ToStateName>Training</ToStateName>
+      <FromParentOrder>6</FromParentOrder>
+      <FromStateSortOrder>6</FromStateSortOrder>
+      <ToStateSortOrder>1</ToStateSortOrder>
       <IsImplemented>1</IsImplemented>
       <FromStateFSM>recCef92M3qYQDHYo</FromStateFSM>
       <FSMIsActive>true</FSMIsActive>

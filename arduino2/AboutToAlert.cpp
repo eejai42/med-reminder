@@ -1,16 +1,19 @@
 #pragma once
-#include "AboutToAlert.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    AboutToAlert::AboutToAlert(BaseStateMachine* machine) : BaseAboutToAlert(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterAboutToAlert() {
+    // Actions to perform on entering AboutToAlert
+}
 
-    bool AboutToAlert::hasReminderTimeReached() {
-        // Determine if ReminderTimeReached
-        return false; // assume this has not yet happened
-    }
-    bool AboutToAlert::hasMovementDetected() {
-        // Determine if MovementDetected
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitAboutToAlert() {
+    // Actions to perform on exiting AboutToAlert
+}
+
+bool MedReminderStateMachine::hasAboutToAlert_ReminderTimeReached() {
+    // Check condition for ReminderTimeReached in AboutToAlert state
+    return false; // Placeholder implementation
+}
+bool MedReminderStateMachine::hasAboutToAlert_MovementDetected() {
+    // Check condition for MovementDetected in AboutToAlert state
+    return false; // Placeholder implementation
+}

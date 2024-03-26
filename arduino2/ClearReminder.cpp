@@ -1,12 +1,15 @@
 #pragma once
-#include "ClearReminder.h"
-#include <iostream> // Include if you use std::cout or similar in implementations
+#include "MedReminderStateMachine.h"
 
-    ClearReminder::ClearReminder(BaseStateMachine* machine) : BaseClearReminder(machine) {
-        // Constructor implementation, if needed
-    }
+void MedReminderStateMachine::enterClearReminder() {
+    // Actions to perform on entering ClearReminder
+}
 
-    bool ClearReminder::hasReminderCleared() {
-        // Determine if ReminderCleared
-        return false; // assume this has not yet happened
-    }
+void MedReminderStateMachine::exitClearReminder() {
+    // Actions to perform on exiting ClearReminder
+}
+
+bool MedReminderStateMachine::hasClearReminder_ReminderCleared() {
+    // Check condition for ReminderCleared in ClearReminder state
+    return false; // Placeholder implementation
+}
