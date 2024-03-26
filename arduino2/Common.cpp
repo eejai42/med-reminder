@@ -14,16 +14,10 @@ int beepsBeeped = 0;
 
 void checkingState() {
   dailyMillis = millis() % millisPerDay;
-  //Serial.println("\n\nCalculating daily millis - " + String(dailyMillis) + " in " + millisPerDay + " per day");
 }
 
-void transitioning(State fromState, State toState) {
-  // Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
-}
-void transitioned(State fromState, State toState) {
-
-}
-
+void transitioning(State fromState, State toState) {}
+void transitioned(State fromState, State toState) {}
 
 void beep(int duration = 1000) {
   tone(status_beeps_speaker, 440, ms_between_beeps * 2);
@@ -34,7 +28,6 @@ void beep(int duration = 1000) {
 }
 
 void emitAlarmBeep() {
-  //Serial.println("beeping");
   beep(ms_between_beeps);
   beepsBeeped++;
 }

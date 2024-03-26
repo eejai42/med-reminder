@@ -11,7 +11,6 @@ bool MedReminderStateMachine::hasTraining_MovementDetected() {
     if (millis() > lastMovementDetected + (millisPerSecond * 3)) {
       if ((dailyMillis % reminderDurationGoal) > reminderDurationGoal - millisPerSecond) {
         lastMovementDetected = millis();
-      Serial.println("MOVEMENT: " + String(millis()));
         return true;
       } 
     }
@@ -26,6 +25,4 @@ void MedReminderStateMachine::enterTraining() {
     delay(1000);
 }
 
-void MedReminderStateMachine::exitTraining() {
-    // Actions to perform on exiting Training
-}
+void MedReminderStateMachine::exitTraining() {}
