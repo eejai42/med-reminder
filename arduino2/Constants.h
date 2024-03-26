@@ -34,6 +34,6 @@ extern const unsigned int initial_times_to_beep; // The number of times that the
 extern const unsigned int initial_reminder_delay_seconds; // How many seconds should be between the first reminder, and the second
 
 // *** SpeedOfTime constants **
-extern const unsigned long ms_per_minute; // How many millisconds should a "minute" be
-extern const unsigned long minutes_per_day; // How many "minutes" should be in a day
+extern const unsigned int ms_per_minute; // How many millisconds should a "minute" be
+extern const unsigned int minutes_per_day; // How many "minutes" should be in a day
 extern const unsigned int ms_between_beeps; // Milliseconds that should be silent between beeps

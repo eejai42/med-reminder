@@ -29,6 +29,8 @@ bool MedReminderStateMachine::hasTraining_NewDay() {
 
 void MedReminderStateMachine::enterTraining() {
     // Actions to perform on entering Training
+    delay(1000);
+    Serial.println("\nStartinging first day - training for the next 24 hours.");
 }
 
 void MedReminderStateMachine::exitTraining() {

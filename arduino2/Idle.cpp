@@ -3,6 +3,8 @@
 #include "Constants.h"
 #include "Common.h"
 
+bool training = true;
+
 bool MedReminderStateMachine::hasIdle_WithinMSOfNextReminder() {
     // Check condition for WithinMSOfNextReminder in Idle state
     //int msPerSecond = ((int)ms_per_minute / 60);
@@ -20,6 +22,12 @@ bool MedReminderStateMachine::hasIdle_WithinMSOfNextReminder() {
 
 void MedReminderStateMachine::enterIdle() {
     // Actions to perform on entering Idle
+    if (training) {
+      Serial.println("Done training.");
+      training = false;
+    }
+    
+    Serial.println("Idle - waiting for reminders.");
 }
 
 void MedReminderStateMachine::exitIdle() {

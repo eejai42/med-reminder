@@ -1,5 +1,4 @@
 #pragma once
-#define DEBUG
 /* Project Constants
  ************  NOTE! This file is derived using Handlebars 
  ************  Source model json in /SSoT/ folder
@@ -38,15 +37,15 @@ const unsigned int initial_reminder_delay_seconds = 2; // How many seconds shoul
 
 // *** SpeedOfTime constants **
 #ifdef DEBUG  //How many millisconds should a "minute" be
-const unsigned long ms_per_minute = 6000;
+const unsigned int ms_per_minute = 8000;
 #else
-const unsigned long ms_per_minute = 60000;
+const unsigned int ms_per_minute = 60000;
 #endif
 
 #ifdef DEBUG  //How many "minutes" should be in a day
-const unsigned long minutes_per_day = 4;
+const unsigned int minutes_per_day = 4;
 #else
-const unsigned long minutes_per_day = 1440;
+const unsigned int minutes_per_day = 1440;
 #endif
 
 const unsigned int ms_between_beeps = 85; // Milliseconds that should be silent between beeps

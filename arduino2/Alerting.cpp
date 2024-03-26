@@ -12,7 +12,7 @@ bool MedReminderStateMachine::hasAlerting_SystemButtonPushed() {
 }
 bool MedReminderStateMachine::hasAlerting_MovementDetected() {
     // Check condition for MovementDetected in Alerting state
-    Serial.println("Movement detected");
+    Serial.println("Movement detected - returning to idle.");
     return true; // Placeholder implementation
 }
 

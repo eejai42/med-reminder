@@ -5,8 +5,8 @@
 #include "Common.h"
 
 unsigned long dailyMillis = 0;
-unsigned long millisPerDay = ms_per_minute * minutes_per_day;
-unsigned int millisPerSecond = ms_per_minute / 60;
+unsigned long millisPerDay = (long)ms_per_minute * (long)minutes_per_day;
+unsigned int millisPerSecond = (long)(ms_per_minute / 60);
 
 unsigned long reminderTimes[maxReminders]; // Define the storage for reminder times
 unsigned int reminders = 0;
@@ -18,7 +18,7 @@ void checkingState() {
 }
 
 void transitioning(State fromState, State toState) {
-  Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
+  // Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
 }
 void transitioned(State fromState, State toState) {
 
