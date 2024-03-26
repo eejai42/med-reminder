@@ -4,18 +4,19 @@
 #include "MedReminderStateMachine.h"
 #include "Common.h"
 
-int dailyMillis = 0;
-int millisPerDay = ms_per_minute * minutes_per_day;
+unsigned long dailyMillis = 0;
+unsigned long millisPerDay = ms_per_minute * minutes_per_day;
 
 int reminders = 0;
 int beepsBeeped = 0;
 
 void checkingState() {
   dailyMillis = millis() % millisPerDay;
+  //Serial.println("\n\nCalculating daily millis - " + String(dailyMillis) + " in " + millisPerDay + " per day");
 }
 
 void transitioning(State fromState, State toState) {
-  Serial.println(" - transitioning " + String((int)fromState));
+  Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
 }
 void transitioned(State fromState, State toState) {
 

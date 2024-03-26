@@ -4,8 +4,9 @@
 
 #include "MedReminderStateMachine.h"
 
-extern int millisPerDay;
-extern int dailyMillis; 
+extern unsigned long millisPerDay;
+extern unsigned long dailyMillis; 
+extern int reminders;
 
 void beep(int duration = 1000);
 void emitAlarmBeep();

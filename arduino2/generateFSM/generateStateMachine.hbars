@@ -11,6 +11,11 @@ enum class State {
     // Add additional states here
 };
 
+void checkingState();
+void transitioning(State fromState, State toState);
+void transitioned(State fromState, State toState);
+String stateToString(State stateToStringify);
+
 class {{@key}}StateMachine {
 private:
     State currentState;
@@ -37,7 +42,6 @@ public:
 };
 
 extern {{@key}}StateMachine* stateMachine;
-
 {{!-- StateMachine.cpp Template --}}
 [[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp:never]]]
 #pragma once
@@ -64,9 +68,12 @@ void {{@key}}StateMachine::checkState() {
 }
 
 void {{@key}}StateMachine::transitionTo(State newState) {
+    transitioning(currentState, newState);
+    Serial.print("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
     onExit(currentState);
     currentState = newState;
     onEnter(newState);
+    transitioned(currentState, newState);
 }
 
 void {{@key}}StateMachine::onExit(State state) {
@@ -86,6 +93,18 @@ void {{@key}}StateMachine::onEnter(State state) {
             enter{{Name}}();
             break;
         {{/each}}
+    }
+}
+
+String stateToString(State stateToStringify) {
+    switch (stateToStringify) {
+        {{#each MachineStates.MachineState}}
+        case State::{{Name}}:
+            return "{{Name}}";
+            break;
+{{/each}}
+        default:
+            return "Unknown State enum value: " + String((int)stateToStringify);
     }
 }
 

@@ -15,17 +15,18 @@ void MedReminderStateMachine::exitTraining() {
 
 bool MedReminderStateMachine::hasTraining_MovementDetected() {
     // Check condition for MovementDetected in Training state
-    Serial.println("Checking for movement");
-    delay(2000);
-    if (millis() > 5000) return true;
+    if (millis() < millisPerDay) {
+      Serial.println("Movement detected");
+      delay((int)(millisPerDay / 4));
+      return true;
+    }
     return false; // Placeholder implementation
 }
 bool MedReminderStateMachine::hasTraining_NewDay() {
     // Check condition for NewDay in Training state
-    bool isFirstDay = millis() > dailyMillis;
-    if (ms_per_minute == 24) {
-      millis2 = 5;
-    }
+    bool isFirstDay = millis() < millisPerDay;
+    //Serial.println("Checking for first day: " + String(millis()) + " < " + String(millisPerDay) + "?");
+    // return false;
     if (!isFirstDay) {
       return true;
     } 

@@ -1,9 +1,6 @@
 #pragma once
 // Adjusted StateMachine.h Template for MedReminderStateMachine
-#include "Constants.h"
-#include "Common.h"
-
-
+#include "common.h"
 
 enum class State {
     Training,
@@ -18,6 +15,7 @@ enum class State {
 void checkingState();
 void transitioning(State fromState, State toState);
 void transitioned(State fromState, State toState);
+String stateToString(State stateToStringify);
 
 class MedReminderStateMachine {
 private:

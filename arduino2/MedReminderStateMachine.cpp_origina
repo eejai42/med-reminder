@@ -1,4 +1,6 @@
 #pragma once
+
+#include <Arduino.h>
 // Adjusted StateMachine.cpp Template for MedReminderStateMachine
 #include "MedReminderStateMachine.h"
 
@@ -66,7 +68,7 @@ void MedReminderStateMachine::checkState() {
 
 void MedReminderStateMachine::transitionTo(State newState) {
     transitioning(currentState, newState);
-    Serial.println("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
+    Serial.print("Transitioning from " + String((int)currentState) + " to " + String((int)newState));
     onExit(currentState);
     currentState = newState;
     onEnter(newState);
@@ -116,31 +118,6 @@ void MedReminderStateMachine::onEnter(State state) {
         case State::ClearReminder:
             enterClearReminder();
             break;
-    }
-}
-
-String stateToString(State stateToStringify) {
-    switch (stateToStringify) {
-        case State::Training:
-            return "Training";
-            break;
-        case State::SavingReminder:
-            return "SavingReminder";
-            break;
-        case State::Idle:
-            return "Idle";
-            break;
-        case State::AboutToAlert:
-            return "AboutToAlert";
-            break;
-        case State::Alerting:
-            return "Alerting";
-            break;
-        case State::ClearReminder:
-            return "ClearReminder";
-            break;
-        default:
-            return "Unknown State enum value: " + String((int)stateToStringify);
     }
 }
 
