@@ -20,15 +20,10 @@ bool MedReminderStateMachine::hasTraining_NewDay() {
   bool isNewDay = millis() > millisPerDay;
   if (isNewDay) {
     Serial.println("New day reqached");
-  } else {
-    Serial.println("Not new day: " + String(millis()) + " - " + millisPerDay);
-  }
+  } 
   return isNewDay;
 }
 
-void MedReminderStateMachine::enterTraining() {
-    Serial.println("\nStartinging first day - training for the next 24 hours.");
-    delay(1000);
-}
+void MedReminderStateMachine::enterTraining() {}
 
 void MedReminderStateMachine::exitTraining() {}

@@ -98,8 +98,6 @@
       <MachineStateId>reczUjayrHtycYFlN</MachineStateId>
       <createdTime>2024-03-23T23:34:53Z</createdTime>
       <FromTransitions>recKeJGsw5YWeuA9C</FromTransitions>
-      <ToTransitions>rec4XXq75RyQi7vuQ</ToTransitions>
-      <ToTransitions>rec4jl4sOM7b5WekW</ToTransitions>
       <Name>Idle</Name>
       <AutoNumber>35</AutoNumber>
       <FSM>recCef92M3qYQDHYo</FSM>
@@ -108,11 +106,13 @@
       <FSMIsActive>true</FSMIsActive>
       <FQName>Idle</FQName>
       <FromTransitionNames>Idle-to-AboutToAlert-after--WithinMSOfNextReminder</FromTransitionNames>
-      <ToTransitionNames>Training-to-Idle-after--NewDay</ToTransitionNames>
-      <ToTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</ToTransitionNames>
       <CountIOfIncomingTransitions>2</CountIOfIncomingTransitions>
       <StateMachineName>Med Reminder</StateMachineName>
       <IsImplemented>1</IsImplemented>
+      <ToTransitions>rec4XXq75RyQi7vuQ</ToTransitions>
+      <ToTransitions>rec4jl4sOM7b5WekW</ToTransitions>
+      <ToTransitionNames>Training-to-Idle-after--NewDay</ToTransitionNames>
+      <ToTransitionNames>ClearReminder-to-Idle-after--ReminderCleared</ToTransitionNames>
     </MachineState>
     <MachineState>
       <MachineStateId>reck5d8ZfDSF1Wpa2</MachineStateId>

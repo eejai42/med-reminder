@@ -13,6 +13,10 @@ unsigned int reminders = 0;
 int beepsBeeped = 0;
 
 void checkingState() {
+  if (millis() < 100 && dailyMillis == 0) {
+    delay(1000);
+    Serial.println("\nStartinging first day - training for the next 24 hours.");
+  }
   dailyMillis = millis() % millisPerDay;
 }
 

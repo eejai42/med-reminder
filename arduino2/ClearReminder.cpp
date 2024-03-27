@@ -3,7 +3,7 @@
 
 bool MedReminderStateMachine::hasClearReminder_ReminderCleared() {
     // Check condition for ReminderCleared in ClearReminder state
-    return false;
+    return true;
 }
 
 void MedReminderStateMachine::enterClearReminder() {}

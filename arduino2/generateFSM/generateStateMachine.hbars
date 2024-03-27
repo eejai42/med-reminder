@@ -119,7 +119,7 @@ String stateToString(State stateToStringify) {
 {{#each FromTransitions.FromTransition}}
 bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
     // Check condition for {{ActionName}} in {{../Name}} state
-    return false;
+    return true;
 }
 {{/each}}
 
