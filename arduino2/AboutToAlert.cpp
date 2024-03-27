@@ -3,6 +3,7 @@
 
 bool MedReminderStateMachine::hasAboutToAlert_ReminderTimeReached() {
   if (dailyMillis < 100) return true;
+  
   for(int i = 0; i < reminders; i++) {
       if ((dailyMillis > reminderTimes[i]) &&
           (dailyMillis < (reminderTimes[i] + (millisPerSecond * 5)))) {
