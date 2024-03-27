@@ -2,7 +2,6 @@
 #include <Arduino.h>
 #include "MedReminderStateMachine.h"
 #include "Constants.h"
-#include "Common.h"
 
 unsigned long lastMovementDetected = 0;
 bool MedReminderStateMachine::hasTraining_MovementDetected() {
@@ -23,7 +22,3 @@ bool MedReminderStateMachine::hasTraining_NewDay() {
   } 
   return isNewDay;
 }
-
-void MedReminderStateMachine::enterTraining() {}
-
-void MedReminderStateMachine::exitTraining() {}

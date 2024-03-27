@@ -10,8 +10,3 @@ bool MedReminderStateMachine::hasSavingReminder_ReminderSaved() {
     }
     return true;
 }
-
-void MedReminderStateMachine::enterSavingReminder() {}
- 
-void MedReminderStateMachine::exitSavingReminder() {}
- 
