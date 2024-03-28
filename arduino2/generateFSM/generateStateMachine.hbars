@@ -129,18 +129,15 @@ String {{@key}}StateMachineBase::stateToString(State stateToStringify) {
 {{#each MachineStates.MachineState}}
 [[FileSetFile/RelativePath[../{{Name}}.cpp:never]]]
 #pragma once
-#include "{{@key}}StateMachine.h"
+#include "{{@../key}}StateMachine.h"
+#include "Constants.h"
 
 {{#each FromTransitions.FromTransition}}
-virtual bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
+bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
   // Check condition for {{ActionName}} in {{../Name}} state
-  return true;
+  return false;
 }
 {{/each}}
-
-virtual void {{@../key}}StateMachine::enter{{Name}}() {}
-
-virtual void {{@../key}}StateMachine::exit{{Name}}() {}
 {{/each}}
 
 [[FileSetFile/RelativePath[../{{@key}}StateMachine.h:never]]]
@@ -150,9 +147,31 @@ virtual void {{@../key}}StateMachine::exit{{Name}}() {}
 
 #include "{{@key}}StateMachine.h"
 
-void beep(int duration = 1000);
-void emitAlarmBeep();
+class {{@key}}StateMachine : public {{@key}}StateMachineBase {
+protected:
+    // variables here
+public:
+  {{@key}}StateMachine();
+  void checkingState() override;
+  
+  // State transition utility methods
+  // void transitionTo(State newState) override;
+  // void onExit(State fromState, State toState) override;
+  // void onEnter(State fromState, State toState) override;
+  // void beep(int duration = 1000) override;
+  // void emitAlarmBeep() override;
 
+  {{#each MachineStates.MachineState}}
+  // Enter and Exit methods for {{Name}} state
+  // void enter{{Name}}(State lastState) override;
+  // void exit{{Name}}(State nextState)override;
+
+  // Action handlers for the {{Name}} state
+  {{#each FromTransitions.FromTransition}}
+  // bool has{{../Name}}_{{ActionName}}() override;
+  {{/each}}
+  {{/each}}
+};
 
 {{!-- Common.cpp (initial take anyway) --}}
 [[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp:never]]]
@@ -160,7 +179,7 @@ void emitAlarmBeep();
 
 #include "{{@key}}StateMachine.h"
 
-void checkingState() {
+void {{@key}}StateMachine::checkingState() {
   // Serial.Println("Checking state in Common.cpp");
 }
 

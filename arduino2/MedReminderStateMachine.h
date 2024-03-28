@@ -23,9 +23,11 @@ public:
   void enterIdle(State currentState) override;
 
   bool hasAboutToAlert_ReminderTimeReached() override;
+      
+  bool hasAboutToAlert_MovementDetected() override;
+   
   bool hasSavingReminder_ReminderSaved() override;
   bool hasClearReminder_ReminderCleared() override;
-
   bool hasAlerting_MovementDetected() override;
   void enterAlerting(State currentState) override;
 
