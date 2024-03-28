@@ -1,11 +1,13 @@
 #pragma once
 // Adjusted StateMachine.cpp Template for MedReminderStateMachine
 #include <Arduino.h>
-#include "MedReminderStateMachineBase.h"
 #include "Constants.h"
-MedReminderStateMachineBase::MedReminderStateMachineBase()
+
+#include "MedReminderStateMachineBase.h"
+
+MedReminderStateMachineBase::MedReminderStateMachineBase() 
   : currentState(State::Training) {
-  onEnter(currentState, currentState);  // Initial state entry actions
+  onEnter(currentState, currentState); // Initial state entry actions
 }
 
 void MedReminderStateMachineBase::checkState() {
