@@ -34,8 +34,8 @@ public:
 
   {{#each MachineStates.MachineState}}
   // Enter and Exit methods for {{Name}} state
-  virtual void enter{{Name}}() {};
-  virtual void exit{{Name}}() {};
+  virtual void enter{{Name}}(State lastState) {};
+  virtual void exit{{Name}}(State nextState) {};
 
   // Action handlers for the {{Name}} state
   {{#each FromTransitions.FromTransition}}
