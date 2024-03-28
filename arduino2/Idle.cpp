@@ -16,7 +16,7 @@ bool MedReminderStateMachine::hasIdle_WithinMSOfNextReminder() {
     return false;
 }
 
-void MedReminderStateMachine::enterIdle() {
+void MedReminderStateMachine::enterIdle(State currentState) {
     if (training) {
       Serial.println("Done training.");
       training = false;

@@ -1,11 +1,9 @@
 #pragma once
 // Adjusted StateMachine.cpp Template for MedReminderStateMachine
 #include "MedReminderStateMachineBase.h"
-#include "MedReminderStateMachine.h"
 
-MedReminderStateMachineBase::MedReminderStateMachineBase() 
-: currentState(State::Training) {
-  onEnter(State::Idle, currentState);  // Initial state entry actions
+MedReminderStateMachineBase::MedReminderStateMachineBase() : currentState(State::Training) {
+  onEnter(currentState, currentState); // Initial state entry actions
 }
 
 void MedReminderStateMachineBase::checkState() {
@@ -17,7 +15,7 @@ void MedReminderStateMachineBase::checkState() {
         return;
       }
       if (hasTraining_NewDay()) {
-        transitionTo(State::Idle);  // Transition based on specific action being true
+        transitionTo(State::Idle);  // Transition  based on specific action being true
         return;
       }
       break;
@@ -68,30 +66,30 @@ void MedReminderStateMachineBase::checkState() {
 
 void MedReminderStateMachineBase::transitionTo(State newState) {
   onExit(currentState, newState);
-  State lastState = currentState;
+  State lastState = currentState ;
   currentState = newState;
-  onEnter(lastState, currentState);
+  onEnter(lastState, newState);
 }
 
 void MedReminderStateMachineBase::onExit(State currentState, State newState) {
   switch (currentState) {
     case State::Training:
-      exitTraining();
+      exitTraining(newState);
       break;
     case State::SavingReminder:
-      exitSavingReminder();
+      exitSavingReminder(newState);
       break;
     case State::Idle:
-      exitIdle();
+      exitIdle(newState);
       break;
     case State::AboutToAlert:
-      exitAboutToAlert();
+      exitAboutToAlert(newState);
       break;
     case State::Alerting:
-      exitAlerting();
+      exitAlerting(newState);
       break;
     case State::ClearReminder:
-      exitClearReminder();
+      exitClearReminder(newState);
       break;
   }
 }
@@ -99,35 +97,37 @@ void MedReminderStateMachineBase::onExit(State currentState, State newState) {
 void MedReminderStateMachineBase::onEnter(State currentState, State newState) {
   switch (currentState) {
     case State::Training:
-      enterTraining();
+      enterTraining(currentState);
       break;
     case State::SavingReminder:
-      enterSavingReminder();
+      enterSavingReminder(currentState);
       break;
     case State::Idle:
-      enterIdle();
+      enterIdle(currentState);
       break;
     case State::AboutToAlert:
-      enterAboutToAlert();
+      enterAboutToAlert(currentState);
       break;
     case State::Alerting:
-      enterAlerting();
+      enterAlerting(currentState);
       break;
     case State::ClearReminder:
-      enterClearReminder();
+      enterClearReminder(currentState);
       break;
   }
 }
 
+
 void MedReminderStateMachineBase::beep(int duration = 1000) {
   tone(status_beeps_speaker, 440, ms_between_beeps * 2);
   digitalWrite(status_status_led, HIGH);  // Turn the LED on (HIGH is the voltage level)
-  delay(ms_between_beeps);                // Wait for a second (1000 milliseconds)
+  delay(ms_between_beeps);     // Wait for a second (1000 milliseconds)
   digitalWrite(status_status_led, LOW);   // Turn the LED off by making the voltage LOW
-  delay(ms_between_beeps);                // Wait for a second (1000 milliseconds)
+  delay(ms_between_beeps);     // Wait for a second (1000 milliseconds)
 }
 
 void MedReminderStateMachineBase::emitAlarmBeep() {
+  //Serial.println("beeping");
   beep(ms_between_beeps);
   beepsBeeped++;
 }
@@ -156,5 +156,3 @@ String MedReminderStateMachineBase::stateToString(State stateToStringify) {
       return "Unknown State enum value: " + String((int)stateToStringify);
   }
 }
-
-MedReminderStateMachine* stateMachine = nullptr;

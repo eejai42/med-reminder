@@ -14,7 +14,7 @@ bool MedReminderStateMachine::hasAboutToAlert_ReminderTimeReached() {
   return false;
 }
 
-void MedReminderStateMachine::enterAboutToAlert() {
+void MedReminderStateMachine::enterAboutToAlert(State currentState) {
   Serial.println("Altering in 3 seconds");
   delay(millisPerSecond * 3);
 }

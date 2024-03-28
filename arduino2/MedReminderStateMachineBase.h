@@ -1,5 +1,6 @@
 #pragma once
 #include <Arduino.h>
+#include "Constants.h"
 
 enum class State {
     Training,
@@ -32,42 +33,42 @@ public:
 
 
     // Enter and Exit methods for Training state
-    virtual void enterTraining() {};
-    virtual void exitTraining() {};
+    virtual void enterTraining(State currentState) {};
+    virtual void exitTraining(State nextState) {};
 
     // Action handlers for the Training state
     virtual bool hasTraining_MovementDetected() { return false; };
     virtual bool hasTraining_NewDay() { return false; };
     // Enter and Exit methods for SavingReminder state
-    virtual void enterSavingReminder() {};
-    virtual void exitSavingReminder() {};
+    virtual void enterSavingReminder(State currentState) {};
+    virtual void exitSavingReminder(State newState) {};
 
     // Action handlers for the SavingReminder state
     virtual bool hasSavingReminder_ReminderSaved() { return false; };
     // Enter and Exit methods for Idle state
-    virtual void enterIdle() {};
-    virtual void exitIdle() {};
+    virtual void enterIdle(State currentState) {};
+    virtual void exitIdle(State newState) {};
 
     // Action handlers for the Idle state
     virtual bool hasIdle_WithinMSOfNextReminder() { return false; };
     // Enter and Exit methods for AboutToAlert state
-    virtual void enterAboutToAlert() {};
-    virtual void exitAboutToAlert() {};
+    virtual void enterAboutToAlert(State currentState) {};
+    virtual void exitAboutToAlert(State currentState) {};
 
     // Action handlers for the AboutToAlert state
     virtual bool hasAboutToAlert_ReminderTimeReached() { return false; };
     virtual bool hasAboutToAlert_MovementDetected() { return false; };
     // Enter and Exit methods for Alerting state
-    virtual void enterAlerting() {};
-    virtual void exitAlerting() {};
+    virtual void enterAlerting(State currentState) {};
+    virtual void exitAlerting(State currentState) {};
 
     // Action handlers for the Alerting state
     virtual bool hasAlerting_MainInputDoubleClicked() { return false; };
     virtual bool hasAlerting_SystemButtonPushed() { return false; };
     virtual bool hasAlerting_MovementDetected() { return false; };
     // Enter and Exit methods for ClearReminder state
-    virtual void enterClearReminder() {};
-    virtual void exitClearReminder() {};
+    virtual void enterClearReminder(State currentState) {};
+    virtual void exitClearReminder(State currentState) {};
 
     // Action handlers for the ClearReminder state
     virtual bool hasClearReminder_ReminderCleared() { return false; };

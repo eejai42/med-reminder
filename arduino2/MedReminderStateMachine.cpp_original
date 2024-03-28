@@ -1,6 +1,7 @@
 #pragma once
 
-#include "MedReminderStateMachine.h"
+#include "Constants.h"
+#include "MedReminderStateMachineBase.h"
 #include "MedReminderStateMachine.h"
 
 void MedReminderStateMachine::checkingState() {  

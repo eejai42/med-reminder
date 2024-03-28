@@ -1,114 +1,128 @@
 {{#each @root}}
-[[FileSetFile/RelativePath[../{{@key}}StateMachine.h]]]
+[[FileSetFile/RelativePath[../{{@key}}StateMachineBase.h]]]
 #pragma once
 // Adjusted StateMachine.h Template for {{@key}}StateMachine
-#include "common.h"
 
 enum class State {
-    {{#each MachineStates.MachineState}}
-    {{Name}},
-    {{/each}}
-    // Add additional states here
+  {{#each MachineStates.MachineState}}
+  {{Name}},
+  {{/each}}
+  // Add additional states here
 };
 
-void checkingState();
-void transitioning(State fromState, State toState);
-void transitioned(State fromState, State toState);
+virtual void checkingState();
 String stateToString(State stateToStringify);
 
-class {{@key}}StateMachine {
-private:
-    State currentState;
+class {{@key}}StateMachineBase {
+protected:
+  State currentState;
+  int beepsBeeped = 0;
+  virtual void checkingState() {};
+  virtual String stateToString(State stateToStringify);
 
 public:
-    {{@key}}StateMachine();
-    void checkState();
+  {{@key}}StateMachineBase();
+  void checkState();
+  
+  // State transition utility methods
+  virtual void transitionTo(State newState);
+  virtual void onExit(State fromState, State toState);
+  virtual void onEnter(State fromState, State toState);
 
-    // State transition utility methods
-    void transitionTo(State newState);
-    void onExit(State state);
-    void onEnter(State state);
+  virtual void beep(int duration = 1000);
+  virtual void emitAlarmBeep();
 
-    {{#each MachineStates.MachineState}}
-    // Enter and Exit methods for {{Name}} state
-    void enter{{Name}}();
-    void exit{{Name}}();
+  {{#each MachineStates.MachineState}}
+  // Enter and Exit methods for {{Name}} state
+  virtual void enter{{Name}}() {};
+  virtual void exit{{Name}}() {};
 
-    // Action handlers for the {{Name}} state
-    {{#each FromTransitions.FromTransition}}
-    bool has{{../Name}}_{{ActionName}}();
-    {{/each}}
-    {{/each}}
+  // Action handlers for the {{Name}} state
+  {{#each FromTransitions.FromTransition}}
+  virtual bool has{{../Name}}_{{ActionName}}() { return false; };
+  {{/each}}
+  {{/each}}
 };
 
-extern {{@key}}StateMachine* stateMachine;
 {{!-- StateMachine.cpp Template --}}
-[[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp:never]]]
+[[FileSetFile/RelativePath[../{{@key}}StateMachineBase.cpp]]]
 #pragma once
 // Adjusted StateMachine.cpp Template for {{@key}}StateMachine
-#include "{{@key}}StateMachine.h"
+#include "{{@key}}StateMachineBase.h"
 
-{{@key}}StateMachine::{{@key}}StateMachine() : currentState(State::{{#each FSMs}}{{InitialStateName}}{{/each}}) {
-    onEnter(currentState); // Initial state entry actions
+{{@key}}StateMachineBase::{{@key}}StateMachineBase() : currentState(State::{{#each FSMs}}{{InitialStateName}}{{/each}}) {
+  onEnter(currentState, currentState); // Initial state entry actions
 }
 
-void {{@key}}StateMachine::checkState() {
-    checkingState();
-    switch (currentState) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            {{#each FromTransitions.FromTransition}}
-            if (has{{../Name}}_{{ActionName}}()) {
-                transitionTo(State::{{ToStateName}}); // Transition based on specific action being true
-                return;
-            }
-            {{/each}}
-            break;
-        {{/each}}
-    }
+void {{@key}}StateMachineBase::checkState() {
+  checkingState();
+  switch (currentState) {
+    {{#each MachineStates.MachineState}}
+    case State::{{Name}}:
+     {{#each FromTransitions.FromTransition}}
+      if (has{{../Name}}_{{ActionName}}()) {
+        transitionTo(State::{{ToStateName}});  // Transition based on specific action being true
+        return;
+      }
+      {{/each}}
+      break;
+   {{/each}}
+  }
 }
 
-void {{@key}}StateMachine::transitionTo(State newState) {
-    transitioning(currentState, newState);
-    onExit(currentState);
-    currentState = newState;
-    onEnter(newState);
-    transitioned(currentState, newState);
+void {{@key}}StateMachineBase::transitionTo(State newState) {
+  onExit(currentState, newState);
+  State lastState = currentState ;
+  currentState = newState;
+  onEnter(lastState, newState);
 }
 
-void {{@key}}StateMachine::onExit(State state) {
-    switch (state) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            exit{{Name}}();
-            break;
-        {{/each}}
-    }
+void {{@key}}StateMachineBase::onExit(State currentState, State newState) {
+  switch (currentState) {
+    {{#each MachineStates.MachineState}}
+    case State::{{Name}}:
+      exit{{Name}}(newState);
+      break;
+    {{/each}}
+  }
 }
 
-void {{@key}}StateMachine::onEnter(State state) {
-    switch (state) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            enter{{Name}}();
-            break;
-        {{/each}}
-    }
+void {{@key}}StateMachineBase::onEnter(State currentState, State newState) {
+  switch (currentState) {
+    {{#each MachineStates.MachineState}}
+    case State::{{Name}}:
+      enter{{Name}}(currentState);
+      break;
+    {{/each}}
+  }
 }
 
-String stateToString(State stateToStringify) {
-    switch (stateToStringify) {
-        {{#each MachineStates.MachineState}}
-        case State::{{Name}}:
-            return "{{Name}}";
-            break;
+
+void {{@key}}StateMachineBase::beep(int duration = 1000) {
+  tone(status_beeps_speaker, 440, ms_between_beeps * 2);
+  digitalWrite(status_status_led, HIGH);  // Turn the LED on (HIGH is the voltage level)
+  delay(ms_between_beeps);     // Wait for a second (1000 milliseconds)
+  digitalWrite(status_status_led, LOW);   // Turn the LED off by making the voltage LOW
+  delay(ms_between_beeps);     // Wait for a second (1000 milliseconds)
+}
+
+void {{@key}}StateMachineBase::emitAlarmBeep() {
+  //Serial.println("beeping");
+  beep(ms_between_beeps);
+  beepsBeeped++;
+}
+
+String {{@key}}StateMachineBase::stateToString(State stateToStringify) {
+  switch (stateToStringify) {
+    {{#each MachineStates.MachineState}}
+    case State::{{Name}}:
+      return "{{Name}}";
+      break;
 {{/each}}
-        default:
-            return "Unknown State enum value: " + String((int)stateToStringify);
-    }
+    default:
+      return "Unknown State enum value: " + String((int)stateToStringify);
+  }
 }
-
-{{@key}}StateMachine* stateMachine = nullptr;
 
 
 {{#each MachineStates.MachineState}}
@@ -117,18 +131,18 @@ String stateToString(State stateToStringify) {
 #include "MedReminderStateMachine.h"
 
 {{#each FromTransitions.FromTransition}}
-bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
-    // Check condition for {{ActionName}} in {{../Name}} state
-    return true;
+virtual bool {{@../../key}}StateMachine::has{{../Name}}_{{ActionName}}() {
+  // Check condition for {{ActionName}} in {{../Name}} state
+  return true;
 }
 {{/each}}
 
-void {{@../key}}StateMachine::enter{{Name}}() {}
+virtual void {{@../key}}StateMachine::enter{{Name}}() {}
 
-void {{@../key}}StateMachine::exit{{Name}}() {}
+virtual void {{@../key}}StateMachine::exit{{Name}}() {}
 {{/each}}
 
-[[FileSetFile/RelativePath[../Common.h:never]]]
+[[FileSetFile/RelativePath[../{{@key}}StateMachine.h:never]]]
 #pragma once
 
 #include <Arduino.h>
@@ -140,36 +154,19 @@ void emitAlarmBeep();
 
 
 {{!-- Common.cpp (initial take anyway) --}}
-[[FileSetFile/RelativePath[../Common.cpp:never]]]
+[[FileSetFile/RelativePath[../{{@key}}StateMachine.cpp:never]]]
 #pragma once
 
 #include "MedReminderStateMachine.h"
-#include "Common.h"
 
 void checkingState() {
   // Serial.Println("Checking state in Common.cpp");
 }
 
-void transitioning(State fromState, State toState) {
- // Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
-}
 
-void transitioned(State fromState, State toState) {
-  // Serial.println(" - transitioning " + stateToString(fromState) + " -> " + stateToString(toState));
-}
-
-void beep(int duration = 1000) {
-  tone(status_beeps_speaker, 440, ms_between_beeps * 2);
-  digitalWrite(status_status_led, HIGH);  // Turn the LED on (HIGH is the voltage level)
-  delay(ms_between_beeps);       // Wait for a second (1000 milliseconds)
-  digitalWrite(status_status_led, LOW);   // Turn the LED off by making the voltage LOW
-  delay(ms_between_beeps);       // Wait for a second (1000 milliseconds)
-}
-
-void emitAlarmBeep() {
-  //Serial.println("beeping");
-  beep(ms_between_beeps);
-  beepsBeeped++;
+void MedReminderStateMachine::onEnter(State fromState, State toState) {
+  MedReminderStateMachineBase::onEnter(fromState, toState);
+  // Serial.println("Transition from: " + stateToString(fromState) + " -> " + stateToString(toState));
 }
 
 {{/each}}
